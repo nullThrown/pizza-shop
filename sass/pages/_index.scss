@@ -1,0 +1,31 @@
+
+
+.address-box {
+  text-align: center;
+  width: fit-content;
+  margin: 0 auto;
+  font-size: $font-size-small;
+  line-height: 2.2rem;
+  color: $color-soft-white;
+}
+.order-btn-box {
+  display: flex;
+  justify-content: space-between;
+  width: 260px;
+  margin: 0 auto;
+}
+
+// set these containers in _grid as flex container class
+.section-most-popular {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 10rem;
+}
+.section-deals {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 10rem;
+}
+.section-deals > a {
+  height: 400px;
+}

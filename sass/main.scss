@@ -1,0 +1,31 @@
+@import "abstracts/variables";
+@import "abstracts/mixins";
+
+@import "base/base";
+@import "base/typography";
+@import "base/utilities";
+@import "base/animations";
+
+@import "components/buttons";
+@import "components/cart";
+@import "components/card";
+@import "components/img";
+@import "components/nav";
+@import "components/food-category-box";
+@import "components/banner";
+
+
+
+
+@import "layout/header";
+@import "layout/footer";
+@import "layout/grid"; 
+
+@import "pages/index";
+@import "pages/menu";
+@import "pages/about";
+
+
+
+
+

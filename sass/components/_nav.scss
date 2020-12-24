@@ -1,0 +1,12 @@
+.nav {
+  margin: 0 auto 5px;
+  align-self: flex-end; 
+  width: 220px; 
+
+  &__menu {
+    width: 540px;
+    font-size: $font-size-default;
+    margin-top: 8rem;
+  }
+ 
+}

@@ -1,0 +1,39 @@
+.header {
+  width: 100%;
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  border-bottom: 2px solid rgba(220, 220, 220, 1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: $color-soft-white;
+
+  &__box {
+    display: flex;
+    height: 9rem;
+    justify-content: space-between;
+    max-width: $container-max-width;
+    width: $container-width;
+    margin: 0 auto;
+  }
+  // this should be placed in typography but as this is only a placeholder so an exception is fine 
+  &__logo {
+    font-size: $font-size-large;
+    align-self: center;
+    width: 15%;
+  }
+  
+  &__cart-box {
+    margin-bottom: 5px;
+    width: 15%;
+    align-self: flex-end;
+
+    & > p {
+      font-size: $font-size-large;
+    }
+  }
+ 
+
+} 

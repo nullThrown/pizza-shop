@@ -1,0 +1,29 @@
+.banner {
+  margin: 10px auto 0;
+  max-width: $container-max-width;
+  width: $container-width;
+  height: 500px;
+  border-radius: 4px;
+  background-size: cover;
+  background-position: center;
+
+  &--top {
+    background-image: linear-gradient(
+    to right bottom,
+  rgba($color-text-primary, .7), 
+  rgba($color-text-primary, .55)), 
+  url(../../img/backgrounds/pizza-overhead.jpg);
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+    
+  }
+
+  &--bottom { 
+    background-image: linear-gradient(
+    to right bottom,
+  rgba($color-text-primary, .7), 
+  rgba($color-text-primary, .55)), 
+  url(../../img/backgrounds/pizza-side.jpg);
+  clip-path: polygon(100% 0,0 20%,0 100%, 100% 100%);
+}
+
+}

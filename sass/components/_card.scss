@@ -1,0 +1,38 @@
+.card {
+  padding: 5px 2rem;
+  border: 1px solid $color-dark-grey;
+  border-radius: 8px;
+  box-shadow: 2px 2px 5px rgba($color: #000000, $alpha: .2);
+
+  &__more-info {
+    font-size: $font-size-small;
+    text-decoration: underline;
+    margin: 4px 0; 
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__select {
+    width: 80%;
+    margin: 5px auto;
+    height: 34px;
+    font-size: $font-size-default;
+    border: 1px solid rgb(72, 91, 163);
+    border-radius: 8px;
+  }
+
+  &__input {
+    display: inline;
+    width: 30px;
+    height: 30px;
+    font-size: $font-size-default;
+    margin-left: 4px;
+  }
+
+  &--deals {
+    color: $color-soft-white;
+    }
+
+}

@@ -1,0 +1,112 @@
+
+*add deals to bottom of Home page 
+*add same component to subpage within Menu page -- add header el for Deals   
+*add prices to all food items -- use popular pizza site as a reference
+*change all primary headers to cool font 
+*create footer -- add copywrite 
+
+
+menu items 
+
+******* Pizza *******
+
+create your own
+
+*cheese 
+
+*pepperoni
+
+*Works
+
+*Sausage
+
+*Meats
+
+*Vegetarian
+
+*Hawaiian 
+
+*BBQ Chicken
+
+*Six cheese 
+    ******* Toppings/options *******
+  ** options **
+      size
+      half/half 
+      crust option 
+      bake option   
+
+  ** sause **
+     None 
+     BBQ
+     Ranch
+     light
+     normal 
+     heavy
+
+  ** Cheese **
+    Mozarrela 
+    cheese blend
+    parmesan Romano
+
+ **  Meats ** 
+    chicken 
+    pepperoni
+    Sausage
+    bacon
+    canadian bacon
+    salami
+
+**  Veggies **
+    onions
+    spinach
+    roasted garlic
+    black olives
+    pineapple
+    green peppers
+    jalepeno peppers
+    roma tomatoes
+    mushrooms
+
+
+
+******* Sides *******
+
+        *jalepeno poppers
+        *garlic bread
+        *parmesan breadsticks
+         *chicken wings
+        *regular fries
+        *garlic fries
+      *chicken nuggets
+      *caesar salad 
+      *garden salad
+
+
+
+******* desserts *******
+        *cinnamon sticks
+        *chocalate brownie
+        *chocalate chip cookie
+
+
+******* Drinks *******
+        *coke 
+        *diet coke
+        *root beer
+        sprite
+        Dr pepper
+        crush grape
+
+******* extras *******
+        sauces -- bbq, ranch, spicy garlic, pizza sauce, buffalo
+
+****** potential additions *******
+        pastas 
+        sandwhiches
+
+
+
+******* Deals *******
+ note: display 4 on front page 
+ note: display 8 on deals page

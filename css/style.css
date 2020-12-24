@@ -1,0 +1,311 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+html {
+  font-size: 62.5%; }
+
+body {
+  box-sizing: border-box;
+  background-color: whitesmoke;
+  font-family: "Nunito", sans-serif; }
+
+a {
+  text-decoration: none;
+  color: #080808; }
+
+li {
+  list-style: none; }
+
+.main-container {
+  max-width: 1200px;
+  width: 96%;
+  margin: 0 auto; }
+
+body {
+  font-family: 'Nunito', sans-serif; }
+
+.primary-title {
+  font-size: 6rem;
+  font-weight: 300;
+  font-family: "Lato", sans-serif;
+  margin: 8rem auto 4rem;
+  border-bottom: 1px solid #c8c8c8;
+  width: fit-content; }
+  .primary-title--white {
+    color: whitesmoke; }
+
+.secondary-title {
+  font-size: 4rem;
+  font-weight: 300;
+  margin: 6rem auto 4rem;
+  border-bottom: 1px solid #c8c8c8;
+  width: fit-content; }
+
+.tertiary-title {
+  font-size: 2.4rem;
+  margin: 1.5rem 0 .8rem; }
+
+.nav-link {
+  color: #080808;
+  font-size: 1.6rem;
+  transition: all 200ms; }
+
+.nav-link:hover {
+  color: red; }
+
+.u-flex-center {
+  display: flex;
+  justify-content: center;
+  align-content: center; }
+
+.u-text-center {
+  text-align: center; }
+
+.u-mt-40 {
+  margin-top: 4rem; }
+
+.u-mt-10 {
+  margin-top: 10px; }
+
+@keyframes moveInRight {
+  0% {
+    transform: translateX(-50px); }
+  60% { }
+  100% {
+    transform: translateX(0); } }
+
+@keyframes moveInLeft {
+  0% {
+    transform: translateX(50px); }
+  60% { }
+  100% {
+    transform: translateX(0); } }
+
+.btn {
+  cursor: pointer;
+  transition: all 200ms; }
+  .btn--menu {
+    border: none; }
+    .btn--menu:hover {
+      border-bottom: 1px solid #831818; }
+  .btn--add-to-cart {
+    font-size: 1.6rem;
+    border: 1px solid #080808;
+    border-radius: 4px;
+    padding: 8px 10px; }
+    .btn--add-to-cart:hover {
+      color: whitesmoke;
+      background-color: #080808; }
+
+.btn-link {
+  color: #080808;
+  padding: 9px 18px;
+  border-radius: 24px;
+  transition: all 200ms;
+  box-shadow: 5px 8px 8px rgba(0, 0, 0, 0.2);
+  text-align: center; }
+  .btn-link:hover {
+    transform: translateY(-1px);
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2); }
+  .btn-link--red {
+    font-size: 2rem;
+    border: 2px solid #ec3939;
+    text-transform: uppercase; }
+  .btn-link--order {
+    display: block;
+    max-width: fit-content;
+    margin: 1rem auto;
+    font-size: 1.6rem; }
+  .btn-link--customize {
+    font-size: 1.6rem;
+    text-decoration: underline; }
+
+.active {
+  border-bottom: 1px solid #831818; }
+
+.card {
+  padding: 5px 2rem;
+  border: 1px solid #c8c8c8;
+  border-radius: 8px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); }
+  .card__more-info {
+    font-size: 1.4rem;
+    text-decoration: underline;
+    margin: 4px 0; }
+    .card__more-info:hover {
+      cursor: pointer; }
+  .card__select {
+    width: 80%;
+    margin: 5px auto;
+    height: 34px;
+    font-size: 1.6rem;
+    border: 1px solid #485ba3;
+    border-radius: 8px; }
+  .card__input {
+    display: inline;
+    width: 30px;
+    height: 30px;
+    font-size: 1.6rem;
+    margin-left: 4px; }
+  .card--deals {
+    color: whitesmoke; }
+
+.img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 4px; }
+  .img--small {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 4px; }
+  .img--background {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    background-position: center;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url("../../img/deals/three-large.png"); }
+
+.nav {
+  margin: 0 auto 5px;
+  align-self: flex-end;
+  width: 220px; }
+  .nav__menu {
+    width: 540px;
+    font-size: 1.6rem;
+    margin-top: 8rem; }
+
+.food-category-box {
+  margin-top: 4rem; }
+
+.banner {
+  margin: 10px auto 0;
+  max-width: 1200px;
+  width: 96%;
+  height: 500px;
+  border-radius: 4px;
+  background-size: cover;
+  background-position: center; }
+  .banner--top {
+    background-image: linear-gradient(to right bottom, rgba(8, 8, 8, 0.7), rgba(8, 8, 8, 0.55)), url(../../img/backgrounds/pizza-overhead.jpg);
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%); }
+  .banner--bottom {
+    background-image: linear-gradient(to right bottom, rgba(8, 8, 8, 0.7), rgba(8, 8, 8, 0.55)), url(../../img/backgrounds/pizza-side.jpg);
+    clip-path: polygon(100% 0, 0 20%, 0 100%, 100% 100%); }
+
+.header {
+  width: 100%;
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  border-bottom: 2px solid gainsboro;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: whitesmoke; }
+  .header__box {
+    display: flex;
+    height: 9rem;
+    justify-content: space-between;
+    max-width: 1200px;
+    width: 96%;
+    margin: 0 auto; }
+  .header__logo {
+    font-size: 3rem;
+    align-self: center;
+    width: 15%; }
+  .header__cart-box {
+    margin-bottom: 5px;
+    width: 15%;
+    align-self: flex-end; }
+    .header__cart-box > p {
+      font-size: 3rem; }
+
+.flex-row-btwn {
+  display: flex;
+  justify-content: space-between; }
+
+.flex-row-even {
+  display: flex;
+  justify-content: space-evenly; }
+
+.col-23 {
+  width: 23%; }
+
+.col-25 {
+  width: 25%; }
+
+.col-32 {
+  width: 32%; }
+
+.col-40 {
+  width: 40%; }
+
+.col-50 {
+  width: 50%; }
+
+.address-box {
+  text-align: center;
+  width: fit-content;
+  margin: 0 auto;
+  font-size: 1.4rem;
+  line-height: 2.2rem;
+  color: whitesmoke; }
+
+.order-btn-box {
+  display: flex;
+  justify-content: space-between;
+  width: 260px;
+  margin: 0 auto; }
+
+.section-most-popular {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 10rem; }
+
+.section-deals {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 10rem; }
+
+.section-deals > a {
+  height: 400px; }
+
+.section-menu {
+  margin-bottom: 20rem; }
+
+.about-box {
+  margin: 10rem auto;
+  max-width: 900px;
+  height: 500px;
+  display: flex;
+  justify-content: center; }
+  .about-box__img {
+    background-image: url("../../img/founder.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: auto;
+    width: 50%;
+    animation: moveInRight 500ms ease-out;
+    border-radius: 8px; }
+  .about-box__text-box {
+    width: 50%;
+    font-size: 1.6rem;
+    animation: moveInLeft 500ms ease-out;
+    align-self: center;
+    background-color: #555252;
+    color: white;
+    padding: 31px 20px;
+    border: 1px solid black;
+    border-radius: 8px;
+    line-height: 27px;
+    text-indent: 24px; }
+    .about-box__text-box h3 {
+      padding-bottom: 5px; }

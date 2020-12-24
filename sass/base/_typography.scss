@@ -1,0 +1,39 @@
+
+body {
+  font-family: 'Nunito', sans-serif ;
+}
+
+.primary-title {
+  font-size: $font-size-xxlarge;
+  font-weight: 300;
+  font-family: $font-Lato;
+  margin: 8rem auto 4rem;
+  border-bottom: 1px solid $color-dark-grey;
+  width: fit-content;
+
+  &--white {
+    color: $color-soft-white;
+  }
+}
+.secondary-title {
+  font-size: $font-size-xlarge;
+  font-weight: 300;
+  margin: 6rem auto 4rem;
+  border-bottom: 1px solid $color-dark-grey;
+  width: fit-content;
+
+}
+
+.tertiary-title {
+  font-size: $font-size-medium-large;
+  margin: 1.5rem 0 .8rem;
+}
+
+.nav-link {
+  color: $color-text-primary;
+  font-size: $font-size-default;
+  transition: all 200ms;
+}
+.nav-link:hover {
+  color: red;
+}

@@ -1,0 +1,40 @@
+.about-box {
+  margin: 10rem auto;
+  max-width: 900px; 
+  height: 500px;
+  
+  // height: fit-content;
+  // width: 90%;
+  display: flex;
+  justify-content: center;
+ 
+
+  &__img {
+    background-image: url('../../img/founder.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: auto;
+    width: 50%;
+    animation: moveInRight 500ms ease-out;
+    border-radius: 8px;
+
+  }
+  &__text-box {
+    width: 50%;
+    font-size: $font-size-default;
+    animation: moveInLeft 500ms ease-out;
+    align-self: center;
+    background-color: rgb(85, 82, 82);
+    color: white;
+    padding: 31px 20px;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 8px;
+    line-height: 27px;
+    text-indent: 24px;
+
+    & h3 {
+      padding-bottom: 5px;
+    }
+  }
+}
