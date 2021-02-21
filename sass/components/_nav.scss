@@ -3,10 +3,18 @@
   align-self: flex-end; 
   width: 220px; 
 
+  & ul> li {
+    list-style: none;
+  }
+
   &__menu {
     width: 540px;
     font-size: $font-size-default;
     margin-top: 8rem;
+
+    ul> li {
+      list-style: none;
+    }
   }
  
 }
