@@ -32,7 +32,12 @@
   }
 
   &--deals {
-    color: $color-soft-white;
+    & ul> li {
+      color: $color-soft-white;
+      font-size: small;
     }
+  }
+
+
 
 }

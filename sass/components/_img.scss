@@ -16,10 +16,35 @@
     height: auto;
     object-fit: cover;
     background-position: center;
+    &--three-pizza {
     background-image: linear-gradient(
       to right,
     rgba(0, 0, 0, .7),
     rgba(0,0,0, .4)),
       url('../../img/deals/three-large.png');
   }
+  &--pizza-coke {
+    background-image: linear-gradient(
+      to right,
+    rgba(0, 0, 0, .7),
+    rgba(0,0,0, .4)),
+      url('../../img/drinks/coke.jpg');
+  }
+  &--pizza-wings {
+    background-image: linear-gradient(
+      to right,
+    rgba(0, 0, 0, .7),
+    rgba(0,0,0, .4)),
+      url('../../img/deals/pizza&wings.jpg');
+  }
+  &--cinnamon-sticks {
+    background-image: linear-gradient(
+      to right,
+    rgba(0, 0, 0, .7),
+    rgba(0,0,0, .4)),
+      url('../../img/sides/cinnamon-sticks.jpg');
+  }
+    
+  }
+  
 }  
