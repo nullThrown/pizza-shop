@@ -25,16 +25,34 @@
   width: 50%; 
 }
 
-
-.grid-container {
+// numbers designate # of items. 
+// All these grid classes are only applied to food items and deals 
+.grid-3 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 360px));
-  gap: 10px;
+  gap: 20px;
   justify-content: center; 
 }
-@media (max-width: 778px) {
+@media (max-width: 778px) {   
   .grid-container {
     grid-template-columns: repeat(1, 1fr);
   }
 }
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 400px;
+  grid-auto-flow: auto;
+  column-gap: 5px;
+  row-gap: 10px;  
+  margin-bottom: 200px;  
+}
+
+@media (max-width: 778px) { 
+  .grid-4 {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 360px 360px;
+  }
+} 
 
