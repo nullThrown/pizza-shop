@@ -16,7 +16,7 @@
   width: 25%;
 }
 .col-32 {
-  width: 32%;
+  width: 32%; 
 }
 .col-40 {
   width: 40%;
@@ -29,14 +29,9 @@
 // All these grid classes are only applied to food items and deals 
 .grid-3 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 360px));
+  grid-template-columns: repeat(auto-fit, minmax(auto, 340px));
   gap: 20px;
   justify-content: center; 
-}
-@media (max-width: 778px) {   
-  .grid-container {
-    grid-template-columns: repeat(1, 1fr);
-  }
 }
 
 .grid-4 {
