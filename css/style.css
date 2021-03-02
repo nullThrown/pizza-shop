@@ -270,13 +270,9 @@ body {
 
 .grid-3 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 360px));
+  grid-template-columns: repeat(auto-fit, minmax(100px, 340px));
   gap: 20px;
   justify-content: center; }
-
-@media (max-width: 778px) {
-  .grid-container {
-    grid-template-columns: repeat(1, 1fr); } }
 
 .grid-4 {
   display: grid;
@@ -315,7 +311,6 @@ body {
 .about-box {
   margin: 10rem auto;
   max-width: 900px;
-  height: 500px;
   display: flex;
   justify-content: center; }
   .about-box__img {
@@ -341,3 +336,16 @@ body {
     text-indent: 24px; }
     .about-box__text-box h3 {
       padding-bottom: 5px; }
+
+@media (max-width: 960px) {
+  .about-box {
+    flex-direction: column;
+    margin: 5rem auto; }
+    .about-box__img {
+      animation: none;
+      height: 360px;
+      width: 100%;
+      align-self: center; }
+    .about-box__text-box {
+      animation: none;
+      width: 100%; } }
