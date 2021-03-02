@@ -270,7 +270,7 @@ body {
 
 .grid-3 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 340px));
+  grid-template-columns: repeat(auto-fit, minmax(auto, 340px));
   gap: 20px;
   justify-content: center; }
 
