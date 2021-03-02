@@ -1,15 +1,25 @@
 
         * add grid system to entire menu -- responsive
 * clean up menu -- remove unneccessary shit
-* make about page responsive in particular but make all pages responsive as well
+        * enhance the basic option tags
+        * create 'more info' hover effect
 * make footer -- black background
+* switch out top banner image on index page 
+
    
 *add prices to all food items -- use popular pizza site as a reference
 *change all primary headers to cool font 
 *create footer -- add copywrite 
+* fix buttons on index -- most popular section. Switch out pizzas 
 
 general stylistic changes
   * make food item cards more visible -- increase shadow, increase border width/color darker etc.
+
+
+ 
+ 
+
+
 
 
 
