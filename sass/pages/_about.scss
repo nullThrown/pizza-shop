@@ -1,14 +1,9 @@
 .about-box {
   margin: 10rem auto;
   max-width: 900px; 
-  height: 500px;
-  
-  // height: fit-content;
-  // width: 90%;
   display: flex;
   justify-content: center;
  
-
   &__img {
     background-image: url('../../img/founder.jpg');
     background-repeat: no-repeat;
@@ -18,8 +13,8 @@
     width: 50%;
     animation: moveInRight 500ms ease-out;
     border-radius: 8px;
-
   }
+
   &__text-box {
     width: 50%;
     font-size: $font-size-default;
@@ -38,3 +33,25 @@
     }
   }
 }
+
+@media (max-width: 960px) {
+  .about-box {
+    flex-direction: column;
+    margin: 5rem auto;
+    
+    &__img {
+      animation: none;
+      height: 360px;
+      width: 100%;
+      align-self: center;
+
+    } 
+    &__text-box {
+      animation: none;
+      width: 100%;
+    }
+  }
+
+}
+
+
