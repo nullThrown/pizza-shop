@@ -38,7 +38,20 @@ body {
 }
 
 .fine-print {
-  font-size: $font-size-default;
+  color: $color-text-primary;
+  font-size: $font-size-small;
+
+  &--white {
+    font-size: $font-size-small;
+    color: $color-soft-white;
+  }
+}
+
+// attach this to food item div as element -> BEM 
+.item-price {
+  font-size: $font-size-medium-large;
+  padding: 10px 0 15px;
+  text-decoration: underline;
 }
 
 
