@@ -53,7 +53,16 @@ body {
     color: whitesmoke; }
 
 .fine-print {
-  font-size: 1.6rem; }
+  color: #080808;
+  font-size: 1.4rem; }
+  .fine-print--white {
+    font-size: 1.4rem;
+    color: whitesmoke; }
+
+.item-price {
+  font-size: 2.4rem;
+  padding: 10px 0 15px;
+  text-decoration: underline; }
 
 .nav-link {
   color: #080808;
@@ -66,7 +75,7 @@ body {
 .u-flex-center {
   display: flex;
   justify-content: center;
-  align-content: center; }
+  align-items: center; }
 
 .u-text-center {
   text-align: center; }
@@ -202,18 +211,23 @@ body {
       list-style: none; }
 
 .banner {
-  margin: 10px auto 0;
   max-width: 1200px;
   width: 96%;
   height: 500px;
   border-radius: 4px;
   background-size: cover;
   background-position: center; }
+  .banner--dual-pizza {
+    margin: 10px auto 0;
+    background-image: linear-gradient(to right bottom, rgba(8, 8, 8, 0.55), rgba(8, 8, 8, 0.45)), url(../../img/backgrounds/dual-pizza.jpg);
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%); }
   .banner--top {
-    background-image: linear-gradient(to right bottom, rgba(8, 8, 8, 0.7), rgba(8, 8, 8, 0.55)), url(../../img/backgrounds/pizza-overhead.jpg);
+    margin: 10px auto 0;
+    background-image: linear-gradient(to right bottom, rgba(8, 8, 8, 0.65), rgba(8, 8, 8, 0.5)), url(../../img/backgrounds/pizza-overhead.jpg);
     clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%); }
   .banner--bottom {
-    background-image: linear-gradient(to right bottom, rgba(8, 8, 8, 0.7), rgba(8, 8, 8, 0.55)), url(../../img/backgrounds/pizza-side.jpg);
+    margin: 0 auto 10px;
+    background-image: linear-gradient(to right bottom, rgba(8, 8, 8, 0.65), rgba(8, 8, 8, 0.5)), url(../../img/backgrounds/pizza-side.jpg);
     clip-path: polygon(100% 0, 0 20%, 0 100%, 100% 100%); }
 
 .header {
@@ -244,6 +258,13 @@ body {
     align-self: flex-end; }
     .header__cart-box > p {
       font-size: 3rem; }
+
+.footer {
+  width: 100%;
+  height: 100px;
+  background-color: rgba(0, 0, 0, 0.9);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px; }
 
 .flex-row-btwn {
   display: flex;
