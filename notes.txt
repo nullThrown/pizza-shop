@@ -1,22 +1,26 @@
 
-        * add grid system to entire menu -- responsive
-* clean up menu -- remove unneccessary shit
-        * enhance the basic option tags
-        * create 'more info' hover effect
-* make footer -- black background
-* switch out top banner image on index page 
-
+        
+*MENU --
+    * enhance the basic option tags
+    * create 'more info' hover effect
    
 *add prices to all food items -- use popular pizza site as a reference
 *change all primary headers to cool font 
-*create footer -- add copywrite 
 * fix buttons on index -- most popular section. Switch out pizzas 
 
 general stylistic changes
   * make food item cards more visible -- increase shadow, increase border width/color darker etc.
 
 
- 
+ determine price of food item
+        on page load 
+        check value of size select
+        check value of number of items
+        multiply value of size with num of items
+
+        assign cheese pizza div 
+        check child el select value 
+        check child input value (num of items)
  
 
 
