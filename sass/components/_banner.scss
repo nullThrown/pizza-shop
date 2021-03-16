@@ -1,5 +1,5 @@
 .banner {
-  margin: 10px auto 0;
+  
   max-width: $container-max-width;
   width: $container-width;
   height: 500px;
@@ -7,21 +7,34 @@
   background-size: cover;
   background-position: center;
 
-  &--top {
+  &--dual-pizza {
+    margin: 10px auto 0;
     background-image: linear-gradient(
     to right bottom,
-  rgba($color-text-primary, .7), 
-  rgba($color-text-primary, .55)), 
+  rgba($color-text-primary, .55), 
+  rgba($color-text-primary, .45)), 
+  url(../../img/backgrounds/dual-pizza.jpg);
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+    
+  }
+
+  &--top {
+    margin: 10px auto 0;
+    background-image: linear-gradient(
+    to right bottom,
+  rgba($color-text-primary, .65), 
+  rgba($color-text-primary, .50)), 
   url(../../img/backgrounds/pizza-overhead.jpg);
   clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
     
   }
 
   &--bottom { 
+    margin: 0 auto 10px;
     background-image: linear-gradient(
     to right bottom,
-  rgba($color-text-primary, .7), 
-  rgba($color-text-primary, .55)), 
+  rgba($color-text-primary, .65), 
+  rgba($color-text-primary, .50)), 
   url(../../img/backgrounds/pizza-side.jpg);
   clip-path: polygon(100% 0,0 20%,0 100%, 100% 100%);
 }
