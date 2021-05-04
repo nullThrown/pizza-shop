@@ -50,8 +50,12 @@ body {
 // attach this to food item div as element -> BEM 
 .item-price {
   font-size: $font-size-medium-large;
+  color: $color-text-primary;
   padding: 10px 0 15px;
-  text-decoration: underline;
+
+  &__amount {
+    font-size: $font-size-large; 
+  }
 }
 
 
