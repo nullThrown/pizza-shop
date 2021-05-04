@@ -1,29 +1,70 @@
+     Business Logic
+     
+      General 
+        *fix isDuplicate fn() on Js:116
+        *find file structure suitable for project
+        *refactor eventlisteners  
+          write single function or two separate ones if necessary for size change selectors and count selectors 
+           use querySelectorAll to select food item divs and then select elements from within --- 
+           not sure why I think this is better,but, at one point it struck me to do it this way
+           and at the time it appeared to make sense 
+           even though now I'm not sure why that would be better. 
 
+        *write separate function for add to cart buttons 
+           
+        Index
         
+          Order Online 
+            *add functionality to pickup and Delivery buttons 
+            *set property on order/cart object -- for either pick up or delivery 
+            *link to menu page
+
+          Deals
+            *onclick -- add specific deal to cart object 
+              *have deal run function on final price 
+
+        Menu 
+          Cart
+            *figure out how to save cart across mutliple page loads(i.e localstorage)
+            *how to save a placed order that can be saved later down the road
+            *add functionality to checkout button 
+            *disable checkout button unless cart.length > 0
+
+
+  UI Changes
+
+    All pages
+      *find logo to replace Pizza Guys text  
+      *mess around with secondary title fonts(i.e order online, most popular, menu, about) 
+      *add cart icon to all pages
+    Index
+      *change pickup and delivery button look 
+       they look very boring
+      *fix order now buttons on most popular section 
+      
+    Menu
+      Food Item Card  
+        *change look of food item cards -- make them more visible and stylish
+        *change food item title fonts -- very boring 
+        *change selectors(i.e size, crust, sauce, count) use KP video on YT
+        *add hover effect to more info buttons -- to show toppings etc.
+
+      Make Your Own 
+        *create make your own page 
+        *set up for toppings on one half or another or both 
+      
+      Checkout Page   
+        *add checkout page that is linked to by the cart
+          
+    About 
+      My Story Section
+        *change background and border of my story text box -- something light grey and faded perhaps
+
 *MENU --
-    * enhance the basic option tags
-    * create 'more info' hover effect
+
    
-*add prices to all food items -- use popular pizza site as a reference
 *change all primary headers to cool font 
 * fix buttons on index -- most popular section. Switch out pizzas 
-
-general stylistic changes
-  * make food item cards more visible -- increase shadow, increase border width/color darker etc.
-
-
- determine price of food item
-        on page load 
-        check value of size select
-        check value of number of items
-        multiply value of size with num of items
-
-        assign cheese pizza div 
-        check child el select value 
-        check child input value (num of items)
- 
-
-
 
 
 
@@ -121,14 +162,6 @@ create your own
         crush grape
 
 ******* extras *******
-        sauces -- bbq, ranch, spicy garlic, pizza sauce, buffalo
+        sauces -- bbq, ranch, spicy garlic, marinara, buffalo
+        dressing -- thousand island, vinagrette, ranch
 
-****** potential additions *******
-        pastas 
-        sandwhiches
-
-
-
-******* Deals *******
- note: display 4 on front page 
- note: display 8 on deals page
