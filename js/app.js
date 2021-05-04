@@ -1,272 +1,93 @@
 
-const itemSizeSelect = document.querySelectorAll('.item-size-select');
-const foodItemCount = document.querySelectorAll('.food-item-count');
-const itemPrice = document.querySelectorAll('.item-price__amount');
-const foodItemsDiv = document.querySelectorAll('.food-item-box');
-const addToCartBtn = document.querySelectorAll('.btn--add-to-cart');
-let foodItems = [
-  {
-    category: 'pizza',
-    name: 'cheese',
-    smallPrice: 9.99,
-    mediumPrice: 11.99,
-    largePrice: 13.99,
-    xlargePrice: 16.99,
-    uuid: 'piz100'    
-  },
-  {
-    category: 'pizza',
-    name: 'pepperoni',
-    smallPrice: 9.99,
-    mediumPrice: 11.99,
-    largePrice: 13.99,
-    xlargePrice: 16.99,
-    uuid: 'piz200'
-  },
-  {
-    category: 'pizza',
-    name: 'works',
-    smallPrice: 10.99,
-    mediumPrice: 13.99,
-    largePrice: 16.99,
-    xlargePrice: 19.99,
-    uuid: 'piz300'
-  },
-  {
-    category: 'pizza',
-    name: 'sausage',
-    smallPrice: 9.99,
-    mediumPrice: 11.99,
-    largePrice: 13.99,
-    xlargePrice: 16.99,
-    uuid: 'piz400'
-  }, 
-  {
-    category: 'pizza',
-    name: 'meats',
-    smallPrice: 10.99,
-    mediumPrice: 13.99,
-    largePrice: 16.99,
-    xlargePrice: 19.99,
-    uuid: 'piz500'
-  },
-  {
-    category: 'pizza',
-    name: 'vegetarian',
-    smallPrice: 10.99,
-    mediumPrice: 13.99,
-    largePrice: 16.99,
-    xlargePrice: 19.99,
-    uuid: 'piz600'
-  },
-  {
-    category: 'pizza',
-    name: 'hawaiian',
-    smallPrice: 10.99,
-    mediumPrice: 13.99,
-    largePrice: 16.99,
-    xlargePrice: 19.99,
-    uuid: 'piz700'
-  },
-  {
-    category: 'pizza',
-    name: 'BBQ chicken',
-    smallPrice: 10.99,
-    mediumPrice: 13.99,
-    largePrice: 16.99,
-    xlargePrice: 19.99,
-    uuid: 'piz800'
-  },
-  {
-    category: 'pizza',
-    name: 'six cheese',
-    smallPrice: 10.99,
-    mediumPrice: 13.99,
-    largePrice: 16.99,
-    xlargePrice: 19.99,
-    uuid: 'piz900'
-  },
-  {
-    category: 'side',
-    name: 'jalepeno poppers',
-    smallPrice: 3.99,
-    largePrice: 5.99,
-    uuid: 'sde100'
-  }, 
-  {
-    category: 'side',
-    name: 'garlic bread',
-    price: 3.99,
-    uuid: 'sde200'
-  },
-  {
-    category: 'side',
-    name: 'parmesan breadsticks',
-    smallPrice: 2.99,
-    largePrice: 4.99,
-    uuid: 'sde300'
-  }, 
-  {
-    category: 'side',
-    name: 'chicken wings',
-    smallPrice: 3.99,
-    largePrice: 5.99,
-    uuid: 'sde400'
-  }, 
-  {
-    category: 'side',
-    name: 'fries',
-    smallPrice: 1.39,
-    mediumPrice: 1.79,
-    largePrice: 1.99,
-    uuid: 'sde500'
-  }, 
-  {
-    category: 'side',
-    name: 'garlic fries',
-    smallPrice: 1.75,
-    mediumPrice: 2.39,
-    largePrice: 2.99,
-    uuid: 'sde600'
-  }, 
-  {
-    category: 'side',
-    name: 'chicken nuggets',
-    smallPrice: 1.99,
-    mediumPrice: 2.75,
-    largePrice: 3.99,
-    uuid: 'sde700'
-  }, 
-  {
-    category: 'side',
-    name: 'caesar salad',
-    smallPrice: 2.99,
-    largePrice: 4.99,
-    uuid: 'sde800'
-  }, 
-  {
-    category: 'side',
-    name: 'garden salad',
-    smallPrice: 2.99,
-    largePrice: 4.99,
-    uuid: 'sde900'
-  }, 
-  {
-    category: 'dessert',
-    name: 'cinnamon sticks',
-    price: 5.99,
-    uuid: 'des100'
-  },
-  {
-    category: 'dessert',
-    name: 'chocolate chip cookie',
-    price: 1.99,
-    uuid: 'des200'
-  },
-  {
-    category: 'dessert',
-    name: 'chocolate brownie',
-    price: 4.99,
-    uuid: 'des300'
-  },
-  {
-    category: 'drink',
-    name: 'coke',
-    smallPrice: 1.75,
-    largePrice: 2.99,
-    uuid: 'drnk100'
-  },
-  {
-    category: 'drink',
-    name: 'diet coke',
-    smallPrice: 1.75,
-    largePrice: 2.99,
-    uuid: 'drnk200'
-  },
-  {
-    category: 'drink',
-    name: 'root beer',
-    smallPrice: 1.75,
-    largePrice: 2.99,
-    uuid: 'drnk300'
-  },
-  {
-    category: 'drink',
-    name: 'sprite',
-    smallPrice: 1.75,
-    largePrice: 2.99,
-    uuid: 'drnk400'
-  },
-  {
-    category: 'drink',
-    name: 'dr pepper',
-    smallPrice: 1.75,
-    largePrice: 2.99,
-    uuid: 'drnk500'
-  },
-  {
-    category: 'drink',
-    name: 'grape crush',
-    smallPrice: 1.75,
-    largePrice: 2.99,
-    uuid: 'drnk600'
-  }
-];
+// const foodItemsDiv = document.querySelectorAll('.food-item-box');
+const itemSizeSelecters = document.querySelectorAll('.item-size-select');
+const itemCountSelectors = document.querySelectorAll('.food-item-count');
+const pizzaCrustSelectors = document.querySelectorAll('.pizza-crust-select');
+const itemPriceEls = document.querySelectorAll('.item-price__amount');
+const addToCartBtns = document.querySelectorAll('.btn--add-to-cart');
+const cartIcons = document.querySelectorAll('.cart-icons');
+const cartEl = document.querySelector('.cart');
 
 class CartItem {
-  constructor(name, size, count, cost) {
+  constructor(name, size, crust, sauce, count, cost) {
     this.name = name;
     this.size = size;
+    this.crust = crust;
+    this.sauce = sauce;
     this.count = count;
     this.cost = cost;
   }
 }
 
+// Event listners 
 
-itemSizeSelect.forEach(foodItem => {
-  foodItem.addEventListener('change', () => {
-   let priceEl = foodItem.parentNode.querySelector('.item-price__amount');
-   let countEl = foodItem.parentNode.querySelector('.food-item-count').value;
-   let uuid = foodItem.parentNode.dataset.uuid;
-   priceEl.textContent = determinePrice(foodItem.value, countEl, uuid);
+itemSizeSelecters.forEach(sizeSelector => {
+  sizeSelector.addEventListener('change', () => {
+   let priceEl = sizeSelector.parentNode.querySelector('.item-price__amount');
+   let countEl = sizeSelector.parentNode.querySelector('.food-item-count').value;
+   let uuid = sizeSelector.parentNode.dataset.uuid;
+   priceEl.textContent = determinePrice(sizeSelector.value, countEl, uuid);
   });
 });
 
-foodItemCount.forEach(count => {
-  count.addEventListener('change', () => {
-    let priceEl = count.parentNode.querySelector('.item-price__amount');
-    let sizeSelectEl = count.parentNode.querySelector('.item-size-select');
+itemCountSelectors.forEach(countSelector => {
+  countSelector.addEventListener('change', () => {
+    let priceEl = countSelector.parentNode.querySelector('.item-price__amount');
+    let sizeSelectEl = countSelector.parentNode.querySelector('.item-size-select');
     if(sizeSelectEl !== null){
       sizeSelectEl = sizeSelectEl.value;
     }
-    let uuid = count.parentNode.dataset.uuid;
-    priceEl.textContent = determinePrice(sizeSelectEl, count.value, uuid);
+    let uuid = countSelector.parentNode.dataset.uuid;
+    priceEl.textContent = determinePrice(sizeSelectEl, countSelector.value, uuid);
   });
 }); 
 
 let cart = [];
-addToCartBtn.forEach(btn => {
+let bool = true;
+addToCartBtns.forEach(btn => {
   btn.addEventListener('click', (e) => {
-    let box = e.target.closest('.food-item-box');
-    let sizeSelectEl = box.querySelector('.item-size-select') || undefined;
+    let foodItemBox = e.target.closest('.food-item-box');
+    let sizeSelectEl = foodItemBox.querySelector('.item-size-select') || undefined;
     if(sizeSelectEl !== undefined){
       sizeSelectEl = sizeSelectEl.value;
     }
+    let crustSelectEl = foodItemBox.querySelector('.pizza-crust-select') || undefined;
+      if(crustSelectEl !== undefined) {
+        crustSelectEl = crustSelectEl.value;
+      }
 
-    let countEl = box.querySelector('.food-item-count');
-    let currentPrice = determinePrice(sizeSelectEl, countEl.value, box.dataset.uuid);
-    let foodItem = foodItems.find(foodItem => foodItem.uuid == box.dataset.uuid);
-    let cartItem = new CartItem(foodItem.name, sizeSelectEl, countEl.value, currentPrice);
-    cart.push(cartItem);
-    console.log(cart);
+    let sauceSelectEl = foodItemBox.querySelector('.item-sauce-select') || undefined;
+      if(sauceSelectEl !== undefined) {
+        sauceSelectEl = sauceSelectEl.value;
+      }
+    
+    let countEl = foodItemBox.querySelector('.food-item-count');
+    let currentPrice = determinePrice(sizeSelectEl, countEl.value, foodItemBox.dataset.uuid);
+    let foodItem = foodItems.find(foodItem => foodItem.uuid === foodItemBox.dataset.uuid);
+    // console.log(isDuplicateItem(foodItem.name, sizeSelectEl, crustSelectEl, sauceSelectEl));
+    if(bool){
+      let cartItem = new CartItem(foodItem.name, sizeSelectEl, crustSelectEl, sauceSelectEl, countEl.value, currentPrice);
+      cart.push(cartItem);
+      bool = false;
+    }
+    else
+    console.log(bool);
+    // if(isDuplicateItem(foodItem.name, sizeSelectEl, crustSelectEl, sauceSelectEl) === false) {
+    // }
+      console.log(cart);
+    renderCartCount();
+    determineCartTotals();
+    renderCartTotals();
     renderCart(cart);
   });
-})
+});
 
-function renderCart() {
-  
-}
+cartIcons.forEach((el) => {
+  el.addEventListener('click', toggleCartDisplay)
+});
 
+// Helper functions
+console.log();
 function determinePrice(size, count, uuid) {
  let foodItem = foodItems.find(foodItem => foodItem.uuid == uuid); 
   let price = 0;
@@ -274,77 +95,149 @@ function determinePrice(size, count, uuid) {
   if(!size) {
     return foodItem.price * parseInt(count);
   }
-
-    // turn this into a switch case 
-    if(size == 'small'){
+  switch(size) {
+    case 'small':
       price = foodItem.smallPrice;
-    }
-    else if(size == 'medium'){
+      break;
+    case 'medium':
       price = foodItem.mediumPrice;
-    }
-    else if(size == 'large'){
+      break;
+    case 'large':
       price = foodItem.largePrice;
-    }
-    else if(size == 'x-large'){
+      break;
+    case 'x-large':
       price = foodItem.xlargePrice;
-    }
+      break;
+  }
     return (price * parseInt(count)).toFixed(2);
-
   }; 
-
-   
-function setPrices() {
   
-  itemPrice.forEach(item => {
-    let foodItemId = item.closest('.food-item-box').dataset.uuid;
-    let foodItem = foodItems.find(foodItem => foodItem.uuid == foodItemId);
-    item.innerHTML = foodItem.smallPrice || foodItem.price;
-    
+function setPrices() { 
+  itemPriceEls.forEach(item => {
+    let foodItemUuid = item.closest('.food-item-box').dataset.uuid;
+    let foodItem = foodItems.find(foodItem => foodItem.uuid == foodItemUuid);
+    item.innerHTML = foodItem.smallPrice || foodItem.price;   
   });
 };
 
-setPrices();
-
+function isDuplicateItem(name, size, crust, sauce) {
+  cart.some((item) => {
+    if(
+       item.name === name &&
+       item.size === size &&
+       item.crust === crust &&
+       item.sauce === sauce 
+      ) {
+        item.count++;
+        console.log('this item is a duplicate')
+        return true;
+      }
+    });
+    return false;
+  // take current inputs -- size, name, sauce, count, etc. 
+  // compare all inputs to array of cart objects
+  // if comparison all == true 
+  // increase count of matched element
+  // do not create new cart item
+}
 
 cart = [];
 
 function renderCart(cart) {
-  let listContainer = document.querySelector('.cart-ul');
-  cart.forEach(item => {
+    if(cart.length === 0 ) {
+      return;
+    }
+    let foodItem = cart[cart.length-1];
+    let listContainer = document.querySelector('.cart__ul');
+  
     let li = document.createElement('li');
     
     let h4 = document.createElement('h4');
     h4.classList.add('cart__item-title');
-    h4.textContent = item.name;
+    h4.textContent = foodItem.name;
+
+    let cancelBtn = document.createElement('button');
+    cancelBtn.classList.add('btn--cancel', 'btn');
+    cancelBtn.textContent = 'X'
+    // cancelIcon.classList.add('fas', 'fa-window-close');
+    // cancelBtn.appendChild(cancelIcon);
     
     let sizeP = document.createElement('p');
     sizeP.classList.add('cart__item-size');
-    sizeP.textContent = item.size
+    sizeP.textContent = foodItem.size;
+
+    let crustP = document.createElement('p');
+    crustP.textContent = foodItem.crust;
+
+    let sauceP = document.createElement('p');
+    sauceP.textContent = foodItem.sauce;
+
+    // price and count 
+    let countPrice = document.createElement('p');
+    countPrice.classList.add('cart__item-amount');
     
-    // let crustP = document.createElement('p');
-    // crustP.classList.add('cart__item-crust');
-    // crustP.textContent = item.crust;
+    let countSpan = document.createElement('span');
+    countSpan.classList.add('u-text-italicize');
+    countSpan.textContent = foodItem.count;
 
-    let countP = document.createElement('p');
-    countP.classList.add('cart__item-count');
-    countP.textContent = item.count;
+    let xSpan = document.createElement('span');
+    xSpan.classList.add('u-text-italicize');
+    xSpan.textContent = ' for ';
 
-    let currentPriceP = document.createElement('p');
-    currentPriceP.textContent = item.cost;
+    let dollarSpan = document.createElement('span');
+    dollarSpan.classList.add('u-text-bold');
+    dollarSpan.textContent = '$';
+    
+    let currentPriceP = document.createElement('span');
+    currentPriceP.classList.add('cart__item-price');
+    currentPriceP.textContent = foodItem.cost;
+    
+    countPrice.append(countSpan, xSpan, dollarSpan, currentPriceP);
+    li.append(cancelBtn, h4, sizeP, crustP, sauceP, countPrice);
     listContainer.appendChild(li);
-    li.append(h4, sizeP, countP, currentPriceP);
-   });
+} 
+
+function toggleCartDisplay() {
+  if(cartEl.style.display === 'none') {
+   cartEl.style.display = 'block'; 
+  }
+  else {
+    cartEl.style.display = 'none';
+  }
 }
 
+let cartTotals = {};
+function determineCartTotals() {
+  
+  let subtotal = cart.reduce((acc, item) => {
+     return acc + parseFloat(item.cost);
+    }, 0);
 
-{/* <li>              
-  <h4 class="cart__item-title">Cheese Pizza</h4>
-  <p class="cart__item-size">small</p>
-  <p class="cart__item-crust">regular crust</p>
-  <p class="cart__item-amount"><span class="u-text-italicize">1 </span class="u-text-italicize">X <span class="u-text-bold">$</span><span class="cart__item-price">13.99</span></p>
-  <div class="cart__btn-box">
-  <a href=""><button class="btn btn--edit-cart">Edit</button></a>
-  <button class="btn btn--remove-cart-item">Remove</button>
-  </div>
-</li>  */}
+  let calculatedTax = (parseFloat(subtotal * .085)).toFixed(2);
+    
+  let total = (subtotal + parseFloat(calculatedTax)).toFixed(2);
+    
+  subtotal = subtotal.toFixed(2); 
+  cartTotals.subtotal = subtotal;
+  cartTotals.calculatedTax = calculatedTax;
+  cartTotals.total = total;
+  
+}
+
+function renderCartTotals() {
+  const cartSubtotal = document.getElementById('cart-subtotal');
+  const cartTax = document.getElementById('cart-tax');
+  const cartTotal = document.getElementById('cart-total');
+  
+  cartSubtotal.textContent = cartTotals.subtotal;
+  cartTax.textContent = cartTotals.calculatedTax;
+  cartTotal.textContent = cartTotals.total;
+}
+
+function renderCartCount() {
+  const CartCountEl = document.getElementById('cart-count'); 
+  CartCountEl.textContent = cart.length;
+}
+
+setPrices();
 
