@@ -7,6 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,300;1,400;1,600&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
   <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
@@ -25,7 +26,23 @@
       </nav>
       <!-- placeholder for cart icon --> 
       <div class="header__cart-box">
-        <p>Cart</p>
+        <i class="fas fa-shopping-cart fa-3x cart-icons"></i>
+        <span class="cart-icons" id="cart-count">0</span>
+        <p class="cart-icons">cart</p>
+        <div class="cart">
+          <h4 class="cart__title">Cart</h4>
+          <ul class="cart__ul">
+            
+          </ul>
+          <div class="cart__total-box">
+            <p>Subtotal</p><p class="u-text-right">$<span class="u-text-right" id="cart-subtotal">0.00</span></p>
+            <p>Tax</p><p class="u-text-right">$<span class="u-text-right" id="cart-tax">0.00</span></p>
+            <p>Total</p><p class="u-text-right">$<span class="u-text-right" id="cart-total">0.00</span></p>
+          </div>
+          <div class="cart__checkout-box">
+            <button class="btn btn__checkout ">Checkout</button>
+          </div>
+        </div>  
       </div>
   </div>
   </header>
@@ -55,237 +72,250 @@
           <h3 class="tertiary-title">Sides</h3>
           <div class="grid-3">
             <!-- CARD 1 -->
-          <div class="card">
+          <div class="card food-item-box" data-uuid="sde100">
             <p class="tertiary-title u-text-center">Jalepeno Poppers</p>
             <img src="../../img/sides/jalapeno-poppers.jpg" alt="Jalepeno Poppers" class="img--small">
             <p class="card__more-info">more info</p>
             
-            <select name="size-select" class="card__select" id="">
-              <option value="small">Small</option>
-              <option value="medium">Medium</option>
-              <option value="large">Large</option>
+            <select name="size-select" class="card__select item-size-select" id="">
+              <option value="small">4-piece</option>
+              <option value="large">8-piece</option>
             </select> 
-            <input type="number" name="" value="1" min="1" class="card__input" id="">
+            <input type="number" name="" value="1" min="1" class="card__input food-item-count">
             <br>
 
-            <select name="sauce-select" class="card__select" id="">
-              <option value="ketchup">Ketchup</option>
-              <option value="ranch">Ranch</option>
+            <select name="sauce-select" class="card__select item-sauce-select">
               <option value="bbq">BBQ</option>
+              <option value="ranch">Ranch</option>
+              <option value="ketchup">Spicy Garlic</option>
+              <option value="ranch">Marinara</option>
+              <option value="ranch">Buffalo</option>
             </select> 
 
             <div class="u-text-center u-mt-10">
+              <p class="item-price">$<span class="item-price__amount">13</span></p>
               <button class="btn btn--add-to-cart">Add to Cart</button>
               <a href="#" class="btn-link--customize">Customize</a>
             </div>
           </div>
 
           <!-- CARD 2 -->
-          <div class="card">
+          <div class="card food-item-box" data-uuid="sde200">
             <p class="tertiary-title u-text-center">Garlic Bread</p>
             <img src="../../img/sides/garlic-bread.jpg" alt="garlic bread" class="img--small">
             <p class="card__more-info">more info</p>
-            
-            <select name="size-select" class="card__select" id="">
-              <option value="small">Small</option>
-              <option value="medium">Medium</option>
-              <option value="large">Large</option>
-            </select> 
-            <input type="number" name="" value="1" min="1" class="card__input" id="">
+
+            <input type="number" name="" value="1" min="1" class="card__input food-item-count">
             <br>
 
-            <select name="sauce-select" class="card__select" id="">
+            <select name="sauce-select" class="card__select item-sauce-select">
+              <option value="BBQ">BBQ</option>
               <option value="ranch">Ranch</option>
-              <option value="thousand">Thousand Island</option>
-              <option value="vinagrette">Vinagrette</option>
+              <option value="Spicy Garlic">Spicy Garlic</option>
+              <option value="Marinara">Marinara</option>
+              <option value="Buffalo">Buffalo</option>
             </select> 
 
             <div class="u-text-center u-mt-10">
+              <p class="item-price">$<span class="item-price__amount">13</span></p>
               <button class="btn btn--add-to-cart">Add to Cart</button>
               <a href="#" class="btn-link--customize">Customize</a>
             </div>
           </div>
 
           <!-- CARD 3 -->
-          <div class="card">
+          <div class="card food-item-box" data-uuid="sde300">
             <p class="tertiary-title u-text-center">Parmesan Breadsticks</p>
             <img src="../../img/sides/parmesan-breadsticks.jpg" alt="parmesan breadsticks" class="img--small">
             <p class="card__more-info">more info</p>
             <br>
 
-            <select name="size-select" class="card__select" id="">
+            <select name="size-select" class="card__select item-size-select" id="">
               <option value="small">Small</option>
-              <option value="medium">Medium</option>
               <option value="large">Large</option>
             </select> 
-            <input type="number" name="" value="1" min="1" class="card__input" id="">
+            <input type="number" name="" value="1" min="1" class="card__input food-item-count">
             <br> 
 
-            <select name="sauce-select" class="card__select" id="">
-              <option value="ranch">Ranch</option>
-              <option value="thousand">Marinara</option>
-              <option value="vinagrette">BBQ</option>
+            <select name="sauce-select" class="card__select item-sauce-select">
+              <option value="BBQ">BBQ</option>
+              <option value="Ranch">Ranch</option>
+              <option value="Spicy Garlic">Spicy Garlic</option>
+              <option value="Marinara">Marinara</option>
+              <option value="Buffalo">Buffalo</option>
             </select> 
 
             <div class="u-text-center u-mt-10">
+              <p class="item-price">$<span class="item-price__amount"></span></p>
               <button class="btn btn--add-to-cart">Add to Cart</button>
               <a href="#" class="btn-link--customize">Customize</a>
             </div>
           </div>
 
           <!-- CARD 4 -->
-        <div class="card">
+        <div class="card food-item-box" data-uuid="sde400">
           <p class="tertiary-title u-text-center">Chicken Wings</p>
           <img src="../../img/sides/chicken-wings.jpg" alt="chicken wings" class="img--small">
           <p class="card__more-info">more info</p>
           
-          <select name="size-select" class="card__select" id="">
-            <option value="small">Small</option>
-            <option value="medium">Medium</option>
-            <option value="large">Large</option>
+          <select name="size-select" class="card__select item-size-select">
+            <option value="small">4-piece</option>
+            <option value="large">8-piece</option>
           </select> 
-          <input type="number" name="" value="1" min="1" class="card__input" id="">
+          <input type="number" name="" value="1" min="1" class="card__input food-item-count">
           <br>
 
-          <select name="sauce-select" class="card__select" id="">
-            <option value="ketchup">Ketchup</option>
-            <option value="ranch">Ranch</option>
-            <option value="bbq">BBQ</option>
+          <select name="sauce-select" class="card__select item-sauce-select">
+            <option value="BBQ">BBQ</option>
+            <option value="Ranch">Ranch</option>
+            <option value="Spicy Garlic">Spicy Garlic</option>
+            <option value="Marinara">Marinara</option>
+            <option value="Buffalo">Buffalo</option>
           </select> 
 
           <div class="u-text-center u-mt-10">
+            <p class="item-price">$<span class="item-price__amount">13</span></p>
             <button class="btn btn--add-to-cart">Add to Cart</button>
             <a href="#" class="btn-link--customize">Customize</a>
           </div>
         </div>
 
         <!-- CARD 5 -->
-        <div class="card">
+        <div class="card food-item-box" data-uuid="sde500">
           <p class="tertiary-title u-text-center">Fries</p>
           <img src="../../img/sides/french-fries.jpg" alt="french fries" class="img--small">
           <p class="card__more-info">more info</p>
           
-          <select name="size-select" class="card__select" id="">
+          <select name="size-select" class="card__select item-size-select">
             <option value="small">Small</option>
             <option value="medium">Medium</option>
             <option value="large">Large</option>
           </select> 
-          <input type="number" name="" value="1" min="1" class="card__input" id="">
+          <input type="number" name="" value="1" min="1" class="card__input food-item-count">
           <br>
 
-          <select name="sauce-select" class="card__select" id="">
+          <select name="sauce-select" class="card__select item-sauce-select">
             <option value="ranch">Ranch</option>
-            <option value="thousand">Thousand Island</option>
-            <option value="vinagrette">Vinagrette</option>
+            <option value="BBQ">BBQ</option>
+            <option value="Spicy Garlic">Spicy Garlic</option>
+            <option value="Marinara">Marinara</option>
+            <option value="Buffalo">Buffalo</option>
           </select> 
 
           <div class="u-text-center u-mt-10">
+            <p class="item-price">$<span class="item-price__amount">13</span></p>
             <button class="btn btn--add-to-cart">Add to Cart</button>
             <a href="#" class="btn-link--customize">Customize</a>
           </div>
         </div>
 
         <!-- CARD 6 -->
-        <div class="card">
+        <div class="card food-item-box" data-uuid="sde600">
           <p class="tertiary-title u-text-center">Garlic Fries</p>
           <img src="../../img/sides/garlic-fries.jpg" alt="garlic fries" class="img--small">
           <p class="card__more-info">more info</p>        
           <br>
 
-          <select name="size-select" class="card__select" id="">
+          <select name="size-select" class="card__select item-size-select">
             <option value="small">Small</option>
             <option value="medium">Medium</option>
             <option value="large">Large</option>
           </select> 
-          <input type="number" name="" value="1" min="1" class="card__input" id="">
+          <input type="number" name="" value="1" min="1" class="card__input food-item-count">
           <br>
 
-          <select name="sauce-select" class="card__select" id="">
-            <option value="thousand">Ketchup</option>
-            <option value="ranch">Ranch</option>
-            <option value="vinagrette">BBQ</option>
+          <select name="sauce-select" class="card__select item-sauce-select">
+            <option value="BBQ">BBQ</option>
+            <option value="Ranch">Ranch</option>
+            <option value="Spicy Garlic">Spicy Garlic</option>
+            <option value="Marinara">Marinara</option>
+            <option value="Buffalo">Buffalo</option>
           </select> 
 
           <div class="u-text-center u-mt-10">
+            <p class="item-price">$<span class="item-price__amount">13</span></p>
             <button class="btn btn--add-to-cart">Add to Cart</button>
             <a href="#" class="btn-link--customize">Customize</a>
           </div>
         </div>
     
         <!-- CARD 7 -->
-      <div class="card">
+      <div class="card food-item-box" data-uuid="sde700">
         <p class="tertiary-title u-text-center">Chicken Nuggets</p>
         <img src="../../img/sides/chicken-nuggets.jpg" alt="chicken nuggets" class="img--small">
         <p class="card__more-info">more info</p>
         
-        <select name="size-select" class="card__select" id="">
-          <option value="small">Small</option>
-          <option value="medium">Medium</option>
-          <option value="large">Large</option>
+        <select name="size-select" class="card__select item-size-select">
+          <option value="small">4-piece</option>
+          <option value="medium">6-piece</option>
+          <option value="large">10-piece</option>
         </select> 
-        <input type="number" name="" value="1" min="1" class="card__input" id="">
+        <input type="number" name="" value="1" min="1" class="card__input food-item-count">
         <br>
 
-        <select name="sauce-select" class="card__select" id="">
-          <option value="ketchup">Ketchup</option>
-          <option value="ranch">Ranch</option>
-          <option value="bbq">BBQ</option>
+        <select name="sauce-select" class="card__select item-sauce-select">
+          <option value=BBQ">BBQ</option>
+          <option value="Ranch">Ranch</option>
+          <option value="Spicy Garlic">Spicy Garlic</option>
+          <option value="Marinara">Marinara</option>
+          <option value="Buffalo">Buffalo</option>
         </select> 
 
         <div class="u-text-center u-mt-10">
+          <p class="item-price">$<span class="item-price__amount">13</span></p>
           <button class="btn btn--add-to-cart">Add to Cart</button>
           <a href="#" class="btn-link--customize">Customize</a>
         </div>
       </div>
 
       <!-- CARD 8 -->
-      <div class="card">
+      <div class="card food-item-box" data-uuid="sde800">
         <p class="tertiary-title u-text-center">Caesar Salad</p>
         <img src="../../img/sides/caesar-salad.jpg" alt="caesar salad" class="img--small">
         <p class="card__more-info">more info</p>
         
-        <select name="size-select" class="card__select" id="">
+        <select name="size-select" class="card__select item-size-select">
           <option value="small">Small</option>
-          <option value="medium">Medium</option>
           <option value="large">Large</option>
         </select> 
-        <input type="number" name="" value="1" min="1" class="card__input" id="">
+        <input type="number" name="" value="1" min="1" class="card__input food-item-count">
         <br>
 
-        <select name="sauce-select" class="card__select" id="">
-          <option value="ranch">Ranch</option>
-          <option value="thousand">Thousand Island</option>
+        <select name="sauce-select" class="card__select item-sauce-select">
+          <option value="Thousand Island">Thousand Island</option>
           <option value="vinagrette">Vinagrette</option>
+          <option value="Ranch">Ranch</option>
         </select> 
 
         <div class="u-text-center u-mt-10">
+          <p class="item-price">$<span class="item-price__amount">13</span></p>
           <button class="btn btn--add-to-cart">Add to Cart</button>
           <a href="#" class="btn-link--customize">Customize</a>
         </div>
       </div>
 
       <!-- CARD 9 -->
-      <div class="card">
+      <div class="card food-item-box" data-uuid="sde900">
         <p class="tertiary-title u-text-center">Garden Salad</p>
         <img src="../../img/sides/garden-salad.jpg" alt="garden salad" class="img--small">
         <p class="card__more-info">more info</p>      
         <br>
 
-        <select name="size-select" class="card__select" id="">
+        <select name="size-select" class="card__select item-size-select">
           <option value="small">Small</option>
-          <option value="medium">Medium</option>
           <option value="large">Large</option>
         </select> 
-        <input type="number" name="" value="1" min="1" class="card__input" id="">
+        <input type="number" name="" value="1" min="1" class="card__input food-item-count">
         <br>
 
-        <select name="sauce-select" class="card__select" id="">
-          <option value="ranch">Ranch</option>
-          <option value="thousand">Thousand Island</option>
+        <select name="sauce-select" class="card__select item-sauce-select">
+          <option value="Thousand Island">Thousand Island</option>
           <option value="vinagrette">Vinagrette</option>
+          <option value="Ranch">Ranch</option>
         </select> 
 
         <div class="u-text-center u-mt-10">
+          <p class="item-price">$<span class="item-price__amount">13</span></p>
           <button class="btn btn--add-to-cart">Add to Cart</button>
           <a href="#" class="btn-link--customize">Customize</a>
         </div>
@@ -301,5 +331,8 @@
       <p>@Weston Peters</p>
     </div>
   </footer>
+
+  <script src="../../js/models/foodItems.js"></script>
+  <script src="../../js/app.js"></script>  
 </body>
 </html>
