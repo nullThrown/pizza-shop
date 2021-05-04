@@ -7,6 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,300;1,400;1,600&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
   <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
@@ -25,8 +26,25 @@
       </nav>
       <!-- placeholder for cart icon -->
       <div class="header__cart-box">
-        <p>Cart</p>
+        <i class="fas fa-shopping-cart fa-3x cart-icons"></i>
+        <span class="cart-icons" id="cart-count">0</span>
+        <p class="cart-icons">cart</p>
+        <div class="cart">
+          <h4 class="cart__title">Cart</h4>
+          <ul class="cart__ul">
+            
+          </ul>
+          <div class="cart__total-box">
+            <p>Subtotal</p><p class="u-text-right">$<span class="u-text-right" id="cart-subtotal">0.00</span></p>
+            <p>Tax</p><p class="u-text-right">$<span class="u-text-right" id="cart-tax">0.00</span></p>
+            <p>Total</p><p class="u-text-right">$<span class="u-text-right" id="cart-total">0.00</span></p>
+          </div>
+          <div class="cart__checkout-box">
+            <button class="btn btn__checkout ">Checkout</button>
+          </div>
+        </div>  
       </div>
+
   </div>
   </header>
   <!-- HEADER END -->
@@ -56,84 +74,87 @@
         <h3 class="tertiary-title">Pizza</h3>
         <div class="grid-3">
           <!-- CARD 1 -->
-        <div class=" card">
+        <div data-uuid="piz100" class="food-item-box card">
           <p class="tertiary-title u-text-center">Cheese</p>
           <img src="../../img/pizza/cheese.jpg" alt="cheese pizza" class="img--small">
           <p class="card__more-info">more info</p>
           
-          <select name="size-select" class="card__select" id="">
+          <select class="card__select item-size-select">
             <option value="small">Small (12")</option>
             <option value="medium">Medium (14")</option>
             <option value="large">Large (16")</option>
             <option value="x-large">X-large (18")</option>
           </select> 
-          <input type="number" name="" value="1" min="1" class="card__input" id="">
+          <input type="number" value="1" min="1" class="card__input food-item-count" id="">
           <br>
 
 
-          <select name="crust-select" class="card__select" id="">
+          <select name="crust-select" class="card__select pizza-crust-select" id="">
             <option value="regular">Regular</option>
             <option value="thin-crust">Thin Crust</option>
-            <option value="gluten-free">Large</option>
+            <option value="gluten-free">Gluten Free</option>
           </select> 
 
           <div class="u-text-center u-mt-10">
-            <button class="btn btn--add-to-cart">Add to Cart</button>
+            <p class="item-price">$<span class="item-price__amount">13</span></p>
+            <button class="btn btn--add-to-cart ">Add to Cart</button>
             <a href="#" class="btn-link--customize">Customize</a>
           </div>
         </div>
 
         <!-- CARD 2 -->
-        <div class=" card">
+        <div data-uuid="piz200" class="card food-item-box">
           <p class="tertiary-title u-text-center">Pepperoni</p>
           <img src="../../img/pizza/pepperoni.jpg" alt="cheese pizza" class="img--small">
           <p class="card__more-info">more info</p>
           
-          <select name="size-select" class="card__select" id="">
+          <select class="card__select item-size-select">
             <option value="small">Small (12")</option>
             <option value="medium">Medium (14")</option>
-            <option value="large">Large (16")</option>
+            <option value="large">Large (16")</option> 
             <option value="x-large">X-large (18")</option>
           </select> 
-          <input type="number" name="" value="1" min="1" class="card__input" id="">
+          <input type="number" value="1" min="1" class="card__input food-item-count" id="">
           <br>
 
 
-          <select name="crust-select" class="card__select" id="">
+          <select name="crust-select" class="card__select pizza-crust-select">
             <option value="regular">Regular</option>
             <option value="thin-crust">Thin Crust</option>
-            <option value="gluten-free">Large</option>
+            <option value="gluten-free">Gluten Free</option>
           </select> 
 
           <div class="u-text-center u-mt-10">
+            <p class="item-price">$<span class="item-price__amount">13</span></p>
             <button class="btn btn--add-to-cart">Add to Cart</button>
             <a href="#" class="btn-link--customize">Customize</a>
           </div>
         </div>
 
         <!-- CARD 3 -->
-        <div class="card">
+        <div data-uuid="piz300" class="card food-item-box">
           <p class="tertiary-title u-text-center">Works</p>
           <img src="../../img/pizza/works.jpg" alt="cheese pizza" class="img--small">
           <p class="card__more-info">more info</p>
           
-          <select name="size-select" class="card__select" id="">
+          <select name="size-select" class="card__select item-size-select" id="">
             <option value="small">Small (12")</option>
             <option value="medium">Medium (14")</option>
             <option value="large">Large (16")</option>
             <option value="x-large">X-large (18")</option>
           </select> 
-          <input type="number" name="" value="1" min="1" class="card__input" id="">
+          <input type="number" name="" value="1" min="1" class="card__input food-item-count" id="">
           <br>
 
 
-          <select name="crust-select" class="card__select" id="">
+          <select name="crust-select" class="card__select pizza-crust-select">
             <option value="regular">Regular</option>
             <option value="thin-crust">Thin Crust</option>
-            <option value="gluten-free">Large</option>
+            <option value="gluten-free">Gluten Free</option>
           </select> 
 
           <div class="u-text-center u-mt-10">
+            <p class="item-price">$<span class="item-price__amount">13</span></p>
             <button class="btn btn--add-to-cart">Add to Cart</button>
             <a href="#" class="btn-link--customize">Customize</a>
           </div>
@@ -146,17 +167,17 @@
       <h3 class="tertiary-title">Sides/Desserts</h3>
       <div class="grid-3">
         <!-- CARD 1 -->
-      <div class=" card">
+      <div class="card food-item-box" data-uuid="sde100">
         <p class="tertiary-title u-text-center">Garlic Fries</p>
         <img src="../../img/sides/garlic-fries.jpg" alt="garlic fries" class="img--small">
         <p class="card__more-info">more info</p>
         
-        <select name="size-select" class="card__select" id="">
+        <select name="size-select" class="card__select item-size-select" id="">
           <option value="small">Small</option>
           <option value="medium">Medium</option>
           <option value="large">Large</option>
         </select> 
-        <input type="number" name="" value="1" min="1" class="card__input" id="">
+        <input type="number" name="" value="1" min="1" class="card__input food-item-count" id="">
         <br>
 
         <select name="sauce-select" class="card__select" id="">
@@ -166,23 +187,24 @@
         </select> 
 
         <div class="u-text-center u-mt-10">
+          <p class="item-price">$<span class="item-price__amount">13</span></p>
           <button class="btn btn--add-to-cart">Add to Cart</button>
           <a href="#" class="btn-link--customize">Customize</a>
         </div>
       </div>
 
       <!-- CARD 2 -->
-      <div class=" card">
+      <div class="card food-item-box" data-uuid="sde800">
         <p class="tertiary-title u-text-center">Caesar Salad</p>
         <img src="../../img/sides/caesar-salad.jpg" alt="caesar salad" class="img--small">
         <p class="card__more-info">more info</p>
         
-        <select name="size-select" class="card__select" id="">
+        <select name="size-select" class="card__select item-size-select" id="">
           <option value="small">Small</option>
           <option value="medium">Medium</option>
           <option value="large">Large</option>
         </select> 
-        <input type="number" name="" value="1" min="1" class="card__input" id="">
+        <input type="number" name="" value="1" min="1" class="card__input food-item-count" id="">
         <br>
 
         <select name="sauce-select" class="card__select" id="">
@@ -192,32 +214,41 @@
         </select> 
 
         <div class="u-text-center u-mt-10">
+          <p class="item-price">$<span class="item-price__amount">13</span></p>
           <button class="btn btn--add-to-cart">Add to Cart</button>
           <a href="#" class="btn-link--customize">Customize</a>
         </div>
       </div>
 
       <!-- CARD 3 -->
-      <div class="card">
+      <div class="card food-item-box" data-uuid="des300">
         <p class="tertiary-title u-text-center">Chocolate Brownie</p>
         <img src="../../img/sides/brownie.jpg" alt="Chocolate brownie" class="img--small">
         <p class="card__more-info">more info</p>
       
-        <input type="number" name="" value="1" min="1" class="card__input" id="">
+        <input type="number" name="" value="1" min="1" class="card__input food-item-count" id="">
         <br>
 
         <div class="u-text-center u-mt-10">
+          <p class="item-price">$<span class="item-price__amount">13</span></p>
           <button class="btn btn--add-to-cart">Add to Cart</button>
           <a href="#" class="btn-link--customize">Customize</a>
         </div>
       </div>
-      
-
-
     </div>
   </div>
-    </section>
+  </section>
   </main>
   <!-- MAIN END -->
+
+  <!-- FOOTER BEGIN -->
+  <footer class="footer u-flex-center">
+    <div class="footer-box u-text-center fine-print--white">
+      <p>This website is owned and operated by Pizza Guys LLC</p>
+      <p>@Weston Peters</p>
+    </div>
+  </footer>
+  <script src="../../js/models/foodItems.js"></script>
+  <script src="../../js/app.js"></script>
 </body>
 </html>
