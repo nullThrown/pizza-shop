@@ -15,6 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,300;1,400;1,600&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
   <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
@@ -34,7 +35,23 @@
       </nav>
       <!-- placeholder for cart icon -->
       <div class="header__cart-box">
-        <p>Cart</p>
+        <i class="fas fa-shopping-cart fa-3x cart-icons"></i>
+        <span class="cart-icons" id="cart-count">0</span>
+        <p class="cart-icons">cart</p>
+        <div class="cart">
+          <h4 class="cart__title">Cart</h4>
+          <ul class="cart__ul">
+            
+          </ul>
+          <div class="cart__total-box">
+            <p>Subtotal</p><p class="u-text-right">$<span class="u-text-right" id="cart-subtotal">0.00</span></p>
+            <p>Tax</p><p class="u-text-right">$<span class="u-text-right" id="cart-tax">0.00</span></p>
+            <p>Total</p><p class="u-text-right">$<span class="u-text-right" id="cart-total">0.00</span></p>
+          </div>
+          <div class="cart__checkout-box">
+            <button class="btn btn__checkout ">Checkout</button>
+          </div>
+        </div>  
       </div>
   </div>
   </header>
@@ -62,102 +79,108 @@
           <h3 class="tertiary-title">Drinks</h3>
           <div class="grid-3">
             <!-- CARD 1 -->
-            <div class="card">
+            <div class="card food-item-box" data-uuid="drnk100">
               <p class="tertiary-title u-text-center">Coke</p>
               <img src="../../img/drinks/coke.jpg" class="img--small" alt="coke soft drink">
-              <select name="size-select" class="card__select" id="">
-                <option value="small">20 oz. </option>
-                <option value="medium">2 liter</option>
+              <select name="size-select" class="card__select item-size-select">
+                <option value="small">20 oz.</option>
+                <option value="large">2 liter</option>
               </select> 
-              <input type="number" name="" value="1" min="1" class="card__input" id="">
+              <input type="number" name="" value="1" min="1" class="card__input food-item-count">
               <br>
     
               <div class="u-text-center u-mt-10">
+                <p class="item-price">$<span class="item-price__amount">13</span></p>
                 <button class="btn btn--add-to-cart">Add to Cart</button>
                 <!-- <a href="#" class="btn-link--customize">Customize</a> -->
               </div>
             </div>
 
             <!-- CARD 2 -->
-            <div class="card">
+            <div class="card food-item-box" data-uuid="drnk200">
               <p class="tertiary-title u-text-center">Diet Coke</p>
               <img src="../../img/drinks/diet-coke.jpg" class="img--small" alt="diet coke soft drink">
-              <select name="size-select" class="card__select" id="">
+              <select name="size-select" class="card__select item-size-select">
                 <option value="small">20 oz. </option>
-                <option value="medium">2 liter</option>
+                <option value="large">2 liter</option>
               </select> 
-              <input type="number" name="" value="1" min="1" class="card__input" id="">
+              <input type="number" name="" value="1" min="1" class="card__input food-item-count">
               <br>
       
               <div class="u-text-center u-mt-10">
+                <p class="item-price">$<span class="item-price__amount">13</span></p>
                 <button class="btn btn--add-to-cart">Add to Cart</button>
                 <!-- <a href="#" class="btn-link--customize">Customize</a> -->
               </div>
             </div>
 
             <!-- CARD 3 -->
-            <div class="card">
+            <div class="card food-item-box" data-uuid="drnk300">
               <p class="tertiary-title u-text-center"> Root Beer</p>
               <img src="../../img/drinks/root-beer.jpg" class="img--small" alt="root beer soft drink">
-              <select name="size-select" class="card__select" id="">
+              <select name="size-select" class="card__select item-size-select">
                 <option value="small">20 oz. </option>
-                <option value="medium">2 liter</option>
+                <option value="large">2 liter</option>
               </select> 
-              <input type="number" name="" value="1" min="1" class="card__input" id="">
+              <input type="number" name="" value="1" min="1" class="card__input food-item-count">
               <br>
       
               <div class="u-text-center u-mt-10">
+                <p class="item-price">$<span class="item-price__amount">13</span></p>
                 <button class="btn btn--add-to-cart">Add to Cart</button>
                 <!-- <a href="#" class="btn-link--customize">Customize</a> -->
               </div>
             </div>
           
             <!-- CARD 4 -->
-            <div class="card">
+            <div class="card food-item-box" data-uuid="drnk400">
               <p class="tertiary-title u-text-center">Sprite</p>
               <img src="../../img/drinks/sprite.jpg" class="img--small" alt="sprite soft drink">
-              <select name="size-select" class="card__select" id="">
+              <select name="size-select" class="card__select item-size-select">
                 <option value="small">20 oz. </option>
-                <option value="medium">2 liter</option>
+                <option value="large">2 liter</option>
               </select> 
-              <input type="number" name="" value="1" min="1" class="card__input" id="">
+              <input type="number" name="" value="1" min="1" class="card__input food-item-count">
               <br>
       
               <div class="u-text-center u-mt-10">
+                <p class="item-price">$<span class="item-price__amount">13</span></p>
                 <button class="btn btn--add-to-cart">Add to Cart</button>
                 <!-- <a href="#" class="btn-link--customize">Customize</a> -->
               </div>
             </div>
 
             <!-- CARD 5 -->
-            <div class="card">
+            <div class="card food-item-box" data-uuid="drnk500">
               <p class="tertiary-title u-text-center">Dr. Pepper</p>
               <img src="../../img/drinks/dr-pepper.jpg" class="img--small" alt="doctor pepper soft drink">
-              <select name="size-select" class="card__select" id="">
+              <select name="size-select" class="card__select item-size-select">
                 <option value="small">20 oz. </option>
-                <option value="medium">2 liter</option>
+                <option value="large">2 liter</option>
               </select> 
-              <input type="number" name="" value="1" min="1" class="card__input" id="">
+              <input type="number" name="" value="1" min="1" class="card__input food-item-count">
               <br>
       
               <div class="u-text-center u-mt-10">
+                <p class="item-price">$<span class="item-price__amount">13</span></p>
                 <button class="btn btn--add-to-cart">Add to Cart</button>
                 <!-- <a href="#" class="btn-link--customize">Customize</a> -->
               </div>
             </div>
 
             <!-- CARD 6 -->
-            <div class="card">
+            <div class="card food-item-box" data-uuid="drnk600">
               <p class="tertiary-title u-text-center">Grape Crush</p>
               <img src="../../img/drinks/crush-grape.jpg" class="img--small" alt="grape crush soft drink">
-              <select name="size-select" class="card__select" id="">
+              <select name="size-select" class="card__select item-size-select">
                 <option value="small">20 oz. </option>
-                <option value="medium">2 liter</option>
+                <option value="large">2 liter</option>
               </select> 
-              <input type="number" name="" value="1" min="1" class="card__input" id="">
+              <input type="number" name="" value="1" min="1" class="card__input food-item-count">
               <br>
       
               <div class="u-text-center u-mt-10">
+                <p class="item-price">$<span class="item-price__amount">13</span></p>
                 <button class="btn btn--add-to-cart">Add to Cart</button>
                 <!-- <a href="#" class="btn-link--customize">Customize</a> -->
               </div>
@@ -171,5 +194,8 @@
       <p>@Weston Peters</p>
     </div>
   </footer> 
+
+  <script src="../../js/models/foodItems.js"></script>
+  <script src="../../js/app.js"></script>
 </body>
 </html>
