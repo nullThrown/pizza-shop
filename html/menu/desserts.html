@@ -7,6 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,300;1,400;1,600&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
   <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
@@ -26,7 +27,23 @@
       </nav>
       <!-- placeholder for cart icon -->
       <div class="header__cart-box">
-        <p>Cart</p>
+        <i class="fas fa-shopping-cart fa-3x cart-icons"></i>
+        <span class="cart-icons" id="cart-count">0</span>
+        <p class="cart-icons">cart</p>
+        <div class="cart">
+          <h4 class="cart__title">Cart</h4>
+          <ul class="cart__ul">
+            
+          </ul>
+          <div class="cart__total-box">
+            <p>Subtotal</p><p class="u-text-right">$<span class="u-text-right" id="cart-subtotal">0.00</span></p>
+            <p>Tax</p><p class="u-text-right">$<span class="u-text-right" id="cart-tax">0.00</span></p>
+            <p>Total</p><p class="u-text-right">$<span class="u-text-right" id="cart-total">0.00</span></p>
+          </div>
+          <div class="cart__checkout-box">
+            <button class="btn btn__checkout ">Checkout</button>
+          </div>
+        </div>  
       </div>
   </div>
   </header>
@@ -51,44 +68,47 @@
         <h3 class="tertiary-title">Desserts</h3>
         <div class="grid-3">
           <!-- CARD 1 -->
-        <div class="card">
+        <div class="card food-item-box" data-uuid="des100">
           <p class="tertiary-title u-text-center">Cinnamon Sticks</p>
           <img src="../../img/sides/cinnamon-sticks.jpg" alt="Cinnamon sticks" class="img--small">
           <p class="card__more-info">more info</p>
-          <input type="number" name="" value="1" min="1" class="card__input" id="">
+          <input type="number" name="" value="1" min="1" class="card__input food-item-count">
           <br>
 
           <div class="u-text-center u-mt-10">
+            <p class="item-price">$<span class="item-price__amount">13</span></p>
             <button class="btn btn--add-to-cart">Add to Cart</button>
             <a href="#" class="btn-link--customize">Customize</a>
           </div>
         </div>
 
         <!-- CARD 2 -->
-        <div class="card">
+        <div class="card food-item-box" data-uuid="des200">
           <p class="tertiary-title u-text-center">Chocolate Chip Cookie</p>
           <img src="../../img/sides/chocalate-chip-cookie.jpg" alt="chocalate chip cookie" class="img--small">
           <p class="card__more-info">more info</p>
           
-          <input type="number" name="" value="1" min="1" class="card__input" id="">
+          <input type="number" name="" value="1" min="1" class="card__input food-item-count">
           <br>
 
           <div class="u-text-center u-mt-10">
+            <p class="item-price">$<span class="item-price__amount">13</span></p>
             <button class="btn btn--add-to-cart">Add to Cart</button>
             <a href="#" class="btn-link--customize">Customize</a>
           </div>
         </div>
 
         <!-- CARD 3 -->
-        <div class="card">
+        <div class="card food-item-box" data-uuid="des300">
           <p class="tertiary-title u-text-center">Chocolate Brownie</p>
           <img src="../../img/sides/brownie.jpg" alt="Chocolate brownie" class="img--small">
           <p class="card__more-info">more info</p>
         
-          <input type="number" name="" value="1" min="1" class="card__input" id="">
+          <input type="number" name="" value="1" min="1" class="card__input food-item-count">
           <br>
 
           <div class="u-text-center u-mt-10">
+            <p class="item-price">$<span class="item-price__amount">13</span></p>
             <button class="btn btn--add-to-cart">Add to Cart</button>
             <a href="#" class="btn-link--customize">Customize</a>
           </div>
@@ -103,6 +123,8 @@
       <p>@Weston Peters</p>
     </div>
   </footer>
-  
+
+  <script src="../../js/models/foodItems.js"></script>
+  <script src="../../js/app.js"></script>  
 </body>
 </html>
