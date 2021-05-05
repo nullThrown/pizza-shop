@@ -22,18 +22,126 @@
   &__logo {
     font-size: $font-size-large;
     align-self: center;
-    width: 15%;
+    width: 20%;
   }
   
   &__cart-box {
-    margin-bottom: 5px;
-    width: 15%;
+    height: 50%;
+    width: 20%;
     align-self: flex-end;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(4, 1fr);                    
 
-    & > p {
-      font-size: $font-size-large;
+    & > i {
+      color: rgb(56, 56, 56);
+      grid-column: 4 / 5;
+      grid-row: 1 / 4;
+      cursor: pointer;
     }
+      
+      & > span {
+        font-size: $font-size-small;
+        color: $color-soft-white;
+        background-color: rgb(172, 48, 48);
+        text-align: center;
+        font-weight: 600;
+        // padding: 0 10px;
+        border-radius: 10px;
+        grid-column: 5 / 6;
+        grid-row: 1 / 2;
+        cursor: pointer;
+      }
+  
+  
+  & > p {
+    font-size: $font-size-small;
+    text-align: center;
+    grid-column: 5 / 6;
+    grid-row: 2 / 3;
+    cursor: pointer;
+    }
+  }
+
+  .cart {
+    width: 200px;
+    grid-column: 1 / -1;
+    z-index: 1;
+    background-color: $color-soft-white;
+    border: 1px solid rgba(128, 128, 128, 0.376);
+    border-radius: 5px;
+    list-style: none;
+    font-family: $font-Nunito;
+    display: none; 
+    
+    &__title {
+      font-size: $font-size-medium;
+      font-weight: 300;
+      text-align: center;
+      padding: 5px 0 10px;
+    }
+    & ul {
+      width: 90%;
+      margin: 0 auto;
+    }
+    & ul > li {
+      list-style: none;
+      border-bottom:1px solid rgba(56, 56, 56, 0.376);
+      font-size: $font-size-small;
+      margin-bottom: 10px;
+    }
+
+  &__item {
+    
+    &-amount {
+      margin-bottom:  12px;
+    }
+    &-title {
+      font-size: $font-size-small-medium;
+      font-weight: 500;
+      margin-bottom: 10px;
+    } 
+    &-size {
+      font-style: italic;
+      margin-bottom: 2px;
+    }
+    &-crust {
+      margin-bottom: 2px;
+      font-style: italic;
+    }
+    &-price {
+      font-weight: 800;
+      font-size: $font-size-default;
+    }
+  } 
+  
+  &__total-box {
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    // row-gap: 3px;
+    justify-content: center;
+    font-size: $font-size-small;
+    
+    & p {
+      padding: 5px;
+      border-radius: 2px;
+      
+      &:nth-child(3),
+      &:nth-child(4) {
+        background-color: rgb(240, 240, 240);     
+      }
+    }
+  }
+
+  &__checkout-box {
+    text-align: center;
+    margin: 20px 0 10px;
+  }
   }
  
 
-} 
+}
+
+
