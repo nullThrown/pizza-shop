@@ -61,8 +61,10 @@ body {
 
 .item-price {
   font-size: 2.4rem;
-  padding: 10px 0 15px;
-  text-decoration: underline; }
+  color: #080808;
+  padding: 10px 0 15px; }
+  .item-price__amount {
+    font-size: 3rem; }
 
 .nav-link {
   color: #080808;
@@ -79,6 +81,15 @@ body {
 
 .u-text-center {
   text-align: center; }
+
+.u-text-right {
+  text-align: right; }
+
+.u-text-bold {
+  font-weight: 700; }
+
+.u-text-italicize {
+  font-style: italic; }
 
 .u-mt-5 {
   margin-top: 5px; }
@@ -105,11 +116,12 @@ body {
 
 .btn {
   cursor: pointer;
-  transition: all 200ms; }
+  transition: all 200ms;
+  border: none; }
   .btn--menu {
     border: none; }
     .btn--menu:hover {
-      border-bottom: 1px solid #831818; }
+      border-bottom: 1px solid rgba(131, 24, 24, 0.931); }
   .btn--add-to-cart {
     font-size: 1.6rem;
     border: 1px solid #080808;
@@ -118,6 +130,25 @@ body {
     .btn--add-to-cart:hover {
       color: whitesmoke;
       background-color: #080808; }
+  .btn--cancel {
+    background-color: inherit;
+    color: #bebebe;
+    padding: 4px;
+    border-radius: 4px;
+    font-size: 1.6rem;
+    float: right; }
+    .btn--cancel:hover {
+      color: #8c8c8c; }
+  .btn__checkout {
+    display: inline-block;
+    margin: 0 auto;
+    background-color: #df3939;
+    color: white;
+    font-size: 1.4rem;
+    border-radius: 2px;
+    padding: 10px 12px; }
+    .btn__checkout:hover {
+      background-color: #ec6262; }
 
 .btn-link {
   color: #080808;
@@ -143,7 +174,7 @@ body {
     text-decoration: underline; }
 
 .active {
-  border-bottom: 1px solid #831818; }
+  border-bottom: 1px solid rgba(131, 24, 24, 0.931); }
 
 .card {
   padding: 5px 2rem;
@@ -251,13 +282,88 @@ body {
   .header__logo {
     font-size: 3rem;
     align-self: center;
-    width: 15%; }
+    width: 20%; }
   .header__cart-box {
-    margin-bottom: 5px;
-    width: 15%;
-    align-self: flex-end; }
+    height: 50%;
+    width: 20%;
+    align-self: flex-end;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(4, 1fr); }
+    .header__cart-box > i {
+      color: #383838;
+      grid-column: 4 / 5;
+      grid-row: 1 / 4;
+      cursor: pointer; }
+    .header__cart-box > span {
+      font-size: 1.4rem;
+      color: whitesmoke;
+      background-color: #ac3030;
+      text-align: center;
+      font-weight: 600;
+      border-radius: 10px;
+      grid-column: 5 / 6;
+      grid-row: 1 / 2;
+      cursor: pointer; }
     .header__cart-box > p {
-      font-size: 3rem; }
+      font-size: 1.4rem;
+      text-align: center;
+      grid-column: 5 / 6;
+      grid-row: 2 / 3;
+      cursor: pointer; }
+  .header .cart {
+    width: 200px;
+    grid-column: 1 / -1;
+    z-index: 1;
+    background-color: whitesmoke;
+    border: 1px solid rgba(128, 128, 128, 0.376);
+    border-radius: 5px;
+    list-style: none;
+    font-family: "Nunito", sans-serif;
+    display: none; }
+    .header .cart__title {
+      font-size: 2rem;
+      font-weight: 300;
+      text-align: center;
+      padding: 5px 0 10px; }
+    .header .cart ul {
+      width: 90%;
+      margin: 0 auto; }
+    .header .cart ul > li {
+      list-style: none;
+      border-bottom: 1px solid rgba(56, 56, 56, 0.376);
+      font-size: 1.4rem;
+      margin-bottom: 10px; }
+    .header .cart__item-amount {
+      margin-bottom: 12px; }
+    .header .cart__item-title {
+      font-size: 1.8rem;
+      font-weight: 500;
+      margin-bottom: 10px; }
+    .header .cart__item-size {
+      font-style: italic;
+      margin-bottom: 2px; }
+    .header .cart__item-crust {
+      margin-bottom: 2px;
+      font-style: italic; }
+    .header .cart__item-price {
+      font-weight: 800;
+      font-size: 1.6rem; }
+    .header .cart__total-box {
+      width: 90%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      justify-content: center;
+      font-size: 1.4rem; }
+      .header .cart__total-box p {
+        padding: 5px;
+        border-radius: 2px; }
+        .header .cart__total-box p:nth-child(3), .header .cart__total-box p:nth-child(4) {
+          background-color: #f0f0f0; }
+    .header .cart__checkout-box {
+      text-align: center;
+      margin: 20px 0 10px; }
 
 .footer {
   width: 100%;
