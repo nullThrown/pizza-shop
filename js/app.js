@@ -7,7 +7,7 @@ const itemPriceEls = document.querySelectorAll('.item-price__amount');
 const addToCartBtns = document.querySelectorAll('.btn--add-to-cart');
 const cartIcons = document.querySelectorAll('.cart-icons');
 const cartEl = document.querySelector('.cart');
-
+console.log('making new changes');
 class CartItem {
   constructor(name, size, crust, sauce, count, cost) {
     this.name = name;
