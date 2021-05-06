@@ -43,7 +43,6 @@ itemCountSelectors.forEach(countSelector => {
 }); 
 
 let cart = [];
-let bool = true;
 addToCartBtns.forEach(btn => {
   btn.addEventListener('click', (e) => {
     let foodItemBox = e.target.closest('.food-item-box');
@@ -64,17 +63,11 @@ addToCartBtns.forEach(btn => {
     let countEl = foodItemBox.querySelector('.food-item-count');
     let currentPrice = determinePrice(sizeSelectEl, countEl.value, foodItemBox.dataset.uuid);
     let foodItem = foodItems.find(foodItem => foodItem.uuid === foodItemBox.dataset.uuid);
-    // console.log(isDuplicateItem(foodItem.name, sizeSelectEl, crustSelectEl, sauceSelectEl));
-    if(bool){
-      let cartItem = new CartItem(foodItem.name, sizeSelectEl, crustSelectEl, sauceSelectEl, countEl.value, currentPrice);
-      cart.push(cartItem);
-      bool = false;
-    }
-    else
-    console.log(bool);
-    // if(isDuplicateItem(foodItem.name, sizeSelectEl, crustSelectEl, sauceSelectEl) === false) {
-    // }
-      console.log(cart);
+   
+    let cartItem = new CartItem(foodItem.name, sizeSelectEl, crustSelectEl, sauceSelectEl, countEl.value, currentPrice);
+    cart.push(cartItem);
+
+    console.log(cart);
     renderCartCount();
     determineCartTotals();
     renderCartTotals();
@@ -119,27 +112,6 @@ function setPrices() {
     item.innerHTML = foodItem.smallPrice || foodItem.price;   
   });
 };
-
-function isDuplicateItem(name, size, crust, sauce) {
-  cart.some((item) => {
-    if(
-       item.name === name &&
-       item.size === size &&
-       item.crust === crust &&
-       item.sauce === sauce 
-      ) {
-        item.count++;
-        console.log('this item is a duplicate')
-        return true;
-      }
-    });
-    return false;
-  // take current inputs -- size, name, sauce, count, etc. 
-  // compare all inputs to array of cart objects
-  // if comparison all == true 
-  // increase count of matched element
-  // do not create new cart item
-}
 
 cart = [];
 
@@ -241,3 +213,18 @@ function renderCartCount() {
 
 setPrices();
 
+// function isDuplicateItem(name, size, crust, sauce) {
+//   cart.some((item) => {
+//     if(
+//        item.name === name &&
+//        item.size === size &&
+//        item.crust === crust &&
+//        item.sauce === sauce 
+//       ) {
+//         item.count++;
+//         console.log('this item is a duplicate')
+//         return true;
+//       }
+//     });
+//     return false;
+// };
