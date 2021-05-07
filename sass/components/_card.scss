@@ -32,12 +32,18 @@
   }
 
   &--deals {
-    & ul> li {
-      color: $color-soft-white;
-      font-size: small;
-    }
+    padding: 0 10px;
+
+    & ul {
+      margin-left: 10px;
+
+      & > li {
+        margin-top: 8px;
+        color: $color-soft-white;
+        font-size: small;
+        list-style:inside;
+        text-align: left;
+      }
+    } 
   }
-
-
-
 }
