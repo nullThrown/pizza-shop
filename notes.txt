@@ -1,3 +1,13 @@
+     Things to complete tomorrow 
+
+      *add popups to deals section after click 
+          that signals to user that they have added coupon to order
+      *should blur background -- ::before ::after 
+      *should produce bar that explains that the deal has been added to cart    
+       
+      *watch video about customizing selectors
+        add these to all selectors -- assess aschetic of food item cards thereafter
+
      Business Logic
      
       General 
