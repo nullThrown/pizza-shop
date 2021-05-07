@@ -221,9 +221,6 @@ body {
         font-size: small;
         list-style: inside;
         text-align: left; }
-  .card .card-deals-active {
-    background-color: #485ba3;
-    z-index: 1; }
 
 .img {
   width: 100%;
