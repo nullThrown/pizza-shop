@@ -17,7 +17,8 @@
           Order Online 
             *add functionality to pickup and Delivery buttons 
             *set property on order/cart object -- for either pick up or delivery 
-            *link to menu page
+            *create pop-down for most popular section 
+              that allows users to select size, crust etc. -- same interface as menu page
 
           Deals
             *onclick -- add specific deal to cart object 
@@ -37,10 +38,18 @@
       *find logo to replace Pizza Guys text  
       *mess around with secondary title fonts(i.e order online, most popular, menu, about) 
       *add cart icon to all pages
+    
+    
     Index
-      *change pickup and delivery button look 
-       they look very boring
-      *fix order now buttons on most popular section 
+
+      Most Popular  
+        *fix order now buttons on most popular section
+        *create pop-down for on order now button click 
+          should give user the ability to select size, crust etc.
+      Deals        
+        *add popups to deals section after click 
+          that signals to user that they have added coupon to order
+        *how to float button inner content to top of el  
       
     Menu
       Food Item Card  
