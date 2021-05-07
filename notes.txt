@@ -43,7 +43,6 @@
     Index
 
       Most Popular  
-        *fix order now buttons on most popular section
         *create pop-down for on order now button click 
           should give user the ability to select size, crust etc.
       Deals        
