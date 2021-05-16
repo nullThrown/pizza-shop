@@ -114,6 +114,28 @@ body {
   100% {
     transform: translateX(0); } }
 
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: translateY(10px); }
+  30% {
+    opacity: .3;
+    transform: translateY(6); }
+  60% {
+    opacity: .6;
+    transform: translateY(3px); }
+  100% {
+    opacity: 1;
+    transform: translateY(0); } }
+
+@keyframes expand {
+  0% {
+    transform: scale(1); }
+  50% {
+    transform: scale(1.2); }
+  100% {
+    transform: scale(1); } }
+
 .btn {
   cursor: pointer;
   transition: all 200ms;
@@ -201,15 +223,15 @@ body {
   .card__select {
     width: 80%;
     margin: 5px auto;
-    height: 34px;
+    padding: 8px;
     font-size: 1.6rem;
     border: 1px solid #485ba3;
-    border-radius: 8px; }
+    border-radius: 5px; }
   .card__input {
     display: inline;
-    width: 30px;
+    width: 35px;
     height: 30px;
-    font-size: 1.6rem;
+    font-size: 2rem;
     margin-left: 4px; }
   .card--deals {
     padding: 0 10px; }
@@ -248,8 +270,10 @@ body {
 
 .nav {
   margin: 0 auto 5px;
-  align-self: flex-end;
-  width: 220px; }
+  width: 220px;
+  grid-column: 2 / span 2;
+  grid-row: 2 / 3;
+  align-self: end; }
   .nav ul > li {
     list-style: none; }
   .nav__menu {
@@ -279,32 +303,57 @@ body {
     background-image: linear-gradient(to right bottom, rgba(8, 8, 8, 0.65), rgba(8, 8, 8, 0.5)), url(../../img/backgrounds/pizza-side.jpg);
     clip-path: polygon(100% 0, 0 20%, 0 100%, 100% 100%); }
 
+.popup {
+  height: 60px;
+  max-width: 400px;
+  width: 100%;
+  padding: 5px 10px;
+  margin-top: 4px;
+  grid-column: 1 / -1;
+  grid-row: 3 / 4;
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  border-radius: 4px;
+  animation: appear 300ms ease-out; }
+  .popup--success {
+    background-color: #d4f5d4; }
+  .popup--failure {
+    background-color: #f8c6c6; }
+  .popup__icon {
+    font-size: 44px;
+    margin-right: 10px; }
+    .popup__icon--success {
+      color: #33a51f; }
+    .popup__icon--failure {
+      color: #df231c; }
+
 .header {
   width: 100%;
   height: 10rem;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
+  padding: 0 10px;
   border-bottom: 2px solid gainsboro;
+  background-color: whitesmoke;
   position: sticky;
   top: 0;
-  z-index: 10;
-  background-color: whitesmoke; }
+  z-index: 10; }
   .header__box {
-    display: flex;
-    height: 9rem;
-    justify-content: space-between;
     max-width: 1200px;
-    width: 96%;
-    margin: 0 auto; }
+    margin: 0 auto;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 50%); }
   .header__logo {
     font-size: 3rem;
     align-self: center;
-    width: 20%; }
+    grid-column: 1 / 2;
+    grid-row: 1 / span 2; }
   .header__cart-box {
     height: 50%;
-    width: 20%;
-    align-self: flex-end;
+    grid-column: 4 / 5;
+    grid-row: 2 / 3;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(4, 1fr); }
@@ -322,7 +371,8 @@ body {
       border-radius: 10px;
       grid-column: 5 / 6;
       grid-row: 1 / 2;
-      cursor: pointer; }
+      cursor: pointer;
+      animation: expand 200ms ease-out; }
     .header__cart-box > p {
       font-size: 1.4rem;
       text-align: center;
