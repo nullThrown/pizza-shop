@@ -1,4 +1,4 @@
-
+let testVar2 = [1,2,3];
 // const foodItemsDiv = document.querySelectorAll('.food-item-box');
 const itemSizeSelecters = document.querySelectorAll('.item-size-select');
 const itemCountSelectors = document.querySelectorAll('.food-item-count');
@@ -7,7 +7,6 @@ const itemPriceEls = document.querySelectorAll('.item-price__amount');
 const addToCartBtns = document.querySelectorAll('.btn--add-to-cart');
 const cartIcons = document.querySelectorAll('.cart-icons');
 const cartEl = document.querySelector('.cart');
-console.log('making new changes');
 class CartItem {
   constructor(name, size, crust, sauce, count, cost) {
     this.name = name;
@@ -42,7 +41,12 @@ itemCountSelectors.forEach(countSelector => {
   });
 }); 
 
-let cart = [];
+let cart = [
+  {
+    ordertype: '',
+    couponCode: ''
+  }
+];
 addToCartBtns.forEach(btn => {
   btn.addEventListener('click', (e) => {
     let foodItemBox = e.target.closest('.food-item-box');
@@ -113,7 +117,6 @@ function setPrices() {
   });
 };
 
-cart = [];
 
 function renderCart(cart) {
     if(cart.length === 0 ) {
