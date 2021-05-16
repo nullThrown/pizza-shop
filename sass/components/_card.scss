@@ -17,17 +17,17 @@
   &__select {
     width: 80%;
     margin: 5px auto;
-    height: 34px;
+    padding: 8px;
     font-size: $font-size-default;
     border: 1px solid rgb(72, 91, 163);
-    border-radius: 8px;
+    border-radius: 5px;
   }
 
   &__input { 
     display: inline;
-    width: 30px;
+    width: 35px;
     height: 30px;
-    font-size: $font-size-default;
+    font-size: $font-size-medium;
     margin-left: 4px;
   }
 
@@ -45,8 +45,6 @@
         text-align: left;
       }
     }
-    
- 
   }
 
 

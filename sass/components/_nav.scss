@@ -1,8 +1,9 @@
 .nav {
   margin: 0 auto 5px;
-  align-self: flex-end; 
   width: 220px; 
-
+  grid-column: 2 / span 2;
+  grid-row: 2 / 3;
+  align-self: end;
   & ul> li {
     list-style: none;
   }
