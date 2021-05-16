@@ -304,19 +304,18 @@ body {
     clip-path: polygon(100% 0, 0 20%, 0 100%, 100% 100%); }
 
 .popup {
-  height: 60px;
   max-width: 400px;
   width: 100%;
-  padding: 5px 10px;
+  padding: 10px 5px 10px 10px;
   margin-top: 4px;
   grid-column: 1 / -1;
   grid-row: 3 / 4;
   justify-self: center;
-  display: flex;
+  display: none;
   align-items: center;
   font-size: 16px;
   border-radius: 4px;
-  animation: appear 300ms ease-out; }
+  animation: appear 200ms ease-out; }
   .popup--success {
     background-color: #d4f5d4; }
   .popup--failure {

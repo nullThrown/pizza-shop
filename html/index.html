@@ -37,8 +37,8 @@
       </div>
 
       
-        <div class="popup popup--failure">
-          <i class="fas fa-check-circle popup__icon popup__icon--failure"></i>
+        <div class="popup">
+          <i class="fas fa-check-circle popup__icon"></i>
           <p class="popup__text">this is some more content</p>
         </div>
   </header>
@@ -88,7 +88,7 @@
     <!-- SECTION -- DEALS -->
     <h2 class="secondary-title">Deals</h2>
     <section class="grid-4">
-        <button class="btn card card--deals img--background img--background__three-pizza">
+        <button class="btn card card--deals img--background img--background__three-pizza" id="three-med-btn">
             <div class="background">
               <p class="quaternary-title quaternary-title--white">Three Medium Pizzas</p>
               <ul class="u-mt-5">
@@ -98,20 +98,20 @@
               </ul>
             </div>
         </button>
-      <button class="btn card card--deals img--background img--background__pizza-wings">
+      <button class="btn card card--deals img--background img--background__pizza-wings" id="large-pizza-side-btn">
       <p class="quaternary-title quaternary-title--white">Large pizza and a side</p>
         <ul class="u-mt-5">
           <li>Order any large pizza and get a side for %50 off</li>
           <li>Sides do not include dessert items</li> 
         </ul>
       </button>
-      <button class="btn card card--deals img--background img--background__pizza-coke">
+      <button class="btn card card--deals img--background img--background__pizza-coke" id="med-pizza-2liter-btn">
         <p class="quaternary-title quaternary-title--white">Medium Pizza and 2-liter</p>
         <ul class="u-mt-5">
           <li>Buy any medium pizza or up and get a 2-liter for $1</li>
         </ul>
       </button>
-      <button class="btn card card--deals img--background img--background__cinnamon-sticks">
+      <button class="btn card card--deals img--background img--background__cinnamon-sticks" id="over-40-btn">
         <p class="quaternary-title quaternary-title--white">Free desert with order over $40</p>
         <ul class="u-mt-5">
           <li>Dessert added for no extra charge</li>
@@ -130,7 +130,10 @@
         <p>@Weston Peters</p>
       </div>
   </footer>
-
+  <script src="../js/models/Coupons.js"></script>
+  <script src="../js/models/foodItems.js"></script>
+  <script src="../js/app.js"></script> 
+  <script src="../js/coupon.js"></script> 
 </body>
 </html>
 
