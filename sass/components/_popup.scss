@@ -1,0 +1,37 @@
+.popup {
+  height: 60px;
+  max-width: 400px;
+  width: 100%;
+  padding: 5px 10px;
+  margin-top: 4px;
+  grid-column: 1 / -1;
+  grid-row: 3 / 4;
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  border-radius: 4px;
+  animation: appear 300ms ease-out;
+  
+  &--success {
+    background-color: rgb(212, 245, 212);
+  }
+  &--failure {
+    background-color: rgb(248, 198, 198);
+  }
+  
+  &__icon {
+    font-size: 44px;
+    margin-right: 10px;
+    &--success{
+      color: rgb(51, 165, 31);
+    }
+    &--failure {
+      color: rgb(223, 35, 28);
+    }
+  }
+  &__text {
+
+  }
+}
+
