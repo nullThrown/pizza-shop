@@ -9,7 +9,7 @@ const over40Btn = document.getElementById('over-40-btn');
 
 function addCouponCode (coupon) {
   if(!cart.couponCode) {
-    cart[0].couponCode = coupon.id;
+    cart.couponCode = coupon.id;
     popup.classList.add('popup--success');
     popupIcon.classList.add('popup__icon--success');
     popupText.textContent = coupon.activeMessage; 
@@ -20,7 +20,7 @@ function addCouponCode (coupon) {
       popup.classList.remove('popup--success');
     popupIcon.classList.remove('popup__icon--success');
     }, 3000);
-  };
+  }
 
 }
 threeMedBtn.onclick = function () {
