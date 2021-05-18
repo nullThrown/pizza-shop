@@ -1,5 +1,4 @@
-let testVar2 = [1,2,3];
-// const foodItemsDiv = document.querySelectorAll('.food-item-box');
+
 const itemSizeSelecters = document.querySelectorAll('.item-size-select');
 const itemCountSelectors = document.querySelectorAll('.food-item-count');
 const pizzaCrustSelectors = document.querySelectorAll('.pizza-crust-select');
@@ -16,7 +15,7 @@ class CartItem {
     this.count = count;
     this.cost = cost;
   }
-}
+};
 
 // Event listners 
 
@@ -41,12 +40,12 @@ itemCountSelectors.forEach(countSelector => {
   });
 }); 
 
-let cart = [
-  {
-    ordertype: '',
-    couponCode: ''
-  }
-];
+let cart = {
+  ordertype: '',
+  couponCode: '',
+  items: []
+};
+
 addToCartBtns.forEach(btn => {
   btn.addEventListener('click', (e) => {
     let foodItemBox = e.target.closest('.food-item-box');
@@ -69,9 +68,9 @@ addToCartBtns.forEach(btn => {
     let foodItem = foodItems.find(foodItem => foodItem.uuid === foodItemBox.dataset.uuid);
    
     let cartItem = new CartItem(foodItem.name, sizeSelectEl, crustSelectEl, sauceSelectEl, countEl.value, currentPrice);
-    cart.push(cartItem);
+    cart.items.push(cartItem);
 
-    console.log(cart);
+    // console.log(cart);
     renderCartCount();
     determineCartTotals();
     renderCartTotals();
@@ -84,7 +83,6 @@ cartIcons.forEach((el) => {
 });
 
 // Helper functions
-console.log();
 function determinePrice(size, count, uuid) {
  let foodItem = foodItems.find(foodItem => foodItem.uuid == uuid); 
   let price = 0;
@@ -119,10 +117,10 @@ function setPrices() {
 
 
 function renderCart(cart) {
-    if(cart.length === 0 ) {
+    if(cart.items.length === 0 ) {
       return;
     }
-    let foodItem = cart[cart.length-1];
+    let foodItem = cart.items[cart.items.length-1];
     let listContainer = document.querySelector('.cart__ul');
   
     let li = document.createElement('li');
@@ -184,7 +182,7 @@ function toggleCartDisplay() {
 let cartTotals = {};
 function determineCartTotals() {
   
-  let subtotal = cart.reduce((acc, item) => {
+  let subtotal = cart.items.reduce((acc, item) => {
      return acc + parseFloat(item.cost);
     }, 0);
 
@@ -211,7 +209,7 @@ function renderCartTotals() {
 
 function renderCartCount() {
   const CartCountEl = document.getElementById('cart-count'); 
-  CartCountEl.textContent = cart.length;
+  CartCountEl.textContent = cart.items.length;
 }
 
 setPrices();
