@@ -110,6 +110,12 @@ function renderCartCount() {
   document.getElementById('cart-count').textContent = cart.items.length;
 };
 
+function activatePopupOnCart() {
+  popupText.textContent = cart.items[cart.items.length-1].name + ' has been added to your cart.';
+  activateSuccessPopup();
+  console.log(cart.items);
+}
+
 
 // function isDuplicateItem(name, size, crust, sauce) {
 //   cart.some((item) => {
