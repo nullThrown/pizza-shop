@@ -212,8 +212,8 @@ body {
 .card {
   padding: 5px 2rem;
   border: 1px solid #c8c8c8;
-  border-radius: 8px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); }
+  border-radius: 4px;
+  box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.2); }
   .card__more-info {
     font-size: 1.4rem;
     text-decoration: underline;
