@@ -1,6 +1,16 @@
 const cartIcons = document.querySelectorAll('.cart-icons');
 const cartEl = document.querySelector('.cart');
 
+class CartItem {
+  constructor(name, size, crust, sauce, count, cost) {
+    this.name = name;
+    this.size = size;
+    this.crust = crust;
+    this.sauce = sauce;
+    this.count = count;
+    this.cost = cost;
+  }
+};
 
 cartIcons.forEach((el) => {
   el.addEventListener('click', toggleCartDisplay)
@@ -58,7 +68,7 @@ function renderCart(cart) {
     countPrice.append(countSpan, xSpan, dollarSpan, currentPriceP);
     li.append(cancelBtn, h4, sizeP, crustP, sauceP, countPrice);
     listContainer.appendChild(li);
-} 
+}; 
 
 function toggleCartDisplay() {
   if(cartEl.style.display === 'none') {
@@ -67,9 +77,9 @@ function toggleCartDisplay() {
   else {
     cartEl.style.display = 'none';
   }
-}
+};
 
-let cartTotals = {};
+
 function determineCartTotals() {
   
   let subtotal = cart.items.reduce((acc, item) => {
@@ -81,9 +91,9 @@ function determineCartTotals() {
   let total = (subtotal + parseFloat(calculatedTax)).toFixed(2);
     
   subtotal = subtotal.toFixed(2); 
-  cartTotals.subtotal = subtotal;
-  cartTotals.calculatedTax = calculatedTax;
-  cartTotals.total = total;
+  cart.cartTotals.subtotal = subtotal;
+  cart.cartTotals.calculatedTax = calculatedTax;
+  cart.cartTotals.total = total;
 };
 
 function renderCartTotals() {
@@ -91,14 +101,13 @@ function renderCartTotals() {
   const cartTax = document.getElementById('cart-tax');
   const cartTotal = document.getElementById('cart-total');
   
-  cartSubtotal.textContent = cartTotals.subtotal;
-  cartTax.textContent = cartTotals.calculatedTax;
-  cartTotal.textContent = cartTotals.total;
+  cartSubtotal.textContent = cart.cartTotals.subtotal;
+  cartTax.textContent = cart.cartTotals.calculatedTax;
+  cartTotal.textContent = cart.cartTotals.total;
 };
 
 function renderCartCount() {
-  const CartCountEl = document.getElementById('cart-count'); 
-  CartCountEl.textContent = cart.items.length;
+  document.getElementById('cart-count').textContent = cart.items.length;
 };
 
 
