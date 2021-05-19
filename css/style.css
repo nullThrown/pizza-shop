@@ -136,6 +136,22 @@ body {
   100% {
     transform: scale(1); } }
 
+@keyframes scaleDown {
+  0% {
+    transform: scaleY(0);
+    opacity: 0; }
+  25% {
+    transform: scaleY(0.35);
+    opacity: .35; }
+  50% {
+    transform: scaleY(0.75);
+    opacity: .75; }
+  75% {
+    transform: scaleY(1.1);
+    opacity: 1.0; }
+  100% {
+    transform: scaleY(1); } }
+
 .btn {
   cursor: pointer;
   transition: all 200ms;
@@ -387,7 +403,9 @@ body {
     border-radius: 5px;
     list-style: none;
     font-family: "Nunito", sans-serif;
-    display: none; }
+    display: none;
+    animation: scaleDown 300ms ease-in forwards;
+    transform-origin: top center; }
     .header .cart__title {
       font-size: 2rem;
       font-weight: 300;

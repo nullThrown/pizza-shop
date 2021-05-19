@@ -81,7 +81,6 @@ function toggleCartDisplay() {
 
 
 function determineCartTotals() {
-  
   let subtotal = cart.items.reduce((acc, item) => {
      return acc + parseFloat(item.cost);
     }, 0);
