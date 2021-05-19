@@ -48,8 +48,7 @@ addToCartBtns.forEach(btn => {
    
     let cartItem = new CartItem(foodItem.name, sizeSelectEl, crustSelectEl, sauceSelectEl, countEl.value, currentPrice);
     cart.items.push(cartItem);
-
-    // console.log(cart);
+    activatePopupOnCart();
     renderCartCount();
     determineCartTotals();
     renderCartTotals();

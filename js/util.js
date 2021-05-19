@@ -1,7 +1,7 @@
 
 const itemPriceEls = document.querySelectorAll('.item-price__amount');
 
-
+// determines price of specific food item based on size, type, count etc.
 function determinePrice(size, count, uuid) {
   let foodItem = foodItems.find(foodItem => foodItem.uuid == uuid); 
    let price = 0;
@@ -26,6 +26,7 @@ function determinePrice(size, count, uuid) {
      return (price * parseInt(count)).toFixed(2);
    }; 
    
+  // sets prices for all food items on initial load 
  function setPrices() { 
    itemPriceEls.forEach(item => {
      let foodItemUuid = item.closest('.food-item-box').dataset.uuid;
