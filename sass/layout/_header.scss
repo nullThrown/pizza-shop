@@ -74,6 +74,8 @@
     list-style: none;
     font-family: $font-Nunito;
     display: none; 
+    animation: scaleDown 300ms ease-in forwards;
+    transform-origin: top center;
     
     &__title {
       font-size: $font-size-medium;
