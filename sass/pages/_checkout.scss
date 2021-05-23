@@ -1,0 +1,134 @@
+//build out summary section of cart
+// make cart responsive -- maker img a little bit smaller, add media query to checkout grid 
+// fix cart on home and index page 
+// fix checkout link btn on cart  
+
+
+.checkout {  
+  margin: 80px 0;
+  font-size: $font-size-default;
+  display: grid;
+  grid-template-columns: minmax(400px, 800px) minmax(200px, 400px);
+  column-gap: 20px;
+}
+  .product {
+    grid-column: 1 / 2;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(100px, 25%)) repeat(3, 1fr);
+    grid-template-rows: 50px;
+    grid-auto-rows: min-content;
+    
+    & > * {
+      align-self: center;
+    }
+    & p:first-child {
+      justify-self: center;
+    }
+
+    &__details {
+      grid-column: 1 / span 2;
+    }
+    &__quantity {
+
+    }
+    &__price {
+
+    }
+    &__total {
+
+    }
+    
+    &__item {
+      padding:  10px;
+      margin: 15px 0;
+      // grid-row: 2 / span 1;
+      grid-column: 1 / -1;
+      border-bottom: 1px rgba(128, 128, 128, 0.527) solid;
+      // background-color: rgb(231, 238, 231);
+      border-radius: 4px;
+      
+      display: grid;
+      grid-template-columns: repeat(2, minmax(100px, 25%)) repeat(3, 1fr);
+      align-self: start;
+
+     &-img {
+      grid-column: 1 / 2;
+      justify-self: center;
+     
+     }
+     &-desc {
+      grid-column: 2 / 3;
+     }
+     &-quantity {
+      grid-column: 3 / 4;
+     }
+     &-price {
+      grid-column: 4 / 5;
+     }
+     &-total {
+      grid-column: 5 / 6;
+     }
+    }  
+  }
+  
+  .summary {
+    max-width: 320px;
+    padding: 20px;
+    grid-column: 2 / -1;
+    align-self: end;
+    background-color: rgb(35, 36, 34);
+    border-radius: 4px;
+    
+    &__title {
+      text-align: center;
+      color: $color-soft-white;
+      font-size: $font-size-medium;
+      font-weight: 400;
+    }
+
+    &__info {
+      margin: 40px 0;
+      width: 100%;
+      border-top: 1px rgba(175, 172, 172, 0.363) solid;
+      color: white;
+     
+      &-total {
+       border-bottom: 1px rgba(175, 172, 172, 0.363) solid;
+       border-top: 1px rgba(175, 172, 172, 0.363) solid;
+       padding: 15px 0;
+       margin-top: 50px;
+       font-size: $font-size-medium;
+      }
+    }
+
+    &__sub-total,
+     &__tax {
+       margin: 20px 0;
+     }
+
+    &__promo-box {
+      margin-top: 30px;
+
+      & input {
+        border-radius: 4px;
+        font-size: $font-size-default;
+        width: 60%;
+        min-width: 125px;
+        height: 40px;
+        
+      }
+
+      & span {
+        background-color: rgb(233, 241, 233);
+        color: $color-soft-black;
+        padding: 5px;
+        display: block;
+        margin-top: 5px;
+        width: fit-content;
+        border-radius: 4px;
+        
+      }
+    }
+    
+  }
+
