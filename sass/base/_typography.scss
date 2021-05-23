@@ -27,6 +27,10 @@ body {
 .tertiary-title {
   font-size: $font-size-medium-large;
   margin: 1.5rem 0 .8rem;
+
+  &--white {
+    color: $color-soft-white;
+  }
 }
 .quaternary-title {
   font-size: $font-size-large;
