@@ -570,15 +570,12 @@ body {
   .about-box__text-box {
     width: 50%;
     font-size: 1.6rem;
-    animation: moveInLeft 500ms ease-out;
     align-self: center;
-    background-color: #555252;
-    color: white;
+    background-color: #eeecec;
     padding: 31px 20px;
-    border: 1px solid black;
-    border-radius: 8px;
     line-height: 27px;
-    text-indent: 24px; }
+    text-indent: 24px;
+    animation: moveInLeft 500ms ease-out; }
     .about-box__text-box h3 {
       padding-bottom: 5px; }
 
