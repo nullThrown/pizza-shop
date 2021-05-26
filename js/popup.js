@@ -1,10 +1,8 @@
-
-// change class names for menu pages -- they still have popup--failure attached to them
 const popup = document.querySelector('.popup');
 const popupIcon = document.querySelector('.popup__icon');
 const popupText = document.querySelector('.popup__text');
 
-
+// these can be a single function --with a single arg that determines success or failure 
 function activateSuccessPopup() {
   popup.classList.add('popup--success');
   popupIcon.classList.add('popup__icon--success');

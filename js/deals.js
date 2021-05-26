@@ -4,10 +4,18 @@ const medPizza2LiterBtn = document.getElementById('med-pizza-2liter-btn');
 const over40Btn = document.getElementById('over-40-btn');
 
 function addCouponCode (coupon) {
-    cart.couponCode = coupon.id;
-    popupText.textContent = coupon.activeMessage; 
+    let cart = getCartFromLocalStorage();
+     
+    if(cart.couponCode === coupon.id) {
+      popupText.textContent = `${cart.couponCode} has already been added.`
+    }
+    else {
+      cart.couponCode = coupon.id;
+      popupText.textContent = coupon.activeMessage; 
+    }
+    setCartToLocalStorage(cart);
     activateSuccessPopup();
-    console.log(cart.couponCode);
+
   };
 
 threeMedBtn.onclick = function () {

@@ -16,34 +16,46 @@ cartIcons.forEach((el) => {
   el.addEventListener('click', toggleCartDisplay)
 });
 
-function renderCart(cart) {
-    if(cart.items.length === 0 ) {
-      return;
-    }
-    let foodItem = cart.items[cart.items.length-1];
+function renderCart() {
+  let cart = getCartFromLocalStorage();
+    
+    cart.items.forEach((cartItem) => {
+      createCartItem(cartItem);
+    }); 
+    determineCartTotals(); 
+    renderCartTotals();
+}; 
+
+function renderNewCartItem() {
+  let cart = getCartFromLocalStorage();
+  let cartItem = cart.items[cart.items.length-1];
+  createCartItem(cartItem);
+
+  determineCartTotals();
+  renderCartTotals();
+};
+
+function createCartItem(cartItem) {
     let listContainer = document.querySelector('.cart__ul');
-  
     let li = document.createElement('li');
     
     let h4 = document.createElement('h4');
     h4.classList.add('cart__item-title');
-    h4.textContent = foodItem.name;
+    h4.textContent = cartItem.name;
 
     let cancelBtn = document.createElement('button');
     cancelBtn.classList.add('btn--cancel', 'btn');
-    cancelBtn.textContent = 'X'
-    // cancelIcon.classList.add('fas', 'fa-window-close');
-    // cancelBtn.appendChild(cancelIcon);
+    cancelBtn.textContent = 'X';
     
     let sizeP = document.createElement('p');
     sizeP.classList.add('cart__item-size');
-    sizeP.textContent = foodItem.size;
+    sizeP.textContent = cartItem.size;
 
     let crustP = document.createElement('p');
-    crustP.textContent = foodItem.crust;
+    crustP.textContent = cartItem.crust;
 
     let sauceP = document.createElement('p');
-    sauceP.textContent = foodItem.sauce;
+    sauceP.textContent = cartItem.sauce;
 
     // price and count 
     let countPrice = document.createElement('p');
@@ -51,7 +63,7 @@ function renderCart(cart) {
     
     let countSpan = document.createElement('span');
     countSpan.classList.add('u-text-italicize');
-    countSpan.textContent = foodItem.count;
+    countSpan.textContent = cartItem.count;
 
     let xSpan = document.createElement('span');
     xSpan.classList.add('u-text-italicize');
@@ -63,12 +75,13 @@ function renderCart(cart) {
     
     let currentPriceP = document.createElement('span');
     currentPriceP.classList.add('cart__item-price');
-    currentPriceP.textContent = foodItem.cost;
+    currentPriceP.textContent = cartItem.cost;
     
     countPrice.append(countSpan, xSpan, dollarSpan, currentPriceP);
     li.append(cancelBtn, h4, sizeP, crustP, sauceP, countPrice);
     listContainer.appendChild(li);
-}; 
+};
+  
 
 function toggleCartDisplay() {
   if(cartEl.style.display === 'none') {
@@ -79,8 +92,8 @@ function toggleCartDisplay() {
   }
 };
 
-
 function determineCartTotals() {
+  let cart = getCartFromLocalStorage();
   let subtotal = cart.items.reduce((acc, item) => {
      return acc + parseFloat(item.cost);
     }, 0);
@@ -93,9 +106,11 @@ function determineCartTotals() {
   cart.cartTotals.subtotal = subtotal;
   cart.cartTotals.calculatedTax = calculatedTax;
   cart.cartTotals.total = total;
+  setCartToLocalStorage(cart);
 };
 
 function renderCartTotals() {
+  let cart = getCartFromLocalStorage();
   const cartSubtotal = document.getElementById('cart-subtotal');
   const cartTax = document.getElementById('cart-tax');
   const cartTotal = document.getElementById('cart-total');
@@ -106,14 +121,16 @@ function renderCartTotals() {
 };
 
 function renderCartCount() {
+  let cart = getCartFromLocalStorage();
   document.getElementById('cart-count').textContent = cart.items.length;
 };
 
 function activatePopupOnCart() {
+  let cart = getCartFromLocalStorage();
   popupText.textContent = cart.items[cart.items.length-1].name + ' has been added to your cart.';
   activateSuccessPopup();
   console.log(cart.items);
-}
+};
 
 
 // function isDuplicateItem(name, size, crust, sauce) {

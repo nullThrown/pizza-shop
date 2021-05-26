@@ -47,12 +47,11 @@ addToCartBtns.forEach(btn => {
     let foodItem = foodItems.find(foodItem => foodItem.uuid === foodItemBox.dataset.uuid);
    
     let cartItem = new CartItem(foodItem.name, sizeSelectEl, crustSelectEl, sauceSelectEl, countEl.value, currentPrice);
-    cart.items.push(cartItem);
+    addItemToLocalStorage(cartItem);
+
     activatePopupOnCart();
+    renderNewCartItem();
     renderCartCount();
-    determineCartTotals();
-    renderCartTotals();
-    renderCart(cart);
   });
 });
 
