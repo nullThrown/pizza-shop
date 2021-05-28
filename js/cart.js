@@ -1,14 +1,17 @@
 const cartIcons = document.querySelectorAll('.cart-icons');
 const cartEl = document.querySelector('.cart');
+const cartContainer = document.querySelector('.cart__ul');
 
 class CartItem {
-  constructor(name, size, crust, sauce, count, cost) {
+  constructor(uuid, name, size, crust, sauce, count, originalPrice, totalPrice) {
+    this.uuid = uuid;
     this.name = name;
     this.size = size;
     this.crust = crust;
     this.sauce = sauce;
     this.count = count;
-    this.cost = cost;
+    this.originalPrice = originalPrice;
+    this.totalPrice = totalPrice;
   }
 };
 
@@ -16,46 +19,54 @@ cartIcons.forEach((el) => {
   el.addEventListener('click', toggleCartDisplay)
 });
 
+cartContainer.addEventListener('click', (e) => {
+  if(e.target.nodeName === 'BUTTON' && e.target.classList.contains('delete-cart-item')){  
+    let targetLi = e.target.closest('li');
+    deleteItemFromLocalStorage(targetLi.dataset.uuid);
+    renderCart();
+  }
+});
+
 function renderCart() {
   let cart = getCartFromLocalStorage();
-    
-    cart.items.forEach((cartItem) => {
-      createCartItem(cartItem);
+  let listContainer = document.querySelector('.cart__ul');
+  listContainer.replaceChildren(); 
+
+    cart.items.forEach((item) => {
+      createCartItem(item, listContainer);
     }); 
     determineCartTotals(); 
     renderCartTotals();
+    renderCartCount();
 }; 
 
-function renderNewCartItem() {
-  let cart = getCartFromLocalStorage();
-  let cartItem = cart.items[cart.items.length-1];
-  createCartItem(cartItem);
+function deleteCartItem(el) {
+  el.parentNode.removeChild(el);
+}
 
-  determineCartTotals();
-  renderCartTotals();
-};
-
-function createCartItem(cartItem) {
-    let listContainer = document.querySelector('.cart__ul');
+function createCartItem(item, container) {
+  
     let li = document.createElement('li');
-    
+    li.dataset.uuid = item.uuid;
+   
     let h4 = document.createElement('h4');
     h4.classList.add('cart__item-title');
-    h4.textContent = cartItem.name;
+    h4.textContent = item.name;
 
     let cancelBtn = document.createElement('button');
-    cancelBtn.classList.add('btn--cancel', 'btn');
+    cancelBtn.classList.add('btn--cancel', 'btn', 'delete-cart-item');
     cancelBtn.textContent = 'X';
+    
     
     let sizeP = document.createElement('p');
     sizeP.classList.add('cart__item-size');
-    sizeP.textContent = cartItem.size;
+    sizeP.textContent = item.size;
 
     let crustP = document.createElement('p');
-    crustP.textContent = cartItem.crust;
+    crustP.textContent = item.crust;
 
     let sauceP = document.createElement('p');
-    sauceP.textContent = cartItem.sauce;
+    sauceP.textContent = item.sauce;
 
     // price and count 
     let countPrice = document.createElement('p');
@@ -63,7 +74,7 @@ function createCartItem(cartItem) {
     
     let countSpan = document.createElement('span');
     countSpan.classList.add('u-text-italicize');
-    countSpan.textContent = cartItem.count;
+    countSpan.textContent = item.count;
 
     let xSpan = document.createElement('span');
     xSpan.classList.add('u-text-italicize');
@@ -75,11 +86,11 @@ function createCartItem(cartItem) {
     
     let currentPriceP = document.createElement('span');
     currentPriceP.classList.add('cart__item-price');
-    currentPriceP.textContent = cartItem.cost;
+    currentPriceP.textContent = item.totalPrice;
     
     countPrice.append(countSpan, xSpan, dollarSpan, currentPriceP);
     li.append(cancelBtn, h4, sizeP, crustP, sauceP, countPrice);
-    listContainer.appendChild(li);
+    container.appendChild(li);
 };
   
 
@@ -95,7 +106,7 @@ function toggleCartDisplay() {
 function determineCartTotals() {
   let cart = getCartFromLocalStorage();
   let subtotal = cart.items.reduce((acc, item) => {
-     return acc + parseFloat(item.cost);
+     return acc + parseFloat(item.totalPrice);
     }, 0);
 
   let calculatedTax = (parseFloat(subtotal * .085)).toFixed(2);
@@ -129,7 +140,6 @@ function activatePopupOnCart() {
   let cart = getCartFromLocalStorage();
   popupText.textContent = cart.items[cart.items.length-1].name + ' has been added to your cart.';
   activateSuccessPopup();
-  console.log(cart.items);
 };
 
 
