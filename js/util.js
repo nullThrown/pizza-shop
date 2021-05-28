@@ -1,29 +1,14 @@
 
+function create_UUID(){
+  var dt = new Date().getTime();
+  var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = (dt + Math.random()*16)%16 | 0;
+      dt = Math.floor(dt/16);
+      return (c=='x' ? r :(r&0x3|0x8)).toString(16);
+  });
+  return uuid;
+}
 
-// determines price of specific food item based on size, type, count etc.
-function determinePrice(size, count, uuid) {
-  let foodItem = foodItems.find(foodItem => foodItem.uuid == uuid); 
-   let price = 0;
- 
-   if(!size) {
-     return foodItem.price * parseInt(count);
-   }
-   switch(size) {
-     case 'small':
-       price = foodItem.smallPrice;
-       break;
-     case 'medium':
-       price = foodItem.mediumPrice;
-       break;
-     case 'large':
-       price = foodItem.largePrice;
-       break;
-     case 'x-large':
-       price = foodItem.xlargePrice;
-       break;
-   }
-     return (price * parseInt(count)).toFixed(2);
-   }; 
-   
-  
+
+
  
