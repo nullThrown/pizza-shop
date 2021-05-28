@@ -1,7 +1,8 @@
      Things to complete tomorrow 
-      store cart in local storage
-      retrieve cart from local storage
-      render cart on all page loads
+      *remake render function 
+        *always remove li el within ul list items
+        *run foreach on cart.items and rerender cart for every action
+      *event delegation for all li el in ul list   
 
      Business Logic
      
