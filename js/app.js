@@ -27,7 +27,7 @@ const itemPriceEls = document.querySelectorAll('.item-price__amount');
 function setPrices() { 
   itemPriceEls.forEach(item => {
     let foodItemUuid = item.closest('.food-item-box').dataset.uuid;
-    let foodItem = foodItems.find(foodItem => foodItem.uuid == foodItemUuid);
+    let foodItem = foodItems.find(foodItem => foodItem.uuid === foodItemUuid);
     item.innerHTML = foodItem.smallPrice || foodItem.price;   
   });
 };
@@ -67,10 +67,13 @@ function addOrderTypeToLocalStorage(orderType) {
     
 // DELETE
 
-function deleteItemFromLocalStorage(itemIndex) {
+function deleteItemFromLocalStorage(uuid) {
   let cart = getCartFromLocalStorage();
-  cart.items.splice(itemIndex, 1);
-  setCartToLocalStorage(cart);
+  let itemIndex = cart.items.findIndex((item) => item.uuid === uuid);
+  if(itemIndex !== -1) {
+    cart.items.splice(itemIndex, 1);
+    setCartToLocalStorage(cart);
+  }
 };
 
 function deleteCouponFromLocalStorage() {
@@ -85,7 +88,7 @@ function deleteCouponFromLocalStorage() {
 setPrices();
 initCartToLocalStorage();
 renderCart();
-renderCartCount();
+
 
 
 
