@@ -1,9 +1,11 @@
      Things to complete tomorrow 
-      *remake render function 
-        *always remove li el within ul list items
-        *run foreach on cart.items and rerender cart for every action
-      *event delegation for all li el in ul list   
-
+      *fix menu/most-popular/sides&desserts -- garlic fries, caesar salad NaN produced when size change
+      *add functionality to pick up and delivery btns 
+        *add orderType prop to LS and link to menu
+        *display ordertype within cart and checkout page 
+      *render cart onto checkout page 
+      *allow users to place order 
+      *save order in LS 
      Business Logic
      
       General 
@@ -30,14 +32,11 @@
             *
               *have deal run function on final price 
               *add function that displays a popup for removed deal
-              *change popup text when a coupon has already been added to cart
               *remove settimeout so that all popups will be displayed for 3 seconds
 
         Menu 
           Cart
-            *figure out how to save cart across mutliple page loads(i.e localstorage)
-            *how to save a placed order that can be saved later down the road
-            *add functionality to checkout button 
+            *save and render previous orders  
             
 
 
