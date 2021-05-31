@@ -444,6 +444,12 @@ body {
       font-weight: 300;
       text-align: center;
       padding: 5px 0 10px; }
+    .header .cart__order-type {
+      display: block;
+      font-size: 1.4rem;
+      margin: 10px 0 20px 15px;
+      text-align: left;
+      text-transform: capitalize; }
     .header .cart ul {
       width: 90%;
       margin: 0 auto; }
