@@ -38,6 +38,7 @@ function renderCart() {
     determineCartTotals(); 
     renderCartTotals();
     renderCartCount();
+    renderOrderType();
 }; 
 
 function deleteCartItem(el) {
@@ -134,6 +135,12 @@ function renderCartTotals() {
 function renderCartCount() {
   let cart = getCartFromLocalStorage();
   document.getElementById('cart-count').textContent = cart.items.length;
+};
+
+const orderTypeP = document.querySelector('.cart__order-type');
+function renderOrderType() {
+  let cart = getCartFromLocalStorage();
+  if(cart.orderType) orderTypeP.textContent = cart.orderType; 
 };
 
 function activatePopupOnCart() {
