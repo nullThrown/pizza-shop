@@ -21,8 +21,22 @@ function initCartToLocalStorage() {
   };
 };
 
-const itemPriceEls = document.querySelectorAll('.item-price__amount');  
+const pickupBtn = document.getElementById('pickup-btn');
+const deliveryBtn = document.getElementById('delivery-btn');
 
+function setOrderType(orderType) {
+  let cart = getCartFromLocalStorage();
+  cart.orderType = orderType;
+  setCartToLocalStorage(cart);
+};
+
+if(pickupBtn && deliveryBtn) {
+  pickupBtn.onclick = () => setOrderType('pickup');
+  deliveryBtn.onclick = () => setOrderType('delivery');
+}
+  
+
+const itemPriceEls = document.querySelectorAll('.item-price__amount');  
 //   sets prices for all food items
 function setPrices() { 
   itemPriceEls.forEach(item => {
@@ -48,7 +62,6 @@ function addItemToLocalStorage(item) {
   setCartToLocalStorage(cart);
 };
 
-   
 // UPDATE 
 
 // add/update coupon code
@@ -89,15 +102,3 @@ setPrices();
 initCartToLocalStorage();
 renderCart();
 
-
-
-
-// const removeBtn = document.getElementById('remove');
-// const parent = document.querySelector(".cart__ul");
-
-// removeBtn.onclick = () => {
-//   while (parent.firstChild) {
-//     parent.firstChild.remove()
-//   }
-
-// container.replaceChildren(...arrayOfNewChildren);
