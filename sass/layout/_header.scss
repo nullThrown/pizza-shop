@@ -72,7 +72,7 @@
     border: 1px solid rgba(128, 128, 128, 0.376);
     border-radius: 5px;
     list-style: none;
-    font-family: $font-Nunito;
+    font-family: $font-Nunito; 
     display: none; 
     animation: scaleDown 300ms ease-in forwards;
     transform-origin: top center;
@@ -82,6 +82,13 @@
       font-weight: 300;
       text-align: center;
       padding: 5px 0 10px;
+    }
+    &__order-type {
+      display: block;
+      font-size: $font-size-small;
+      margin: 10px 0 20px 15px;
+      text-align: left;
+      text-transform: capitalize;
     }
     & ul {
       width: 90%;
