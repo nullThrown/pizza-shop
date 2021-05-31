@@ -1,11 +1,9 @@
      Things to complete tomorrow 
-      *fix menu/most-popular/sides&desserts -- garlic fries, caesar salad NaN produced when size change
-      *add functionality to pick up and delivery btns 
-        *add orderType prop to LS and link to menu
-        *display ordertype within cart and checkout page 
+      *display ordertype within cart and checkout page 
       *render cart onto checkout page 
       *allow users to place order 
       *save order in LS 
+      *fix cart requiring 2 clicks for initial display
      Business Logic
      
       General 
