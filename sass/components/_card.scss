@@ -21,8 +21,13 @@
     font-size: $font-size-default;
     border: 1px solid rgb(72, 91, 163);
     border-radius: 5px;
+    border: 1px rgb(102, 18, 18) solid;
+    
+    :focus {        
+      border: 1px rgb(73, 171, 189) solid;
+    }                   
   }
-
+      
   &__input { 
     display: inline;
     width: 35px;

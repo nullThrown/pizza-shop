@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,300;1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+  <link rel="stylesheet" href="../../css/style.css">  
+  <title>Make Your Own</title>
+</head>
+<body>
+  <header class="header">
+    <!-- placeholder for official logo -->
+    <div class="header__box">
+      <p class="header__logo">Pizza Guys</p>
+
+      <nav class="nav">
+        <ul class="flex-row-btwn">
+          <li><a href="../index.html" class="nav-link">Home</a></li>
+          <li><a href="#" class="nav-link active">Menu</a></li>
+          <li><a href="../about.html" class="nav-link">About</a></li>
+        </ul>
+      </nav>
+      <!-- placeholder for cart icon -->
+      <div class="header__cart-box">
+        <i class="fas fa-shopping-cart fa-3x cart-icons"></i>
+        <span class="cart-icons" id="cart-count">0</span>
+        <p class="cart-icons">cart</p>
+        <div class="cart">
+          <h4 class="cart__title">Cart</h4>
+          <span class="cart__order-type"></span>
+          <ul class="cart__ul">
+            
+          </ul>
+          <div class="cart__total-box">
+            <p>Subtotal</p><p class="u-text-right">$<span class="u-text-right" id="cart-subtotal">0.00</span></p>
+            <p>Tax</p><p class="u-text-right">$<span class="u-text-right" id="cart-tax">0.00</span></p>
+            <p>Total</p><p class="u-text-right">$<span class="u-text-right" id="cart-total">0.00</span></p>
+          </div>
+          <div class="cart__checkout-box">
+            <a href="../checkout.html" class="btn btn__checkout">Checkout</a>
+          </div>
+        </div>  
+      </div>
+
+      <div class="popup">
+        <i class="fas popup__icon"></i>
+        <p class="popup__text">this is some more content</p>
+      </div>
+  </div>
+  </header>
+  <!-- HEADER END -->
+
+  <div class="sidebar" data-state="closed">
+    <button class="btn"><i class="fas fa-bars sidebar__hamburger-icon"></i></button>
+    
+    <button class="btn sidebar__cart-icon">
+      <i class="fas fa-shopping-cart fa-3x"></i>
+      <span class="cart-icons sidebar__cart-count">0</span>
+      <p class="cart-icons">cart</p>
+    </button>
+
+    
+    <ul class="sidebar__nav-list">
+      <li class="sidebar__menu-title">menu</li>
+      <a class="sidebar__nav-link sidebar__nav-home" href="../index.html">
+        <li>Home</li>
+      </a>
+      <a href="../html/menu/most-popular.html" class="sidebar--active sidebar__nav-link sidebar__nav-menu">
+        <li >Menu</li>
+      </a>
+      <ul class="sidebar__menu-list">
+        <a href="../menu/most-popular.html">
+          <li class="sidebar__menu-item">Most Popular</li>
+        </a>
+        <a href="../menu/make-your-own.html">
+          <li class="sidebar__menu-item active">Make Your Own</li>
+        </a>
+        <a href="../menu/pizzas.html">
+          <li class="sidebar__menu-item">Pizzas</li>
+        </a>
+        <a href="../menu/sides.html">
+          <li class="sidebar__menu-item">Sides</li>
+        </a>
+        <a href="../menu/desserts.html ">
+          <li class="sidebar__menu-item">Desserts</li>
+        </a>
+      </ul>
+      
+      <a href="../about.html" class="sidebar__nav-link sidebar__nav-about">
+        <li >About</li>
+      </a>    
+    </ul>
+
+    <div class="sidebar__cart">
+      <h4 class="cart__title">Cart</h4>
+      <span class="cart__order-type"></span>
+      <ul class="sidebar__cart-list">
+        
+      </ul>
+      <div class="cart__total-box">
+        <p>Subtotal</p><p class="u-text-right">$<span class="u-text-right" id="sidebar-subtotal">0.00</span></p>
+        <p>Tax</p><p class="u-text-right">$<span class="u-text-right" id="sidebar-tax">0.00</span></p>
+        <p>Total</p><p class="u-text-right">$<span class="u-text-right" id="sidebar-total">0.00</span></p>
+      </div>
+      <div class="cart__checkout-box">
+        <a href="../checkout.html" class="btn btn__checkout">Checkout</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MAIN BEGIN -->
+  <main class="main-container">
+    <h1 class="primary-title">Menu</h1>
+
+    <section>
+      <nav class="nav__menu">
+        <ul class="flex-row-btwn"> 
+          <li ><a href="./most-popular.html" class="btn btn--menu ">Most Popular</P></a></li>
+          <li><a href="./make-your-own.html" class="btn btn--menu active">Make Your Own</a></li>
+          <li><a href="./pizzas.html" class="btn btn--menu ">Pizzas</a></li>
+          <li><a href="./sides.html" class="btn btn--menu">Sides</a></li>
+          <li><a href="./desserts.html" class="btn btn--menu">Desserts</a></li>
+          <li><a href="./drinks.html" class="btn btn--menu">Drinks</a></li>
+        </ul>
+      </nav> 
+    </section>
+
+    <h2 class="tertiary-title">Make Your Own Pizza</h2>
+    <section class="make-container">
+      <div class="select-section">
+        <div class="size-box">
+          <div class="size-box__title-box">
+            <h3>Chooose your size</h3>
+            <p>(required)</p>
+          </div>
+          <div class="size-box__selectors-box">
+
+            <div class="size_box__small">
+              <input type="radio" id="small" name="size">
+              <label for="small">small</label>
+            </div>
+            <p>$<span>10.99</span></p>
+            <div class="size_box__medium">
+              <input type="radio" id="medium" name="size">
+              <label for="medium">Medium</label>
+            </div>
+            <p>$<span>14.99</span></p>
+            <div class="size_box__large">
+              <input type="radio" id="large" name="size">
+              <label for="large">Large</label>
+            </div>
+            <p>$<span>16.99</span></p>
+            <div class="size-box__x-large">
+              <input type="radio" id="x-large" name="size">
+              <label for="x-large">X-large</label>
+            </div>
+            <p>$<span>19.99</span></p>
+          </div>
+        </div>
+        <div class="crust-box">
+          <div class="crust-box__title-box">
+            <h3>Choose Your Crust</h3>
+          </div>
+
+
+            <div class="crust-box__selectors-box">
+              <div>
+                <input type="radio" id="regular" name="crust">
+                <label for="x-large">Regular</label>
+              </div>
+              <div>
+                <input type="radio" id="thin-crust" name="crust">
+                <label for="x-large">Thin Crust</label>
+              </div>
+              
+              <div>
+                <input type="radio" id="gluten-free" name="crust">
+                <label for="x-large">Gluten Free</label>
+              </div>
+            </div>
+
+        </div>
+      </div>
+      <div class="current-order">
+
+        <div class="current-order__info-box">
+          <button class="btn btn--add-custom-to-cart">Add to Cart</button>
+          <p class="current-order__price">$ <span id="currentOrderPrice">0.00</span></p>
+          <div class="current-order__count-box">
+            <button class="btn btn--count" id="orderCountDecrement"><i class="fas fa-minus"></i></button>
+            <span class="current-order__count">1</span>
+            <button class="btn btn--count" id="orderCountIncrement"><i class="fas fa-plus"></i></button>
+          </div>
+          <p class="current-order__size"></p>
+          <p class="current-order__crust"></p>
+        </div>
+
+        <div class="current-order__toppings-box">
+          <div class="current-order__topping-category topping-display-full">
+            <h4>Full Pizza:</h4>
+          </div>
+          <div class="current-order__topping-category topping-display-left">
+            <h4>Left half:</h4>
+          </div>
+          <div class="current-order__topping-category topping-display-right">
+            <h4>Right half:</h4>
+          </div>
+        </div>
+
+      </div>
+      <div class="topping-select">
+        <div class="topping-select__categories">
+          <button class="btn btn--toppings btn--toppings--active" id="meatsBtn">Meats</button>
+          <button class="btn btn--toppings" id="veggiesBtn">Veggies</button>
+          <button class="btn btn--toppings" id="cheeseBtn">Cheese Topping</button>
+        </div>
+
+        <div class="topping-select--meats">
+          <div class="topping-select__topping">
+            <h4>Pepperoni</h4>
+            <div class="topping-select__select-box">
+              <label for="left" class="topping-select__select-box-label">Left</label>
+              <label for="full" class="topping-select__select-box-label">Full</label>
+              <label for="right" class="topping-select__select-box-label">Right</label>
+              <input type="radio" name="pepperoni" id="left-pepperoni" data-side="left" class="topping-select__select-input portion-side">
+              <input type="radio" name="pepperoni" id="full-pepperoni" data-side="full" class="topping-select__select-input portion-side">
+              <input type="radio" name="pepperoni" id="right-pepperoni" data-side="right" class="topping-select__select-input portion-side">
+            </div>
+          </div>
+          <div class="topping-select__topping">
+            <h4>Canadian Bacon</h4>
+            <div class="topping-select__select-box">
+              <label for="left" class="topping-select__select-box-label">Left</label>
+              <label for="full" class="topping-select__select-box-label">Full</label>
+              <label for="right" class="topping-select__select-box-label">Right</label>
+              <input type="radio" name="canadian-bacon" id="left-canadian-bacon" data-side="left" class="topping-select__select-input portion-side">
+              <input type="radio" name="canadian-bacon" id="full-canadian-bacon" data-side="full" class="topping-select__select-input portion-side">
+              <input type="radio" name="canadian-bacon" id="right-canadian-bacon" data-side="right" class="topping-select__select-input portion-side">
+            </div>
+          </div>
+          <div class="topping-select__topping">
+            <h4>Grilled Chicken</h4>
+            <div class="topping-select__select-box">
+              <label for="left" class="topping-select__select-box-label">Left</label>
+              <label for="full" class="topping-select__select-box-label">Full</label>
+              <label for="right" class="topping-select__select-box-label">Right</label>
+              <input type="radio" name="grilled-chicken" id="left-grilled-chicken" data-side="left" class="topping-select__select-input portion-side">
+              <input type="radio" name="grilled-chicken" id="full-grilled-chicken" data-side="full" class="topping-select__select-input portion-side">
+              <input type="radio" name="grilled-chicken" id="right-grilled-chicken" data-side="right" class="topping-select__select-input portion-side">
+            </div>
+          </div>
+          <div class="topping-select__topping">
+            <h4>Bacon</h4>
+            <div class="topping-select__select-box">
+              <label for="left" class="topping-select__select-box-label">Left</label>
+              <label for="full" class="topping-select__select-box-label">Full</label>
+              <label for="right" class="topping-select__select-box-label">Right</label>
+              <input type="radio" name="bacon" id="left-bacon" data-side="left" class="topping-select__select-input portion-side">
+              <input type="radio" name="bacon" id="full-bacon" data-side="full" class="topping-select__select-input portion-side">
+              <input type="radio" name="bacon" id="right-bacon" data-side="right" class="topping-select__select-input portion-side">
+            </div>
+          </div>
+          <div class="topping-select__topping">
+            <h4>Dry Salami</h4>
+            <div class="topping-select__select-box">
+              <label for="left" class="topping-select__select-box-label">Left</label>
+              <label for="full" class="topping-select__select-box-label">Full</label>
+              <label for="right" class="topping-select__select-box-label">Right</label>
+              <input type="radio" name="dry-salami" id="left-dry-salami" data-side="left" class="topping-select__select-input portion-side">
+              <input type="radio" name="dry-salami" id="full-dry-salami" data-side="full" class="topping-select__select-input portion-side">
+              <input type="radio" name="dry-salami" id="right-dry-salami" data-side="right" class="topping-select__select-input portion-side">
+            </div>
+          </div>
+          <div class="topping-select__topping">
+            <h4>Anchovies</h4>
+            <div class="topping-select__select-box">
+              <label for="left" class="topping-select__select-box-label">Left</label>
+              <label for="full" class="topping-select__select-box-label">Full</label>
+              <label for="right" class="topping-select__select-box-label">Right</label>
+              <input type="radio" name="anchovies" id="left-anchovies" data-side="left" class="topping-select__select-input portion-side">
+              <input type="radio" name="anchovies" id="full-anchovies" data-side="full" class="topping-select__select-input portion-side">
+              <input type="radio" name="anchovies" id="right-anchovies" data-side="right" class="topping-select__select-input portion-side">
+            </div>
+          </div>
+          <div class="topping-select__topping">
+            <h4>Ground Beef</h4>
+            <div class="topping-select__select-box">
+              <label for="left" class="topping-select__select-box-label">Left</label>
+              <label for="full" class="topping-select__select-box-label">Full</label>
+              <label for="right" class="topping-select__select-box-label">Right</label>
+              <input type="radio" name="ground-beef" id="left-ground-beef" data-side="left" class="topping-select__select-input portion-side">
+              <input type="radio" name="ground-beef" id="full-ground-beef" data-side="full" class="topping-select__select-input portion-side">
+              <input type="radio" name="ground-beef" id="right-ground-beef" data-side="right" class="topping-select__select-input portion-side">
+            </div>
+          </div>
+        </div>
+
+        
+          <div class="topping-select--veggies">
+            <div class="topping-select__topping">
+              <h4>Onions</h4>
+              <div class="topping-select__select-box">
+                <label for="left" class="topping-select__select-box-label">Left</label>
+                <label for="full" class="topping-select__select-box-label">Full</label>
+                <label for="right" class="topping-select__select-box-label">Right</label>
+                <input type="radio" name="onion" id="left-onion" data-side="left" class="topping-select__select-input portion-side">
+                <input type="radio" name="onion" id="full-onion" data-side="full" class="topping-select__select-input portion-side">
+                <input type="radio" name="onion" id="right-onion" data-side="right" class="topping-select__select-input portion-side">
+              </div>
+            </div>
+            <div class="topping-select__topping">
+              <h4>Spinach</h4>
+              <div class="topping-select__select-box">
+                <label for="left" class="topping-select__select-box-label">Left</label>
+                <label for="full" class="topping-select__select-box-label">Full</label>
+                <label for="right" class="topping-select__select-box-label">Right</label>
+                <input type="radio" name="spinach" id="left-spinach" data-side="left" class="topping-select__select-input portion-side">
+                <input type="radio" name="spinach" id="full-spinach" data-side="full" class="topping-select__select-input portion-side">
+                <input type="radio" name="spinach" id="right-spinach" data-side="right" class="topping-select__select-input portion-side">
+              </div>
+            </div>
+            <div class="topping-select__topping">
+              <h4>Roasted Garlic</h4>
+              <div class="topping-select__select-box">
+                <label for="left" class="topping-select__select-box-label">Left</label>
+                <label for="full" class="topping-select__select-box-label">Full</label>
+                <label for="right" class="topping-select__select-box-label">Right</label>
+                <input type="radio" name="roasted-garlic" id="left-roasted-garlic" data-side="left" class="topping-select__select-input portion-side">
+                <input type="radio" name="roasted-garlic" id="full-roasted-garlic" data-side="full" class="topping-select__select-input portion-side">
+                <input type="radio" name="roasted-garlic" id="right-roasted-garlic" data-side="right" class="topping-select__select-input portion-side">
+              </div>
+            </div>
+            <div class="topping-select__topping">
+              <h4>Black Olives</h4>
+              <div class="topping-select__select-box">
+                <label for="left" class="topping-select__select-box-label">Left</label>
+                <label for="full" class="topping-select__select-box-label">Full</label>
+                <label for="right" class="topping-select__select-box-label">Right</label>
+                <input type="radio" name="black-olives" id="left-black-olives" data-side="left" class="topping-select__select-input portion-side">
+                <input type="radio" name="black-olives" id="full-black-olives" data-side="full" class="topping-select__select-input portion-side">
+                <input type="radio" name="black-olives" id="right-black-olives" data-side="right" class="topping-select__select-input portion-side">
+              </div>
+            </div>
+            <div class="topping-select__topping">
+              <h4>Pineapple</h4>
+              <div class="topping-select__select-box">
+                <label for="left-pineapple" class="topping-select__select-box-label">Left</label>
+                <label for="full-pineapple" class="topping-select__select-box-label">Full</label>
+                <label for="right-pineapple" class="topping-select__select-box-label">Right</label>
+                <input type="radio" name="pineapple" id="left-pineapple" data-side="left" class="topping-select__select-input portion-side">
+                <input type="radio" name="pineapple" id="full-pineapple" data-side="full" class="topping-select__select-input portion-side">
+                <input type="radio" name="pineapple" id="right-pineapple" data-side="right" class="topping-select__select-input portion-side">
+              </div>
+            </div>
+            <div class="topping-select__topping">
+              <h4>Green Peppers</h4>
+              <div class="topping-select__select-box">
+                <label for="left-green-peppers" class="topping-select__select-box-label">Left</label>
+                <label for="full-green-peppers" class="topping-select__select-box-label">Full</label>
+                <label for="right-green-peppers" class="topping-select__select-box-label">Right</label>
+                <input type="radio" name="green-peppers" id="left-green-peppers" data-side="left" class="topping-select__select-input portion-side">
+                <input type="radio" name="green-peppers" id="full-green-peppers" data-side="full" class="topping-select__select-input portion-side">
+                <input type="radio" name="green-peppers" id="right-green-peppers" data-side="right" class="topping-select__select-input portion-side">
+              </div>
+            </div>
+            <div class="topping-select__topping">
+              <h4>Jalepeno Peppers</h4>
+              <div class="topping-select__select-box">
+                <label for="left-jalepeno-peppers" class="topping-select__select-box-label">Left</label>
+                <label for="full-jalepeno-peppers" class="topping-select__select-box-label">Full</label>
+                <label for="right-jalepeno-peppers" class="topping-select__select-box-label">Right</label>
+                <input type="radio" name="jalepeno-peppers" id="left-jalepeno-peppers" data-side="left" class="topping-select__select-input portion-side">
+                <input type="radio" name="jalepeno-peppers" id="full-jalepeno-peppers" data-side="full" class="topping-select__select-input portion-side">
+                <input type="radio" name="jalepeno-peppers" id="right-jalepeno-peppers" data-side="right" class="topping-select__select-input portion-side">
+              </div>
+            </div>
+            <div class="topping-select__topping">
+              <h4>Roma Tomatoes</h4>
+              <div class="topping-select__select-box">
+                <label for="left-roma-tomatoes" class="topping-select__select-box-label">Left</label>
+                <label for="full-roma-tomatoes" class="topping-select__select-box-label">Full</label>
+                <label for="right-roma-tomatoes" class="topping-select__select-box-label">Right</label>
+                <input type="radio" name="roma-tomatoes" id="left-roma-tomatoes" data-side="left" class="topping-select__select-input portion-side">
+                <input type="radio" name="roma-tomatoes" id="full-roma-tomatoes" data-side="full" class="topping-select__select-input portion-side">
+                <input type="radio" name="roma-tomatoes" id="right-roma-tomatoes" data-side="right" class="topping-select__select-input portion-side">
+              </div>
+            </div>
+            <div class="topping-select__topping">
+              <h4>Mushrooms</h4>
+              <div class="topping-select__select-box">
+                <label for="left-mushrooms" class="topping-select__select-box-label">Left</label>
+                <label for="full-mushrooms" class="topping-select__select-box-label">Full</label>
+                <label for="right-mushrooms" class="topping-select__select-box-label">Right</label>
+                <input type="radio" name="mushrooms" id="left-mushrooms" data-side="left" class="topping-select__select-input portion-side">
+                <input type="radio" name="mushrooms" id="full-mushrooms" data-side="full" class="topping-select__select-input portion-side">
+                <input type="radio" name="mushrooms" id="right-mushrooms" data-side="right" class="topping-select__select-input portion-side">
+              </div>
+            </div>
+          </div>
+       
+     
+        <div class="topping-select--cheese">
+          <div class="topping-select__topping">
+            <h4>Extra Mozzarella</h4>
+            <div class="topping-select__select-box">
+              <label for="left-extra-mozzarella" class="topping-select__select-box-label">Left</label>
+              <label for="full-extra-mozzarella" class="topping-select__select-box-label">Full</label>
+              <label for="right-extra-mozzarella" class="topping-select__select-box-label">Right</label>
+              <input type="radio" name="extra-mozzarella" id="left-extra-mozzarella" data-side="left" class="topping-select__select-input  portion-side">
+              <input type="radio" name="extra-mozzarella" id="full-extra-mozzarella" data-side="full" class="topping-select__select-input  portion-side">
+              <input type="radio" name="extra-mozzarella" id="right-extra-mozzarella" data-side="right" class="topping-select__select-input  portion-side">
+            </div>
+          </div>
+          <div class="topping-select__topping">
+            <h4>3 Cheese</h4>
+            <div class="topping-select__select-box">
+              <label for="left-3-cheese" class="topping-select__select-box-label">Left</label>
+              <label for="full-3-cheese" class="topping-select__select-box-label">Full</label>
+              <label for="right-3-cheese" class="topping-select__select-box-label">Right</label>
+              <input type="radio" name="3-cheese" id="left-3-cheese" data-side="left" class="topping-select__select-input  portion-side">
+              <input type="radio" name="3-cheese" id="full-3-cheese" data-side="full" class="topping-select__select-input  portion-side">
+              <input type="radio" name="3-cheese" id="right-3-cheese" data-side="right" class="topping-select__select-input  portion-side">
+            </div>
+          </div>
+          <div class="topping-select__topping">
+            <h4>Parmesan</h4>
+            <div class="topping-select__select-box">
+              <label for="left-parmesan" class="topping-select__select-box-label">Left</label>
+              <label for="full-parmesan" class="topping-select__select-box-label">Full</label>
+              <label for="right-parmesan" class="topping-select__select-box-label">Right</label>
+              <input type="radio" name="parmesan" id="left-parmesan" data-side="left" class="topping-select__select-input  portion-side">
+              <input type="radio" name="parmesan" id="full-parmesan" data-side="full" class="topping-select__select-input  portion-side">
+              <input type="radio" name="parmesan" id="right-parmesan" data-side="right" class="topping-select__select-input  portion-side">
+            </div>
+          </div>
+          <div class="topping-select__topping">
+            <h4>Gorgonzola</h4>
+            <div class="topping-select__select-box">
+              <label for="left-gorgonzola" class="topping-select__select-box-label">Left</label>
+              <label for="full-gorgonzola" class="topping-select__select-box-label">Full</label>
+              <label for="right-gorgonzola" class="topping-select__select-box-label">Right</label>
+              <input type="radio" name="gorgonzola" id="left-gorgonzola" data-side="left" class="topping-select__select-input  portion-side">
+              <input type="radio" name="gorgonzola" id="full-gorgonzola" data-side="full" class="topping-select__select-input  portion-side">
+              <input type="radio" name="gorgonzola" id="right-gorgonzola" data-side="right" class="topping-select__select-input  portion-side">
+            </div>
+          </div>
+          <div class="topping-select__topping">
+            <h4>Cheddar</h4>
+            <div class="topping-select__select-box">
+              <label for="left-cheddar" class="topping-select__select-box-label">Left</label>
+              <label for="full-cheddar" class="topping-select__select-box-label">Full</label>
+              <label for="right-cheddar" class="topping-select__select-box-label">Right</label>
+              <input type="radio" name="cheddar" id="left-cheddar" data-side="left" class="topping-select__select-input  portion-side">
+              <input type="radio" name="cheddar" id="full-cheddar" data-side="full" class="topping-select__select-input  portion-side">
+              <input type="radio" name="cheddar" id="right-cheddar" data-side="right" class="topping-select__select-input  portion-side">
+            </div>
+          </div>
+          <div class="topping-select__topping">
+            <h4>Feta</h4>
+            <div class="topping-select__select-box">
+              <label for="left-feta" class="topping-select__select-box-label">Left</label>
+              <label for="full-feta" class="topping-select__select-box-label">Full</label>
+              <label for="right-feta" class="topping-select__select-box-label">Right</label>
+              <input type="radio" name="feta" id="left-feta" data-side="left" class="topping-select__select-input  portion-side">
+              <input type="radio" name="feta" id="full-feta" data-side="full" class="topping-select__select-input  portion-side">
+              <input type="radio" name="feta" id="right-feta" data-side="right" class="topping-select__select-input  portion-side">
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="pizza"></div>
+    </section>
+    
+    <!-- NAV MENU -->
+ 
+  </main>
+  <!-- MAIN END -->
+
+  <!-- FOOTER BEGIN -->
+  <footer class="footer u-flex-center">
+    <div class="footer-box u-text-center fine-print--white">
+      <p>This website is owned and operated by Pizza Guys LLC</p>
+      <p>@Weston Peters</p>
+    </div>
+  </footer>
+  <script src="../../js/util.js"></script>
+  <script src="../../js/models/make-your-own.js"></script>
+  <script src="../../js/popup.js"></script>
+  <script src="../../js/cart.js"></script>
+  <script src="../../js/app.js"></script>
+  <script src="../../js/make-your-own.js"></script>
+  <script src="../../js/sidebar.js"></script>
+
+</body>
+</html>

@@ -1,33 +1,124 @@
+// shorten this fn() 
+function isStored(key) {
+  let storedItem = localStorage.getItem(key);
 
-function isCartStored() {
-  let storedCart = localStorage.getItem('cart');
-  if(storedCart) return true;
+  return Boolean(storedItem);
+};
 
-  return false;
-}
+  // const sidebar = document.querySelector('.sidebar');
+  // const sidebarMenuBtn = document.querySelector('.sidebar__hamburger-icon');
+  // const sidebarCartBtn = document.querySelector('.sidebar__cart-icon');
+  // const sidebarMenu = document.querySelector('.sidebar__nav-list');
+  // const sidebarCart = document.querySelector('.sidebar__cart');
+ 
+
+  // sidebarMenuBtn.addEventListener('click', () => {
+  //   if(sidebar.dataset.state === 'closed'){
+  //     sidebar.dataset.state = 'open'; 
+  //     openSidebar();
+  //     sidebarMenu.style.display = 'grid';
+  //   }
+  //   else if(sidebar.dataset.state === 'open' && sidebarCart.style.display === 'block'){
+  //     closeSidebar();
+
+  //     setTimeout(()=> {
+  //       openSidebar();
+  //       sidebarMenu.style.display = 'grid';
+  //     },400); 
+      
+  //   }
+  //   else if(sidebar.dataset.state === 'open') {
+  //     closeSidebar();
+  //     sidebar.dataset.state = 'closed';
+  //   }
+
+  // });
+
+  // sidebarCartBtn.addEventListener('click', () => {
+  //   if(sidebar.dataset.state === 'closed'){
+  //     sidebar.dataset.state = 'open'; 
+  //     openSidebar();
+  //     sidebarCart.style.display = 'block';
+  //   }
+  //   else if(sidebar.dataset.state === 'open' && sidebarMenu.style.display === 'grid'){
+  //     closeSidebar();
+  //     setTimeout(()=> {
+  //       openSidebar();
+  //       sidebarCart.style.display = 'block';
+  //     },400); 
+  //   }
+  //   else if(sidebar.dataset.state === 'open') {
+  //     closeSidebar();
+  //     sidebar.dataset.state = 'closed';
+  //   }
+  // });
+
+  // function openSidebar() {
+  //   if(sidebar.classList.contains('sidebar--close')) {
+  //     sidebar.classList.remove('sidebar--close');
+  //   }
+  //   sidebar.classList.add('sidebar--open');
+    
+  // };
+  // function closeSidebar() {
+  //   if(sidebar.classList.contains('sidebar--open')) {
+  //     sidebar.classList.remove('sidebar--open');
+  //   }
+  //   sidebar.classList.add('sidebar--close');
+  //   sidebarMenu.style.display = 'none';
+  //   sidebarCart.style.display = 'none';
+  // };
+  // // function toggleSideBarContent(contentType) {
+  // //   if(contentType === 'menu') {
+  // //     sidebarMenu.classList.add('sidebar__menu-list--show');
+  // //     sidebarCart.classList.remove('sidebar__cart--show');
+      
+  // //   }
+  // //   else if(contentType === 'cart') {
+  // //     sidebarCart.classList.add('sidebar__cart--show');
+  // //     sidebarMenu.classList.remove('sidebar__menu-list--show');
+  // //   }
+   
+  // // };
+
+
 
 // initiliazes cart into localStorage
-function initCartToLocalStorage() {
-  if(!isCartStored()){
+// refactor! change init cart to obj
+function initCartToLocalStorage(reset) {
+  if(!isStored('cart') || reset){
     let cartStr = JSON.stringify(
       {
         orderType: '',
         couponCode: '',
         items: [],
-        cartTotals: {}
+        cartTotals: {},
+        uuid: create_UUID()
       }
     );
     localStorage.setItem('cart', cartStr);
   };
 };
+function initPreviousOrdersToLocalStorage() {
+  if(!isStored('previousOrders')){
+    let ordersStr = JSON.stringify([]);
+    localStorage.setItem('previousOrders', ordersStr);
+  };
+};
 
-const pickupBtn = document.getElementById('pickup-btn');
-const deliveryBtn = document.getElementById('delivery-btn');
+const pickupBtn = document.querySelector('.pickup-btn');
+const deliveryBtn = document.querySelector('.delivery-btn');
 
 function setOrderType(orderType) {
-  let cart = getCartFromLocalStorage();
+  let cart = getObjFromLocalStorage('cart');
   cart.orderType = orderType;
-  setCartToLocalStorage(cart);
+  setObjToLocalStorage('cart', cart);
+};
+
+function setCouponCode(couponCode) {
+  let cart = getObjFromLocalStorage('cart');
+  cart.couponCode = couponCode;
+  setObjToLocalStorage('cart', cart);
 };
 
 if(pickupBtn && deliveryBtn) {
@@ -47,58 +138,56 @@ function setPrices() {
 };
  
 // GET/SET HELPERS 
-function getCartFromLocalStorage() {
-  let storedCart = localStorage.getItem('cart');
-  return JSON.parse(storedCart);    
+function getObjFromLocalStorage(obj) {
+  let storedObj = localStorage.getItem(obj);
+  return JSON.parse(storedObj);    
 };
-function setCartToLocalStorage(cart) {
-  localStorage.setItem('cart', JSON.stringify(cart));
-}
-    
+function setObjToLocalStorage(key, obj) {
+  localStorage.setItem(key, JSON.stringify(obj));
+};
+
+   
 // add food item to LS
+// change 'add' to 'set'
 function addItemToLocalStorage(item) {
-  let cart = getCartFromLocalStorage();
+  let cart = getObjFromLocalStorage('cart');
   cart.items.push(item);
-  setCartToLocalStorage(cart);
+  setObjToLocalStorage('cart', cart);
 };
 
 // UPDATE 
 
-// add/update coupon code
-function addCouponToLocalStorage(code) {
-  let cart = getCartFromLocalStorage();
-  cart.couponCode = code;
-  setCartToLocalStorage(cart);
-};
-
 // add/update order type
+// change 'add' to 'set'
 function addOrderTypeToLocalStorage(orderType) {
-  let cart = getCartFromLocalStorage();
+  let cart = getObjFromLocalStorage('cart');
   cart.orderType = orderType;
-  setCartToLocalStorage(cart);
+  setObjToLocalStorage('cart', cart);
 };  
     
 // DELETE
 
 function deleteItemFromLocalStorage(uuid) {
-  let cart = getCartFromLocalStorage();
+  let cart = getObjFromLocalStorage('cart');
   let itemIndex = cart.items.findIndex((item) => item.uuid === uuid);
   if(itemIndex !== -1) {
     cart.items.splice(itemIndex, 1);
-    setCartToLocalStorage(cart);
+    setObjToLocalStorage('cart', cart);
   }
 };
 
-function deleteCouponFromLocalStorage() {
-  let cart = getCartFromLocalStorage();
-  cart.couponCode = '';
-  setCartToLocalStorage(cart);
-};
 
-// populate cart from local storage function
+
+function deleteCouponFromLocalStorage() {
+  let cart = getObjFromLocalStorage('cart');
+  cart.couponCode = '';
+  setObjToLocalStorage('cart', cart);
+};
  
 
 setPrices();
 initCartToLocalStorage();
+initPreviousOrdersToLocalStorage();
 renderCart();
+// renderSidebarCart();
 

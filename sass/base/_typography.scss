@@ -50,6 +50,9 @@ body {
     color: $color-soft-white;
   }
 }
+.miniscule-text {
+  font-size: $font-size-miniscule;
+}
 
 // attach this to food item div as element -> BEM 
 .item-price {

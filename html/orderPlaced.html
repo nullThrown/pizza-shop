@@ -48,7 +48,7 @@
     </div>
 
     <div class="popup">
-      <i class="fas popup__icon"></i>
+      <i class="fas fa-check-circle popup__icon"></i>
       <p class="popup__text"></p>
     </div>
 </div>
@@ -90,7 +90,6 @@
         <li class="sidebar__menu-item active">Desserts</li>
       </a>
     </ul>
-    
     <a href="../html/about.html" class="sidebar__nav-link sidebar__nav-about">
       <li >About</li>
     </a>    
@@ -113,59 +112,10 @@
 
   </div>
 </div>
+
 <!-- MAIN BEGIN -->
 <main class="main-container">
-  <h1 class="primary-title">Cart</h1>
-  <section class="checkout">
-    <div class="product">
-        <p class="product__details">details</p>
-        <p class="product__quantity">Quantity</p>
-        <p class="product__price">Price</p>
-        <p class="product__total">Total</p>
-        <ul class="product__list">
-
-        </ul>
-    </div>
-    <div class="summary">
-      <h2 class="summary__title">Summary</h2>
-      <div class="summary__info">
-        
-        <div class="summary__order-type-btn-box">
-          <button class="btn btn--order-type pickup-btn">Pickup</button>
-          <button class="btn btn--order-type delivery-btn">Delivery</button>
-        </div>
-
-        <span class="summary__order-type" id="orderType"></span>
-        
-        <div class="u-flex-btwn summary__sub-total">
-          <p>subtotal: </p>
-          <p>$<span id="subtotal">0.00</span></p>
-        </div>
-        
-        
-        <div class="u-flex-btwn summary__tax">
-          <p>tax:</p>
-          <p>$ <span id="tax">0.00</span> </p>
-        </div>
-        
-        <div class="summary__promo-box">
-          <input type="text" id="coupon-code-input" placeholder="coupon code">
-          <button class="btn btn--apply">Apply</button>
-        </div>
-        <div class="summary__promo-code-box u-flex-btwn u-mt-5">
-          
-        </div>
-        
-        <div class="u-flex-btwn summary__total">
-          <p class="test">total: </p>
-          <p class="test">$ <span id="total">0.00</span></p>
-        </div>
-        
-      </div>
-      <a href="./orderPlaced.html" class="btn btn-link--place-order">Place Order</a>
-    </div>
-  </section>
-  
+ <h1>Your order has been placed!!!!</h1>
 </main>
 <!-- MAIN END -->
 <!-- FOOTER BEGIN -->
@@ -176,13 +126,11 @@
   </div>
 </footer>
   <script src="../js/models/foodItems.js"></script>
-  <script src="../js/models/Coupons.js"></script>
   <script src="../js/util.js"></script>
   <script src="../js/popup.js"></script>
   <script src="../js/menu.js"></script>
+  <script src="../js/sidebar.js"></script>
   <script src="../js/cart.js"></script>
   <script src="../js/app.js"></script> 
-  <script src="../js/sidebar.js"></script>
-  <script src="../js/checkout.js"></script>
 </body>
 </html>

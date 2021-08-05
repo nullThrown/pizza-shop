@@ -80,12 +80,14 @@ addToCartBtns.forEach(btn => {
       sauceSelectEl, 
       countEl.value,
       originalPrice, 
-      totalPrice
+      totalPrice,
+      foodItem.imageLink 
     );
     addItemToLocalStorage(cartItem);
 
-    activatePopupOnCart();
+    activateSuccessPopup(`${cartItem.name} has been added to your cart`);
     renderCart();
+    renderSidebarCart();
   });
 });
 
