@@ -1,0 +1,177 @@
+input[type="radio"] {
+  width: 20px;
+  height: 40px;
+} 
+
+.make-container {
+  display: grid;
+  grid-template-columns: 70% minmax(200px, 300px);
+  grid-template-rows: repeat(3, min-content);
+}
+// make radio buttons larger 
+// change color or radio buttons 
+.select-box {
+  display: grid;
+  font-size: 1.6rem;
+  grid-template-columns: 50% 50%;
+  
+}
+.size-box {
+  @extend .select-box;
+
+  &__title-box {
+    justify-self: center;
+  }
+  
+  &__selectors-box {
+    display: grid;
+    grid-template-columns: 125px 125px;
+    grid-template-rows: repeat(4, min-content);  
+    row-gap: 12px;
+    align-items: center;
+
+    & > div {
+      display: flex;
+      align-items: center;
+
+      & > input {
+        margin-right: 5px;
+      }
+    }
+  }
+} 
+.crust-box {
+  @extend .select-box;
+  margin-top: 50px;
+
+  &__title-box {
+    justify-self: center;
+  }
+  &__selectors-box {
+    display: grid;
+    grid-template-rows: repeat(3, min-content);
+    row-gap: 12px;
+    
+    & > div {
+      display: flex;
+      align-items: center;
+      & > input {
+        margin-right: 5px;
+      }
+    }
+  }
+} 
+.current-order {
+  border: 1px solid rgba(255, 0, 0, 0.15);
+  border-radius: 4px;
+  
+  &__price {
+    font-size: $font-size-medium-large;
+  }
+  &__info-box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+
+
+    & > * {
+      margin-top: 20px;
+    }
+
+  }
+  &__count-box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100px;
+
+  }
+  &__count {
+    font-size: $font-size-medium;
+    padding: 0 10px;
+  }
+  &__size{
+    align-self: start;
+    font-size: $font-size-default;
+    margin-left: 10px;
+  }
+  &__crust{
+    align-self: start;
+    font-size: $font-size-default;
+    margin-left: 10px;
+  }
+  &__toppings-box {
+    margin: 40px 10px;
+  }
+  &__topping-category {
+    margin: 10px 0 5px;
+
+    & > h4 {
+      font-size: $font-size-medium;
+      font-family: 'Lato', sans-serif;
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    & > p {
+      font-size: $font-size-small;
+    }
+  }
+  &__topping {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: $font-size-default;
+    max-width: 60%;
+    min-width: 200px;
+    margin: 5px 0 0 10px;  
+
+    & button {
+      margin-left: 18px;
+    }
+  }
+}
+.topping-select {
+  grid-row: 3 / 4;
+  margin-top: 30px;
+
+  &--meats {
+  }
+  &--veggies {
+    display: none;
+  }
+  &--cheese {
+    display: none;
+  }
+
+&__categories {
+  font-size: 24px;
+  height: 80px;
+  display: flex;
+  border: 1px solid rgba(128, 128, 128, 0.212);
+  border-radius: 5px;
+  padding: 20px 0;
+  justify-content: center;
+  align-items: center;
+ }
+
+ &__topping {
+   display: flex;
+   font-size: $font-size-medium;
+   border: 1px solid rgba(128, 128, 128, 0.212);
+  padding: 20px 40px;
+
+  & h4 {
+    align-self: center;
+  }
+ }
+ &__select-box {
+   margin-left: auto;
+   display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 5px;
+  justify-items: center;
+ }
+}

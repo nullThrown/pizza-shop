@@ -3,19 +3,19 @@ const largePizzaSideBtn = document.getElementById('large-pizza-side-btn');
 const medPizza2LiterBtn = document.getElementById('med-pizza-2liter-btn');
 const over40Btn = document.getElementById('over-40-btn');
 
+
+// change 'add' to render
 function addCouponCode (coupon) {
-    let cart = getCartFromLocalStorage();
-     
+    let cart = getObjFromLocalStorage('cart');
+    let message = ''; 
     if(cart.couponCode === coupon.id) {
-      popupText.textContent = `${cart.couponCode} has already been added.`
+    message = `${cart.couponCode} has already been added.`
     }
     else {
-      cart.couponCode = coupon.id;
-      popupText.textContent = coupon.activeMessage; 
+      setCouponCode(coupon.id);
+      message = coupon.activeMessage; 
     }
-    setCartToLocalStorage(cart);
-    activateSuccessPopup();
-
+    activateSuccessPopup(message);
   };
 
 threeMedBtn.onclick = function () {

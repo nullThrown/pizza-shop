@@ -8,17 +8,29 @@
     &:hover {
       border-bottom: 1px solid $color-dark-red;
     }
-  }
+  } 
 
   &--add-to-cart {
     font-size: $font-size-default;
     border: 1px solid $color-text-primary;
     border-radius: 4px;
     padding: 8px 10px;
-
+ 
     &:hover {
       color: $color-soft-white;
       background-color: $color-text-primary;
+    }
+  }
+
+  &--add-custom-to-cart {
+    background-color: rgb(194, 61, 61);
+    color: $color-soft-white;
+    font-size: $font-size-medium;
+    padding: 15px 25px;
+    border-radius: 10px;
+
+    &:hover {
+      background-color: rgba(194, 61, 61, 0.89);
     }
   }
   &--cancel {
@@ -26,14 +38,51 @@
     color: rgb(190, 190, 190);
     padding: 4px;
     border-radius: 4px;
+    border: none;
     font-size: $font-size-default;
     float: right;
+    
 
     &:hover {
       color: rgb(140, 140, 140);
-      // background-color: rgb(240, 240, 240);
+     
     }
   }
+  &--checkout-remove {
+    background-color: inherit;
+    font-size: $font-size-default;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.198);
+    padding: 0 10px;
+
+    background: linear-gradient(to left, $color-soft-white 50%, rgb(170, 27, 27) 50%) right;
+    background-size: 200%;
+    transition: .3s ease-out;
+    grid-row: 1 / -1;
+    grid-column: 6 / 7;
+  
+    &:hover {
+      background-position: left;
+      color: honeydew;
+    }
+  }
+
+  &--toppings {
+    margin-left: 20px;
+    border: none;
+    height: 80px;
+    width: 100px;
+    border-radius: 4px;
+    font-size: $font-size-medium;
+    background-color: rgba(255, 0, 0, 0.082);
+
+    &:hover {
+      background-color: rgba(255, 0, 0, 0.335);
+    } 
+    &--active {
+      background-color: rgba(255, 0, 0, 0.335);
+    }
+  }
+
 
   &__checkout {
     display: inline-block;
@@ -76,6 +125,24 @@
 
     &:hover {
       background-color: rgb(206, 209, 206);
+    }
+  }
+
+  &--count {
+    font-size: $font-size-medium;
+    background-color: $color-soft-white;
+    
+    &:hover {
+      transform: scale(1.15);
+    }
+  }
+
+  &--disabled {
+    background-color: rgb(180, 180, 180) !important;
+
+    &:hover {
+     cursor: not-allowed !important;
+     background-color: rgb(180, 180, 180) !important;
     }
   }
 } 
@@ -127,5 +194,21 @@
     background-color: rgb(151, 34, 34);
   } 
 }
+
+.sidebar__nav-link {
+  color: $color-soft-white;
+  justify-self: start;
+  padding: 5px;
+}
+.sidebar__menu-item {
+  color: $color-soft-white;
+
+}
+.sidebar--active {
+  border: 1px $color-soft-white solid;
+}
+
+
+
 
 

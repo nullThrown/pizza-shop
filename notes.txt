@@ -1,18 +1,37 @@
      Things to complete tomorrow 
-      *display ordertype within cart and checkout page 
-      *render cart onto checkout page 
-      *allow users to place order 
-      *save order in LS 
       *fix cart requiring 2 clicks for initial display
-     Business Logic
+
+
+      *SIDEBAR
+        *fix bug on checkout page -- place order btn stays gray after order type is selected
+
+
+        *style, change background, perhaps make it the size of the entire page 
+        *make 'make your own' page fully responsive 
+         
+           
      
+      REFACTORING CONSIDERATIONS
+     
+     Business Logic/JS
+
       General 
+        * have clear usage of proper function names/verbs 
+        get -- gets data from LS
+        set -- sets data into LS
+        render -- grabs data from LS and places onto DOM/ usually accompanied by an element creation  
+        toggle -- alters between two states of being(i.e hidden/shown, true/false etc.)
+        populate -- data is filled into pre-existing fields(i.e radio buttons, summary)
+        delete -- removes data from LS
+        init -- initiliazes something, usually an object or other data structure necessary to store information 
+
+        *test on all browsers -- desktop and phone
+
         *fix isDuplicate fn() on cart object
-        *find file structure suitable for project
         *refactor eventlisteners  
           write single function or two separate ones if necessary for size change selectors and count selectors 
            use querySelectorAll to select food item divs and then select elements from within --- 
-           not sure why I think this is better,but, at one point it struck me to do it this way
+           not sure why I think this is better, but at one point it struck me to do it this way
            and at the time it appeared to make sense 
            even though now I'm not sure why that would be better. 
 
@@ -20,157 +39,41 @@
            
         Index
         
-          Order Online 
-            *add functionality to pickup and Delivery buttons 
-            *set property on order/cart object -- for either pick up or delivery 
-            *create pop-down for most popular section 
-              that allows users to select size, crust etc. -- same interface as menu page
-
+          Most Popular
+            *order online button links to respective menu page 
+              *also link to specific section in the page 
+          
           Deals
-            *
-              *have deal run function on final price 
-              *add function that displays a popup for removed deal
-              *remove settimeout so that all popups will be displayed for 3 seconds
-
-        Menu 
-          Cart
-            *save and render previous orders  
+            *have deal run function on final price 
+            *add function that displays a popup for removed deal
+            *remove settimeout so that all popups will be displayed for 3 seconds
             
+    UI Changes/HTML, CSS
 
-
-  UI Changes
+    *make all red colors consistent -- use variables. Use 2-3 red colors 
+    
 
     All pages
+      *fix cart item count animation to run upon item addition
+      *change all primary headers to cool font 
       *find logo to replace Pizza Guys text  
       *mess around with secondary title fonts(i.e order online, most popular, menu, about) 
     
     Index
 
-      Most Popular  
-        *create pop-down for on order now button click 
-          should give user the ability to select size, crust etc.
       Deals  
-        *add popup when a popup is removed       
-
-      
+        *add popup when a item is removed       
+  
     Menu
       Food Item Card  
         *change food item title fonts -- very boring 
         *add hover effect to more info buttons -- to show toppings etc.
 
-      Make Your Own 
-        *create make your own page 
-        *set up for toppings on one half or another or both 
-      
-      Checkout Page   
-        *make checkout page responsive
-          
-    About 
-      My Story Section
         
 
-*MENU --
+
 
    
-*change all primary headers to cool font 
-* fix buttons on index -- most popular section. Switch out pizzas 
 
 
-
-
-menu items 
-
-******* Pizza ******* 
-
-create your own
-
-*cheese 
-
-*pepperoni
-
-*Works
-
-*Sausage
-
-*Meats
-
-*Vegetarian
-
-*Hawaiian 
-
-*BBQ Chicken
-
-*Six cheese 
-    ******* Toppings/options *******
-  ** options **
-      size
-      half/half 
-      crust option 
-      bake option   
-
-  ** sause **
-     None 
-     BBQ
-     Ranch
-     light
-     normal 
-     heavy
-
-  ** Cheese **
-    Mozarrela 
-    cheese blend
-    parmesan Romano
-
- **  Meats ** 
-    chicken 
-    pepperoni
-    Sausage
-    bacon
-    canadian bacon
-    salami
-
-**  Veggies **
-    onions
-    spinach
-    roasted garlic
-    black olives
-    pineapple
-    green peppers
-    jalepeno peppers
-    roma tomatoes
-    mushrooms
-
-
-
-******* Sides *******
-
-        *jalepeno poppers
-        *garlic bread
-        *parmesan breadsticks
-         *chicken wings
-        *regular fries
-        *garlic fries
-      *chicken nuggets
-      *caesar salad 
-      *garden salad
-
-
-
-******* desserts *******
-        *cinnamon sticks
-        *chocalate brownie
-        *chocalate chip cookie
-
-
-******* Drinks *******
-        *coke 
-        *diet coke
-        *root beer 
-        sprite
-        Dr pepper
-        crush grape
-
-******* extras *******
-        sauces -- bbq, ranch, spicy garlic, marinara, buffalo
-        dressing -- thousand island, vinagrette, ranch
 

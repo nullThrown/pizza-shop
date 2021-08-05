@@ -43,13 +43,71 @@
             <p>Total</p><p class="u-text-right">$<span class="u-text-right" id="cart-total">0.00</span></p>
           </div>
           <div class="cart__checkout-box">
-            <a href="../checkout.html" class="btn btn__checkout">Checkout</a>
+            <a href="../html/checkout.html" class="btn btn__checkout">Checkout</a>
           </div>
         </div>  
       </div>
   </div>
   </header>
   <!-- HEADER END -->
+
+  <div class="sidebar" data-state="closed">
+    <button class="btn"><i class="fas fa-bars sidebar__hamburger-icon"></i></button>
+    
+    <button class="btn sidebar__cart-icon">
+      <i class="fas fa-shopping-cart fa-3x"></i>
+      <span class="cart-icons sidebar__cart-count">0</span>
+      <p class="cart-icons">cart</p>
+    </button>
+
+    
+    <ul class="sidebar__nav-list">
+      <li class="sidebar__menu-title">menu</li>
+      <a class="sidebar__nav-link sidebar__nav-home" href="../html/index.html">
+        <li>Home</li>
+      </a>
+      <a href="../html/menu/most-popular.html" class="sidebar__nav-link sidebar__nav-menu">
+        <li >Menu</li>
+      </a>
+      <ul class="sidebar__menu-list">
+        <a href="../html/menu/most-popular.html">
+          <li class="sidebar__menu-item">Most Popular</li>
+        </a>
+        <a href="../html/menu/make-your-own.html">
+          <li class="sidebar__menu-item">Make Your Own</li>
+        </a>
+        <a href="../html/menu/pizzas.html">
+          <li class="sidebar__menu-item">Pizzas</li>
+        </a>
+        <a href="../html/menu/sides.html">
+          <li class="sidebar__menu-item">Sides</li>
+        </a>
+        <a href="../html/menu/desserts.html ">
+          <li class="sidebar__menu-item active">Desserts</li>
+        </a>
+      </ul>
+      <a href="../html/about.html" class="sidebar__nav-link sidebar__nav-about sidebar--active">
+        <li >About</li>
+      </a>    
+    </ul>
+
+    <div class="sidebar__cart">
+      <h4 class="cart__title">Cart</h4>
+      <span class="cart__order-type"></span>
+      <ul class="sidebar__cart-list">
+        
+      </ul>
+      <div class="cart__total-box">
+        <p>Subtotal</p><p class="u-text-right">$<span class="u-text-right" id="sidebar-subtotal">0.00</span></p>
+        <p>Tax</p><p class="u-text-right">$<span class="u-text-right" id="sidebar-tax">0.00</span></p>
+        <p>Total</p><p class="u-text-right">$<span class="u-text-right" id="sidebar-total">0.00</span></p>
+      </div>
+      <div class="cart__checkout-box">
+        <a href="../html/checkout.html" class="btn btn__checkout">Checkout</a>
+      </div>
+
+    </div>
+  </div>
 
     <!-- BANNER -->
     <section class="banner banner--top u-flex-center">
@@ -86,6 +144,7 @@
   </footer>
   <script src="../js/cart.js"></script>
   <script src="../js/app.js"></script>
+  <script src="../js/sidebar.js"></script>
 </body>
 </html>
 

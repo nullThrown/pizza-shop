@@ -77,3 +77,20 @@
     transform: scaleY(1);
   }
 }
+@keyframes openSidebar {
+  from {
+    right: -320px;
+  }
+  to {
+    right: 0px;
+  }
+}
+
+@keyframes closeSidebar {
+  from {
+    right: 0px;
+  }
+  to {
+    right: -320px;
+  }
+}

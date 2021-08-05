@@ -7,11 +7,18 @@
   & ul> li {
     list-style: none;
   }
+  @media (max-width: 520px) {
+    display: none;
+  }
 
   &__menu {
     width: 540px;
     font-size: $font-size-default;
     margin-top: 8rem;
+
+    @media (max-width: 520px) {
+      display: none;
+    }
 
     ul> li {
       list-style: none;
