@@ -1,13 +1,10 @@
      Things to complete tomorrow 
       *fix cart requiring 2 clicks for initial display
 
+        TODO NOW
 
-      *SIDEBAR
-        *fix bug on checkout page -- place order btn stays gray after order type is selected
-
-
-        *style, change background, perhaps make it the size of the entire page 
         *make 'make your own' page fully responsive 
+        *style, change background, perhaps make it the size of the entire page 
          
            
      
