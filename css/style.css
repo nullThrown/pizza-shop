@@ -6,7 +6,8 @@
   box-sizing: border-box; }
 
 html {
-  font-size: 62.5%; }
+  font-size: 62.5%;
+  overflow-x: hidden; }
 
 body {
   box-sizing: border-box;
@@ -221,7 +222,6 @@ body {
       background-position: left;
       color: honeydew; }
   .btn--toppings {
-    margin-left: 20px;
     border: none;
     height: 80px;
     width: 100px;
@@ -486,7 +486,7 @@ body {
       .sidebar__hamburger-icon {
         display: none; } }
   .sidebar__cart-icon {
-    background: whitesmoke;
+    background: transparent;
     position: absolute;
     top: 60px;
     right: 320px;
@@ -945,8 +945,19 @@ input[type="radio"] {
 
 .make-container {
   display: grid;
-  grid-template-columns: 70% minmax(200px, 300px);
-  grid-template-rows: repeat(3, min-content); }
+  grid-template-columns: 70% minmax(280px, 300px);
+  grid-template-rows: repeat(3, min-content);
+  margin: 40px 0; }
+  @media (max-width: 880px) {
+    .make-container {
+      grid-template-columns: 1fr; } }
+
+@media (max-width: 880px) {
+  .select-section {
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+    width: 96%;
+    margin: 0 auto; } }
 
 .select-box, .size-box, .crust-box {
   display: grid;
@@ -955,6 +966,9 @@ input[type="radio"] {
 
 .size-box__title-box {
   justify-self: center; }
+
+.size-box__price {
+  width: min-content; }
 
 .size-box__selectors-box {
   display: grid;
@@ -985,6 +999,10 @@ input[type="radio"] {
 .current-order {
   border: 1px solid rgba(255, 0, 0, 0.15);
   border-radius: 4px; }
+  @media (max-width: 880px) {
+    .current-order {
+      grid-column: 1 / -1;
+      grid-row: 3 / 4; } }
   .current-order__price {
     font-size: 2.4rem; }
   .current-order__info-box {
@@ -1007,10 +1025,16 @@ input[type="radio"] {
     align-self: start;
     font-size: 1.6rem;
     margin-left: 10px; }
+    @media (max-width: 880px) {
+      .current-order__size {
+        align-self: center; } }
   .current-order__crust {
     align-self: start;
     font-size: 1.6rem;
     margin-left: 10px; }
+    @media (max-width: 880px) {
+      .current-order__crust {
+        align-self: center; } }
   .current-order__toppings-box {
     margin: 40px 10px; }
   .current-order__topping-category {
@@ -1030,12 +1054,19 @@ input[type="radio"] {
     max-width: 60%;
     min-width: 200px;
     margin: 5px 0 0 10px; }
+    @media (max-width: 880px) {
+      .current-order__topping {
+        max-width: 100%; } }
     .current-order__topping button {
       margin-left: 18px; }
 
 .topping-select {
   grid-row: 3 / 4;
   margin-top: 30px; }
+  @media (max-width: 880px) {
+    .topping-select {
+      grid-column: 1 / -1;
+      grid-row: 2 / 3; } }
   .topping-select--veggies {
     display: none; }
   .topping-select--cheese {
@@ -1049,6 +1080,8 @@ input[type="radio"] {
     padding: 20px 0;
     justify-content: center;
     align-items: center; }
+    .topping-select__categories > button:not(:first-child) {
+      margin-left: 20px; }
   .topping-select__topping {
     display: flex;
     font-size: 2rem;
