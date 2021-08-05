@@ -5,22 +5,39 @@ input[type="radio"] {
 
 .make-container {
   display: grid;
-  grid-template-columns: 70% minmax(200px, 300px);
+  grid-template-columns: 70% minmax(280px, 300px);
   grid-template-rows: repeat(3, min-content);
+
+  margin: 40px 0;
+  @media (max-width: 880px) {
+    grid-template-columns: 1fr;
+  }
 }
-// make radio buttons larger 
-// change color or radio buttons 
+
+.select-section {
+  @media(max-width: 880px) {
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+    width: 96%;
+    margin: 0 auto;
+  }
+}
+
 .select-box {
   display: grid;
   font-size: 1.6rem;
   grid-template-columns: 50% 50%;
-  
 }
 .size-box {
   @extend .select-box;
 
   &__title-box {
     justify-self: center;
+  }
+
+  &__price {
+    // color: red;
+    width: min-content;
   }
   
   &__selectors-box {
@@ -37,6 +54,7 @@ input[type="radio"] {
       & > input {
         margin-right: 5px;
       }
+     
     }
   }
 } 
@@ -65,6 +83,11 @@ input[type="radio"] {
   border: 1px solid rgba(255, 0, 0, 0.15);
   border-radius: 4px;
   
+  @media(max-width: 880px) {
+    grid-column: 1 / -1;
+    grid-row:  3 / 4;
+  }
+
   &__price {
     font-size: $font-size-medium-large;
   }
@@ -96,14 +119,25 @@ input[type="radio"] {
     align-self: start;
     font-size: $font-size-default;
     margin-left: 10px;
+
+    @media (max-width: 880px) {
+      align-self: center;
+    }
   }
   &__crust{
     align-self: start;
     font-size: $font-size-default;
     margin-left: 10px;
+
+    @media (max-width: 880px) {
+      align-self: center;
+    }
   }
   &__toppings-box {
     margin: 40px 10px;
+    @media (max-width: 880px) {
+    
+    }
   }
   &__topping-category {
     margin: 10px 0 5px;
@@ -126,7 +160,11 @@ input[type="radio"] {
     font-size: $font-size-default;
     max-width: 60%;
     min-width: 200px;
-    margin: 5px 0 0 10px;  
+    margin: 5px 0 0 10px; 
+    
+    @media (max-width: 880px) {
+      max-width: 100%;
+    }
 
     & button {
       margin-left: 18px;
@@ -136,6 +174,11 @@ input[type="radio"] {
 .topping-select {
   grid-row: 3 / 4;
   margin-top: 30px;
+
+  @media(max-width: 880px) {
+    grid-column: 1 / -1;
+    grid-row: 2 / 3;
+  }
 
   &--meats {
   }
@@ -155,7 +198,12 @@ input[type="radio"] {
   padding: 20px 0;
   justify-content: center;
   align-items: center;
- }
+  
+  & > button:not(:first-child) {
+    margin-left: 20px;
+  }
+
+}
 
  &__topping {
    display: flex;
