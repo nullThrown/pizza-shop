@@ -128,7 +128,8 @@ function createCartItem(item, container) {
   
 
 function toggleCartDisplay() {
-  if(cartEl.style.display === 'none') {
+  let cartElStyles = window.getComputedStyle(cartEl);
+  if(cartElStyles.display === 'none') {
    cartEl.style.display = 'block'; 
   }
   else {
@@ -175,20 +176,10 @@ function renderOrderType() {
   if(cart.orderType) orderTypeP.textContent = cart.orderType; 
 };
 
-
-
-// function isDuplicateItem(name, size, crust, sauce) {
-//   cart.some((item) => {
-//     if(
-//        item.name === name &&
-//        item.size === size &&
-//        item.crust === crust &&
-//        item.sauce === sauce 
-//       ) {
-//         item.count++;
-//         console.log('this item is a duplicate')
-//         return true;
-//       }
-//     });
-//     return false;
-// };
+function activateCartCount() {
+  const cartCount = document.getElementById('cart-count');
+  cartCount.classList.add('header__cart-box--active');
+  setTimeout(() => {
+    cartCount.classList.remove('header__cart-box--active')
+  }, 200);
+}
