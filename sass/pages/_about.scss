@@ -19,10 +19,8 @@
     width: 50%;
     font-size: $font-size-default;
     align-self: center;
-    background-color: rgb(238, 236, 236);
-    // color: white;
+    background-color: $color-lightest-grey;
     padding: 31px 20px;
-    // border-radius: 8px;
     line-height: 27px;
     text-indent: 24px;
     animation: moveInLeft 500ms ease-out;
