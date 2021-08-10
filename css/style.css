@@ -727,6 +727,8 @@ body {
   background-color: rgba(0, 0, 0, 0.9);
   border-top-left-radius: 3px;
   border-top-right-radius: 3px; }
+  .footer p:nth-child(2) {
+    display: none; }
 
 .flex-row-btwn {
   display: flex;
