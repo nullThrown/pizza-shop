@@ -23,19 +23,19 @@
   }
 
   &--add-custom-to-cart {
-    background-color: rgb(194, 61, 61);
+    background-color: $color-orange-red;
     color: $color-soft-white;
     font-size: $font-size-medium;
     padding: 15px 25px;
     border-radius: 10px;
 
     &:hover {
-      background-color: rgba(194, 61, 61, 0.89);
+      background-color: $color-orange-red-light;
     }
   }
   &--cancel {
     background-color:inherit;
-    color: rgb(190, 190, 190);
+    color: $color-dark-grey;
     padding: 4px;
     border-radius: 4px;
     border: none;
@@ -44,7 +44,7 @@
     
 
     &:hover {
-      color: rgb(140, 140, 140);
+      color: $color-darkest-grey;
      
     }
   }
@@ -54,15 +54,21 @@
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.198);
     padding: 0 10px;
 
-    background: linear-gradient(to left, $color-soft-white 50%, rgb(170, 27, 27) 50%) right;
+    background: linear-gradient(to left, $color-soft-white 50%, $color-dark-red 50%) right;
     background-size: 200%;
     transition: .3s ease-out;
     grid-row: 1 / -1;
     grid-column: 6 / 7;
+
+    @media (max-width: 600px) {
+      font-size: $font-size-small;
+      padding: 0 2px; 
+      margin: 0;
+    }
   
     &:hover {
       background-position: left;
-      color: honeydew;
+      color: $color-soft-white;
     }
   }
 
@@ -86,14 +92,14 @@
   &__checkout {
     display: inline-block;
     margin: 0 auto;
-    background-color: rgb(223, 57, 57);
-    color: white;
+    background-color: $color-orange-red;
+    color: $color-soft-white;
     font-size: $font-size-small;
     border-radius: 2px;
     padding: 10px 12px;
 
     &:hover {
-      background-color: rgb(236, 98, 98);
+      background-color: $color-orange-red-light;
     }
   }
 
@@ -118,12 +124,12 @@
   &--apply {
     color: $color-soft-black;
     font-size: $font-size-default;
-    background-color: rgb(214, 218, 214);
+    background-color: $color-light-grey;
     border-radius: 8px;
     padding: 8px;
 
     &:hover {
-      background-color: rgb(206, 209, 206);
+      background-color: $color-dark-grey;
     }
   }
 
@@ -182,7 +188,7 @@
   font-size: $font-size-default;
   text-align: center;
   text-transform: uppercase;
-  background-color: rgb(184, 43, 43);
+  background-color: $color-red;
   display: block; 
   max-width: 200px;
   margin: 0 auto;
@@ -190,7 +196,7 @@
   border-radius: 4px;
 
   &:hover {
-    background-color: rgb(151, 34, 34);
+    background-color: $color-dark-red;
   } 
 }
 
