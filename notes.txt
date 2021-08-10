@@ -1,16 +1,12 @@
-     Things to complete tomorrow 
-      *fix cart requiring 2 clicks for initial display
-
-        TODO NOW
-
-        *make 'make your own' page fully responsive 
-        *style, change background, perhaps make it the size of the entire page 
-         
-           
      
-      REFACTORING CONSIDERATIONS
+
+  TODO NOW
+      
+      
+      
+  REFACTORING CONSIDERATIONS
      
-     Business Logic/JS
+    Business Logic/JS
 
       General 
         * have clear usage of proper function names/verbs 
@@ -24,53 +20,23 @@
 
         *test on all browsers -- desktop and phone
 
-        *fix isDuplicate fn() on cart object
-        *refactor eventlisteners  
-          write single function or two separate ones if necessary for size change selectors and count selectors 
-           use querySelectorAll to select food item divs and then select elements from within --- 
-           not sure why I think this is better, but at one point it struck me to do it this way
-           and at the time it appeared to make sense 
-           even though now I'm not sure why that would be better. 
+    Future CONSIDERATIONS
 
-        *write separate function for add to cart buttons 
-           
-        Index
-        
-          Most Popular
-            *order online button links to respective menu page 
-              *also link to specific section in the page 
-          
-          Deals
-            *have deal run function on final price 
-            *add function that displays a popup for removed deal
-            *remove settimeout so that all popups will be displayed for 3 seconds
-            
-    UI Changes/HTML, CSS
+        Logic
 
-    *make all red colors consistent -- use variables. Use 2-3 red colors 
-    
+          *fix isDuplicate fn() on cart object
+          *refactor eventlisteners  
+            write single function or two separate ones if necessary for size change selectors and count selectors 
+            use querySelectorAll to select food item divs and then select elements from within --- 
+            not sure why I think this is better, but at one point it struck me to do it this way
+            and at the time it appeared to make sense 
+            even though now I'm not sure why that would be better. 
 
-    All pages
-      *fix cart item count animation to run upon item addition
-      *change all primary headers to cool font 
-      *find logo to replace Pizza Guys text  
-      *mess around with secondary title fonts(i.e order online, most popular, menu, about) 
-    
-    Index
-
-      Deals  
-        *add popup when a item is removed       
-  
-    Menu
-      Food Item Card  
-        *change food item title fonts -- very boring 
-        *add hover effect to more info buttons -- to show toppings etc.
-
-        
-
-
-
+          *add hover effect to more info buttons -- to show toppings etc.
+        UI
    
-
-
+          Deals  
+        *remove settimeout so that all popups will be displayed for 3 seconds
+        *add popup when a item is removed    
+        *have deal run function on final price 
 
