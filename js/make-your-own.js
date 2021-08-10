@@ -218,6 +218,7 @@ addCustomToCartbtn.addEventListener('click', (e) => {
     cart.items.push(customPizza);
     setObjToLocalStorage('cart', cart);
     initCustomPizzaToLocalStorage(true);
+    activateCartCount();
     activateSuccessPopup('custom Pizza has been added to your cart');
     renderCart();
     renderSidebarCart();
