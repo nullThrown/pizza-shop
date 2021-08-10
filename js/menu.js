@@ -84,7 +84,7 @@ addToCartBtns.forEach(btn => {
       foodItem.imageLink 
     );
     addItemToLocalStorage(cartItem);
-
+    activateCartCount();
     activateSuccessPopup(`${cartItem.name} has been added to your cart`);
     renderCart();
     renderSidebarCart();
