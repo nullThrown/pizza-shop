@@ -2,8 +2,7 @@ const popup = document.querySelector('.popup');
 const popupIcon = document.querySelector('.popup__icon');
 const popupText = document.querySelector('.popup__text');
 
-// these can be a single function --with a single arg that determines success or failure 
-// change 'activate' to 'render'
+// these can be a single function --with a single arg that determines success or failure
 
 // success check: fa-check-circle
 // faulure check:  fa-ban
@@ -15,9 +14,9 @@ function activateSuccessPopup(message) {
   setTimeout(() => {
     popup.style.display = 'none';
     popup.classList.remove('popup--success');
-  popupIcon.classList.remove('fa-check-circle', 'popup__icon--success');
+    popupIcon.classList.remove('fa-check-circle', 'popup__icon--success');
   }, 3000);
-};
+}
 
 function activateFailurePopup(message) {
   popupText.textContent = message;
@@ -27,12 +26,6 @@ function activateFailurePopup(message) {
   setTimeout(() => {
     popup.style.display = 'none';
     popup.classList.remove('popup--failure');
-  popupIcon.classList.remove('fa-ban', 'popup__icon--failure');
+    popupIcon.classList.remove('fa-ban', 'popup__icon--failure');
   }, 3000);
-};
-
-
-
-
-
-
+}
