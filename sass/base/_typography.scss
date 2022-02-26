@@ -1,8 +1,3 @@
-
-body {
-  font-family: 'Nunito', sans-serif ;
-}
-
 .primary-title {
   font-size: $font-size-xxlarge;
   font-weight: 300;
@@ -21,12 +16,11 @@ body {
   margin: 6rem auto 4rem;
   border-bottom: 1px solid $color-dark-grey;
   width: fit-content;
-
 }
 
 .tertiary-title {
   font-size: $font-size-medium-large;
-  margin: 1.5rem 0 .8rem;
+  margin: 1.5rem 0 0.8rem;
 
   &--white {
     color: $color-soft-white;
@@ -34,16 +28,16 @@ body {
 }
 .quaternary-title {
   font-size: $font-size-large;
-  font-family: 'Reggae one'; 
-  
+  font-family: 'Reggae one';
+
   &--white {
     color: $color-soft-white;
-  } 
+  }
 }
 
 .fine-print {
-  color: $color-text-primary;
   font-size: $font-size-small;
+  color: $color-text-primary;
 
   &--white {
     font-size: $font-size-small;
@@ -52,19 +46,19 @@ body {
 }
 .miniscule-text {
   font-size: $font-size-miniscule;
+  color: $color-text-primary;
 }
 
-// attach this to food item div as element -> BEM 
+// attach this to food item div as element -> BEM
 .item-price {
   font-size: $font-size-medium-large;
   color: $color-text-primary;
   padding: 10px 0 15px;
 
   &__amount {
-    font-size: $font-size-large; 
+    font-size: $font-size-large;
   }
 }
-
 
 .nav-link {
   color: $color-text-primary;

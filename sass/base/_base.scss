@@ -1,7 +1,6 @@
 *,
 *::after,
-*::before
- {
+*::before {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -9,10 +8,8 @@
 html {
   //1rem = 10px
   font-size: 62.5%;
-  overflow-x: hidden;
 }
 body {
-  box-sizing: border-box;
   background-color: $color-soft-white;
   font-family: $font-Nunito;
 }
@@ -24,5 +21,5 @@ a {
 .main-container {
   max-width: $container-max-width;
   width: $container-width;
-  margin: 0 auto; 
-} 
+  margin: 0 auto;
+}

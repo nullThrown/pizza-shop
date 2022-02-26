@@ -1,9 +1,9 @@
 .about-box {
   margin: 10rem auto;
-  max-width: 900px; 
+  max-width: 900px;
   display: flex;
   justify-content: center;
- 
+
   &__img {
     background-image: url('../../img/founder.jpg');
     background-repeat: no-repeat;
@@ -35,20 +35,16 @@
   .about-box {
     flex-direction: column;
     margin: 5rem auto;
-    
+
     &__img {
       animation: none;
       height: 360px;
       width: 100%;
       align-self: center;
-
-    } 
+    }
     &__text-box {
       animation: none;
       width: 100%;
     }
   }
-
 }
-
-
