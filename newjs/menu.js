@@ -2,9 +2,16 @@ const itemSizeSelecters = document.querySelectorAll('.item-size-select');
 const itemCountSelectors = document.querySelectorAll('.food-item-count');
 const addToCartBtns = document.querySelectorAll('.btn--add-to-cart');
 
+addToCartBtns.forEach((btn) => (btn.onclick = handleAddToCart));
+
+itemSizeSelecters.forEach((selector) => (selector.onchange = handleSizeSelect));
+
+itemCountSelectors.forEach(
+  (selector) => (selector.onchange = handleCountSelect)
+);
 // determines price of specific food item based on size, type, count etc.
 function determinePrice(size, count, uuid) {
-  let foodItem = foodItems.find((foodItem) => foodItem.id == uuid);
+  const foodItem = foodItems.find((foodItem) => foodItem.id === uuid);
   let price = 0;
 
   if (!size) {
@@ -30,85 +37,76 @@ function determinePrice(size, count, uuid) {
     originalPrice: price,
   };
 }
-// event listeners for size selects on all menu items
-// if size changes
-// price of food item changes by running determine price
-itemSizeSelecters.forEach((sizeSelector) => {
-  sizeSelector.addEventListener('change', () => {
-    let priceEl = sizeSelector.parentNode.querySelector('.item-price__amount');
-    let countEl =
-      sizeSelector.parentNode.querySelector('.food-item-count').value;
-    let uuid = sizeSelector.parentNode.dataset.uuid;
-    priceEl.textContent = determinePrice(
-      sizeSelector.value,
-      countEl,
-      uuid
-    ).totalPrice;
-  });
-});
+// changes food item price when size is selected
 
-//event listener for count selects on all menu items
-// if count changes
-// count of specific item (selected with id) is changed by running determinePrice
-itemCountSelectors.forEach((countSelector) => {
-  countSelector.addEventListener('change', () => {
-    let priceEl = countSelector.parentNode.querySelector('.item-price__amount');
-    let sizeSelectEl =
-      countSelector.parentNode.querySelector('.item-size-select');
-    if (sizeSelectEl !== null) {
-      sizeSelectEl = sizeSelectEl.value;
-    }
-    let uuid = countSelector.parentNode.dataset.uuid;
-    priceEl.textContent = determinePrice(
-      sizeSelectEl,
-      countSelector.value,
-      uuid
-    ).totalPrice;
-  });
-});
+function handleSizeSelect() {
+  let priceEl = sizeSelector.parentNode.querySelector('.item-price__amount');
+  let countEl = sizeSelector.parentNode.querySelector('.food-item-count').value;
+  let uuid = sizeSelector.parentNode.dataset.uuid;
+  priceEl.textContent = determinePrice(
+    sizeSelector.value,
+    countEl,
+    uuid
+  ).totalPrice;
+}
 
+function handleCountSelect() {
+  let priceEl = countSelector.parentNode.querySelector('.item-price__amount');
+  let sizeSelectEl =
+    countSelector.parentNode.querySelector('.item-size-select');
+  if (sizeSelectEl !== null) {
+    sizeSelectEl = sizeSelectEl.value;
+  }
+  let uuid = countSelector.parentNode.dataset.uuid;
+  priceEl.textContent = determinePrice(
+    sizeSelectEl,
+    countSelector.value,
+    uuid
+  ).totalPrice;
+}
+
+// break this function into several based on the food item
 // event listeners for addtoCart btns for all menu items
-addToCartBtns.forEach((btn) => {
-  btn.addEventListener('click', (e) => {
-    let foodItemBox = e.target.closest('.food-item-box');
-    let sizeSelectEl =
-      foodItemBox.querySelector('.item-size-select') || undefined;
-    if (sizeSelectEl !== undefined) sizeSelectEl = sizeSelectEl.value;
 
-    let crustSelectEl =
-      foodItemBox.querySelector('.pizza-crust-select') || undefined;
-    if (crustSelectEl !== undefined) crustSelectEl = crustSelectEl.value;
+function handleAddToCart(e) {
+  let foodItemBox = e.target.closest('.food-item-box');
+  let sizeSelectEl =
+    foodItemBox.querySelector('.item-size-select') || undefined;
+  if (sizeSelectEl !== undefined) sizeSelectEl = sizeSelectEl.value;
 
-    let sauceSelectEl =
-      foodItemBox.querySelector('.item-sauce-select') || undefined;
-    if (sauceSelectEl !== undefined) sauceSelectEl = sauceSelectEl.value;
+  let crustSelectEl =
+    foodItemBox.querySelector('.pizza-crust-select') || undefined;
+  if (crustSelectEl !== undefined) crustSelectEl = crustSelectEl.value;
 
-    let countEl = foodItemBox.querySelector('.food-item-count');
-    let { totalPrice, originalPrice } = determinePrice(
-      sizeSelectEl,
-      countEl.value,
-      foodItemBox.dataset.uuid
-    );
-    let foodItem = foodItems.find(
-      (foodItem) => foodItem.uuid === foodItemBox.dataset.uuid
-    );
-    let uuid = create_UUID();
+  let sauceSelectEl =
+    foodItemBox.querySelector('.item-sauce-select') || undefined;
+  if (sauceSelectEl !== undefined) sauceSelectEl = sauceSelectEl.value;
 
-    let cartItem = new CartItem(
-      uuid,
-      foodItem.name,
-      sizeSelectEl,
-      crustSelectEl,
-      sauceSelectEl,
-      countEl.value,
-      originalPrice,
-      totalPrice,
-      foodItem.imageLink
-    );
-    setCartItemToLocalStorage(cartItem);
-    activateCartCount();
-    activateAlert(`${cartItem.name} has been added to your cart`, true);
-    renderCart();
-    renderSidebarCart();
-  });
-});
+  let countEl = foodItemBox.querySelector('.food-item-count');
+  let { totalPrice, originalPrice } = determinePrice(
+    sizeSelectEl,
+    countEl.value,
+    foodItemBox.dataset.uuid
+  );
+  let foodItem = foodItems.find(
+    (foodItem) => foodItem.uuid === foodItemBox.dataset.uuid
+  );
+  let uuid = create_UUID();
+
+  let cartItem = new CartItem(
+    uuid,
+    foodItem.name,
+    sizeSelectEl,
+    crustSelectEl,
+    sauceSelectEl,
+    countEl.value,
+    originalPrice,
+    totalPrice,
+    foodItem.imageLink
+  );
+  setCartItemToLocalStorage(cartItem);
+  activateCartCount();
+  activateAlert(`${cartItem.name} has been added to your cart`, true);
+  renderCart();
+  renderSidebarCart();
+}

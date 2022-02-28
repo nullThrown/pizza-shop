@@ -17,7 +17,7 @@
         populate -- data is filled into pre-existing fields(i.e radio buttons, summary)
         delete -- removes data from LS
         init -- initiliazes something, usually an object or other data structure necessary to store information 
-
+        handle<name> -- fn to be called on triggered event  
         *test on all browsers -- desktop and phone
 
     Future CONSIDERATIONS
