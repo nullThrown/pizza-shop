@@ -166,6 +166,9 @@ function determineCartTotals() {
   cart.cartTotals.total = total;
   setObjToLocalStorage('cart', cart);
 }
+// convert all of these into a single fn()
+// call it cart meta data or whatever
+// depends on how large and complex it looks
 
 function renderCartTotals() {
   const cart = getObjFromLocalStorage('cart');
