@@ -132,6 +132,9 @@ orderCountIncrement.addEventListener('click', () => {
 const toppingRadios = document.querySelectorAll('.portion-side');
 
 // place into storage file
+// split this into two functios
+// one for unchecking topping
+// one for deleting topping from LS
 function deleteToppingFromLocalStorage(uuid) {
   let customPizza = getObjFromLocalStorage('customPizza');
   let itemIndex = customPizza.toppings.findIndex((item) => item.uuid === uuid);
