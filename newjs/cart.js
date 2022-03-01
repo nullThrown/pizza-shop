@@ -1,4 +1,11 @@
-const cartIcons = document.querySelectorAll('.cart-icons');
+import {
+  createPizzaItemNode,
+  createCustomPizzaItemNode,
+  createDrinkItemNode,
+  createDessertItemNode,
+  createSideItemNode,
+} from './components/pizzaItem';
+
 const cartEl = document.querySelector('.cart');
 const cartContainer = document.querySelector('.cart__ul');
 
@@ -8,9 +15,13 @@ const cartTotal = document.getElementById('cart-total');
 
 const orderTypeP = document.querySelector('.cart__order-type');
 
+const cartCount = document.getElementById('cart-count');
+const sidebarCartCount = document.querySelector('.sidebar__cart-count');
+
 class CartItem {
   constructor(
     uuid,
+    category,
     name,
     size,
     crust,
@@ -21,6 +32,7 @@ class CartItem {
     imageLink
   ) {
     this.uuid = uuid;
+    this.category = category;
     this.name = name;
     this.size = size;
     this.crust = crust;
@@ -31,11 +43,6 @@ class CartItem {
     this.imageLink = imageLink;
   }
 }
-
-// combine into single element
-cartIcons.forEach((el) => {
-  el.onclick = toggleCartDisplay;
-});
 
 cartContainer.addEventListener('click', deleteCartItem);
 
@@ -51,95 +58,35 @@ function deleteCartItem(e) {
 }
 
 function renderCart() {
-  let cart = getObjFromLocalStorage('cart');
-  let listContainer = document.querySelector('.cart__ul');
+  const cart = getObjFromLocalStorage('cart');
+  const listContainer = document.querySelector('.cart__ul');
   listContainer.replaceChildren();
 
   cart.items.forEach((item) => {
-    createCartItem(item, listContainer);
+    // creates cart item node and appends it to the cart list
+    switch (item.category) {
+      case 'pizza':
+        createDrinkItemNode(item, listContainer);
+        break;
+      case 'custom':
+        createCustomPizzaItemNode(item, listContainer, item.toppings);
+        break;
+      case 'side':
+        createSideItemNode(item, container);
+        break;
+      case 'dessert':
+        createDessertItemNode(item, container);
+        break;
+      case 'drink':
+        createDrinkItemNode(item, container);
+        break;
+
+      default:
+        break;
+    }
   });
   determineCartTotals();
-  renderCartTotals();
-  renderCartCount();
-  renderOrderType();
-}
-
-function createCartItem(item, container) {
-  let li = document.createElement('li');
-  li.dataset.uuid = item.uuid;
-  li.classList.add('cart__item');
-
-  let h4 = document.createElement('h4');
-  h4.classList.add('cart__item-title');
-  h4.textContent = item.name;
-
-  let cancelBtn = document.createElement('button');
-  cancelBtn.classList.add('btn--cancel', 'btn', 'delete-cart-item');
-  cancelBtn.textContent = 'X';
-
-  let sizeP = document.createElement('p');
-  sizeP.classList.add('cart__item-size');
-  sizeP.textContent = item.size;
-
-  let crustP = document.createElement('p');
-  crustP.textContent = item.crust;
-
-  let sauceP = document.createElement('p');
-  sauceP.textContent = item.sauce;
-
-  let toppingBox = document.createElement('div');
-  if (item.name === 'Custom Pizza') {
-    toppingBox.classList.add('cart__item-toppings');
-    let leftBox = document.createElement('ul');
-    leftBox.textContent = 'Left';
-    let fullBox = document.createElement('ul');
-    fullBox.textContent = 'full';
-    let rightBox = document.createElement('ul');
-    rightBox.textContent = 'right';
-
-    toppingBox.append(leftBox, fullBox, rightBox);
-
-    item.toppings.forEach((topping) => {
-      let li = document.createElement('li');
-      li.textContent = topping.name;
-
-      switch (topping.side) {
-        case 'left':
-          leftBox.appendChild(li);
-          break;
-        case 'full':
-          fullBox.appendChild(li);
-          break;
-        case 'right':
-          rightBox.appendChild(li);
-          break;
-      }
-    });
-  }
-
-  // price and count
-  let countPrice = document.createElement('p');
-  countPrice.classList.add('cart__item-amount');
-
-  let countSpan = document.createElement('span');
-  countSpan.classList.add('u-text-italicize');
-  countSpan.textContent = item.count;
-
-  let xSpan = document.createElement('span');
-  xSpan.classList.add('u-text-italicize');
-  xSpan.textContent = ' for ';
-
-  let dollarSpan = document.createElement('span');
-  dollarSpan.classList.add('u-text-bold');
-  dollarSpan.textContent = '$';
-
-  let currentPriceP = document.createElement('span');
-  currentPriceP.classList.add('cart__item-price');
-  currentPriceP.textContent = item.totalPrice;
-
-  countPrice.append(countSpan, xSpan, dollarSpan, currentPriceP);
-  li.append(cancelBtn, h4, sizeP, crustP, sauceP, toppingBox, countPrice);
-  container.appendChild(li);
+  renderCartMetaData();
 }
 
 function toggleCartDisplay() {
@@ -151,6 +98,7 @@ function toggleCartDisplay() {
   }
 }
 
+// set cart totals -- belongs in storage
 function determineCartTotals() {
   const cart = getObjFromLocalStorage('cart');
   let subtotal = cart.items.reduce((acc, item) => {
@@ -161,36 +109,28 @@ function determineCartTotals() {
   const total = Number((subtotal + parseFloat(calculatedTax)).toFixed(2));
   subtotal = Number(subtotal.toFixed(2));
 
-  cart.cartTotals.subtotal = subtotal;
   cart.cartTotals.calculatedTax = calculatedTax;
   cart.cartTotals.total = total;
+  cart.cartTotals.subtotal = subtotal;
   setObjToLocalStorage('cart', cart);
 }
-// convert all of these into a single fn()
-// call it cart meta data or whatever
-// depends on how large and complex it looks
 
-function renderCartTotals() {
+function renderCartMetaData() {
   const cart = getObjFromLocalStorage('cart');
-  cartSubtotal.textContent = cart.cartTotals.subtotal.toFixed(2);
-  cartTax.textContent = cart.cartTotals.calculatedTax.toFixed(2);
-  cartTotal.textContent = cart.cartTotals.total.toFixed(2);
-}
+  const { cartTotals, orderType, items } = cart;
+  //totals
+  cartSubtotal.textContent = cartTotals.subtotal.toFixed(2);
+  cartTax.textContent = cartTotals.calculatedTax.toFixed(2);
+  cartTotal.textContent = cartTotals.total.toFixed(2);
 
-function renderCartCount() {
-  const cart = getObjFromLocalStorage('cart');
-  document.getElementById('cart-count').textContent = cart.items.length;
-  document.querySelector('.sidebar__cart-count').textContent =
-    cart.items.length;
-}
+  orderTypeP.textContent = orderType || '';
 
-function renderOrderType() {
-  const cart = getObjFromLocalStorage('cart');
-  orderTypeP.textContent = cart.orderType || '';
+  // cart count
+  cartCount.textContent = items.length;
+  sidebarCartCount.textContent = items.length;
 }
 
 function activateCartCount() {
-  const cartCount = document.getElementById('cart-count');
   cartCount.classList.add('header__cart-box--active');
   setTimeout(() => {
     cartCount.classList.remove('header__cart-box--active');

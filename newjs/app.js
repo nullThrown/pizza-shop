@@ -14,12 +14,20 @@ const largePizzaSideBtn = document.getElementById('large-pizza-side-btn');
 const medPizza2LiterBtn = document.getElementById('med-pizza-2liter-btn');
 const over40Btn = document.getElementById('over-40-btn');
 
+const cartIcons = document.querySelectorAll('.cart-icons');
+
 if (pickupBtn && deliveryBtn) {
   pickupBtn.onclick = () => setOrderTypeToLocalStorage('pickup');
   deliveryBtn.onclick = () => setOrderTypeToLocalStorage('delivery');
 }
 
+// combine into single element
+cartIcons.forEach((el) => {
+  el.onclick = toggleCartDisplay;
+});
+
 // find a new home for this function
+// cart maybe
 function addCouponCode(coupon) {
   const cart = getObjFromLocalStorage('cart');
   let message;
