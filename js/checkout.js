@@ -1,6 +1,7 @@
 const productList = document.querySelector('.product__list');
 
 // this needs to be broken into separate components similar to cart
+// string -> html conversion
 function renderCheckout() {
   const cart = getObjFromLocalStorage('cart');
   if (!cart.items.length) {
