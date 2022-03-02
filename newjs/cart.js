@@ -66,7 +66,7 @@ function renderCart() {
     // creates cart item node and appends it to the cart list
     switch (item.category) {
       case 'pizza':
-        createDrinkItemNode(item, listContainer);
+        createPizzaItemNode(item, listContainer);
         break;
       case 'custom':
         createCustomPizzaItemNode(item, listContainer, item.toppings);
