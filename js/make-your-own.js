@@ -119,7 +119,7 @@ orderCountDecrement.addEventListener('click', () => {
 });
 
 orderCountIncrement.addEventListener('click', () => {
-  let customPizza = getObjFromLocalStorage('customPizza');
+  const customPizza = getObjFromLocalStorage('customPizza');
   if (customPizza.count < 20) {
     customPizza.count++;
   }

@@ -23,6 +23,7 @@ export function isStored(key) {
 export function isStored(key) {
   return Boolean(localStorage.getItem(key));
 }
+
 //   sets prices for all food items
 export function setPrices() {
   itemPriceEls.forEach((item) => {

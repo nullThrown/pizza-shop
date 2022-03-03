@@ -1,3 +1,4 @@
+// these imports are wrong
 import {
   createPizzaItemNode,
   createCustomPizzaItemNode,
@@ -63,22 +64,22 @@ function renderCart() {
   listContainer.replaceChildren();
 
   cart.items.forEach((item) => {
-    // creates cart item node and appends it to the cart list
+    // creates cart item node and appends it to the listcontainer
     switch (item.category) {
       case 'pizza':
         createPizzaItemNode(item, listContainer);
         break;
       case 'custom':
-        createCustomPizzaItemNode(item, listContainer, item.toppings);
+        createCustomPizzaItemNode(item, listContainer);
         break;
       case 'side':
-        createSideItemNode(item, container);
+        createSideItemNode(item, listContainer);
         break;
       case 'dessert':
-        createDessertItemNode(item, container);
+        createDessertItemNode(item, listContainer);
         break;
       case 'drink':
-        createDrinkItemNode(item, container);
+        createDrinkItemNode(item, listContainer);
         break;
 
       default:

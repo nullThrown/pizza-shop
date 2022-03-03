@@ -1,4 +1,5 @@
-export function createCustomPizzaItemNode(item, container, toppings) {
+export function createCustomPizzaItemNode(item, container) {
+  const [fullTopStr, leftTopStr, rightTopStr] = createToppingsStrs(item);
   container.insertAdjacentHTML(
     'beforeend',
     `
@@ -10,16 +11,16 @@ export function createCustomPizzaItemNode(item, container, toppings) {
       <div class="cart__item-toppings">
         <ul>
           full
-          ${toppings.fullTopStr}
+          ${fullTopStr}
         </ul>
         <ul>
           left
-          ${toppings.leftTopStr}
+          ${leftTopStr}
 
         </ul>
         <ul>
           right
-          ${toppings.rightTopStr}
+          ${rightTopStr}
 
         </ul>
       </div>

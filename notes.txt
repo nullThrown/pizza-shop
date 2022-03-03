@@ -1,7 +1,17 @@
      
 
   TODO NOW
-      
+      organize every newjs file
+      this is a preliminary attemp at organzing 
+      further fn() grouping changes will occur  
+        *eventListeners bundle
+        *listener handlers
+        *renders
+        *LS crud operations
+        *helpers
+
+      create an exported call addEventListners fn() that will be exported to app.JS
+        * if(el) el.onclick = <callbackName>
       
       
   REFACTORING CONSIDERATIONS

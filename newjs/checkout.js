@@ -1,105 +1,65 @@
 const productList = document.querySelector('.product__list');
-
-// this needs to be broken into separate components similar to cart
-// string -> html conversion
-function renderCheckout() {
-  const cart = getObjFromLocalStorage('cart');
-  if (!cart.items.length) {
-    const li = document.createElement('li');
-    li.textContent = 'Cart is currently empty';
-    li.classList.add('product__empty');
-    productList.appendChild(li);
-  } else {
-    cart.items.forEach((item) => {
-      const productLi = document.createElement('li');
-      productLi.dataset.uuid = item.uuid;
-      productLi.classList.add('product__item');
-
-      // img
-      const img = document.createElement('img');
-      img.setAttribute('src', item.imageLink);
-      img.setAttribute('alt', item.name);
-      img.classList.add('img--thumbnail', 'product__item-img');
-
-      // description
-      const itemDescDiv = document.createElement('div');
-      itemDescDiv.classList.add('product__item-desc');
-      const nameP = document.createElement('p');
-      nameP.textContent = item.name;
-      const sizeP = document.createElement('p');
-      sizeP.textContent = item.size;
-      const crustP = document.createElement('p');
-      crustP.textContent = item.crust;
-      itemDescDiv.append(nameP, sizeP, crustP);
-
-      //amounts
-      const quantityP = document.createElement('p');
-      quantityP.classList.add('product__item-quantity');
-      quantityP.textContent = item.count;
-
-      const priceP = document.createElement('p');
-      priceP.classList.add('product__item-price');
-      priceP.textContent = item.originalPrice;
-
-      const totalP = document.createElement('p');
-      totalP.classList.add('product__item-total');
-      totalP.textContent = item.totalPrice;
-
-      if (item.name === 'Custom Pizza') {
-        renderCustomToppings(item.toppings, productLi);
-      }
-      // remove btn
-      const removeBtn = document.createElement('button');
-      removeBtn.classList.add('btn', 'btn--checkout-remove');
-      removeBtn.textContent = 'Remove';
-
-      productLi.append(img, itemDescDiv, quantityP, priceP, totalP, removeBtn);
-      productList.append(productLi);
-    });
-  }
-}
-// this needs to be string -> html insert/conversion
-function renderCustomToppings(toppings, container) {
-  let toppingsFullP = document.createElement('p');
-  toppingsFullP.textContent += 'Full: ';
-  toppingsFullP.classList.add('miniscule-text', 'product__item-full');
-  let toppingsLeftP = document.createElement('p');
-  toppingsLeftP.textContent += 'Left: ';
-  toppingsLeftP.classList.add('miniscule-text', 'product__item-left');
-  let toppingsRightP = document.createElement('p');
-  toppingsRightP.textContent += 'Right: ';
-  toppingsRightP.classList.add('miniscule-text', 'product__item-right');
-  // const toppingsArr = toppings.map(el => el.name);
-
-  toppings.forEach((el) => {
-    if (el.side === 'full') {
-      toppingsFullP.textContent += `${el.name}, `;
-    } else if (el.side === 'left') {
-      toppingsLeftP.textContent += `${el.name}, `;
-    } else if (el.side === 'right') {
-      toppingsRightP.textContent += `${el.name}, `;
-    }
-    //  toppingsFullP.textContent = toppingsFullP.textContent.slice(0, -1);
-    // toppingsLeftP = toppingsLeftP.trim();
-    // toppingsRightP = toppingsRightP.trim();
-  });
-  container.append(toppingsFullP, toppingsLeftP, toppingsRightP);
-}
+import { createPizzaItemNode } from './components/checkout/pizzaItem';
+import { createCustomPizzaItemNode } from './components/checkout/customPizzaItem';
+import { createSideItemNode } from './components/checkout/sideItem';
+import { createDessertItemNode } from './components/checkout/dessertItem';
+import { createDrinkItemNode } from './components/checkout/drinkItem';
+import { createEmptyCartNode } from './components/checkout/emptyCart';
 
 const orderTypeSpan = document.getElementById('orderType');
 const subtotalSpan = document.getElementById('subtotal');
 const taxSpan = document.getElementById('tax');
 const totalSpan = document.getElementById('total');
+// what is this doing here?
 const summaryPromoBox = document.querySelector('.summary__promo-box');
 
+const applyBtn = document.querySelector('.btn--apply');
+const couponCodeInput = document.getElementById('coupon-code-input');
+
+applyBtn.onclick = handleApplyCoupon;
+productList.onclick = handleRemoveItem;
+couponCodeBox.onclick = handleRemoveCoupon;
+placeOrderbtn.onclick = handlePlaceOrder;
+
+function renderCheckout() {
+  const cart = getObjFromLocalStorage('cart');
+
+  if (!cart.items.length) {
+    createEmptyCartNode(productList);
+  } else {
+    cart.items.forEach((item) => {
+      switch (item.category) {
+        case 'pizza':
+          createPizzaItemNode(item, productList);
+          break;
+        case 'custom':
+          createCustomPizzaItemNode(item, productList);
+          break;
+        case 'side':
+          createSideItemNode(item, productList);
+          break;
+        case 'dessert':
+          createDessertItemNode(item, productList);
+          break;
+        case 'drink':
+          createDrinkItemNode(item, productList);
+          break;
+
+        default:
+          break;
+      }
+    });
+  }
+}
+
 function renderOrderType() {
-  let cart = getObjFromLocalStorage('cart');
+  const cart = getObjFromLocalStorage('cart');
   orderTypeSpan.textContent = cart.orderType;
 }
 
 // combine into single function
 // add e listeners to nodeList
-// and choose by ID
+// and setOrderTpe by ID
 pickupBtn.addEventListener('click', () => {
   setOrderType('pickup');
   renderOrderType();
@@ -111,7 +71,9 @@ deliveryBtn.addEventListener('click', () => {
   togglePlaceOrderBtn();
 });
 
-productList.onclick = (e) => {
+// removes food item from cart/checkout
+
+function handleRemoveItem(e) {
   if (
     e.target.nodeName === 'BUTTON' &&
     e.target.classList.contains('btn--checkout-remove')
@@ -125,25 +87,27 @@ productList.onclick = (e) => {
     renderSidebarCart();
     populateSummary();
   }
-};
+}
 
-const couponSpan = document.querySelector('.promo-code-span');
-// create separate function for creating both promo span and cancel promo btn
+// populates checkout metadata, totals, ordertype, coupons etc.
 function populateSummary() {
-  let cart = getObjFromLocalStorage('cart');
-  orderTypeSpan.textContent = cart.orderType;
-  subtotalSpan.textContent = cart.cartTotals.subtotal.toFixed(2);
-  taxSpan.textContent = cart.cartTotals.calculatedTax.toFixed(2);
-  totalSpan.textContent = cart.cartTotals.total.toFixed(2);
-  if (cart.couponCode) {
-    renderCouponCode(cart.couponCode);
+  const cart = getObjFromLocalStorage('cart');
+  const { orderType, cartTotals, couponCode } = cart;
+  orderTypeSpan.textContent = orderType;
+  subtotalSpan.textContent = cartTotals.subtotal.toFixed(2);
+  taxSpan.textContent = cartTotals.calculatedTax.toFixed(2);
+  totalSpan.textContent = cartTotals.total.toFixed(2);
+  if (couponCode) {
+    renderCouponCode(couponCode);
   }
 }
 
+// this should be a display toggle
+// no need to create elements when it is not necessary
 function renderCouponCode(couponCode) {
   couponCodeBox.replaceChildren();
-  let cart = getObjFromLocalStorage('cart');
-  // couponSpan.replaceChildren();
+  const cart = getObjFromLocalStorage('cart');
+
   const couponSpan = document.createElement('span');
   const couponCancelBtn = document.createElement('button');
 
@@ -155,15 +119,10 @@ function renderCouponCode(couponCode) {
   couponSpan.textContent = couponCode;
 }
 
-// separate these two button events into separate event listeners
-// they are placed within separate containers
+// event attached to apply btn
+// stores/renders a coupon code if valid
 
-//event propogation is only necessary for the promo cancel button
-// as it is rendered after the page loads
-const applyBtn = document.querySelector('.btn--apply');
-const couponCodeInput = document.getElementById('coupon-code-input');
-
-applyBtn.addEventListener('click', (e) => {
+function handleApplyCoupon() {
   let couponCode = couponCodeInput.value;
   let hasCouponCode = coupons.some((item) => item.id === couponCode);
 
@@ -171,14 +130,19 @@ applyBtn.addEventListener('click', (e) => {
     setCouponCode(couponCode);
     renderCouponCode(couponCode);
   } else {
-    activateFailurePopup(`${couponCode} is not a correct code.`);
+    activateAlert(`${couponCode} is not a correct code.`, false);
   }
   couponCodeInput.value = '';
-});
+}
+
 const couponCodeBox = document.querySelector('.summary__promo-code-box');
 
-couponCodeBox.addEventListener('click', (e) => {
-  let cart = getObjFromLocalStorage('cart');
+// no reason to event propogate
+// just attach the listener to the button directly
+// reason: btn was created/inserted after page load
+// therefore, event could not be attached
+function handleRemoveCoupon() {
+  const cart = getObjFromLocalStorage('cart');
 
   if (
     e.target.nodeName === 'BUTTON' &&
@@ -188,26 +152,27 @@ couponCodeBox.addEventListener('click', (e) => {
     couponCodeBox.replaceChildren();
     setObjToLocalStorage('cart', cart);
   }
-});
+}
 
 const placeOrderbtn = document.querySelector('.btn-link--place-order');
 
-placeOrderbtn.onclick = (e) => {
+function handlePlaceOrder() {
   const cart = getObjFromLocalStorage('cart');
   const { items, orderType } = cart;
   if (!items.length) {
     e.preventDefault();
-    activateFailurePopup('Cart is currently empty');
+    activateAlert('Cart is currently empty', false);
   } else if (!orderType) {
     e.preventDefault();
-    activateFailurePopup('Please choose between pickup or delivery');
+    activateAlert('Please choose between pickup or delivery', false);
   } else {
-    let previousOrders = getObjFromLocalStorage('previousOrders');
+    const previousOrders = getObjFromLocalStorage('previousOrders');
     previousOrders.push(cart);
     setObjToLocalStorage('previousOrders', previousOrders);
+    // resets cart obj in LS
     initCartToLocalStorage(true);
   }
-};
+}
 
 function togglePlaceOrderBtn() {
   const cart = getObjFromLocalStorage('cart');
