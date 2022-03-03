@@ -1,191 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Checkout</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,300;1,400;1,600&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css2?family=Andada+Pro:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../css/style.css">
-</head>
-<body>
-<!-- HEADER BEGIN -->
-<header class="header">
-  <!-- placeholder for official logo -->
-  <div class="header__box">
-    <a href="../html/index.html" class="header__logo">
-        <h1 >Pizza Guys</h1>
-      </a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,300;1,400;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+      integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Andada+Pro:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../css/style.css" />
+  </head>
+  <body>
+    <!-- HEADER BEGIN -->
+    <header class="header">
+      <!-- placeholder for official logo -->
+      <div class="header__box">
+        <a href="../html/index.html" class="header__logo">
+          <h1>Pizza Guys</h1>
+        </a>
 
-    <nav class="nav">
-      <ul class="flex-row-btwn">
-        <li><a href="./index.html" class="nav-link">Home</a></li>
-        <li><a href="./menu/most-popular.html" class="nav-link">Menu</a></li>
-        <li><a href="./about.html" class="nav-link">About</a></li>
+        <nav class="nav">
+          <ul class="flex-row-btwn">
+            <li><a href="./index.html" class="nav-link">Home</a></li>
+            <li>
+              <a href="./menu/most-popular.html" class="nav-link">Menu</a>
+            </li>
+            <li><a href="./about.html" class="nav-link">About</a></li>
+          </ul>
+        </nav>
+        <!-- placeholder for cart icon -->
+        <div class="header__cart-box">
+          <i class="fas fa-shopping-cart fa-3x cart-icons"></i>
+          <span class="cart-icons" id="cart-count">0</span>
+          <p class="cart-icons">cart</p>
+          <div class="cart">
+            <h4 class="cart__title">Cart</h4>
+            <span class="cart__order-type"></span>
+            <ul class="cart__ul"></ul>
+            <div class="cart__total-box">
+              <p>Subtotal</p>
+              <p class="u-text-right">
+                $<span class="u-text-right" id="cart-subtotal">0.00</span>
+              </p>
+              <p>Tax</p>
+              <p class="u-text-right">
+                $<span class="u-text-right" id="cart-tax">0.00</span>
+              </p>
+              <p>Total</p>
+              <p class="u-text-right">
+                $<span class="u-text-right" id="cart-total">0.00</span>
+              </p>
+            </div>
+            <div class="cart__checkout-box">
+              <a href="./checkout.html" class="btn btn__checkout">Checkout</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="popup">
+          <i class="fas popup__icon"></i>
+          <p class="popup__text"></p>
+        </div>
+      </div>
+    </header>
+    <!-- HEADER END -->
+
+    <div class="sidebar" data-state="closed">
+      <button class="btn">
+        <i class="fas fa-bars sidebar__hamburger-icon"></i>
+      </button>
+
+      <button class="btn sidebar__cart-icon">
+        <i class="fas fa-shopping-cart fa-3x"></i>
+        <span class="cart-icons sidebar__cart-count">0</span>
+        <p class="cart-icons">cart</p>
+      </button>
+
+      <ul class="sidebar__nav-list">
+        <li class="sidebar__menu-title">menu</li>
+        <a
+          class="sidebar__nav-link sidebar__nav-home"
+          href="../html/index.html"
+        >
+          <li>Home</li>
+        </a>
+        <a
+          href="../html/menu/most-popular.html"
+          class="sidebar__nav-link sidebar__nav-menu"
+        >
+          <li>Menu</li>
+        </a>
+        <ul class="sidebar__menu-list">
+          <a href="../html/menu/most-popular.html">
+            <li class="sidebar__menu-item">Most Popular</li>
+          </a>
+          <a href="../html/menu/make-your-own.html">
+            <li class="sidebar__menu-item">Make Your Own</li>
+          </a>
+          <a href="../html/menu/pizzas.html">
+            <li class="sidebar__menu-item">Pizzas</li>
+          </a>
+          <a href="../html/menu/sides.html">
+            <li class="sidebar__menu-item">Sides</li>
+          </a>
+          <a href="../html/menu/desserts.html ">
+            <li class="sidebar__menu-item">Desserts</li>
+          </a>
+        </ul>
+
+        <a
+          href="../html/about.html"
+          class="sidebar__nav-link sidebar__nav-about"
+        >
+          <li>About</li>
+        </a>
       </ul>
-    </nav>
-    <!-- placeholder for cart icon -->
-    <div class="header__cart-box">
-      <i class="fas fa-shopping-cart fa-3x cart-icons"></i>
-      <span class="cart-icons" id="cart-count">0</span>
-      <p class="cart-icons">cart</p>
-      <div class="cart">
+
+      <div class="sidebar__cart">
         <h4 class="cart__title">Cart</h4>
         <span class="cart__order-type"></span>
-        <ul class="cart__ul">
-          
-        </ul>
+        <ul class="sidebar__cart-list"></ul>
         <div class="cart__total-box">
-          <p>Subtotal</p><p class="u-text-right">$<span class="u-text-right" id="cart-subtotal">0.00</span></p>
-          <p>Tax</p><p class="u-text-right">$<span class="u-text-right" id="cart-tax">0.00</span></p>
-          <p>Total</p><p class="u-text-right">$<span class="u-text-right" id="cart-total">0.00</span></p>
+          <p>Subtotal</p>
+          <p class="u-text-right">
+            $<span class="u-text-right" id="sidebar-subtotal">0.00</span>
+          </p>
+          <p>Tax</p>
+          <p class="u-text-right">
+            $<span class="u-text-right" id="sidebar-tax">0.00</span>
+          </p>
+          <p>Total</p>
+          <p class="u-text-right">
+            $<span class="u-text-right" id="sidebar-total">0.00</span>
+          </p>
         </div>
         <div class="cart__checkout-box">
-          <a href="./checkout.html" class="btn btn__checkout">Checkout</a>
+          <a href="../html/checkout.html" class="btn btn__checkout">Checkout</a>
         </div>
-      </div>  
-    </div>
-
-    <div class="popup">
-      <i class="fas popup__icon"></i>
-      <p class="popup__text"></p>
-    </div>
-</div>
-</header>
-<!-- HEADER END -->
-
-<div class="sidebar" data-state="closed">
-  <button class="btn"><i class="fas fa-bars sidebar__hamburger-icon"></i></button>
-  
-  <button class="btn sidebar__cart-icon">
-    <i class="fas fa-shopping-cart fa-3x"></i>
-    <span class="cart-icons sidebar__cart-count">0</span>
-    <p class="cart-icons">cart</p>
-  </button>
-
-  
-  <ul class="sidebar__nav-list">
-    <li class="sidebar__menu-title">menu</li>
-    <a class="sidebar__nav-link sidebar__nav-home" href="../html/index.html">
-      <li>Home</li>
-    </a>
-    <a href="../html/menu/most-popular.html" class="sidebar__nav-link sidebar__nav-menu">
-      <li >Menu</li>
-    </a>
-    <ul class="sidebar__menu-list">
-      <a href="../html/menu/most-popular.html">
-        <li class="sidebar__menu-item">Most Popular</li>
-      </a>
-      <a href="../html/menu/make-your-own.html">
-        <li class="sidebar__menu-item">Make Your Own</li>
-      </a>
-      <a href="../html/menu/pizzas.html">
-        <li class="sidebar__menu-item">Pizzas</li>
-      </a>
-      <a href="../html/menu/sides.html">
-        <li class="sidebar__menu-item">Sides</li>
-      </a>
-      <a href="../html/menu/desserts.html ">
-        <li class="sidebar__menu-item">Desserts</li>
-      </a>
-    </ul>
-    
-    <a href="../html/about.html" class="sidebar__nav-link sidebar__nav-about">
-      <li >About</li>
-    </a>    
-  </ul>
-
-  <div class="sidebar__cart">
-    <h4 class="cart__title">Cart</h4>
-    <span class="cart__order-type"></span>
-    <ul class="sidebar__cart-list">
-      
-    </ul>
-    <div class="cart__total-box">
-      <p>Subtotal</p><p class="u-text-right">$<span class="u-text-right" id="sidebar-subtotal">0.00</span></p>
-      <p>Tax</p><p class="u-text-right">$<span class="u-text-right" id="sidebar-tax">0.00</span></p>
-      <p>Total</p><p class="u-text-right">$<span class="u-text-right" id="sidebar-total">0.00</span></p>
-    </div>
-    <div class="cart__checkout-box">
-      <a href="../html/checkout.html" class="btn btn__checkout">Checkout</a>
-    </div>
-
-  </div>
-</div>
-<!-- MAIN BEGIN -->
-<main class="main-container">
-  <h1 class="primary-title">Cart</h1>
-  <section class="checkout">
-    <div class="product">
-        <p class="product__details">details</p>
-        <p class="product__quantity">Quantity</p>
-        <p class="product__price">Price</p>
-        <p class="product__total">Total</p>
-        <ul class="product__list">
-
-        </ul>
-    </div>
-    <div class="summary">
-      <h2 class="summary__title">Summary</h2>
-      <div class="summary__info">
-        
-        <div class="summary__order-type-btn-box">
-          <button class="btn btn--order-type pickup-btn">Pickup</button>
-          <button class="btn btn--order-type delivery-btn">Delivery</button>
-        </div>
-
-        <span class="summary__order-type" id="orderType"></span>
-        
-        <div class="u-flex-btwn summary__sub-total">
-          <p>subtotal: </p>
-          <p>$<span id="subtotal">0.00</span></p>
-        </div>
-        
-        
-        <div class="u-flex-btwn summary__tax">
-          <p>tax:</p>
-          <p>$ <span id="tax">0.00</span> </p>
-        </div>
-        
-        <div class="summary__promo-box">
-          <input type="text" id="coupon-code-input" placeholder="coupon code">
-          <button class="btn btn--apply">Apply</button>
-        </div>
-        <div class="summary__promo-code-box u-flex-btwn u-mt-5">
-          
-        </div>
-        
-        <div class="u-flex-btwn summary__total">
-          <p class="test">total: </p>
-          <p class="test">$ <span id="total">0.00</span></p>
-        </div>
-        
       </div>
-      <a href="./orderPlaced.html" class="btn btn-link--place-order">Place Order</a>
     </div>
-  </section>
-  
-</main>
-<!-- MAIN END -->
-<!-- FOOTER BEGIN -->
-<footer class="footer u-flex-center">
-  <div class="footer-box u-text-center fine-print--white">
-    <p>This website is owned and operated by Pizza Guys LLC</p>
-    <p>@Weston Peters</p>
-  </div>
-</footer>
-  <script src="../js/models/foodItems.js"></script>
-  <script src="../js/models/Coupons.js"></script>
-  <script src="../js/util.js"></script>
-  <script src="../js/popup.js"></script>
-  <script src="../js/menu.js"></script>
-  <script src="../js/cart.js"></script>
-  <script src="../js/app.js"></script> 
-  <script src="../js/sidebar.js"></script>
-  <script src="../js/checkout.js"></script>
-</body>
+    <!-- MAIN BEGIN -->
+    <main class="main-container">
+      <h1 class="primary-title">Cart</h1>
+      <section class="checkout">
+        <div class="product">
+          <p class="product__details">details</p>
+          <p class="product__quantity">Quantity</p>
+          <p class="product__price">Price</p>
+          <p class="product__total">Total</p>
+          <ul class="product__list"></ul>
+        </div>
+        <div class="summary">
+          <h2 class="summary__title">Summary</h2>
+          <div class="summary__info">
+            <div class="summary__order-type-btn-box">
+              <button
+                class="btn btn--order-type checkout__order-type-btn"
+                value="pickup"
+              >
+                Pickup
+              </button>
+              <button
+                class="btn btn--order-type checkout__order-type-btn"
+                value="delivery"
+              >
+                Delivery
+              </button>
+            </div>
+
+            <span class="summary__order-type" id="orderType"></span>
+
+            <div class="u-flex-btwn summary__sub-total">
+              <p>subtotal:</p>
+              <p>$<span id="subtotal">0.00</span></p>
+            </div>
+
+            <div class="u-flex-btwn summary__tax">
+              <p>tax:</p>
+              <p>$ <span id="tax">0.00</span></p>
+            </div>
+
+            <div class="summary__promo-box">
+              <input
+                type="text"
+                id="coupon-code-input"
+                placeholder="coupon code"
+              />
+              <button class="btn btn--apply">Apply</button>
+            </div>
+            <div class="summary__promo-code-box u-flex-btwn u-mt-5"></div>
+
+            <div class="u-flex-btwn summary__total">
+              <p class="test">total:</p>
+              <p class="test">$ <span id="total">0.00</span></p>
+            </div>
+          </div>
+          <a href="./orderPlaced.html" class="btn btn-link--place-order"
+            >Place Order</a
+          >
+        </div>
+      </section>
+    </main>
+    <!-- MAIN END -->
+    <!-- FOOTER BEGIN -->
+    <footer class="footer u-flex-center">
+      <div class="footer-box u-text-center fine-print--white">
+        <p>This website is owned and operated by Pizza Guys LLC</p>
+        <p>@Weston Peters</p>
+      </div>
+    </footer>
+    <script src="../js/models/foodItems.js"></script>
+    <script src="../js/models/Coupons.js"></script>
+    <script src="../js/util.js"></script>
+    <script src="../js/popup.js"></script>
+    <script src="../js/menu.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/sidebar.js"></script>
+    <script src="../js/checkout.js"></script>
+  </body>
 </html>

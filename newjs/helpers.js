@@ -25,6 +25,7 @@ export function isStored(key) {
 }
 
 //   sets prices for all food items
+// item.innerHTML should be text context
 export function setPrices() {
   itemPriceEls.forEach((item) => {
     let foodItemUuid = item.closest('.food-item-box').dataset.uuid;

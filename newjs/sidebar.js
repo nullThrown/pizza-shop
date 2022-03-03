@@ -1,3 +1,8 @@
+// TODO FOR THIS FILE
+// SIDEBAR NEEDS TO BE TWO SEPARATE CONTAINERS
+// HAVE TWO SEPARATE FUNCTIONS FOR EITHER CONTAINER
+// REMOVE BLUE BACKGROUND FOR MENU
+import { getObjFromLS, handleDeleteCartItem } from './cart.js';
 const sidebar = document.querySelector('.sidebar');
 const sidebarMenuBtn = document.querySelector('.sidebar__hamburger-icon');
 const sidebarCartBtn = document.querySelector('.sidebar__cart-icon');
@@ -8,7 +13,11 @@ const sidebarSubtotal = document.getElementById('sidebar-subtotal');
 const sidebarTax = document.getElementById('sidebar-tax');
 const sidebarTotal = document.getElementById('sidebar-total');
 
-sidebarMenuBtn.onclick = handleSidebarMenu;
+export function addSidebarListeners() {
+  sidebarMenuBtn.onclick = handleSidebarMenu;
+  sidebarCartBtn.onclick = handleSidebarCart;
+  sidebarCartContainer.onclick = handleDeleteCartItem;
+}
 
 function handleSidebarMenu() {
   if (sidebar.dataset.state === 'closed') {
@@ -33,17 +42,14 @@ function handleSidebarMenu() {
     sidebar.dataset.state = 'closed';
   }
 }
-sidebarCartBtn.onclick = handleSidebarCart;
 
 function handleSidebarCart() {
-  if (sidebar.dataset.state === 'closed') {
+  const sidebarState = sidebar.dataset.state;
+  if (sidebarState === 'closed') {
     sidebar.dataset.state = 'open';
     openSidebar();
     sidebarCart.style.display = 'block';
-  } else if (
-    sidebar.dataset.state === 'open' &&
-    sidebarMenu.style.display === 'grid'
-  ) {
+  } else if (sidebarState === 'open' && sidebarMenu.style.display === 'grid') {
     closeSidebar();
     setTimeout(() => {
       openSidebar();
@@ -56,7 +62,27 @@ function handleSidebarCart() {
   }
 }
 
-sidebarCartContainer.addEventListener('click', deleteCartItem);
+// RENDER //
+
+// func should mirror that of renderCart from './cart.js'
+function renderSidebarCart() {
+  const cart = getObjFromLS('cart');
+  sidebarCartContainer.replaceChildren();
+
+  cart.items.forEach((item) => {
+    createCartItem(item, sidebarCartContainer);
+  });
+  determineCartTotals();
+  renderSidebarTotal();
+}
+
+function renderSidebarTotal() {
+  const cart = getObjFromLS('cart');
+  const { cartTotals } = cart;
+  sidebarSubtotal.textContent = cartTotals.subtotal.toFixed(2);
+  sidebarTax.textContent = cartTotals.calculatedTax.toFixed(2);
+  sidebarTotal.textContent = cartTotals.total.toFixed(2);
+}
 
 function openSidebar() {
   if (sidebar.classList.contains('sidebar--close')) {
@@ -71,24 +97,6 @@ function closeSidebar() {
   sidebar.classList.add('sidebar--close');
   sidebarMenu.style.display = 'none';
   sidebarCart.style.display = 'none';
-}
-
-function renderSidebarCart() {
-  let cart = getObjFromLocalStorage('cart');
-  sidebarCartContainer.replaceChildren();
-
-  cart.items.forEach((item) => {
-    createCartItem(item, sidebarCartContainer);
-  });
-  determineCartTotals();
-  renderSidebarTotal();
-}
-
-function renderSidebarTotal() {
-  const cart = getObjFromLocalStorage('cart');
-  sidebarSubtotal.textContent = cart.cartTotals.subtotal.toFixed(2);
-  sidebarTax.textContent = cart.cartTotals.calculatedTax.toFixed(2);
-  sidebarTotal.textContent = cart.cartTotals.total.toFixed(2);
 }
 
 renderSidebarCart();

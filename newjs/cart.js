@@ -1,25 +1,29 @@
-// these imports are wrong
-import {
-  createPizzaItemNode,
-  createCustomPizzaItemNode,
-  createDrinkItemNode,
-  createDessertItemNode,
-  createSideItemNode,
-} from './components/pizzaItem';
+import { createPizzaItemNode } from './components/pizzaItem.js';
+import { createCustomPizzaItemNode } from './components/customPizzaItem.js';
+import { createDrinkItemNode } from './components/drinkItem.js';
+import { createDessertItemNode } from './components/dessertItem.js';
+import { createSideItemNode } from './components/sideItem.js';
+// import {renderSidebarCart} from './sidebar/...'
+import { getObjFromLS, deleteCartItemFromLS, setObjToLS } from './storage.js';
 
 const cartEl = document.querySelector('.cart');
-const cartContainer = document.querySelector('.cart__ul');
+const cartItemsUl = document.querySelector('.cart__ul');
 
-const cartSubtotal = document.getElementById('cart-subtotal');
-const cartTax = document.getElementById('cart-tax');
-const cartTotal = document.getElementById('cart-total');
+const cartSubtotalEl = document.getElementById('cart-subtotal');
+const cartTaxEl = document.getElementById('cart-tax');
+const cartTotalEl = document.getElementById('cart-total');
 
-const orderTypeP = document.querySelector('.cart__order-type');
+const orderTypeEl = document.querySelector('.cart__order-type');
 
-const cartCount = document.getElementById('cart-count');
-const sidebarCartCount = document.querySelector('.sidebar__cart-count');
+const cartCountEl = document.getElementById('cart-count');
+const sidebarCartCountEl = document.querySelector('.sidebar__cart-count');
 
-class CartItem {
+// event listeners
+export function addCartListeners() {
+  cartItemsUl.onclick = handleDeleteCartItem;
+}
+
+export class CartItem {
   constructor(
     uuid,
     category,
@@ -45,21 +49,8 @@ class CartItem {
   }
 }
 
-cartContainer.addEventListener('click', deleteCartItem);
-
-// find a better place for this function
-function deleteCartItem(e) {
-  const el = e.target;
-  if (el.nodeName === 'BUTTON' && el.classList.contains('delete-cart-item')) {
-    const targetLi = el.closest('li');
-    deleteCartItemFromLocalStorage(targetLi.dataset.uuid);
-    renderCart();
-    renderSidebarCart();
-  }
-}
-
-function renderCart() {
-  const cart = getObjFromLocalStorage('cart');
+export function renderCart() {
+  const cart = getObjFromLS('cart');
   const listContainer = document.querySelector('.cart__ul');
   listContainer.replaceChildren();
 
@@ -90,8 +81,8 @@ function renderCart() {
   renderCartMetaData();
 }
 
-function toggleCartDisplay() {
-  let cartElStyles = window.getComputedStyle(cartEl);
+export function toggleCartDisplay() {
+  const cartElStyles = window.getComputedStyle(cartEl);
   if (cartElStyles.display === 'none') {
     cartEl.style.display = 'block';
   } else {
@@ -99,9 +90,33 @@ function toggleCartDisplay() {
   }
 }
 
-// set cart totals -- belongs in storage
-function determineCartTotals() {
-  const cart = getObjFromLocalStorage('cart');
+function renderCartMetaData() {
+  const cart = getObjFromLS('cart');
+  const { cartTotals, orderType, items } = cart;
+  //totals
+  cartSubtotalEl.textContent = cartTotals.subtotal.toFixed(2);
+  cartTaxEl.textContent = cartTotals.calculatedTax.toFixed(2);
+  cartTotalEl.textContent = cartTotals.total.toFixed(2);
+
+  orderTypeEl.textContent = orderType || '';
+
+  // cart count
+  cartCountEl.textContent = items.length;
+  sidebarCartCountEl.textContent = items.length;
+}
+
+export function handleDeleteCartItem(e) {
+  const el = e.target;
+  if (el.nodeName === 'BUTTON' && el.classList.contains('delete-cart-item')) {
+    const targetLi = el.closest('li');
+    deleteCartItemFromLS(targetLi.dataset.uuid);
+    renderCart();
+    renderSidebarCart();
+  }
+}
+
+export function determineCartTotals() {
+  const cart = getObjFromLS('cart');
   let subtotal = cart.items.reduce((acc, item) => {
     return acc + parseFloat(item.totalPrice);
   }, 0);
@@ -113,27 +128,12 @@ function determineCartTotals() {
   cart.cartTotals.calculatedTax = calculatedTax;
   cart.cartTotals.total = total;
   cart.cartTotals.subtotal = subtotal;
-  setObjToLocalStorage('cart', cart);
+  setObjToLS('cart', cart);
 }
 
-function renderCartMetaData() {
-  const cart = getObjFromLocalStorage('cart');
-  const { cartTotals, orderType, items } = cart;
-  //totals
-  cartSubtotal.textContent = cartTotals.subtotal.toFixed(2);
-  cartTax.textContent = cartTotals.calculatedTax.toFixed(2);
-  cartTotal.textContent = cartTotals.total.toFixed(2);
-
-  orderTypeP.textContent = orderType || '';
-
-  // cart count
-  cartCount.textContent = items.length;
-  sidebarCartCount.textContent = items.length;
-}
-
-function activateCartCount() {
-  cartCount.classList.add('header__cart-box--active');
+export function activateCartCount() {
+  cartCountEl.classList.add('header__cart-box--active');
   setTimeout(() => {
-    cartCount.classList.remove('header__cart-box--active');
+    cartCountEl.classList.remove('header__cart-box--active');
   }, 200);
 }
