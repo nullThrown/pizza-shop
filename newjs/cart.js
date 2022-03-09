@@ -18,9 +18,17 @@ const orderTypeEl = document.querySelector('.cart__order-type');
 const cartCountEl = document.getElementById('cart-count');
 const sidebarCartCountEl = document.querySelector('.sidebar__cart-count');
 
+const cartIcons = document.querySelectorAll('.cart-icons');
+
 // event listeners
 export function addCartListeners() {
-  cartItemsUl.onclick = handleDeleteCartItem;
+  if (cartItemsUl) cartItemsUl.onclick = handleDeleteCartItem;
+
+  // combine into single element
+  if (cartIcons)
+    cartIcons.forEach((el) => {
+      el.onclick = toggleCartDisplay;
+    });
 }
 
 export class CartItem {

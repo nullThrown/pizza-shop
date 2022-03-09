@@ -1,11 +1,8 @@
-// order file
-// variable bindings
-// event listeners
-// rendering fn()s
-// math ops/ setting data to LS
-// helper functions
-// helper functions may follow or precede the fn()s they are helping
-// but perhaps could also stand alone depending on how often they are used or best judgement
+import { getObjFromLS, setObjToLS, initCustomPizzaToLS } from './storage.js';
+import { create_UUID } from './helpers.js';
+import { activateAlert } from './alert.js';
+import { activateCartCount, renderCart } from './cart.js';
+import { renderSidebarCart } from './sidebar.js';
 
 const meatsBtn = document.getElementById('meatsBtn');
 const veggiesBtn = document.getElementById('veggiesBtn');
@@ -15,9 +12,34 @@ let meatToppings = document.querySelector('.topping-select--meats');
 const veggieToppings = document.querySelector('.topping-select--veggies');
 const cheeseToppings = document.querySelector('.topping-select--cheese');
 
-// refactor! bind variables outside of respective functions
-// combine into one event listener added to entire node list
-// use forEach and have single piece of logic that passes around a single class
+const sizeRadios = document.querySelectorAll('input[name="size"]');
+const crustRadios = document.querySelectorAll('input[name="crust"]');
+
+const orderCountIncrement = document.getElementById('orderCountIncrement');
+const orderCountDecrement = document.getElementById('orderCountDecrement');
+
+const toppingRadios = document.querySelectorAll('.portion-side');
+
+const toppingsContainer = document.querySelector(
+  '.current-order__toppings-box'
+);
+
+const addCustomToCartbtn = document.querySelector('.btn--add-custom-to-cart');
+
+const currentOrderSizeEl = document.querySelector('.current-order__size');
+const currentOrderCrustEl = document.querySelector('.current-order__crust');
+const currentOrderCountEl = document.querySelector('.current-order__count');
+const currentOrderPriceEl = document.getElementById('currentOrderPrice');
+
+class PizzaTopping {
+  constructor(name, side, uuid) {
+    (this.name = name), (this.side = side);
+    this.uuid = uuid;
+  }
+}
+
+export function addCheckoutListeners() {}
+
 meatsBtn.onclick = () => {
   veggieToppings.style.display = 'none';
   veggiesBtn.style.background = 'rgba(255, 0, 0, 0.082)';
@@ -48,15 +70,12 @@ cheeseBtn.onclick = () => {
   cheeseToppings.style.display = 'block';
 };
 
-//determine price
-// CHANGE THE IDS -- TOO GERNERIC!!
-const sizeRadios = document.querySelectorAll('input[name="size"]');
-
+// change to class selector
 sizeRadios.forEach((radio) => {
   radio.addEventListener('change', (e) => {
-    let customPizza = getObjFromLocalStorage('customPizza');
+    const customPizza = getObjFromLS('customPizza');
     customPizza.size = e.target.id;
-    setObjToLocalStorage('customPizza', customPizza);
+    setObjToLS('customPizza', customPizza);
     setCustomPizzaPrices();
     setCustomPizzaTotal();
     toggleAddToCartBtn();
@@ -66,51 +85,24 @@ sizeRadios.forEach((radio) => {
   });
 });
 
-// find more suitable fn() name
-// find more sutiable array fn()
-function populateSizeRadios() {
-  let customPizza = getObjFromLocalStorage('customPizza');
-  if (customPizza.size) {
-    sizeRadios.forEach((radio) => {
-      if (radio.id === customPizza.size) {
-        radio.checked = true;
-      }
-    });
-  }
-}
-// determine price
-const crustRadios = document.querySelectorAll('input[name="crust"]');
+function handleSizeSelect() {}
 
 crustRadios.forEach((radio) => {
   radio.addEventListener('change', (e) => {
-    let customPizza = getObjFromLocalStorage('customPizza');
+    const customPizza = getObjFromLS('customPizza');
     customPizza.crust = e.target.id;
-    setObjToLocalStorage('customPizza', customPizza);
+    setObjToLS('customPizza', customPizza);
 
     renderCrust();
     renderTotal();
   });
 });
 
-function populateCrustRadios() {
-  let customPizza = getObjFromLocalStorage('customPizza');
-  crustRadios.forEach((radio) => {
-    if (radio.id === customPizza.crust) {
-      radio.checked = true;
-    }
-  });
-}
-
-const orderCountIncrement = document.getElementById('orderCountIncrement');
-const orderCountDecrement = document.getElementById('orderCountDecrement');
-
 // combine this with increment fn()
 // simplify logic
 orderCountDecrement.addEventListener('click', () => {
-  const customPizza = getObjFromLocalStorage('customPizza');
-  if (customPizza.count > 1) {
-    customPizza.count--;
-  }
+  const customPizza = getObjFromLS('customPizza');
+  if (customPizza.count > 1) customPizza.count--;
   setObjToLocalStorage('customPizza', customPizza);
 
   setCustomPizzaTotal();
@@ -119,60 +111,22 @@ orderCountDecrement.addEventListener('click', () => {
 });
 
 orderCountIncrement.addEventListener('click', () => {
-  let customPizza = getObjFromLocalStorage('customPizza');
-  if (customPizza.count < 20) {
-    customPizza.count++;
-  }
-  setObjToLocalStorage('customPizza', customPizza);
+  const customPizza = getObjFromLS('customPizza');
+  if (customPizza.count < 20) customPizza.count++;
+
+  setObjToLS('customPizza', customPizza);
   setCustomPizzaTotal();
   renderCount();
   renderTotal();
 });
-
-const toppingRadios = document.querySelectorAll('.portion-side');
-
-// place into storage file
-// split this into two functios
-// one for unchecking topping
-// one for deleting topping from LS
-function deleteToppingFromLocalStorage(uuid) {
-  let customPizza = getObjFromLocalStorage('customPizza');
-  let itemIndex = customPizza.toppings.findIndex((item) => item.uuid === uuid);
-  console.log(customPizza.toppings[itemIndex]);
-  if (itemIndex !== -1) {
-    uncheckTopping(customPizza.toppings[itemIndex]);
-    customPizza.toppings.splice(itemIndex, 1);
-    setObjToLocalStorage('customPizza', customPizza);
-  }
-}
-function uncheckTopping(topping) {
-  let toppingRadio = Array.from(toppingRadios).find(
-    (radio) =>
-      radio.name === topping.name && radio.dataset.side === topping.side
-  );
-  toppingRadio.checked = false;
-}
-
-function uncheckInputs() {
-  for (let i = 0; i < arguments.length; i++) {
-    arguments[i].forEach((el) => {
-      if (el.checked === true) {
-        el.checked = false;
-      }
-    });
-  }
-}
-
-const toppingsContainer = document.querySelector(
-  '.current-order__toppings-box'
-);
 
 toppingsContainer.addEventListener('click', (e) => {
   if (
     e.target.nodeName === 'BUTTON' &&
     e.target.classList.contains('btn--cancel')
   ) {
-    let targetDiv = e.target.closest('div');
+    const targetDiv = e.target.closest('div');
+
     deleteToppingFromLocalStorage(targetDiv.dataset.uuid);
     setCustomPizzaTotal();
     renderPizzaToppings();
@@ -180,63 +134,39 @@ toppingsContainer.addEventListener('click', (e) => {
   }
 });
 
-class PizzaTopping {
-  constructor(name, side, uuid) {
-    (this.name = name), (this.side = side);
-    this.uuid = uuid;
-  }
-}
 toppingRadios.forEach((radio) => {
   radio.addEventListener('change', (e) => {
-    let customPizza = getObjFromLocalStorage('customPizza');
-    let foodTitle = e.target.name;
-    let side = e.target.dataset.side;
-    let isTopping = customPizza.toppings.some((el) => el.name === foodTitle);
+    const customPizza = getObjFromLS('customPizza');
+    const foodTitle = e.target.name;
+    const side = e.target.dataset.side;
+    const isTopping = customPizza.toppings.some((el) => el.name === foodTitle);
     if (!isTopping) {
-      let pizzaTopping = new PizzaTopping(foodTitle, side, create_UUID());
+      const pizzaTopping = new PizzaTopping(foodTitle, side, create_UUID());
       customPizza.toppings.push(pizzaTopping);
     } else {
-      let topping = customPizza.toppings.find((el) => el.name === foodTitle);
+      const topping = customPizza.toppings.find((el) => el.name === foodTitle);
       topping.side = side;
     }
-    setObjToLocalStorage('customPizza', customPizza);
+    setObjToLS('customPizza', customPizza);
     setCustomPizzaTotal();
     renderTotal();
     renderPizzaToppings();
   });
 });
 
-// find a more suitable fn() name
-function populateToppingRadios() {
-  let customPizza = getObjFromLocalStorage('customPizza');
-  customPizza.toppings.forEach((topping) => {
-    for (let i = 0; i < toppingRadios.length; i++) {
-      if (
-        topping.name === toppingRadios[i].name &&
-        topping.side === toppingRadios[i].dataset.side
-      ) {
-        toppingRadios[i].checked = true;
-      }
-    }
-  });
-}
-
 // convert into helper function
 // perhaps use a callback
-let addCustomToCartbtn = document.querySelector('.btn--add-custom-to-cart');
 
 addCustomToCartbtn.addEventListener('click', (e) => {
-  let customPizza = getObjFromLocalStorage('customPizza');
-  let cart = getObjFromLocalStorage('cart');
-  if (!customPizza.size) {
-    // !! fn() name change
-    activateFailurePopup('Please select a size.');
-  } else {
+  const customPizza = getObjFromLS('customPizza');
+  const cart = getObjFromLocalStorage('cart');
+  if (!customPizza.size) activateAlert('Please select a size.', false);
+  else {
     cart.items.push(customPizza);
-    setObjToLocalStorage('cart', cart);
-    initCustomPizzaToLocalStorage(true);
+    setObjToLS('cart', cart);
+    initCustomPizzaToLS(true);
     activateCartCount();
-    activateSuccessPopup('custom Pizza has been added to your cart');
+    activateAlert('custom Pizza has been added to your cart', true);
     renderCart();
     renderSidebarCart();
     clearToppingDisplay();
@@ -245,90 +175,36 @@ addCustomToCartbtn.addEventListener('click', (e) => {
   }
 });
 
-function toggleAddToCartBtn() {
-  let customPizza = getObjFromLocalStorage('customPizza');
-  if (!customPizza.size) {
-    addCustomToCartbtn.classList.add('btn--disabled');
-  } else {
-    addCustomToCartbtn.classList.remove('btn--disabled');
-  }
-}
-
-//
-function setCustomPizzaPrices() {
-  let customPizza = getObjFromLocalStorage('customPizza');
-  let sizePrice;
-  let toppingPrice;
-  switch (customPizza.size) {
-    case 'small':
-      sizePrice = makeYourOwn.smallPrice;
-      toppingPrice = makeYourOwn.smallToppingPrice;
-      break;
-    case 'medium':
-      sizePrice = makeYourOwn.mediumPrice;
-      toppingPrice = makeYourOwn.mediumToppingPrice;
-      break;
-    case 'large':
-      sizePrice = makeYourOwn.largePrice;
-      toppingPrice = makeYourOwn.largeToppingPrice;
-      break;
-    case 'x-large':
-      sizePrice = makeYourOwn.xlargePrice;
-      toppingPrice = makeYourOwn.xlargeToppingPrice;
-      break;
-  }
-  customPizza.sizePrice = sizePrice;
-  customPizza.toppingPrice = toppingPrice;
-  setObjToLocalStorage('customPizza', customPizza);
-}
-function setCustomPizzaTotal() {
-  let customPizza = getObjFromLocalStorage('customPizza');
-  customPizza.totalPrice = Number(
-    (
-      (customPizza.sizePrice +
-        customPizza.toppingPrice * customPizza.toppings.length) *
-      customPizza.count
-    ).toFixed(2)
-  );
-  setObjToLocalStorage('customPizza', customPizza);
-}
-
-// convert all of these fn() into one
-// render size
-const currentOrderSizeEl = document.querySelector('.current-order__size');
 function renderSize() {
-  let customPizza = getObjFromLocalStorage('customPizza');
-  currentOrderSizeEl.textContent = customPizza.size;
+  const { size } = getObjFromLS('customPizza');
+  currentOrderSizeEl.textContent = size;
 }
 
-// render crust
-const currentOrderCrustEl = document.querySelector('.current-order__crust');
 function renderCrust() {
-  let customPizza = getObjFromLocalStorage('customPizza');
-  currentOrderCrustEl.textContent = customPizza.crust;
+  const { crust } = getObjFromLS('customPizza');
+  currentOrderCrustEl.textContent = crust;
 }
 
 // render count
-const currentOrderCountEl = document.querySelector('.current-order__count');
 function renderCount() {
-  let customPizza = getObjFromLocalStorage('customPizza');
-  currentOrderCountEl.textContent = customPizza.count;
+  const { count } = getObjFromLS('customPizza');
+  currentOrderCountEl.textContent = count;
 }
 
 // render total
-const currentOrderPriceEl = document.getElementById('currentOrderPrice');
 function renderTotal() {
-  let customPizza = getObjFromLocalStorage('customPizza');
-  currentOrderPriceEl.textContent = customPizza.totalPrice;
+  const { totalPrice } = getObjFromLS('customPizza');
+  currentOrderPriceEl.textContent = totalPrice;
 }
 
 const fullBox = document.querySelector('.topping-display-full');
 const leftBox = document.querySelector('.topping-display-left');
 const rightBox = document.querySelector('.topping-display-right');
 
+// create html node
 function renderPizzaToppings() {
   clearToppingDisplay();
-  let customPizza = getObjFromLocalStorage('customPizza');
+  let customPizza = getObjFromLS('customPizza');
 
   customPizza.toppings.forEach((topping) => {
     let toppingBox = document.createElement('div');
@@ -356,6 +232,78 @@ function renderPizzaToppings() {
   });
 }
 
+function toggleAddToCartBtn() {
+  const { size } = getObjFromLS('customPizza');
+  if (!size) addCustomToCartbtn.classList.add('btn--disabled');
+  else {
+    addCustomToCartbtn.classList.remove('btn--disabled');
+  }
+}
+
+// find more suitable fn() name
+// find more sutiable array fn()
+function populateSizeRadios() {
+  const { size } = getObjFromLS('customPizza');
+  if (size) {
+    sizeRadios.forEach((radio) => {
+      if (radio.id === size) radio.checked = true;
+    });
+  }
+}
+
+function populateCrustRadios() {
+  const customPizza = getObjFromLocalStorage('customPizza');
+  crustRadios.forEach((radio) => {
+    if (radio.id === customPizza.crust) {
+      radio.checked = true;
+    }
+  });
+}
+// find a more suitable fn() name
+function populateToppingRadios() {
+  const customPizza = getObjFromLS('customPizza');
+  customPizza.toppings.forEach((topping) => {
+    for (let i = 0; i < toppingRadios.length; i++) {
+      if (
+        topping.name === toppingRadios[i].name &&
+        topping.side === toppingRadios[i].dataset.side
+      ) {
+        toppingRadios[i].checked = true;
+      }
+    }
+  });
+}
+
+// split this into two functios
+// one for unchecking topping
+// one for deleting topping from LS
+function deleteToppingFromLocalStorage(uuid) {
+  const customPizza = getObjFromLS('customPizza');
+  const itemIndex = customPizza.toppings.findIndex(
+    (item) => item.uuid === uuid
+  );
+  if (itemIndex !== -1) {
+    uncheckTopping(customPizza.toppings[itemIndex]);
+    customPizza.toppings.splice(itemIndex, 1);
+    setObjToLS('customPizza', customPizza);
+  }
+}
+function uncheckTopping(topping) {
+  let toppingRadio = Array.from(toppingRadios).find(
+    (radio) =>
+      radio.name === topping.name && radio.dataset.side === topping.side
+  );
+  toppingRadio.checked = false;
+}
+
+function uncheckInputs() {
+  for (let i = 0; i < arguments.length; i++) {
+    arguments[i].forEach((el) => {
+      if (el.checked) el.checked = false;
+    });
+  }
+}
+
 function clearToppingDisplay() {
   while (fullBox.children.length > 1) {
     fullBox.removeChild(fullBox.lastChild);
@@ -368,23 +316,42 @@ function clearToppingDisplay() {
   }
 }
 
-// place in storage
-function initCustomPizzaToLocalStorage(reset) {
-  if (!isStored('customPizza') || reset === true) {
-    let customPizzaStr = JSON.stringify({
-      name: 'Custom Pizza',
-      size: '',
-      crust: 'regular',
-      count: 1,
-      sizePrice: 0,
-      toppingPrice: 0.99,
-      totalPrice: 0,
-      toppings: [],
-      imageLink: '../img/pizza/cheese.jpg',
-      uuid: create_UUID(),
-    });
-    localStorage.setItem('customPizza', customPizzaStr);
+function setCustomPizzaPrices() {
+  const customPizza = getObjFromLS('customPizza');
+  let sizePrice;
+  let toppingPrice;
+  switch (customPizza.size) {
+    case 'small':
+      sizePrice = makeYourOwn.smallPrice;
+      toppingPrice = makeYourOwn.smallToppingPrice;
+      break;
+    case 'medium':
+      sizePrice = makeYourOwn.mediumPrice;
+      toppingPrice = makeYourOwn.mediumToppingPrice;
+      break;
+    case 'large':
+      sizePrice = makeYourOwn.largePrice;
+      toppingPrice = makeYourOwn.largeToppingPrice;
+      break;
+    case 'x-large':
+      sizePrice = makeYourOwn.xlargePrice;
+      toppingPrice = makeYourOwn.xlargeToppingPrice;
+      break;
   }
+  customPizza.sizePrice = sizePrice;
+  customPizza.toppingPrice = toppingPrice;
+  setObjToLS('customPizza', customPizza);
+}
+function setCustomPizzaTotal() {
+  let customPizza = getObjFromLS('customPizza');
+  customPizza.totalPrice = Number(
+    (
+      (customPizza.sizePrice +
+        customPizza.toppingPrice * customPizza.toppings.length) *
+      customPizza.count
+    ).toFixed(2)
+  );
+  setObjToLS('customPizza', customPizza);
 }
 
 initCustomPizzaToLocalStorage();
@@ -397,4 +364,18 @@ renderCrust();
 renderTotal();
 renderCount();
 renderPizzaToppings();
-// initialize make your own array into
+
+// const toppingsSelectBtns = document.querySelectorAll('.btn--toppings');
+// toppingsSelectBtns.forEach((btn) => {
+//   btn.onlick = () => {};
+// });
+
+// function toggleToppings(e) {
+//   const elementId = e.target.id;
+//   toppingsSelectBtns.forEach((btn) => {
+//     if (elementId === btn.id) {
+//       btn.style.display = 'block';
+//       btn.
+//     }
+//   });
+// }

@@ -1,7 +1,7 @@
 import { isStored, create_UUID } from './helpers.js';
 // LS = localStorage
 
-// initiliazes cart into localStorage
+// inits cart into LS
 export function initCartToLS(reset) {
   if (!isStored('cart') || reset) {
     const cartStr = JSON.stringify({
@@ -14,7 +14,25 @@ export function initCartToLS(reset) {
     localStorage.setItem('cart', cartStr);
   }
 }
-
+// inits custom pizza into LS
+export function initCustomPizzaToLS(reset) {
+  if (!isStored('customPizza') || reset === true) {
+    let customPizzaStr = JSON.stringify({
+      name: 'Custom Pizza',
+      size: '',
+      crust: 'regular',
+      count: 1,
+      sizePrice: 0,
+      toppingPrice: 0.99,
+      totalPrice: 0,
+      toppings: [],
+      imageLink: '../img/pizza/cheese.jpg',
+      uuid: create_UUID(),
+    });
+    localStorage.setItem('customPizza', customPizzaStr);
+  }
+}
+// inits  previous orders into LS
 export function initPreviousOrdersToLS() {
   if (!isStored('previousOrders')) {
     const ordersStr = JSON.stringify([]);

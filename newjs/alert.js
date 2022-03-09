@@ -2,8 +2,8 @@ const popup = document.querySelector('.popup');
 const popupIcon = document.querySelector('.popup__icon');
 const popupText = document.querySelector('.popup__text');
 
-export function activateAlert(message, isSuccess) {
-  popupText.textContent = message;
+export function activateAlert(msg, isSuccess) {
+  popupText.textContent = msg;
   popup.style.display = 'flex';
   if (isSuccess) {
     popup.classList.add('popup--success');
