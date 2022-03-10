@@ -1,3 +1,4 @@
+import foodItems from './data/foodItems.js';
 const itemPriceEls = document.querySelectorAll('.item-price__amount');
 
 export function create_UUID() {
@@ -13,12 +14,6 @@ export function create_UUID() {
   return uuid;
 }
 
-// shorten this fn()
-export function isStored(key) {
-  let storedItem = localStorage.getItem(key);
-
-  return Boolean(storedItem);
-}
 // refactored version!!
 export function isStored(key) {
   return Boolean(localStorage.getItem(key));
@@ -28,8 +23,10 @@ export function isStored(key) {
 // item.innerHTML should be text context
 export function setPrices() {
   itemPriceEls.forEach((item) => {
-    let foodItemUuid = item.closest('.food-item-box').dataset.uuid;
-    let foodItem = foodItems.find((foodItem) => foodItem.uuid === foodItemUuid);
+    const containerUUID = item.closest('.food-item-box').dataset.uuid;
+    const foodItem = foodItems.find(
+      (foodItem) => foodItem.id === containerUUID
+    );
     item.innerHTML = foodItem.smallPrice || foodItem.price;
   });
 }

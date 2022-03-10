@@ -1,6 +1,6 @@
 import coupons from './data/coupons.js';
 import { getObjFromLS, setCouponToLS } from './storage.js';
-import { activateAlert } from './alert';
+import { activateAlert } from './alert.js';
 
 const threeMedBtn = document.getElementById('three-med-btn');
 const largePizzaSideBtn = document.getElementById('large-pizza-side-btn');

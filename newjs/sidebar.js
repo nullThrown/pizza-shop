@@ -1,8 +1,16 @@
 // TODO FOR THIS FILE
 // SIDEBAR NEEDS TO BE TWO SEPARATE CONTAINERS
-// HAVE TWO SEPARATE FUNCTIONS FOR EITHER CONTAINER
+// HAVE TWO SEPARATE FUNCTIONS FOR EACH CONTAINER
 // REMOVE BLUE BACKGROUND FOR MENU
-import { getObjFromLS, handleDeleteCartItem } from './cart.js';
+import { handleDeleteCartItem } from './cart.js';
+import { getObjFromLS } from './storage.js';
+import { createPizzaItemNode } from './components/pizzaItem.js';
+import { createCustomPizzaItemNode } from './components/customPizzaItem.js';
+import { createSideItemNode } from './components/sideItem.js';
+import { createDessertItemNode } from './components/dessertItem.js';
+import { createDrinkItemNode } from './components/drinkItem.js';
+import { determineCartTotals } from './cart.js';
+
 const sidebar = document.querySelector('.sidebar');
 const sidebarMenuBtn = document.querySelector('.sidebar__hamburger-icon');
 const sidebarCartBtn = document.querySelector('.sidebar__cart-icon');
@@ -65,12 +73,32 @@ function handleSidebarCart() {
 // RENDER //
 
 // func should mirror that of renderCart from './cart.js'
-function renderSidebarCart() {
+export function renderSidebarCart() {
   const cart = getObjFromLS('cart');
   sidebarCartContainer.replaceChildren();
 
   cart.items.forEach((item) => {
-    createCartItem(item, sidebarCartContainer);
+    // creates cart item node and appends it to the sidebarCartContainer
+    switch (item.category) {
+      case 'pizza':
+        createPizzaItemNode(item, sidebarCartContainer);
+        break;
+      case 'custom':
+        createCustomPizzaItemNode(item, sidebarCartContainer);
+        break;
+      case 'side':
+        createSideItemNode(item, sidebarCartContainer);
+        break;
+      case 'dessert':
+        createDessertItemNode(item, sidebarCartContainer);
+        break;
+      case 'drink':
+        createDrinkItemNode(item, sidebarCartContainer);
+        break;
+
+      default:
+        break;
+    }
   });
   determineCartTotals();
   renderSidebarTotal();
@@ -99,5 +127,7 @@ function closeSidebar() {
   sidebarCart.style.display = 'none';
 }
 
-renderSidebarCart();
-renderSidebarTotal();
+export function initSidebar() {
+  renderSidebarCart();
+  renderSidebarTotal();
+}

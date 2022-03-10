@@ -1,5 +1,5 @@
 // images should be absolute path
-export const foodItems = [
+const foodItems = [
   {
     category: 'pizza',
     name: 'Cheese Pizza',
@@ -234,3 +234,5 @@ export const foodItems = [
     imageLink: '../img/drinks/crush-grape.jpg',
   },
 ];
+
+export default foodItems;

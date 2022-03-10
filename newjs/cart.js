@@ -3,7 +3,7 @@ import { createCustomPizzaItemNode } from './components/customPizzaItem.js';
 import { createDrinkItemNode } from './components/drinkItem.js';
 import { createDessertItemNode } from './components/dessertItem.js';
 import { createSideItemNode } from './components/sideItem.js';
-// import {renderSidebarCart} from './sidebar/...'
+import { renderSidebarCart } from './sidebar.js';
 import { getObjFromLS, deleteCartItemFromLS, setObjToLS } from './storage.js';
 
 const cartEl = document.querySelector('.cart');

@@ -4,14 +4,15 @@
 
 import { create_UUID } from './helpers.js';
 import { CartItem } from './cart.js';
-const itemSizeSelecters = document.querySelectorAll('.item-size-select');
-const itemCountSelectors = document.querySelectorAll('.food-item-count');
-const addToCartBtns = document.querySelectorAll('.btn--add-to-cart');
 import { setCartItemToLS } from './storage.js';
 import { activateCartCount } from './cart.js';
 import { activateAlert } from './alert.js';
 import { renderCart } from './cart.js';
-// import {renderSidebarCart} from './sidebar.js'
+import { renderSidebarCart } from './sidebar.js';
+
+const itemSizeSelecters = document.querySelectorAll('.item-size-select');
+const itemCountSelectors = document.querySelectorAll('.food-item-count');
+const addToCartBtns = document.querySelectorAll('.btn--add-to-cart');
 
 export function addMenuListeners() {
   if (addToCartBtns)

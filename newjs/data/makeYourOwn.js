@@ -1,4 +1,4 @@
-export const makeYourOwn = {
+const makeYourOwn = {
   smallPrice: 10.99,
   mediumPrice: 14.99,
   largePrice: 16.99,
@@ -9,3 +9,5 @@ export const makeYourOwn = {
   largeToppingPrice: 1.99,
   xlargeToppingPrice: 2.49,
 };
+
+export default makeYourOwn;

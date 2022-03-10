@@ -1,20 +1,5 @@
   TODO NOW
-      *current-order -> custom
-      *destructure all cart imports 
-      *check all imports
-
-      *organize every newjs file
-        this is a preliminary attemp at organzing 
-        further fn() grouping changes will occur  
-          *eventListeners bundle
-          *listener handlers
-          *renderers
-            renderers include display togglers
-          *LS crud operations
-          *helpers
-
-      create an exported call addEventListners fn() that will be exported to app.JS
-        * if(el) el.onclick = <callbackName>
+    *change dataset prop on menu fooditems from 'uuid' -> 'id' 
       
       
   REFACTORING CONSIDERATIONS
@@ -25,12 +10,13 @@
         * have clear usage of proper function names/verbs 
         get -- gets data from LS
         set -- sets data into LS
+        delete -- removes data from LS
         render -- grabs data from LS and places onto DOM/ usually accompanied by an element creation  
         toggle -- alters between two states of being(i.e hidden/shown, true/false etc.)
         populate -- data is filled into pre-existing fields(i.e radio buttons, summary)
-        delete -- removes data from LS
         init -- initiliazes something, usually an object or other data structure necessary to store information 
         handle<name> -- fn to be called on triggered event  
+        
         *test on all browsers -- desktop and phone
 
     Future CONSIDERATIONS

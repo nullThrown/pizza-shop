@@ -17,7 +17,7 @@ import {
   setOrderTypeToLS,
 } from './storage.js';
 import { renderCart } from './cart.js';
-import { activateAlert } from './alert';
+import { activateAlert } from './alert.js';
 // import renderSidebarCart from './sidebar.js';
 const orderTypeEl = document.getElementById('orderType');
 const subtotalEl = document.getElementById('subtotal');
@@ -195,6 +195,10 @@ function populateSummary() {
   }
 }
 
-populateSummary();
-togglePlaceOrderBtn();
-renderCheckout();
+export function initCheckout(currentPath) {
+  if (currentPath === '/html/checkout.html') {
+    populateSummary();
+    togglePlaceOrderBtn();
+    renderCheckout();
+  }
+}
