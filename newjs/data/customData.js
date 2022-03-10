@@ -1,4 +1,4 @@
-const makeYourOwn = {
+const customData = {
   smallPrice: 10.99,
   mediumPrice: 14.99,
   largePrice: 16.99,
@@ -10,4 +10,4 @@ const makeYourOwn = {
   xlargeToppingPrice: 2.49,
 };
 
-export default makeYourOwn;
+export default customData;

@@ -15,7 +15,9 @@ import {
   initCartToLS,
   deleteCartItemFromLS,
   setOrderTypeToLS,
+  setCouponToLS,
 } from './storage.js';
+import couponData from './data/couponData.js';
 import { renderCart } from './cart.js';
 import { activateAlert } from './alert.js';
 // import renderSidebarCart from './sidebar.js';
@@ -45,7 +47,7 @@ export function addCheckoutListeners() {
 
 function handleApplyCoupon() {
   const couponCode = couponCodeInput.value;
-  let isValidCouponCode = coupons.some((item) => item.id === couponCode);
+  let isValidCouponCode = couponData.some((item) => item.id === couponCode);
 
   if (isValidCouponCode) {
     setCouponToLS(couponCode);
@@ -83,7 +85,7 @@ function handleRemoveItem(e) {
 // just attach the listener to the button directly
 // reason: btn was created/inserted after page load
 // therefore, event could not be attached
-function handleRemoveCoupon() {
+function handleRemoveCoupon(e) {
   const cart = getObjFromLS('cart');
 
   if (

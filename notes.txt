@@ -1,6 +1,6 @@
   TODO NOW
     *change dataset prop on menu fooditems from 'uuid' -> 'id' 
-      
+    *change data models from '*' to '*Data'
       
   REFACTORING CONSIDERATIONS
      

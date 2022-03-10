@@ -1,4 +1,4 @@
-const coupons = [
+const couponData = [
   {
     name: 'Three medium pizza',
     id: 'three-med',
@@ -17,4 +17,4 @@ const coupons = [
   },
 ];
 
-export default coupons;
+export default couponData;

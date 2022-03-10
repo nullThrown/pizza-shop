@@ -3,7 +3,7 @@ import { create_UUID } from './helpers.js';
 import { activateAlert } from './alert.js';
 import { activateCartCount, renderCart } from './cart.js';
 import { renderSidebarCart } from './sidebar.js';
-
+import customData from './data/customData.js';
 const meatsBtn = document.getElementById('meatsBtn');
 const veggiesBtn = document.getElementById('veggiesBtn');
 const cheeseBtn = document.getElementById('cheeseBtn');
@@ -15,7 +15,6 @@ const cheeseToppings = document.querySelector('.topping-select--cheese');
 const sizeRadios = document.querySelectorAll('input[name="size"]');
 const crustRadios = document.querySelectorAll('input[name="crust"]');
 const countBtns = document.querySelectorAll('.btn--count');
-
 const toppingRadios = document.querySelectorAll('.portion-side');
 
 const toppingsContainer = document.querySelector(
@@ -117,11 +116,13 @@ function handleCrustSelect(e) {
 function handleCount(e) {
   const customPizza = getObjFromLS('customPizza');
   const { count } = customPizza;
-  const elId = e.target.id;
+  const elId = e.target.parentNode.id;
   if (elId === 'orderCountDecrement' && count > 1) customPizza.count--;
   else if (elId === 'orderCountIncrement' && count < 20) customPizza.count++;
-
-  setObjToLocalStorage('customPizza', customPizza);
+  else {
+    return;
+  }
+  setObjToLS('customPizza', customPizza);
   setCustomPizzaTotal();
   renderCount();
   renderTotal();
@@ -165,7 +166,7 @@ function handleToppingDelete(e) {
 
 function handleAddCustomToCart() {
   const customPizza = getObjFromLS('customPizza');
-  const cart = getObjFromLocalStorage('cart');
+  const cart = getObjFromLS('cart');
   if (!customPizza.size) activateAlert('Please select a size.', false);
   else {
     cart.items.push(customPizza);
@@ -325,20 +326,20 @@ function setCustomPizzaPrices() {
   let toppingPrice;
   switch (customPizza.size) {
     case 'small':
-      sizePrice = makeYourOwn.smallPrice;
-      toppingPrice = makeYourOwn.smallToppingPrice;
+      sizePrice = customData.smallPrice;
+      toppingPrice = customData.smallToppingPrice;
       break;
     case 'medium':
-      sizePrice = makeYourOwn.mediumPrice;
-      toppingPrice = makeYourOwn.mediumToppingPrice;
+      sizePrice = customData.mediumPrice;
+      toppingPrice = customData.mediumToppingPrice;
       break;
     case 'large':
-      sizePrice = makeYourOwn.largePrice;
-      toppingPrice = makeYourOwn.largeToppingPrice;
+      sizePrice = customData.largePrice;
+      toppingPrice = customData.largeToppingPrice;
       break;
     case 'x-large':
-      sizePrice = makeYourOwn.xlargePrice;
-      toppingPrice = makeYourOwn.xlargeToppingPrice;
+      sizePrice = customData.xlargePrice;
+      toppingPrice = customData.xlargeToppingPrice;
       break;
   }
   customPizza.sizePrice = sizePrice;
