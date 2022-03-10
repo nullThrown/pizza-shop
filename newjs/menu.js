@@ -9,7 +9,7 @@ import { activateCartCount } from './cart.js';
 import { activateAlert } from './alert.js';
 import { renderCart } from './cart.js';
 import { renderSidebarCart } from './sidebar.js';
-
+import foodItems from './data/foodItems.js';
 const itemSizeSelecters = document.querySelectorAll('.item-size-select');
 const itemCountSelectors = document.querySelectorAll('.food-item-count');
 const addToCartBtns = document.querySelectorAll('.btn--add-to-cart');
@@ -52,7 +52,7 @@ function handleAddToCart(e) {
     foodItemBox.dataset.uuid
   );
   let foodItem = foodItems.find(
-    (foodItem) => foodItem.uuid === foodItemBox.dataset.uuid
+    (foodItem) => foodItem.id === foodItemBox.dataset.uuid
   );
   const uuid = create_UUID();
 
@@ -76,30 +76,23 @@ function handleAddToCart(e) {
 }
 
 // changes food item price when size is selected
-function handleSizeSelect() {
-  let priceEl = sizeSelector.parentNode.querySelector('.item-price__amount');
-  let countEl = sizeSelector.parentNode.querySelector('.food-item-count').value;
-  let uuid = sizeSelector.parentNode.dataset.uuid;
-  priceEl.textContent = determinePrice(
-    sizeSelector.value,
-    countEl,
-    uuid
-  ).totalPrice;
+function handleSizeSelect(e) {
+  const el = e.target;
+  const priceEl = el.parentNode.querySelector('.item-price__amount');
+  const countEl = el.parentNode.querySelector('.food-item-count').value;
+  const uuid = el.parentNode.dataset.uuid;
+  priceEl.textContent = determinePrice(el.value, countEl, uuid).totalPrice;
 }
 
-function handleCountSelect() {
-  let priceEl = countSelector.parentNode.querySelector('.item-price__amount');
-  let sizeSelectEl =
-    countSelector.parentNode.querySelector('.item-size-select');
+function handleCountSelect(e) {
+  const el = e.target;
+  const priceEl = el.parentNode.querySelector('.item-price__amount');
+  let sizeSelectEl = el.parentNode.querySelector('.item-size-select');
   if (sizeSelectEl !== null) {
     sizeSelectEl = sizeSelectEl.value;
   }
-  let uuid = countSelector.parentNode.dataset.uuid;
-  priceEl.textContent = determinePrice(
-    sizeSelectEl,
-    countSelector.value,
-    uuid
-  ).totalPrice;
+  const uuid = el.parentNode.dataset.uuid;
+  priceEl.textContent = determinePrice(sizeSelectEl, el.value, uuid).totalPrice;
 }
 
 // HELPERS //
