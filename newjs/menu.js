@@ -58,8 +58,8 @@ function handleAddToCart(e) {
 
   let cartItem = new CartItem(
     uuid,
-    foodItem.name,
     foodItem.category,
+    foodItem.name,
     sizeSelectEl,
     crustSelectEl,
     sauceSelectEl,

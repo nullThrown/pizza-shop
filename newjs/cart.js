@@ -61,7 +61,6 @@ export function renderCart() {
   const cart = getObjFromLS('cart');
   const listContainer = document.querySelector('.cart__ul');
   listContainer.replaceChildren();
-  console.log('render cart has ran');
   cart.items.forEach((item) => {
     // creates cart item node and appends it to the listcontainer
     switch (item.category) {
@@ -144,4 +143,8 @@ export function activateCartCount() {
   setTimeout(() => {
     cartCountEl.classList.remove('header__cart-box--active');
   }, 200);
+}
+
+export function initCart() {
+  renderCart();
 }
