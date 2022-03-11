@@ -4,6 +4,7 @@ import { activateAlert } from './alert.js';
 import { activateCartCount, renderCart } from './cart.js';
 import { renderSidebarCart } from './sidebar.js';
 import customData from './data/customData.js';
+
 const meatsBtn = document.getElementById('meatsBtn');
 const veggiesBtn = document.getElementById('veggiesBtn');
 const cheeseBtn = document.getElementById('cheeseBtn');
@@ -27,6 +28,8 @@ const currentOrderSizeEl = document.querySelector('.current-order__size');
 const currentOrderCrustEl = document.querySelector('.current-order__crust');
 const currentOrderCountEl = document.querySelector('.current-order__count');
 const currentOrderPriceEl = document.getElementById('currentOrderPrice');
+
+// LISTENER EXPORT //
 
 export function addCustomListeners() {
   if (sizeRadios)
@@ -87,9 +90,7 @@ class PizzaTopping {
   }
 }
 
-// these need to be converted into a single function
-
-// change to class selector
+// HANDLERS //
 
 function handleSizeSelect(e) {
   const customPizza = getObjFromLS('customPizza');
@@ -173,14 +174,17 @@ function handleAddCustomToCart() {
     setObjToLS('cart', cart);
     initCustomPizzaToLS(true);
     activateCartCount();
-    activateAlert('custom Pizza has been added to your cart', true);
+    activateAlert('Custom pizza has been added to your cart', true);
     renderCart();
     renderSidebarCart();
     clearToppingDisplay();
     uncheckInputs(sizeRadios, toppingRadios);
+    // what is this doing here??
     renderCrust();
   }
 }
+
+// RENDERERS //
 
 function renderSize() {
   const { size } = getObjFromLS('customPizza');
@@ -247,8 +251,8 @@ function toggleAddToCartBtn() {
   }
 }
 
-// find more suitable fn() name
-// find more sutiable array fn()
+// POPULATE //
+
 function populateSizeRadios() {
   const { size } = getObjFromLS('customPizza');
   if (size) {
@@ -281,6 +285,8 @@ function populateToppingRadios() {
   });
 }
 
+// HELPERS //
+
 function deleteToppingFromLocalStorage(uuid) {
   const customPizza = getObjFromLS('customPizza');
   const itemIndex = customPizza.toppings.findIndex(
@@ -300,6 +306,7 @@ function uncheckTopping(topping) {
   toppingRadio.checked = false;
 }
 
+// place in helper.js
 function uncheckInputs() {
   for (let i = 0; i < arguments.length; i++) {
     arguments[i].forEach((el) => {
@@ -357,6 +364,8 @@ function setCustomPizzaTotal() {
   );
   setObjToLS('customPizza', customPizza);
 }
+
+// INIT EXPORT //
 
 export function initCustomPizza(currentPath) {
   if (currentPath === '/html/menu/make-your-own.html') {

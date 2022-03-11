@@ -1,10 +1,10 @@
-import { createPizzaItemNode } from './components/pizzaItem.js';
-import { createCustomPizzaItemNode } from './components/customPizzaItem.js';
-import { createDrinkItemNode } from './components/drinkItem.js';
-import { createDessertItemNode } from './components/dessertItem.js';
-import { createSideItemNode } from './components/sideItem.js';
-import { renderSidebarCart } from './sidebar.js';
 import { getObjFromLS, deleteCartItemFromLS, setObjToLS } from './storage.js';
+import { createPizzaItemNode } from './components/cart/pizzaItem.js';
+import { createCustomPizzaItemNode } from './components/cart/customPizzaItem.js';
+import { createDrinkItemNode } from './components/cart/drinkItem.js';
+import { createDessertItemNode } from './components/cart/dessertItem.js';
+import { createSideItemNode } from './components/cart/sideItem.js';
+import { renderSidebarCart } from './sidebar.js';
 
 const cartEl = document.querySelector('.cart');
 const cartItemsUl = document.querySelector('.cart__ul');
@@ -12,7 +12,6 @@ const cartItemsUl = document.querySelector('.cart__ul');
 const cartSubtotalEl = document.getElementById('cart-subtotal');
 const cartTaxEl = document.getElementById('cart-tax');
 const cartTotalEl = document.getElementById('cart-total');
-
 const orderTypeEl = document.querySelector('.cart__order-type');
 
 const cartCountEl = document.getElementById('cart-count');
@@ -20,7 +19,8 @@ const sidebarCartCountEl = document.querySelector('.sidebar__cart-count');
 
 const cartIcons = document.querySelectorAll('.cart-icons');
 
-// event listeners
+// LISTENER EXPORT //
+
 export function addCartListeners() {
   if (cartItemsUl) cartItemsUl.onclick = handleDeleteCartItem;
 
@@ -56,6 +56,20 @@ export class CartItem {
     this.imageLink = imageLink;
   }
 }
+
+// HANDLERS //
+
+export function handleDeleteCartItem(e) {
+  const el = e.target;
+  if (el.nodeName === 'BUTTON' && el.classList.contains('delete-cart-item')) {
+    const targetLi = el.closest('li');
+    deleteCartItemFromLS(targetLi.dataset.uuid);
+    renderCart();
+    renderSidebarCart();
+  }
+}
+
+// RENDERERS //
 
 export function renderCart() {
   const cart = getObjFromLS('cart');
@@ -112,15 +126,7 @@ function renderCartMetaData() {
   sidebarCartCountEl.textContent = items.length;
 }
 
-export function handleDeleteCartItem(e) {
-  const el = e.target;
-  if (el.nodeName === 'BUTTON' && el.classList.contains('delete-cart-item')) {
-    const targetLi = el.closest('li');
-    deleteCartItemFromLS(targetLi.dataset.uuid);
-    renderCart();
-    renderSidebarCart();
-  }
-}
+// HELPERS //
 
 export function determineCartTotals() {
   const cart = getObjFromLS('cart');
@@ -144,6 +150,8 @@ export function activateCartCount() {
     cartCountEl.classList.remove('header__cart-box--active');
   }, 200);
 }
+
+// INIT EXPORT //
 
 export function initCart() {
   renderCart();

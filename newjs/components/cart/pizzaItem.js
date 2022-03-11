@@ -12,6 +12,6 @@ export function createPizzaItemNode(item, container) {
       <span class='u-text-bold'>$</span>
       <span class='cart__item-price'>${item.totalPrice}</span>
       </p>
-    </li>;`
+    </li>`
   );
 }

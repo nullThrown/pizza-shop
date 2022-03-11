@@ -1,41 +1,27 @@
-  TODO NOW
-    *change dataset prop on menu fooditems from 'uuid' -> 'id' 
-    *change data models from '*' to '*Data'
-      
-  REFACTORING CONSIDERATIONS
-     
-    Business Logic/JS
-
+  TODO 
+     *checkout has buggy behavior 
+      order is placed happens even with disabled button 
+     *look through pages and read notes at top  
       General 
-        * have clear usage of proper function names/verbs 
-        get -- gets data from LS
-        set -- sets data into LS
-        delete -- removes data from LS
-        render -- grabs data from LS and places onto DOM/ usually accompanied by an element creation  
-        toggle -- alters between two states of being(i.e hidden/shown, true/false etc.)
-        populate -- data is filled into pre-existing fields(i.e radio buttons, summary)
-        init -- initiliazes something, usually an object or other data structure necessary to store information 
-        handle<name> -- fn to be called on triggered event  
+        *function name conventions
+          get -- gets data from LS
+          set -- sets data into LS
+          delete -- removes data from LS
+          render -- grabs data from LS and places onto DOM/ often accompanied by an element creation  
+          toggle -- alters between two states of being(i.e hidden/shown, true/false etc.)
+          populate -- data is filled into pre-existing fields(i.e radio buttons, summary)
+          init -- initiliazes something 
+          handle -- fn to be called on triggered event  
         
-        *test on all browsers -- desktop and phone
-
-    Future CONSIDERATIONS
-
-        Logic
-
-          *fix isDuplicate fn() on cart object
-          *refactor eventlisteners  
-            write single function or two separate ones if necessary for size change selectors and count selectors 
-            use querySelectorAll to select food item divs and then select elements from within --- 
-            not sure why I think this is better, but at one point it struck me to do it this way
-            and at the time it appeared to make sense 
-            even though now I'm not sure why that would be better. 
-
+    Future Considerations
+          *create an order placed page and make it look nice 
+          *check about para with grammarly
           *add hover effect to more info buttons -- to show toppings etc.
-        UI
+          * isDuplicate fn() that checks if item-to-be-added already exists in cart
    
-          Deals  
-        *remove settimeout so that all popups will be displayed for 3 seconds
-        *add popup when a item is removed    
-        *have deal run function on final price 
+          ALERT  
+           *change alert UI
+           *remove settimeout so that all popups will be displayed for 3 seconds
+           *add popup when a item is removed    
+           *have deal run function on final price 
 

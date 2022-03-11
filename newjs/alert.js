@@ -2,6 +2,8 @@ const popup = document.querySelector('.popup');
 const popupIcon = document.querySelector('.popup__icon');
 const popupText = document.querySelector('.popup__text');
 
+// might need to remove previous alert timeout in order for new alerts to stay active for specified time
+// otherwise, alert will 'catch' tail end of previous alert setTimeout that removes 'display' classes
 export function activateAlert(msg, isSuccess) {
   popupText.textContent = msg;
   popup.style.display = 'flex';

@@ -11,11 +11,12 @@ import { addDealsListeners } from './deals.js';
 import { addSidebarListeners, initSidebar } from './sidebar.js';
 import { addMenuListeners } from './menu.js';
 
-const pickupBtn = document.querySelector('.pickup-btn');
-const deliveryBtn = document.querySelector('.delivery-btn');
-
 const currentPath = window.location.pathname;
 
+// find new home for these buttons
+// could place in checkout
+const pickupBtn = document.querySelector('.pickup-btn');
+const deliveryBtn = document.querySelector('.delivery-btn');
 if (pickupBtn && deliveryBtn) {
   pickupBtn.onclick = () => setOrderTypeToLS('pickup');
   deliveryBtn.onclick = () => setOrderTypeToLS('delivery');
@@ -29,9 +30,9 @@ addCustomListeners();
 addSidebarListeners();
 addMenuListeners();
 
+// initializers
 initCartToLS();
 initPreviousOrdersToLS();
-
 initCheckout(currentPath);
 initCustomPizza(currentPath);
 initCart();

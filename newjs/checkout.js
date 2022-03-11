@@ -1,7 +1,6 @@
 // TODO THIS FILE
 // fn() renderCouponCode() does not need to create couponcode element, instead toggle display property of html content
 // fn() handleRemoveCoupon() does not need to event propogate. Once the item is added to html file, just grab the btn el directly
-// import renderSidebarCart when properly exported
 // what is summaryPromoBox??
 import { createPizzaItemNode } from './components/checkout/pizzaItem.js';
 import { createCustomPizzaItemNode } from './components/checkout/customPizzaItem.js';
@@ -20,19 +19,19 @@ import {
 import couponData from './data/couponData.js';
 import { renderCart } from './cart.js';
 import { activateAlert } from './alert.js';
-// import renderSidebarCart from './sidebar.js';
+
 const orderTypeEl = document.getElementById('orderType');
 const subtotalEl = document.getElementById('subtotal');
 const taxEl = document.getElementById('tax');
 const totalEl = document.getElementById('total');
-// what is this doing here?
-const summaryPromoBox = document.querySelector('.summary__promo-box');
 const applyBtn = document.querySelector('.btn--apply');
 const productUl = document.querySelector('.product__list');
 const couponCodeBox = document.querySelector('.summary__promo-code-box');
 const placeOrderbtn = document.querySelector('.btn-link--place-order');
 const couponCodeInput = document.getElementById('coupon-code-input');
 const orderTypeBtns = document.querySelectorAll('.checkout__order-type-btn');
+
+// LISTENER EXPORT //
 
 export function addCheckoutListeners() {
   if (applyBtn) applyBtn.onclick = handleApplyCoupon;
@@ -76,7 +75,6 @@ function handleRemoveItem(e) {
     togglePlaceOrderBtn();
     renderCheckout();
     renderCart();
-    renderSidebarCart();
     populateSummary();
   }
 }
@@ -116,7 +114,7 @@ function handlePlaceOrder() {
   }
 }
 
-// RENDERS //
+// RENDERERS //
 
 function renderCheckout() {
   const cart = getObjFromLS('cart');
@@ -183,7 +181,6 @@ function togglePlaceOrderBtn() {
 
 // POPULATE //
 
-// populates checkout metadata, totals, ordertype, coupons etc.
 function populateSummary() {
   const cart = getObjFromLS('cart');
   const { orderType, cartTotals, couponCode } = cart;
@@ -196,6 +193,8 @@ function populateSummary() {
     renderCouponCode(couponCode);
   }
 }
+
+// INIT EXPORT //
 
 export function initCheckout(currentPath) {
   if (currentPath === '/html/checkout.html') {

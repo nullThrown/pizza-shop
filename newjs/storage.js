@@ -1,4 +1,5 @@
 import { isStored, create_UUID } from './helpers.js';
+
 // LS = localStorage
 
 // inits cart into LS
@@ -19,6 +20,7 @@ export function initCustomPizzaToLS(reset) {
   if (!isStored('customPizza') || reset === true) {
     let customPizzaStr = JSON.stringify({
       name: 'Custom Pizza',
+      category: 'custom',
       size: '',
       crust: 'regular',
       count: 1,
@@ -32,7 +34,7 @@ export function initCustomPizzaToLS(reset) {
     localStorage.setItem('customPizza', customPizzaStr);
   }
 }
-// inits  previous orders into LS
+// inits  previous orders array into LS
 export function initPreviousOrdersToLS() {
   if (!isStored('previousOrders')) {
     const ordersStr = JSON.stringify([]);

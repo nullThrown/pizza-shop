@@ -9,10 +9,12 @@ import { activateCartCount } from './cart.js';
 import { activateAlert } from './alert.js';
 import { renderCart } from './cart.js';
 import { renderSidebarCart } from './sidebar.js';
-import foodItems from './data/foodItems.js';
+import foodItems from './data/foodItemData.js';
 const itemSizeSelecters = document.querySelectorAll('.item-size-select');
 const itemCountSelectors = document.querySelectorAll('.food-item-count');
 const addToCartBtns = document.querySelectorAll('.btn--add-to-cart');
+
+// LISTENER EXPORT //
 
 export function addMenuListeners() {
   if (addToCartBtns)
@@ -49,10 +51,10 @@ function handleAddToCart(e) {
   let { totalPrice, originalPrice } = determinePrice(
     sizeSelectEl,
     countEl.value,
-    foodItemBox.dataset.uuid
+    foodItemBox.dataset.id
   );
   let foodItem = foodItems.find(
-    (foodItem) => foodItem.id === foodItemBox.dataset.uuid
+    (foodItem) => foodItem.id === foodItemBox.dataset.id
   );
   const uuid = create_UUID();
 
@@ -75,13 +77,12 @@ function handleAddToCart(e) {
   renderSidebarCart();
 }
 
-// changes food item price when size is selected
 function handleSizeSelect(e) {
   const el = e.target;
   const priceEl = el.parentNode.querySelector('.item-price__amount');
   const countEl = el.parentNode.querySelector('.food-item-count').value;
-  const uuid = el.parentNode.dataset.uuid;
-  priceEl.textContent = determinePrice(el.value, countEl, uuid).totalPrice;
+  const id = el.parentNode.dataset.id;
+  priceEl.textContent = determinePrice(el.value, countEl, id).totalPrice;
 }
 
 function handleCountSelect(e) {
@@ -91,15 +92,15 @@ function handleCountSelect(e) {
   if (sizeSelectEl !== null) {
     sizeSelectEl = sizeSelectEl.value;
   }
-  const uuid = el.parentNode.dataset.uuid;
-  priceEl.textContent = determinePrice(sizeSelectEl, el.value, uuid).totalPrice;
+  const id = el.parentNode.dataset.id;
+  priceEl.textContent = determinePrice(sizeSelectEl, el.value, id).totalPrice;
 }
 
 // HELPERS //
 
 // determines price of specific food item based on size, type, count etc.
-function determinePrice(size, count, uuid) {
-  const foodItem = foodItems.find((foodItem) => foodItem.id === uuid);
+function determinePrice(size, count, id) {
+  const foodItem = foodItems.find((foodItem) => foodItem.id === id);
   let price = 0;
 
   if (!size) {

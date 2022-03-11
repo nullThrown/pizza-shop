@@ -4,11 +4,11 @@
 // REMOVE BLUE BACKGROUND FOR MENU
 import { handleDeleteCartItem } from './cart.js';
 import { getObjFromLS } from './storage.js';
-import { createPizzaItemNode } from './components/pizzaItem.js';
-import { createCustomPizzaItemNode } from './components/customPizzaItem.js';
-import { createSideItemNode } from './components/sideItem.js';
-import { createDessertItemNode } from './components/dessertItem.js';
-import { createDrinkItemNode } from './components/drinkItem.js';
+import { createPizzaItemNode } from './components/cart/pizzaItem.js';
+import { createCustomPizzaItemNode } from './components/cart/customPizzaItem.js';
+import { createSideItemNode } from './components/cart/sideItem.js';
+import { createDessertItemNode } from './components/cart/dessertItem.js';
+import { createDrinkItemNode } from './components/cart/drinkItem.js';
 import { determineCartTotals } from './cart.js';
 
 const sidebar = document.querySelector('.sidebar');
@@ -21,11 +21,15 @@ const sidebarSubtotal = document.getElementById('sidebar-subtotal');
 const sidebarTax = document.getElementById('sidebar-tax');
 const sidebarTotal = document.getElementById('sidebar-total');
 
+// LISTENER EXPORT //
+
 export function addSidebarListeners() {
   sidebarMenuBtn.onclick = handleSidebarMenu;
   sidebarCartBtn.onclick = handleSidebarCart;
   sidebarCartContainer.onclick = handleDeleteCartItem;
 }
+
+// HANDLERS //
 
 function handleSidebarMenu() {
   if (sidebar.dataset.state === 'closed') {
@@ -70,9 +74,8 @@ function handleSidebarCart() {
   }
 }
 
-// RENDER //
+// RENDERERS //
 
-// func should mirror that of renderCart from './cart.js'
 export function renderSidebarCart() {
   const cart = getObjFromLS('cart');
   sidebarCartContainer.replaceChildren();
@@ -126,6 +129,8 @@ function closeSidebar() {
   sidebarMenu.style.display = 'none';
   sidebarCart.style.display = 'none';
 }
+
+// INIT EXPORT //
 
 export function initSidebar() {
   renderSidebarCart();

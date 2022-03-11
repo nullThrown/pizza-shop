@@ -7,7 +7,8 @@ const largePizzaSideBtn = document.getElementById('large-pizza-side-btn');
 const medPizza2LiterBtn = document.getElementById('med-pizza-2liter-btn');
 const over40Btn = document.getElementById('over-40-btn');
 
-// check if onclick can be set to fn() call
+// LISTENER EXPORT //
+
 export function addDealsListeners() {
   if (threeMedBtn) threeMedBtn.onclick = () => addCouponCode(couponData[0]);
   if (largePizzaSideBtn)
@@ -16,6 +17,8 @@ export function addDealsListeners() {
     medPizza2LiterBtn.onclick = () => addCouponCode(couponData[2]);
   if (over40Btn) over40Btn.onclick = () => addCouponCode(couponData[3]);
 }
+
+// HELPER //
 
 function addCouponCode(coupon) {
   const { couponCode } = getObjFromLS('cart');

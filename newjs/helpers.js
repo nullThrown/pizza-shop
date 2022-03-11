@@ -1,4 +1,4 @@
-import foodItems from './data/foodItems.js';
+import foodItems from './data/foodItemData.js';
 const itemPriceEls = document.querySelectorAll('.item-price__amount');
 
 export function create_UUID() {
@@ -14,13 +14,11 @@ export function create_UUID() {
   return uuid;
 }
 
-// refactored version!!
 export function isStored(key) {
   return Boolean(localStorage.getItem(key));
 }
 
-//   sets prices for all food items
-// item.innerHTML should be text context
+//   sets prices for all food items on intial page load
 export function setPrices() {
   itemPriceEls.forEach((item) => {
     const containerUUID = item.closest('.food-item-box').dataset.uuid;

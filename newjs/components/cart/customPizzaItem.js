@@ -35,21 +35,21 @@ export function createCustomPizzaItemNode(item, container) {
 }
 
 export function createToppingsStrs(item) {
-  const fullTopStr = '';
-  const leftTopStr = '';
-  const rightTopStr = '';
+  let fullTopStr = '';
+  let leftTopStr = '';
+  let rightTopStr = '';
   item.toppings.forEach((top) => {
     switch (top.side) {
       case 'full':
-        fullTopStr += `<li>${top.name}</li>`;
+        fullTopStr += `<li class="u-text-italicize miniscule-text">${top.name}</li>`;
         break;
 
       case 'left':
-        leftTopStr += `<li>${top.name}</li>`;
+        leftTopStr += `<li class="u-text-italicize miniscule-text">${top.name}</li>`;
         break;
 
       case 'right':
-        rightTopStr += `<li>${top.name}</li>`;
+        rightTopStr += `<li class="u-text-italicize miniscule-text">${top.name}</li>`;
         break;
     }
   });
