@@ -1,13 +1,60 @@
   TODO 
-     *checkout has buggy behavior 
-      order is placed happens even with disabled button 
-     *look through pages and read notes at top  
+     JS/LOGIC
+      *place all init exports on top of file with listener exports 
+      *checkout has buggy behavior -- order is placed happens even addToCartBtn disabled
+      *switch toggle to handle
+      *normalize all number data 
+        - number data is being pull from DOM as a string and needs to be converted into a number
+        - in order to run arithmetic ops on these numbers, they must be converted at a certain point
+        - normalize this process and remove all the excess parseFloat/Number calls
+      
+      app.js  
+        *find new home for pickup/delivery buttons
+      cart.js
+        *break up cartItem into separate classes
+      checkout.js
+        *handleRemoveCoupon -- instead of creating coupon -- have coupon and cancel btn 
+          already placed on DOM and then when coupon code is added/removed, add text content and toggle display 
+        *renderCouponCode -- does not need to create coupon code, this instead needs to toggle the coupon code items (span, cancelbtn)
+
+      customPizza.js
+          -- recheck this file!!
+        *change classes from 'current-order' -> 'custom'. As well as all selectors 
+        *change all vars from 'current/currentOrder' -> 'custom'
+        *refactor meatsBtn,veggiesBtn, &, cheeseBtn listener logic -- it is way too verbose and ugly
+        *handleToppingSelect -- isTopping should be found using 'findIndex' not 'some'
+          - if isTopping returns -1, then create new topping
+          - else isTopping !== -1, use that index to change the topping side
+          - this reduces the need to traverse the topping array twice
+        *renderPizzaToppings -- pizza topping should be nodeCreation, use switch case to determine on which side it will be attached 
+        *combine all populate functions into one that runs a callback - sorta like an array method lol 
+        *deleteToppingFromLocalStorage should be placed in storage
+        *place uncheckInputs into helper.js file 
+      deals.js
+
+      helpers.js
+
+      menu.js
+
+      sidebar.js
+      
+      storage.js
+
+      *
+      *
+      *
+      *
+       
+     
+     
+     
+     
       General 
         *function name conventions
           get -- gets data from LS
           set -- sets data into LS
           delete -- removes data from LS
-          render -- grabs data from LS and places onto DOM/ often accompanied by an element creation  
+          render -- grabs data from LS and places onto DOM  
           toggle -- alters between two states of being(i.e hidden/shown, true/false etc.)
           populate -- data is filled into pre-existing fields(i.e radio buttons, summary)
           init -- initiliazes something 

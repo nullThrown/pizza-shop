@@ -29,7 +29,20 @@ const currentOrderCrustEl = document.querySelector('.current-order__crust');
 const currentOrderCountEl = document.querySelector('.current-order__count');
 const currentOrderPriceEl = document.getElementById('currentOrderPrice');
 
-// LISTENER EXPORT //
+export function initCustomPizza(currentPath) {
+  if (currentPath === '/html/menu/make-your-own.html') {
+    initCustomPizzaToLS();
+    toggleAddToCartBtn();
+    populateSizeRadios();
+    populateCrustRadios();
+    populateToppingRadios();
+    renderSize();
+    renderCrust();
+    renderTotal();
+    renderCount();
+    renderPizzaToppings();
+  }
+}
 
 export function addCustomListeners() {
   if (sizeRadios)
@@ -101,8 +114,6 @@ function handleSizeSelect(e) {
   toggleAddToCartBtn();
   renderSize();
   renderTotal();
-  // why do we need to render topping display on size select?
-  renderPizzaToppings();
 }
 
 function handleCrustSelect(e) {
@@ -158,7 +169,7 @@ function handleToppingDelete(e) {
   ) {
     const targetDiv = e.target.closest('div');
 
-    deleteToppingFromLocalStorage(targetDiv.dataset.uuid);
+    deleteToppingFromLS(targetDiv.dataset.uuid);
     setCustomPizzaTotal();
     renderPizzaToppings();
     renderTotal();
@@ -179,8 +190,6 @@ function handleAddCustomToCart() {
     renderSidebarCart();
     clearToppingDisplay();
     uncheckInputs(sizeRadios, toppingRadios);
-    // what is this doing here??
-    renderCrust();
   }
 }
 
@@ -287,7 +296,7 @@ function populateToppingRadios() {
 
 // HELPERS //
 
-function deleteToppingFromLocalStorage(uuid) {
+function deleteToppingFromLS(uuid) {
   const customPizza = getObjFromLS('customPizza');
   const itemIndex = customPizza.toppings.findIndex(
     (item) => item.uuid === uuid
@@ -363,21 +372,4 @@ function setCustomPizzaTotal() {
     ).toFixed(2)
   );
   setObjToLS('customPizza', customPizza);
-}
-
-// INIT EXPORT //
-
-export function initCustomPizza(currentPath) {
-  if (currentPath === '/html/menu/make-your-own.html') {
-    initCustomPizzaToLS();
-    toggleAddToCartBtn();
-    populateSizeRadios();
-    populateCrustRadios();
-    populateToppingRadios();
-    renderSize();
-    renderCrust();
-    renderTotal();
-    renderCount();
-    renderPizzaToppings();
-  }
 }

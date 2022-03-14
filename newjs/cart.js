@@ -19,15 +19,16 @@ const sidebarCartCountEl = document.querySelector('.sidebar__cart-count');
 
 const cartIcons = document.querySelectorAll('.cart-icons');
 
-// LISTENER EXPORT //
+export function initCart() {
+  renderCart();
+}
 
 export function addCartListeners() {
   if (cartItemsUl) cartItemsUl.onclick = handleDeleteCartItem;
 
-  // combine into single element
   if (cartIcons)
     cartIcons.forEach((el) => {
-      el.onclick = toggleCartDisplay;
+      el.onclick = handleCartDisplay;
     });
 }
 
@@ -69,6 +70,15 @@ export function handleDeleteCartItem(e) {
   }
 }
 
+export function handleCartDisplay() {
+  const cartElStyles = window.getComputedStyle(cartEl);
+  if (cartElStyles.display === 'none') {
+    cartEl.style.display = 'block';
+  } else {
+    cartEl.style.display = 'none';
+  }
+}
+
 // RENDERERS //
 
 export function renderCart() {
@@ -102,26 +112,16 @@ export function renderCart() {
   renderCartMetaData();
 }
 
-export function toggleCartDisplay() {
-  const cartElStyles = window.getComputedStyle(cartEl);
-  if (cartElStyles.display === 'none') {
-    cartEl.style.display = 'block';
-  } else {
-    cartEl.style.display = 'none';
-  }
-}
-
 function renderCartMetaData() {
   const cart = getObjFromLS('cart');
   const { cartTotals, orderType, items } = cart;
-  //totals
+
   cartSubtotalEl.textContent = cartTotals.subtotal.toFixed(2);
   cartTaxEl.textContent = cartTotals.calculatedTax.toFixed(2);
   cartTotalEl.textContent = cartTotals.total.toFixed(2);
 
   orderTypeEl.textContent = orderType || '';
 
-  // cart count
   cartCountEl.textContent = items.length;
   sidebarCartCountEl.textContent = items.length;
 }
@@ -149,10 +149,4 @@ export function activateCartCount() {
   setTimeout(() => {
     cartCountEl.classList.remove('header__cart-box--active');
   }, 200);
-}
-
-// INIT EXPORT //
-
-export function initCart() {
-  renderCart();
 }

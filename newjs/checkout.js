@@ -31,7 +31,13 @@ const placeOrderbtn = document.querySelector('.btn-link--place-order');
 const couponCodeInput = document.getElementById('coupon-code-input');
 const orderTypeBtns = document.querySelectorAll('.checkout__order-type-btn');
 
-// LISTENER EXPORT //
+export function initCheckout(currentPath) {
+  if (currentPath === '/html/checkout.html') {
+    populateSummary();
+    togglePlaceOrderBtn();
+    renderCheckout();
+  }
+}
 
 export function addCheckoutListeners() {
   if (applyBtn) applyBtn.onclick = handleApplyCoupon;
@@ -81,8 +87,7 @@ function handleRemoveItem(e) {
 
 // no reason to event propogate
 // just attach the listener to the button directly
-// reason: btn was created/inserted after page load
-// therefore, event could not be attached
+// reason: btn was created/inserted after page load & event could not be attached
 function handleRemoveCoupon(e) {
   const cart = getObjFromLS('cart');
 
@@ -170,8 +175,7 @@ function renderCouponCode(couponCode) {
 }
 
 function togglePlaceOrderBtn() {
-  const cart = getObjFromLS('cart');
-  const { items, orderType } = cart;
+  const { items, orderType } = getObjFromLS('cart');
   if (!items.length || !orderType) {
     placeOrderbtn.classList.add('btn--disabled');
   } else {
@@ -182,8 +186,7 @@ function togglePlaceOrderBtn() {
 // POPULATE //
 
 function populateSummary() {
-  const cart = getObjFromLS('cart');
-  const { orderType, cartTotals, couponCode } = cart;
+  const { orderType, cartTotals, couponCode } = getObjFromLS('cart');
 
   orderTypeEl.textContent = orderType;
   subtotalEl.textContent = cartTotals.subtotal.toFixed(2);
@@ -191,15 +194,5 @@ function populateSummary() {
   totalEl.textContent = cartTotals.total.toFixed(2);
   if (couponCode) {
     renderCouponCode(couponCode);
-  }
-}
-
-// INIT EXPORT //
-
-export function initCheckout(currentPath) {
-  if (currentPath === '/html/checkout.html') {
-    populateSummary();
-    togglePlaceOrderBtn();
-    renderCheckout();
   }
 }
