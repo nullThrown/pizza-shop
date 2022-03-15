@@ -18,16 +18,14 @@ const crustRadios = document.querySelectorAll('input[name="crust"]');
 const countBtns = document.querySelectorAll('.btn--count');
 const toppingRadios = document.querySelectorAll('.portion-side');
 
-const toppingsContainer = document.querySelector(
-  '.current-order__toppings-box'
-);
+const toppingsContainer = document.querySelector('.custom__toppings-box');
 
 const addCustomToCartbtn = document.querySelector('.btn--add-custom-to-cart');
 
-const currentOrderSizeEl = document.querySelector('.current-order__size');
-const currentOrderCrustEl = document.querySelector('.current-order__crust');
-const currentOrderCountEl = document.querySelector('.current-order__count');
-const currentOrderPriceEl = document.getElementById('currentOrderPrice');
+const customSizeEl = document.querySelector('.custom__size');
+const customCrustEl = document.querySelector('.custom__crust');
+const customCountEl = document.querySelector('.custom__count');
+const customPriceEl = document.getElementById('customPrice');
 
 export function initCustomPizza(currentPath) {
   if (currentPath === '/html/menu/make-your-own.html') {
@@ -197,24 +195,24 @@ function handleAddCustomToCart() {
 
 function renderSize() {
   const { size } = getObjFromLS('customPizza');
-  currentOrderSizeEl.textContent = size;
+  customSizeEl.textContent = size;
 }
 
 function renderCrust() {
   const { crust } = getObjFromLS('customPizza');
-  currentOrderCrustEl.textContent = crust;
+  customCrustEl.textContent = crust;
 }
 
 // render count
 function renderCount() {
   const { count } = getObjFromLS('customPizza');
-  currentOrderCountEl.textContent = count;
+  customCountEl.textContent = count;
 }
 
 // render total
 function renderTotal() {
   const { totalPrice } = getObjFromLS('customPizza');
-  currentOrderPriceEl.textContent = totalPrice;
+  customPriceEl.textContent = totalPrice;
 }
 
 const fullBox = document.querySelector('.topping-display-full');
@@ -228,7 +226,7 @@ function renderPizzaToppings() {
 
   customPizza.toppings.forEach((topping) => {
     let toppingBox = document.createElement('div');
-    toppingBox.classList.add('current-order__topping');
+    toppingBox.classList.add('custom__topping');
     toppingBox.dataset.uuid = topping.uuid;
     let toppingP = document.createElement('p');
     toppingP.textContent = topping.name;
@@ -365,7 +363,7 @@ function setCustomPizzaPrices() {
 
 function setCustomPizzaTotal() {
   const customPizza = getObjFromLS('customPizza');
-  const { sizePrice, toppingPrice, toppings, count } = cart;
+  const { sizePrice, toppingPrice, toppings, count } = customPizza;
   customPizza.totalPrice = Number(
     ((sizePrice + toppingPrice * toppings.length) * count).toFixed(2)
   );

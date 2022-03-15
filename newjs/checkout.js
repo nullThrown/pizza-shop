@@ -15,6 +15,7 @@ import {
   deleteCartItemFromLS,
   setOrderTypeToLS,
   setCouponToLS,
+  deleteCouponFromLS,
 } from './storage.js';
 import couponData from './data/couponData.js';
 import { renderCart } from './cart.js';
@@ -27,6 +28,8 @@ const totalEl = document.getElementById('total');
 const applyBtn = document.querySelector('.btn--apply');
 const productUl = document.querySelector('.product__list');
 const couponCodeBox = document.querySelector('.summary__promo-code-box');
+const couponSpan = document.querySelector('.promo-code-span');
+const deleteCouponBtn = document.querySelector('.remove-coupon-code');
 const placeOrderbtn = document.querySelector('.btn-link--place-order');
 const couponCodeInput = document.getElementById('coupon-code-input');
 const orderTypeBtns = document.querySelectorAll('.checkout__order-type-btn');
@@ -35,7 +38,8 @@ export function initCheckout(currentPath) {
   if (currentPath === '/html/checkout.html') {
     populateSummary();
     togglePlaceOrderBtn();
-    renderCheckout();
+    renderCheckoutItems();
+    renderCouponCode();
   }
 }
 
@@ -44,7 +48,7 @@ export function addCheckoutListeners() {
   if (orderTypeBtns)
     orderTypeBtns.forEach((btn) => (btn.onclick = handleAddOrderType));
   if (productUl) productUl.onclick = handleRemoveItem;
-  if (couponCodeBox) couponCodeBox.onclick = handleRemoveCoupon;
+  if (deleteCouponBtn) deleteCouponBtn.onclick = handleRemoveCoupon;
   if (placeOrderbtn) placeOrderbtn.onclick = handlePlaceOrder;
 }
 
@@ -56,7 +60,7 @@ function handleApplyCoupon() {
 
   if (isValidCouponCode) {
     setCouponToLS(couponCode);
-    renderCouponCode(couponCode);
+    renderCouponCode();
     activateAlert(`${couponCode} has been added to your order.`, true);
     couponCodeInput.value = '';
   } else {
@@ -79,26 +83,15 @@ function handleRemoveItem(e) {
     deleteCartItemFromLS(targetLi.dataset.uuid);
     productUl.replaceChildren();
     togglePlaceOrderBtn();
-    renderCheckout();
+    renderCheckoutItems();
     renderCart();
     populateSummary();
   }
 }
 
-// no reason to event propogate
-// just attach the listener to the button directly
-// reason: btn was created/inserted after page load & event could not be attached
-function handleRemoveCoupon(e) {
-  const cart = getObjFromLS('cart');
-
-  if (
-    e.target.nodeName === 'BUTTON' &&
-    e.target.classList.contains('btn--cancel')
-  ) {
-    cart.couponCode = '';
-    couponCodeBox.replaceChildren();
-    setObjToLS('cart', cart);
-  }
+function handleRemoveCoupon() {
+  deleteCouponFromLS();
+  renderCouponCode();
 }
 
 function handlePlaceOrder() {
@@ -121,13 +114,13 @@ function handlePlaceOrder() {
 
 // RENDERERS //
 
-function renderCheckout() {
-  const cart = getObjFromLS('cart');
+function renderCheckoutItems() {
+  const { items } = getObjFromLS('cart');
 
-  if (!cart.items.length) {
+  if (!items.length) {
     createEmptyCartNode(productUl);
   } else {
-    cart.items.forEach((item) => {
+    items.forEach((item) => {
       switch (item.category) {
         case 'pizza':
           createPizzaItemNode(item, productUl);
@@ -157,21 +150,15 @@ function renderOrderType() {
   orderTypeEl.textContent = cart.orderType;
 }
 
-// this should be a display toggle
-// no need to create elements when it is not necessary
-function renderCouponCode(couponCode) {
-  couponCodeBox.replaceChildren();
-  const cart = getObjFromLS('cart');
+function renderCouponCode() {
+  const { couponCode } = getObjFromLS('cart');
 
-  const couponSpan = document.createElement('span');
-  const couponCancelBtn = document.createElement('button');
-
-  couponSpan.classList.add('promo-code-span');
-  couponSpan.textContent = cart.couponCode;
-  couponCancelBtn.classList.add('btn', 'btn--cancel');
-  couponCancelBtn.textContent = 'X';
-  couponCodeBox.append(couponSpan, couponCancelBtn);
-  couponSpan.textContent = couponCode;
+  if (!couponCode) {
+    couponCodeBox.style.display = 'none';
+  } else {
+    couponCodeBox.style.display = 'flex';
+    couponSpan.textContent = couponCode;
+  }
 }
 
 function togglePlaceOrderBtn() {
@@ -192,7 +179,4 @@ function populateSummary() {
   subtotalEl.textContent = cartTotals.subtotal.toFixed(2);
   taxEl.textContent = cartTotals.calculatedTax.toFixed(2);
   totalEl.textContent = cartTotals.total.toFixed(2);
-  if (couponCode) {
-    renderCouponCode(couponCode);
-  }
 }

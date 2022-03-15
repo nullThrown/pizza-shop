@@ -996,7 +996,7 @@ body {
     margin-top: 50px;
     font-size: 2rem; }
 
-input[type="radio"] {
+input[type='radio'] {
   width: 20px;
   height: 40px; }
 
@@ -1053,57 +1053,57 @@ input[type="radio"] {
       .crust-box__selectors-box > div > input {
         margin-right: 5px; }
 
-.current-order {
+.custom {
   border: 1px solid rgba(255, 0, 0, 0.15);
   border-radius: 4px; }
   @media (max-width: 880px) {
-    .current-order {
+    .custom {
       grid-column: 1 / -1;
       grid-row: 3 / 4; } }
-  .current-order__price {
+  .custom__price {
     font-size: 2.4rem; }
-  .current-order__info-box {
+  .custom__info-box {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 20px; }
-    .current-order__info-box > * {
+    .custom__info-box > * {
       margin-top: 20px; }
-  .current-order__count-box {
+  .custom__count-box {
     display: flex;
     justify-content: space-around;
     align-items: center;
     width: 100px; }
-  .current-order__count {
+  .custom__count {
     font-size: 2rem;
     padding: 0 10px; }
-  .current-order__size {
+  .custom__size {
     align-self: start;
     font-size: 1.6rem;
     margin-left: 10px; }
     @media (max-width: 880px) {
-      .current-order__size {
+      .custom__size {
         align-self: center; } }
-  .current-order__crust {
+  .custom__crust {
     align-self: start;
     font-size: 1.6rem;
     margin-left: 10px; }
     @media (max-width: 880px) {
-      .current-order__crust {
+      .custom__crust {
         align-self: center; } }
-  .current-order__toppings-box {
+  .custom__toppings-box {
     margin: 40px 10px; }
-  .current-order__topping-category {
+  .custom__topping-category {
     margin: 10px 0 5px; }
-    .current-order__topping-category > h4 {
+    .custom__topping-category > h4 {
       font-size: 2rem;
       font-family: 'Lato', sans-serif;
       font-weight: 400;
       font-style: italic; }
-    .current-order__topping-category > p {
+    .custom__topping-category > p {
       font-size: 1.4rem; }
-  .current-order__topping {
+  .custom__topping {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1112,9 +1112,9 @@ input[type="radio"] {
     min-width: 200px;
     margin: 5px 0 0 10px; }
     @media (max-width: 880px) {
-      .current-order__topping {
+      .custom__topping {
         max-width: 100%; } }
-    .current-order__topping button {
+    .custom__topping button {
       margin-left: 18px; }
 
 .topping-select {

@@ -53,35 +53,56 @@ function handleAddToCart(e) {
     countVal,
     clickedItemId
   );
-
-  const cartItemBase = {
-    uuid,
-    category,
-    name,
-    countVal,
-    originalPrice,
-    totalPrice,
-    imageLink,
-  };
-  let newCartItem;
-
   switch (clickedItemCat) {
     case 'pizza':
-      cartItemBase.size = sizeVal;
-      cartItemBase.crust = crustVal;
-      newCartItem = new Pizza(...cartItemBase);
+      console.log('pizza case was run');
+      newCartItem = new Pizza(
+        uuid,
+        category,
+        name,
+        countVal,
+        originalPrice,
+        totalPrice,
+        imageLink,
+        sizeVal,
+        crustVal
+      );
       break;
     case 'side':
-      cartItemBase.size = sizeVal;
-      cartItemBase.sauce = sauceVal;
-      newCartItem = new Side(cartItemBase);
+      newCartItem = new Side(
+        uuid,
+        category,
+        name,
+        countVal,
+        originalPrice,
+        totalPrice,
+        imageLink,
+        sizeVal,
+        sauceVal
+      );
       break;
     case 'dessert':
-      newCartItem = new Dessert(cartItemBase);
+      newCartItem = new Dessert(
+        uuid,
+        category,
+        name,
+        countVal,
+        originalPrice,
+        totalPrice,
+        imageLink
+      );
       break;
     case 'drink':
-      cartItemBase.size = sizeVal;
-      newCartItem = new Drink(cartItemBase);
+      newCartItem = new Drink(
+        uuid,
+        category,
+        name,
+        countVal,
+        originalPrice,
+        totalPrice,
+        imageLink,
+        sizeVal
+      );
       break;
 
     default:
@@ -144,103 +165,3 @@ function determinePrice(size, count, id) {
     originalPrice: price,
   };
 }
-
-// function handleAddToCart(e) {
-//   let foodItemBox = e.target.closest('.food-item-box');
-//   let sizeSelectEl =
-//     foodItemBox.querySelector('.item-size-select') || undefined;
-//   if (sizeSelectEl !== undefined) sizeSelectEl = sizeSelectEl.value;
-
-//   let crustSelectEl =
-//     foodItemBox.querySelector('.pizza-crust-select') || undefined;
-//   if (crustSelectEl !== undefined) crustSelectEl = crustSelectEl.value;
-
-//   let sauceSelectEl =
-//     foodItemBox.querySelector('.item-sauce-select') || undefined;
-//   if (sauceSelectEl !== undefined) sauceSelectEl = sauceSelectEl.value;
-
-//   let countEl = foodItemBox.querySelector('.food-item-count');
-//   let { totalPrice, originalPrice } = determinePrice(
-//     sizeSelectEl,
-//     countEl.value,
-//     foodItemBox.dataset.id
-//   );
-//   let foodItem = foodItems.find(
-//     (foodItem) => foodItem.id === foodItemBox.dataset.id
-//   );
-//   const uuid = create_UUID();
-
-//   let cartItem = new CartItem(
-//     uuid,
-//     foodItem.category,
-//     foodItem.name,
-//     sizeSelectEl,
-//     crustSelectEl,
-//     sauceSelectEl,
-//     countEl.value,
-//     originalPrice,
-//     totalPrice,
-//     foodItem.imageLink
-//   );
-//   setCartItemToLS(cartItem);
-//   activateCartCount();
-//   activateAlert(`${cartItem.name} has been added to your cart`, true);
-//   renderCart();
-//   renderSidebarCart();
-// }
-
-// switch (clickedItemCat) {
-//   case 'pizza':
-//     console.log('pizza case was run');
-//     newCartItem = new Pizza(
-//       uuid,
-//       category,
-//       name,
-//       countVal,
-//       originalPrice,
-//       totalPrice,
-//       imageLink,
-//       sizeVal,
-//       crustVal
-//     );
-//     break;
-//   case 'side':
-//     newCartItem = new Side(
-//       uuid,
-//       category,
-//       name,
-//       countVal,
-//       originalPrice,
-//       totalPrice,
-//       imageLink,
-//       sizeVal,
-//       sauceVal
-//     );
-//     break;
-//   case 'dessert':
-//     newCartItem = new Dessert(
-//       uuid,
-//       category,
-//       name,
-//       countVal,
-//       originalPrice,
-//       totalPrice,
-//       imageLink
-//     );
-//     break;
-//   case 'drink':
-//     newCartItem = new Drink(
-//       uuid,
-//       category,
-//       name,
-//       countVal,
-//       originalPrice,
-//       totalPrice,
-//       imageLink,
-//       sizeVal
-//     );
-//     break;
-
-//   default:
-//     break;
-// }

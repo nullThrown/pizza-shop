@@ -1,16 +1,7 @@
   TODO
-    *finsih this rework, it is basically done. It just requires a means of placing an entire object into a class object creator 
-    *creation of food items rework
-      *break up class CartItem into multiple classes
-      - parent class which contains all consistent fields
-      - pizza class 
-      - side class
-      - dessert class 
-      - drink class
-      *CartItem obj is being created in the menu 
-      * create switch case that checks the category of the food item
-        - and creates an obj based on its category
-        
+    *finish menu CartItem creation -- figure out how to create a base case and spread it into each specific case (i.e., 'pizza', 'side')
+    *all 'removes' fn() names that remove items from LS should be renamed to 'delete' 
+    *'remove' should be used only for node removals     
      JS/LOGIC
       *place all init exports on top of file with listener exports 
       *checkout has buggy behavior -- order is placed happens even addToCartBtn disabled
@@ -22,16 +13,11 @@
       
       app.js  
       cart.js
-        *break up cartItem into separate classes
       checkout.js
-        *handleRemoveCoupon -- instead of creating coupon -- have coupon and cancel btn 
-          already placed on DOM and then when coupon code is added/removed, add text content and toggle display 
-        *renderCouponCode -- does not need to create coupon code, this instead needs to toggle the coupon code items (span, cancelbtn)
 
       customPizza.js
           -- recheck this file!!
-        *change classes from 'current-order' -> 'custom'. As well as all selectors 
-        *change all vars from 'current/currentOrder' -> 'custom'
+        *rename files to custom
         *refactor meatsBtn,veggiesBtn, &, cheeseBtn listener logic -- it is way too verbose and ugly
         *handleToppingSelect -- isTopping should be found using 'findIndex' not 'some'
           - if isTopping returns -1, then create new topping
