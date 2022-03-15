@@ -21,7 +21,10 @@ const sidebarSubtotal = document.getElementById('sidebar-subtotal');
 const sidebarTax = document.getElementById('sidebar-tax');
 const sidebarTotal = document.getElementById('sidebar-total');
 
-// LISTENER EXPORT //
+export function initSidebar() {
+  renderSidebarCart();
+  renderSidebarTotal();
+}
 
 export function addSidebarListeners() {
   sidebarMenuBtn.onclick = handleSidebarMenu;
@@ -77,11 +80,10 @@ function handleSidebarCart() {
 // RENDERERS //
 
 export function renderSidebarCart() {
-  const cart = getObjFromLS('cart');
+  const { items } = getObjFromLS('cart');
   sidebarCartContainer.replaceChildren();
 
-  cart.items.forEach((item) => {
-    // creates cart item node and appends it to the sidebarCartContainer
+  items.forEach((item) => {
     switch (item.category) {
       case 'pizza':
         createPizzaItemNode(item, sidebarCartContainer);
@@ -108,8 +110,8 @@ export function renderSidebarCart() {
 }
 
 function renderSidebarTotal() {
-  const cart = getObjFromLS('cart');
-  const { cartTotals } = cart;
+  const { cartTotals } = getObjFromLS('cart');
+
   sidebarSubtotal.textContent = cartTotals.subtotal.toFixed(2);
   sidebarTax.textContent = cartTotals.calculatedTax.toFixed(2);
   sidebarTotal.textContent = cartTotals.total.toFixed(2);
@@ -128,11 +130,4 @@ function closeSidebar() {
   sidebar.classList.add('sidebar--close');
   sidebarMenu.style.display = 'none';
   sidebarCart.style.display = 'none';
-}
-
-// INIT EXPORT //
-
-export function initSidebar() {
-  renderSidebarCart();
-  renderSidebarTotal();
 }

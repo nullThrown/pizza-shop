@@ -32,32 +32,6 @@ export function addCartListeners() {
     });
 }
 
-export class CartItem {
-  constructor(
-    uuid,
-    category,
-    name,
-    size,
-    crust,
-    sauce,
-    count,
-    originalPrice,
-    totalPrice,
-    imageLink
-  ) {
-    this.uuid = uuid;
-    this.category = category;
-    this.name = name;
-    this.size = size;
-    this.crust = crust;
-    this.sauce = sauce;
-    this.count = count;
-    this.originalPrice = originalPrice;
-    this.totalPrice = totalPrice;
-    this.imageLink = imageLink;
-  }
-}
-
 // HANDLERS //
 
 export function handleDeleteCartItem(e) {

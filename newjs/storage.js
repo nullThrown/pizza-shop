@@ -2,7 +2,6 @@ import { isStored, create_UUID } from './helpers.js';
 
 // LS = localStorage
 
-// inits cart into LS
 export function initCartToLS(reset) {
   if (!isStored('cart') || reset) {
     const cartStr = JSON.stringify({
@@ -15,7 +14,7 @@ export function initCartToLS(reset) {
     localStorage.setItem('cart', cartStr);
   }
 }
-// inits custom pizza into LS
+
 export function initCustomPizzaToLS(reset) {
   if (!isStored('customPizza') || reset === true) {
     let customPizzaStr = JSON.stringify({
@@ -34,7 +33,7 @@ export function initCustomPizzaToLS(reset) {
     localStorage.setItem('customPizza', customPizzaStr);
   }
 }
-// inits  previous orders array into LS
+
 export function initPreviousOrdersToLS() {
   if (!isStored('previousOrders')) {
     const ordersStr = JSON.stringify([]);
@@ -42,7 +41,6 @@ export function initPreviousOrdersToLS() {
   }
 }
 
-// objects/arrays are stored as strings in LS -- must be stringified/parsed
 export function getObjFromLS(key) {
   const storedObj = localStorage.getItem(key);
   return JSON.parse(storedObj);

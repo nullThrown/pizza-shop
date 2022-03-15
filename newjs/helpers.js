@@ -19,12 +19,10 @@ export function isStored(key) {
 }
 
 //   sets prices for all food items on intial page load
-export function setPrices() {
+export function initPrices() {
   itemPriceEls.forEach((item) => {
-    const containerUUID = item.closest('.food-item-box').dataset.uuid;
-    const foodItem = foodItems.find(
-      (foodItem) => foodItem.id === containerUUID
-    );
+    const containerId = item.closest('.food-item-box').dataset.id;
+    const foodItem = foodItems.find((foodItem) => foodItem.id === containerId);
     item.innerHTML = foodItem.smallPrice || foodItem.price;
   });
 }

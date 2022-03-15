@@ -1,4 +1,15 @@
-  TODO 
+  TODO
+    *creation of food items rework
+      *break up class CartItem into multiple classes
+      - parent class which contains all consistent fields
+      - pizza class 
+      - side class
+      - dessert class 
+      - drink class
+      *CartItem obj is being created in the menu 
+      * create switch case that checks the category of the food item
+        - and creates an obj based on its category
+        
      JS/LOGIC
       *place all init exports on top of file with listener exports 
       *checkout has buggy behavior -- order is placed happens even addToCartBtn disabled
@@ -9,7 +20,6 @@
         - normalize this process and remove all the excess parseFloat/Number calls
       
       app.js  
-        *find new home for pickup/delivery buttons
       cart.js
         *break up cartItem into separate classes
       checkout.js
@@ -28,18 +38,25 @@
           - this reduces the need to traverse the topping array twice
         *renderPizzaToppings -- pizza topping should be nodeCreation, use switch case to determine on which side it will be attached 
         *combine all populate functions into one that runs a callback - sorta like an array method lol 
-        *deleteToppingFromLocalStorage should be placed in storage
+        *deleteToppingFromLS should be placed in storage
         *place uncheckInputs into helper.js file 
       deals.js
-
+        *file looks fine
       helpers.js
-
+        *file looks fine
       menu.js
-
+        *handleAddToCart -- should be broken down into multiple fn(), depending on what type of food item it is
+        *change all element variables from being reassigned to values. This is confusing and an unequivocal bad decision
+          - this happens in handleSizeSelect & handleCountSelect
       sidebar.js
-      
+        * sidebar needs redesign
+          - sidebar needs to be two separate overlays 
+          - buttons need to be placed on either side of title
+          - overlay should envelope the entire page
+          - blue BG needs to be changed
+          - look up other sidebars and try to find a nice design
       storage.js
-
+        *file looks fine 
       *
       *
       *

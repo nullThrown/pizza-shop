@@ -1,20 +1,21 @@
 // TODO THIS FILE
-// import renderSidebarCart when exported
 // break handleAddToCart into multiple function calls base on food item being added
 
 import { create_UUID } from './helpers.js';
-import { CartItem } from './cart.js';
 import { setCartItemToLS } from './storage.js';
 import { activateCartCount } from './cart.js';
 import { activateAlert } from './alert.js';
 import { renderCart } from './cart.js';
 import { renderSidebarCart } from './sidebar.js';
 import foodItems from './data/foodItemData.js';
+import Pizza from './cartItems/Pizza.js';
+import Side from './cartItems/Side.js';
+import Dessert from './cartItems/Dessert.js';
+import Drink from './cartItems/Drink.js';
+
 const itemSizeSelecters = document.querySelectorAll('.item-size-select');
 const itemCountSelectors = document.querySelectorAll('.food-item-count');
 const addToCartBtns = document.querySelectorAll('.btn--add-to-cart');
-
-// LISTENER EXPORT //
 
 export function addMenuListeners() {
   if (addToCartBtns)
@@ -101,7 +102,7 @@ function handleCountSelect(e) {
 // determines price of specific food item based on size, type, count etc.
 function determinePrice(size, count, id) {
   const foodItem = foodItems.find((foodItem) => foodItem.id === id);
-  let price = 0;
+  let price;
 
   if (!size) {
     price = foodItem.price;

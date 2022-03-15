@@ -362,14 +362,12 @@ function setCustomPizzaPrices() {
   customPizza.toppingPrice = toppingPrice;
   setObjToLS('customPizza', customPizza);
 }
+
 function setCustomPizzaTotal() {
-  let customPizza = getObjFromLS('customPizza');
+  const customPizza = getObjFromLS('customPizza');
+  const { sizePrice, toppingPrice, toppings, count } = cart;
   customPizza.totalPrice = Number(
-    (
-      (customPizza.sizePrice +
-        customPizza.toppingPrice * customPizza.toppings.length) *
-      customPizza.count
-    ).toFixed(2)
+    ((sizePrice + toppingPrice * toppings.length) * count).toFixed(2)
   );
   setObjToLS('customPizza', customPizza);
 }
