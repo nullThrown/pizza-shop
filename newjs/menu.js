@@ -34,46 +34,63 @@ export function addMenuListeners() {
 
 // break this function into several based on the food item
 // event listeners for addtoCart btns for all menu items
+
 function handleAddToCart(e) {
-  let foodItemBox = e.target.closest('.food-item-box');
-  let sizeSelectEl =
-    foodItemBox.querySelector('.item-size-select') || undefined;
-  if (sizeSelectEl !== undefined) sizeSelectEl = sizeSelectEl.value;
+  const foodItemBox = e.target.closest('.food-item-box');
+  const clickedItemId = foodItemBox.dataset.id;
+  const clickedItemCat = foodItemBox.dataset.category;
+  const sizeVal = foodItemBox.querySelector('.item-size-select')?.value;
+  const crustVal = foodItemBox.querySelector('.pizza-crust-select')?.value;
+  const sauceVal = foodItemBox.querySelector('.item-sauce-select')?.value;
+  const countVal = foodItemBox.querySelector('.food-item-count')?.value;
 
-  let crustSelectEl =
-    foodItemBox.querySelector('.pizza-crust-select') || undefined;
-  if (crustSelectEl !== undefined) crustSelectEl = crustSelectEl.value;
-
-  let sauceSelectEl =
-    foodItemBox.querySelector('.item-sauce-select') || undefined;
-  if (sauceSelectEl !== undefined) sauceSelectEl = sauceSelectEl.value;
-
-  let countEl = foodItemBox.querySelector('.food-item-count');
-  let { totalPrice, originalPrice } = determinePrice(
-    sizeSelectEl,
-    countEl.value,
-    foodItemBox.dataset.id
-  );
-  let foodItem = foodItems.find(
-    (foodItem) => foodItem.id === foodItemBox.dataset.id
-  );
+  const foodItem = foodItems.find((foodItem) => foodItem.id === clickedItemId);
+  const { category, name, imageLink } = foodItem;
   const uuid = create_UUID();
 
-  let cartItem = new CartItem(
+  let { totalPrice, originalPrice } = determinePrice(
+    sizeVal,
+    countVal,
+    clickedItemId
+  );
+
+  const cartItemBase = {
     uuid,
-    foodItem.category,
-    foodItem.name,
-    sizeSelectEl,
-    crustSelectEl,
-    sauceSelectEl,
-    countEl.value,
+    category,
+    name,
+    countVal,
     originalPrice,
     totalPrice,
-    foodItem.imageLink
-  );
-  setCartItemToLS(cartItem);
+    imageLink,
+  };
+  let newCartItem;
+
+  switch (clickedItemCat) {
+    case 'pizza':
+      cartItemBase.size = sizeVal;
+      cartItemBase.crust = crustVal;
+      newCartItem = new Pizza(...cartItemBase);
+      break;
+    case 'side':
+      cartItemBase.size = sizeVal;
+      cartItemBase.sauce = sauceVal;
+      newCartItem = new Side(cartItemBase);
+      break;
+    case 'dessert':
+      newCartItem = new Dessert(cartItemBase);
+      break;
+    case 'drink':
+      cartItemBase.size = sizeVal;
+      newCartItem = new Drink(cartItemBase);
+      break;
+
+    default:
+      break;
+  }
+
+  setCartItemToLS(newCartItem);
   activateCartCount();
-  activateAlert(`${cartItem.name} has been added to your cart`, true);
+  activateAlert(`${newCartItem.name} has been added to your cart`, true);
   renderCart();
   renderSidebarCart();
 }
@@ -127,3 +144,103 @@ function determinePrice(size, count, id) {
     originalPrice: price,
   };
 }
+
+// function handleAddToCart(e) {
+//   let foodItemBox = e.target.closest('.food-item-box');
+//   let sizeSelectEl =
+//     foodItemBox.querySelector('.item-size-select') || undefined;
+//   if (sizeSelectEl !== undefined) sizeSelectEl = sizeSelectEl.value;
+
+//   let crustSelectEl =
+//     foodItemBox.querySelector('.pizza-crust-select') || undefined;
+//   if (crustSelectEl !== undefined) crustSelectEl = crustSelectEl.value;
+
+//   let sauceSelectEl =
+//     foodItemBox.querySelector('.item-sauce-select') || undefined;
+//   if (sauceSelectEl !== undefined) sauceSelectEl = sauceSelectEl.value;
+
+//   let countEl = foodItemBox.querySelector('.food-item-count');
+//   let { totalPrice, originalPrice } = determinePrice(
+//     sizeSelectEl,
+//     countEl.value,
+//     foodItemBox.dataset.id
+//   );
+//   let foodItem = foodItems.find(
+//     (foodItem) => foodItem.id === foodItemBox.dataset.id
+//   );
+//   const uuid = create_UUID();
+
+//   let cartItem = new CartItem(
+//     uuid,
+//     foodItem.category,
+//     foodItem.name,
+//     sizeSelectEl,
+//     crustSelectEl,
+//     sauceSelectEl,
+//     countEl.value,
+//     originalPrice,
+//     totalPrice,
+//     foodItem.imageLink
+//   );
+//   setCartItemToLS(cartItem);
+//   activateCartCount();
+//   activateAlert(`${cartItem.name} has been added to your cart`, true);
+//   renderCart();
+//   renderSidebarCart();
+// }
+
+// switch (clickedItemCat) {
+//   case 'pizza':
+//     console.log('pizza case was run');
+//     newCartItem = new Pizza(
+//       uuid,
+//       category,
+//       name,
+//       countVal,
+//       originalPrice,
+//       totalPrice,
+//       imageLink,
+//       sizeVal,
+//       crustVal
+//     );
+//     break;
+//   case 'side':
+//     newCartItem = new Side(
+//       uuid,
+//       category,
+//       name,
+//       countVal,
+//       originalPrice,
+//       totalPrice,
+//       imageLink,
+//       sizeVal,
+//       sauceVal
+//     );
+//     break;
+//   case 'dessert':
+//     newCartItem = new Dessert(
+//       uuid,
+//       category,
+//       name,
+//       countVal,
+//       originalPrice,
+//       totalPrice,
+//       imageLink
+//     );
+//     break;
+//   case 'drink':
+//     newCartItem = new Drink(
+//       uuid,
+//       category,
+//       name,
+//       countVal,
+//       originalPrice,
+//       totalPrice,
+//       imageLink,
+//       sizeVal
+//     );
+//     break;
+
+//   default:
+//     break;
+// }

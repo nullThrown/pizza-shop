@@ -16,7 +16,7 @@ class CartItem {
     totalPrice,
     imageLink
   ) {
-    this.uuid == uuid;
+    this.uuid = uuid;
     this.category = category;
     this.name = name;
     this.count = count;

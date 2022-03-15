@@ -1,4 +1,5 @@
   TODO
+    *finsih this rework, it is basically done. It just requires a means of placing an entire object into a class object creator 
     *creation of food items rework
       *break up class CartItem into multiple classes
       - parent class which contains all consistent fields
