@@ -1,7 +1,8 @@
   TODO
     *finish menu CartItem creation -- figure out how to create a base case and spread it into each specific case (i.e., 'pizza', 'side')
     *all 'removes' fn() names that remove items from LS should be renamed to 'delete' 
-    *'remove' should be used only for node removals     
+    *'remove' should be used only for node removals  
+    *remove 'drink' title from menu page
      JS/LOGIC
       *place all init exports on top of file with listener exports 
       *checkout has buggy behavior -- order is placed happens even addToCartBtn disabled
@@ -10,21 +11,13 @@
         - number data is being pull from DOM as a string and needs to be converted into a number
         - in order to run arithmetic ops on these numbers, they must be converted at a certain point
         - normalize this process and remove all the excess parseFloat/Number calls
-      
-      app.js  
-      cart.js
-      checkout.js
+    
 
       customPizza.js
         *rename files to custom
         *refactor meatsBtn,veggiesBtn, &, cheeseBtn listener logic -- it is way too verbose and ugly
-      deals.js
-        *file looks fine
-      helpers.js
-        *file looks fine
+    
       menu.js
-        *change all element variables from being reassigned to values. This is confusing and an unequivocal bad decision
-          - this happens in handleSizeSelect & handleCountSelect
       sidebar.js
         * sidebar needs redesign
           - sidebar needs to be two separate overlays 
@@ -32,13 +25,16 @@
           - overlay should envelope the entire page
           - blue BG needs to be changed
           - look up other sidebars and try to find a nice design
-      storage.js
-        *file looks fine 
-      *
-      *
-      *
-      *
-       
+
+        sidebar todo 
+          *place cart icon, title, and menu button in flex container 
+          *create two overlays 
+            *one with the cart items 
+            *one with menu 
+          *set overlays to 100% width and offset -100% when not active
+          *fix functionality for open/closing
+            *when one is open the other one must close 
+          
      
      
      

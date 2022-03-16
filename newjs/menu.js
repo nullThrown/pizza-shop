@@ -32,9 +32,6 @@ export function addMenuListeners() {
 
 // HANDLERS //
 
-// break this function into several based on the food item
-// event listeners for addtoCart btns for all menu items
-
 function handleAddToCart(e) {
   const foodItemBox = e.target.closest('.food-item-box');
   const clickedItemId = foodItemBox.dataset.id;
@@ -53,6 +50,8 @@ function handleAddToCart(e) {
     countVal,
     clickedItemId
   );
+  let newCartItem;
+
   switch (clickedItemCat) {
     case 'pizza':
       newCartItem = new Pizza(
@@ -126,12 +125,15 @@ function handleSizeSelect(e) {
 function handleCountSelect(e) {
   const el = e.target;
   const priceEl = el.parentNode.querySelector('.item-price__amount');
-  let sizeSelectEl = el.parentNode.querySelector('.item-size-select');
-  if (sizeSelectEl !== null) {
-    sizeSelectEl = sizeSelectEl.value;
-  }
+  const sizeSelectElVal =
+    el.parentNode.querySelector('.item-size-select')?.value;
   const id = el.parentNode.dataset.id;
-  priceEl.textContent = determinePrice(sizeSelectEl, el.value, id).totalPrice;
+
+  priceEl.textContent = determinePrice(
+    sizeSelectElVal,
+    el.value,
+    id
+  ).totalPrice;
 }
 
 // HELPERS //
