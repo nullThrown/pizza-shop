@@ -16,23 +16,13 @@
       checkout.js
 
       customPizza.js
-          -- recheck this file!!
         *rename files to custom
         *refactor meatsBtn,veggiesBtn, &, cheeseBtn listener logic -- it is way too verbose and ugly
-        *handleToppingSelect -- isTopping should be found using 'findIndex' not 'some'
-          - if isTopping returns -1, then create new topping
-          - else isTopping !== -1, use that index to change the topping side
-          - this reduces the need to traverse the topping array twice
-        *renderPizzaToppings -- pizza topping should be nodeCreation, use switch case to determine on which side it will be attached 
-        *combine all populate functions into one that runs a callback - sorta like an array method lol 
-        *deleteToppingFromLS should be placed in storage
-        *place uncheckInputs into helper.js file 
       deals.js
         *file looks fine
       helpers.js
         *file looks fine
       menu.js
-        *handleAddToCart -- should be broken down into multiple fn(), depending on what type of food item it is
         *change all element variables from being reassigned to values. This is confusing and an unequivocal bad decision
           - this happens in handleSizeSelect & handleCountSelect
       sidebar.js

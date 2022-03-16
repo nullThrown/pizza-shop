@@ -18,6 +18,14 @@ export function isStored(key) {
   return Boolean(localStorage.getItem(key));
 }
 
+export function uncheckInputs() {
+  for (let i = 0; i < arguments.length; i++) {
+    arguments[i].forEach((el) => {
+      if (el.checked) el.checked = false;
+    });
+  }
+}
+
 //   sets prices for all food items on intial page load
 export function initPrices() {
   itemPriceEls.forEach((item) => {

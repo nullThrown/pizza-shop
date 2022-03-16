@@ -1,10 +1,16 @@
-import { getObjFromLS, setObjToLS, initCustomPizzaToLS } from './storage.js';
+import {
+  getObjFromLS,
+  setObjToLS,
+  initCustomPizzaToLS,
+  deleteCustomToppingFromLS,
+} from './storage.js';
 import { create_UUID } from './helpers.js';
 import { activateAlert } from './alert.js';
 import { activateCartCount, renderCart } from './cart.js';
 import { renderSidebarCart } from './sidebar.js';
+import { createToppingNode } from './components/customPizza/topping.js';
 import customData from './data/customData.js';
-
+import { uncheckInputs } from './helpers.js';
 const meatsBtn = document.getElementById('meatsBtn');
 const veggiesBtn = document.getElementById('veggiesBtn');
 const cheeseBtn = document.getElementById('cheeseBtn');
@@ -19,6 +25,9 @@ const countBtns = document.querySelectorAll('.btn--count');
 const toppingRadios = document.querySelectorAll('.portion-side');
 
 const toppingsContainer = document.querySelector('.custom__toppings-box');
+const fullBox = document.querySelector('.topping-display-full');
+const leftBox = document.querySelector('.topping-display-left');
+const rightBox = document.querySelector('.topping-display-right');
 
 const addCustomToCartbtn = document.querySelector('.btn--add-custom-to-cart');
 
@@ -142,8 +151,10 @@ function handleToppingSelect(e) {
   const customPizza = getObjFromLS('customPizza');
   const toppingName = e.target.name;
   const toppingSide = e.target.dataset.side;
-  const isTopping = customPizza.toppings.some((el) => el.name === toppingName);
-  if (!isTopping) {
+  const toppingIndex = customPizza.toppings.findIndex(
+    (el) => el.name === toppingName
+  );
+  if (toppingIndex === -1) {
     const pizzaTopping = new PizzaTopping(
       toppingName,
       toppingSide,
@@ -151,8 +162,7 @@ function handleToppingSelect(e) {
     );
     customPizza.toppings.push(pizzaTopping);
   } else {
-    const topping = customPizza.toppings.find((el) => el.name === toppingName);
-    topping.side = toppingSide;
+    customPizza.toppings[toppingIndex].side = toppingSide;
   }
   setObjToLS('customPizza', customPizza);
   setCustomPizzaTotal();
@@ -167,7 +177,7 @@ function handleToppingDelete(e) {
   ) {
     const targetDiv = e.target.closest('div');
 
-    deleteToppingFromLS(targetDiv.dataset.uuid);
+    removeTopping(targetDiv.dataset.uuid);
     setCustomPizzaTotal();
     renderPizzaToppings();
     renderTotal();
@@ -203,48 +213,30 @@ function renderCrust() {
   customCrustEl.textContent = crust;
 }
 
-// render count
 function renderCount() {
   const { count } = getObjFromLS('customPizza');
   customCountEl.textContent = count;
 }
 
-// render total
 function renderTotal() {
   const { totalPrice } = getObjFromLS('customPizza');
   customPriceEl.textContent = totalPrice;
 }
 
-const fullBox = document.querySelector('.topping-display-full');
-const leftBox = document.querySelector('.topping-display-left');
-const rightBox = document.querySelector('.topping-display-right');
-
-// create html node
 function renderPizzaToppings() {
   clearToppingDisplay();
-  let customPizza = getObjFromLS('customPizza');
+  const { toppings, toppingPrice } = getObjFromLS('customPizza');
 
-  customPizza.toppings.forEach((topping) => {
-    let toppingBox = document.createElement('div');
-    toppingBox.classList.add('custom__topping');
-    toppingBox.dataset.uuid = topping.uuid;
-    let toppingP = document.createElement('p');
-    toppingP.textContent = topping.name;
-    let priceP = document.createElement('p');
-    priceP.textContent = '(+$' + customPizza.toppingPrice + ')';
-    let removeBtn = document.createElement('button');
-    removeBtn.classList.add('btn', 'btn--cancel');
-    removeBtn.textContent = 'X';
-    toppingBox.append(toppingP, priceP, removeBtn);
+  toppings.forEach((topping) => {
     switch (topping.side) {
       case 'full':
-        fullBox.appendChild(toppingBox);
+        createToppingNode(topping, toppingPrice, fullBox);
         break;
       case 'left':
-        leftBox.appendChild(toppingBox);
+        createToppingNode(topping, toppingPrice, leftBox);
         break;
       case 'right':
-        rightBox.appendChild(toppingBox);
+        createToppingNode(topping, toppingPrice, rightBox);
         break;
     }
   });
@@ -294,17 +286,6 @@ function populateToppingRadios() {
 
 // HELPERS //
 
-function deleteToppingFromLS(uuid) {
-  const customPizza = getObjFromLS('customPizza');
-  const itemIndex = customPizza.toppings.findIndex(
-    (item) => item.uuid === uuid
-  );
-  if (itemIndex !== -1) {
-    uncheckTopping(customPizza.toppings[itemIndex]);
-    customPizza.toppings.splice(itemIndex, 1);
-    setObjToLS('customPizza', customPizza);
-  }
-}
 function uncheckTopping(topping) {
   let toppingRadio = Array.from(toppingRadios).find(
     (radio) =>
@@ -313,12 +294,14 @@ function uncheckTopping(topping) {
   toppingRadio.checked = false;
 }
 
-// place in helper.js
-function uncheckInputs() {
-  for (let i = 0; i < arguments.length; i++) {
-    arguments[i].forEach((el) => {
-      if (el.checked) el.checked = false;
-    });
+export function removeTopping(uuid) {
+  const customPizza = getObjFromLS('customPizza');
+  const toppingIndex = customPizza.toppings.findIndex(
+    (item) => item.uuid === uuid
+  );
+  if (toppingIndex !== -1) {
+    uncheckTopping(customPizza.toppings[toppingIndex]);
+    deleteCustomToppingFromLS(uuid);
   }
 }
 

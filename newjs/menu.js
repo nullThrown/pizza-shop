@@ -55,7 +55,6 @@ function handleAddToCart(e) {
   );
   switch (clickedItemCat) {
     case 'pizza':
-      console.log('pizza case was run');
       newCartItem = new Pizza(
         uuid,
         category,
@@ -119,9 +118,9 @@ function handleAddToCart(e) {
 function handleSizeSelect(e) {
   const el = e.target;
   const priceEl = el.parentNode.querySelector('.item-price__amount');
-  const countEl = el.parentNode.querySelector('.food-item-count').value;
-  const id = el.parentNode.dataset.id;
-  priceEl.textContent = determinePrice(el.value, countEl, id).totalPrice;
+  const countElVal = el.parentNode.querySelector('.food-item-count').value;
+  const itemId = el.parentNode.dataset.id;
+  priceEl.textContent = determinePrice(el.value, countElVal, itemId).totalPrice;
 }
 
 function handleCountSelect(e) {

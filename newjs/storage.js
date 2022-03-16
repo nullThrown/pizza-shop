@@ -78,3 +78,11 @@ export function deleteCartItemFromLS(uuid) {
   cart.items = cart.items.filter((item) => item.uuid !== uuid);
   setObjToLS('cart', cart);
 }
+
+export function deleteCustomToppingFromLS(uuid) {
+  const customPizza = getObjFromLS('customPizza');
+  customPizza.toppings = customPizza.toppings.filter(
+    (top) => top.uuid !== uuid
+  );
+  setObjToLS('customPizza', customPizza);
+}
