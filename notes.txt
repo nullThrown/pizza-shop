@@ -3,6 +3,7 @@
     *all 'removes' fn() names that remove items from LS should be renamed to 'delete' 
     *'remove' should be used only for node removals  
     *remove 'drink' title from menu page
+    *blend render cart and sidebar into single function -- there is no reason that they should be separate
      JS/LOGIC
       *place all init exports on top of file with listener exports 
       *checkout has buggy behavior -- order is placed happens even addToCartBtn disabled
@@ -27,13 +28,25 @@
           - look up other sidebars and try to find a nice design
 
         sidebar todo 
-          *place cart icon, title, and menu button in flex container 
+          *place cart icon, title, and menu button in flex container
+            -this needs to be done for all pages
+            -sidebar cart is a separate button from the main cart
+            -place hamburger menu within the header: with a display: none until 520px
+            -remove the main cart icon 
+            -replace cart icon with sidebar one -- it is all one button and is better constructed
+            -figure out how to have the cart dropdown attached to the cart icon 
+            -once the screen size is hit, the dropdown must be set to display: none 
+            -at 520px, header-box should be set to display flex
+            -this should have 3 elements within it once the menu items have been set to display: none -- hamburger, logo, cart 
+            - 
           *create two overlays 
-            *one with the cart items 
-            *one with menu 
+            -one with the cart items 
+            -one with menu 
           *set overlays to 100% width and offset -100% when not active
+          *have icons stay in same place once the overlays are opened 
           *fix functionality for open/closing
             *when one is open the other one must close 
+            *add buttons that allow for the overlays to close
           
      
      
