@@ -11,11 +11,13 @@ import { createDessertItemNode } from './components/cart/dessertItem.js';
 import { createDrinkItemNode } from './components/cart/drinkItem.js';
 import { determineCartTotals } from './cart.js';
 
-const sidebar = document.querySelector('.sidebar');
-const sidebarMenuBtn = document.querySelector('.sidebar__hamburger-icon');
-const sidebarCartBtn = document.querySelector('.sidebar__cart-icon');
-const sidebarMenu = document.querySelector('.sidebar__nav-list');
-const sidebarCart = document.querySelector('.sidebar__cart');
+const menuEl = document.querySelector('.sidebar--menu');
+const sideBarcartEl = document.querySelector('.sidebar--cart');
+const dropDownCartEl = document.querySelector('.cart');
+const openMenuBtn = document.querySelector('.header__menu-icon');
+const openCartBtn = document.querySelector('.header__cart-icon');
+const closeMenuBtn = document.querySelector('.btn--close-menu-sidebar');
+const closeCartBtn = document.querySelector('.btn--close-cart-sidebar');
 const sidebarCartContainer = document.querySelector('.sidebar__cart-list');
 const sidebarSubtotal = document.getElementById('sidebar-subtotal');
 const sidebarTax = document.getElementById('sidebar-tax');
@@ -27,54 +29,39 @@ export function initSidebar() {
 }
 
 export function addSidebarListeners() {
-  sidebarMenuBtn.onclick = handleSidebarMenu;
-  sidebarCartBtn.onclick = handleSidebarCart;
+  openMenuBtn.onclick = handleOpenMenu;
+  closeMenuBtn.onclick = handleCloseMenu;
+  openCartBtn.onclick = handleOpenCart;
+  closeCartBtn.onclick = handleCloseCart;
   sidebarCartContainer.onclick = handleDeleteCartItem;
 }
 
 // HANDLERS //
 
-function handleSidebarMenu() {
-  if (sidebar.dataset.state === 'closed') {
-    sidebar.dataset.state = 'open';
-    sidebar.classList.add('sidebar--bg-blue');
-    openSidebar();
-    sidebarMenu.style.display = 'grid';
-  } else if (
-    sidebar.dataset.state === 'open' &&
-    sidebarCart.style.display === 'block'
-  ) {
-    closeSidebar();
+function handleOpenMenu() {
+  menuEl.classList.add('sidebar--menu--open');
+}
+function handleCloseMenu() {
+  menuEl.classList.remove('sidebar--menu--open');
+}
+function handleOpenCart() {
+  const windowWidth = window.innerWidth;
+  const dropdownCartElStyles = window.getComputedStyle(dropDownCartEl);
 
-    setTimeout(() => {
-      openSidebar();
-      sidebar.classList.add('sidebar--bg-blue');
-      sidebarMenu.style.display = 'grid';
-    }, 400);
-  } else if (sidebar.dataset.state === 'open') {
-    closeSidebar();
-    sidebar.classList.remove('sidebar--bg-blue');
-    sidebar.dataset.state = 'closed';
+  // windropdownCow widths > 520px will open the dropdown cart
+  // window widths < dropdownCartElStyles are
+  if (windowWidth > 520) {
+    if (dropdownCartElStyles.display === 'none') {
+      dropDownCartEl.style.display = 'block';
+    } else {
+      dropDownCartEl.style.display = 'none';
+    }
+  } else {
+    sideBarcartEl.classList.add('sidebar--cart--open');
   }
 }
-
-function handleSidebarCart() {
-  const sidebarState = sidebar.dataset.state;
-  if (sidebarState === 'closed') {
-    sidebar.dataset.state = 'open';
-    openSidebar();
-    sidebarCart.style.display = 'block';
-  } else if (sidebarState === 'open' && sidebarMenu.style.display === 'grid') {
-    closeSidebar();
-    setTimeout(() => {
-      openSidebar();
-      sidebarCart.style.display = 'block';
-      sidebar.classList.remove('sidebar--bg-blue');
-    }, 400);
-  } else if (sidebar.dataset.state === 'open') {
-    closeSidebar();
-    sidebar.dataset.state = 'closed';
-  }
+function handleCloseCart() {
+  sideBarcartEl.classList.remove('sidebar--cart--open');
 }
 
 // RENDERERS //
@@ -115,19 +102,4 @@ function renderSidebarTotal() {
   sidebarSubtotal.textContent = cartTotals.subtotal.toFixed(2);
   sidebarTax.textContent = cartTotals.calculatedTax.toFixed(2);
   sidebarTotal.textContent = cartTotals.total.toFixed(2);
-}
-
-function openSidebar() {
-  if (sidebar.classList.contains('sidebar--close')) {
-    sidebar.classList.remove('sidebar--close');
-  }
-  sidebar.classList.add('sidebar--open');
-}
-function closeSidebar() {
-  if (sidebar.classList.contains('sidebar--open')) {
-    sidebar.classList.remove('sidebar--open');
-  }
-  sidebar.classList.add('sidebar--close');
-  sidebarMenu.style.display = 'none';
-  sidebarCart.style.display = 'none';
 }

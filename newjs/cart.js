@@ -14,10 +14,10 @@ const cartTaxEl = document.getElementById('cart-tax');
 const cartTotalEl = document.getElementById('cart-total');
 const orderTypeEl = document.querySelector('.cart__order-type');
 
-const cartCountEl = document.getElementById('cart-count');
-const sidebarCartCountEl = document.querySelector('.sidebar__cart-count');
+const cartCountEl = document.querySelector('.cart__count');
 
-const cartIcons = document.querySelectorAll('.cart-icons');
+const cartIcon = document.querySelector('.header__cart-icon');
+console.log(cartIcon);
 
 export function initCart() {
   renderCart();
@@ -26,10 +26,7 @@ export function initCart() {
 export function addCartListeners() {
   if (cartItemsUl) cartItemsUl.onclick = handleDeleteCartItem;
 
-  if (cartIcons)
-    cartIcons.forEach((el) => {
-      el.onclick = handleCartDisplay;
-    });
+  if (cartIcon) cartIcon.onclick = handleCartDisplay;
 }
 
 // HANDLERS //
@@ -45,11 +42,18 @@ export function handleDeleteCartItem(e) {
 }
 
 export function handleCartDisplay() {
+  console.log('handle cart display ran');
+  const windowWidth = window.innerWidth;
   const cartElStyles = window.getComputedStyle(cartEl);
-  if (cartElStyles.display === 'none') {
-    cartEl.style.display = 'block';
-  } else {
-    cartEl.style.display = 'none';
+
+  // a window width > 520px will open the dropdown cart
+  // window widths < 520px are ignored and handled in sidebar.js file
+  if (windowWidth > 520) {
+    if (cartElStyles.display === 'none') {
+      cartEl.style.display = 'block';
+    } else {
+      cartEl.style.display = 'none';
+    }
   }
 }
 
@@ -97,7 +101,7 @@ function renderCartMetaData() {
   orderTypeEl.textContent = orderType || '';
 
   cartCountEl.textContent = items.length;
-  sidebarCartCountEl.textContent = items.length;
+  // sidebarCartCountEl.textContent = items.length;
 }
 
 // HELPERS //

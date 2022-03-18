@@ -1,146 +1,53 @@
 .sidebar {
-
   position: fixed;
-  width: 300px;
-  height: 90vh;
+  width: 100vw;
+  height: 100vh;
   background: $color-soft-white;
-  border-radius: 5px 0 0 5px ;
   z-index: 100;
   padding: 40px 10px;
-  right: -300px;
-  top: -1px;
-
-  @media(min-width: 520px) {
+  top: 1px;
+  @media (min-width: 520px) {
     display: none;
   }
-
-  &--open {
-    animation: openSidebar 400ms ease-out;
-    animation-fill-mode: forwards;
-  }
-  &--close {
-    animation: closeSidebar 400ms ease-out;
-    animation-fill-mode: forwards;
-  }
-
-  &--active {
-    right: 0px;
-  }
-  &--bg-blue {
-    background-color: rgb(40, 40, 83);
-  }
-  
-
-  
-  &__hamburger-icon {
-    font-size: $font-size-large;
-    position: absolute;
-    top: 20px;
-    right: 334px;
-    color: rgb(56, 56, 56);
-    
-    @media(min-width: 520px) {
-      display: none;
+  &--menu {
+    left: -100vw;
+    border-radius: 0 5px 5px 0;
+    &--open {
+      animation: openSidebarMenu 400ms ease-out;
+      animation-fill-mode: forwards;
     }
   }
-  &__cart-icon {
-    background: transparent;
-    position: absolute;
-    top: 60px;
-    right: 320px;
-    
-    display: grid;
-    grid-template-columns: repeat(2, min-content);
-    grid-template-rows: repeat(2, 1fr);
-
-    @media(min-width: 520px) {
-      display: none;
-    } 
-    & > i {
-      color: rgb(56, 56, 56);
-      font-size: $font-size-large;
-      grid-column: 1 / 2;
-      grid-row: 1 / -1;
-
+  &--cart {
+    border-radius: 5px 0 0 5px;
+    right: -100vw;
+    &--open {
+      animation: openSidebarCart 400ms ease-out;
+      animation-fill-mode: forwards;
     }
-    & span {
-      font-size: $font-size-small;
-      color: $color-soft-white;
-      background-color: $color-red;
-      text-align: center;
-      font-weight: 600;
-      border-radius: 10px;
-      padding: 2px 8px;
+  }
 
-      grid-column: 2 / 3;
-      grid-row: 1 / 2;
-    }
-    & p {
-      color: rgb(56, 56, 56);
-      font-size: $font-size-small;
-      text-align: center;
-      
-      grid-column: 2 / 3;
-      grid-row: 2 / 3;
-
-    }
-
-  }
-  &__menu-title {
-    grid-column: 2 / 4;
-    grid-row: 1 / 2;
-    text-align: center;
-    color: $color-soft-white;
-    font-family: $font-Lato;
-    font-size: $font-size-medium;
-  }
-  &__nav-list {
-    display: none;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(5, min-content);
-    list-style: none;
-    font-size: $font-size-large;
-    
-  }
-  &__nav-home {
-    grid-column: 2 / 4;
-    grid-row: 2 / 3;
-    margin-top: 20px;
-  }
-  &__nav-menu {
-    grid-column: 2 / 4;
-    grid-row: 3 / 4;
-    margin-top: 20px;
-    
-  }
-  &__nav-about {
-    grid-column: 2 / 4;
-    grid-row: 5 / 6;
-    margin-top: 20px;
-    
-  }
   &__cart {
     display: none;
     width: 90%;
     margin: 0 auto;
-    
+
     &-list {
       max-height: 45vh;
       font-size: $font-size-default;
       overflow-y: scroll;
     }
   }
-  
+
   &__nav-item {
     font-size: $font-size-large;
     list-style: none;
     margin-top: 20px;
-    
+
     &:hover {
       color: honeydew;
     }
   }
-  
+
   &__menu-list {
     list-style: none;
     font-size: $font-size-default;
@@ -150,7 +57,5 @@
     margin-top: 5px;
   }
   &__menu-item {
-
   }
 }
-
