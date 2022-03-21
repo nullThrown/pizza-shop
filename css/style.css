@@ -609,13 +609,6 @@ body {
     margin-top: 20px; }
     .sidebar__nav-item:hover {
       color: honeydew; }
-  .sidebar__menu-list {
-    list-style: none;
-    font-size: 1.6rem;
-    grid-column: 2 / 4;
-    justify-self: end;
-    grid-row: 4 / 5;
-    margin-top: 5px; }
 
 .header {
   width: 100%;
