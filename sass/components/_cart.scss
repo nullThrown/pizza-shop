@@ -15,8 +15,9 @@
   grid-row: 2 / 3;
   margin-top: 40px;
 
-  @media (max-width: 520px) {
+  @media (max-width: 735px) {
     display: none !important;
+    width: max-content;
   }
 
   &__count {

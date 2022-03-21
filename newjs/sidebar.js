@@ -48,9 +48,9 @@ function handleOpenCart() {
   const windowWidth = window.innerWidth;
   const dropdownCartElStyles = window.getComputedStyle(dropDownCartEl);
 
-  // windropdownCow widths > 520px will open the dropdown cart
-  // window widths < dropdownCartElStyles are
-  if (windowWidth > 520) {
+  // windropdownCow widths > 735px will open the dropdown cart
+  // window widths < 735px dropdownCartElStyles are
+  if (windowWidth > 735) {
     if (dropdownCartElStyles.display === 'none') {
       dropDownCartEl.style.display = 'block';
     } else {

@@ -1,31 +1,55 @@
   TODO
-    *finish menu CartItem creation -- figure out how to create a base case and spread it into each specific case (i.e., 'pizza', 'side')
-    *all 'removes' fn() names that remove items from LS should be renamed to 'delete' 
-     -'remove' should be used only for node removals  
+    
+    * sidebars needs redesign -- menu needs layout, cart might have spacing issues        
+    
     *remove 'drink' title from menu page
+      
+    *fn() 'setPrices' rename -> 'populatePrices' 
+      - keep fn() naming consistent  
+
+    *place all init exports on top of file with listener exports 
+
+    *checkout has buggy behavior -- order is placed happens even addToCartBtn disabled
+
     *blend render cart and sidebar into single function -- they both create the same content -- just in different containers
       - both functions call the same node creation functions -- they just need to be placed in their respective containers 
-     *order now buttons on index should dropdown an item customize and add func
-      -redesign buttons and add south facing arrow
-     JS/LOGIC
-      *place all init exports on top of file with listener exports 
-      *checkout has buggy behavior -- order is placed happens even addToCartBtn disabled
-      *switch toggle to handle
-      *normalize all number data 
-        - number data is being pull from DOM as a string and needs to be converted into a number
-        - in order to run arithmetic ops on these numbers, they must be converted at a certain point
-        - normalize this process and remove all the excess parseFloat/Number calls
     
+    *normalize all number data 
+      - number data is being pull from DOM as a string and needs to be converted into a number
+      - in order to run arithmetic ops on these numbers, they must be converted at a certain point
+      - normalize this process and remove all the excess parseFloat/Number calls
+    
+     *alert component
+      -alert placement is fucked 
+        -alert work well when it was inside of a grid 
+        -now stuck in flex and appears inline with header elements
+        -needs to be attached to the bottom of header 
+      -UI needs revamp
+      -remove settimeout so that all popups will be displayed for 3 seconds
+      -add popup when a item is removed    
+      -have deal run function on final price
+    
+    
+  AFTER THOUGHTS
+    
+    *all 'removes' fn() names that remove items from LS should be renamed to 'delete' 
+     -'remove' should be used only for node removals  
 
-      customPizza.js
-        *rename files to custom
-        *refactor meatsBtn,veggiesBtn, &, cheeseBtn listener logic -- it is way too verbose and ugly
+    *create an order placed page and make it look nice 
+          *check 'about' para with grammarly
+          *add hover effect to more info buttons -- to show toppings etc.
+          * isDuplicate fn() that checks if item-to-be-added already exists in cart 
     
-      menu.js
-      sidebar.js
-        * sidebar needs redesign
-          - look up other sidebars and try to find a nice design
-            -reorganize contents within sidebars          
+    *order now buttons on index should dropdown an item customize and add func
+      -redesign buttons and add south facing arrow
+    
+    *finish menu CartItem creation -- figure out how to create a base case and spread it into each specific case (i.e., 'pizza', 'side')
+      
+    *customPizza.js
+      -rename files to custom
+      -refactor meatsBtn,veggiesBtn, &, cheeseBtn listener logic -- it is way too verbose and ugly
+    
+          
          
       General 
         *function name conventions
@@ -39,14 +63,8 @@
           handle -- fn to be called on triggered event  
         
     Future Considerations
-          *create an order placed page and make it look nice 
-          *check about para with grammarly
-          *add hover effect to more info buttons -- to show toppings etc.
-          * isDuplicate fn() that checks if item-to-be-added already exists in cart
+          
    
           ALERT  
-           *change alert UI
-           *remove settimeout so that all popups will be displayed for 3 seconds
-           *add popup when a item is removed    
-           *have deal run function on final price 
+          
 

@@ -24,7 +24,7 @@
     height: auto;
     justify-self: center;
 
-    @media (min-width: 520px) {
+    @media (min-width: 735px) {
       display: none;
     }
   }
@@ -45,6 +45,12 @@
     grid-column: repeat(2, 1fr);
     &--active {
       animation: expand 200ms ease-out;
+    }
+
+    @media (max-width: 735px) {
+      width: fit-content;
+      margin-bottom: 0;
+      align-self: center;
     }
   }
   &__cart-icon {

@@ -48,7 +48,7 @@ export function handleCartDisplay() {
 
   // a window width > 520px will open the dropdown cart
   // window widths < 520px are ignored and handled in sidebar.js file
-  if (windowWidth > 520) {
+  if (windowWidth > 735) {
     if (cartElStyles.display === 'none') {
       cartEl.style.display = 'block';
     } else {

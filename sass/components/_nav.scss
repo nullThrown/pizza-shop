@@ -1,13 +1,13 @@
 .nav {
   margin: 0 auto 5px;
-  width: 220px; 
+  width: 220px;
   grid-column: 2 / span 2;
   grid-row: 2 / 3;
   align-self: end;
-  & ul> li {
+  & ul > li {
     list-style: none;
   }
-  @media (max-width: 520px) {
+  @media (max-width: 735px) {
     display: none;
   }
 
@@ -16,13 +16,12 @@
     font-size: $font-size-default;
     margin-top: 8rem;
 
-    @media (max-width: 520px) {
+    @media (max-width: 735px) {
       display: none;
     }
 
-    ul> li {
+    ul > li {
       list-style: none;
     }
   }
- 
 }
