@@ -9,9 +9,11 @@
   @media (min-width: 735px) {
     display: none;
   }
-  &--menu {
+  &--nav {
     left: -100vw;
     border-radius: 0 5px 5px 0;
+    padding: 5px;
+    background-color: $color-soft-white;
     &--open {
       animation: openSidebarMenu 400ms ease-out;
       animation-fill-mode: forwards;
@@ -37,19 +39,24 @@
       overflow-y: scroll;
     }
   }
-
+  &__close-btn {
+  }
+  &__nav-logo {
+  }
+  &__nav-list {
+    display: flex;
+    flex-direction: column;
+  }
   &__nav-item {
-    font-size: $font-size-large;
-    list-style: none;
-    margin-top: 20px;
-
+    background-color: rgb(240, 240, 240);
     &:hover {
-      color: honeydew;
+      color: red;
     }
   }
-
-  &__menu-list {
+  &__menu-title {
   }
-  &__menu-item {
+  &__nav-menu-list {
+  }
+  &__nav-list {
   }
 }

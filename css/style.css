@@ -583,10 +583,12 @@ body {
   @media (min-width: 735px) {
     .sidebar {
       display: none; } }
-  .sidebar--menu {
+  .sidebar--nav {
     left: -100vw;
-    border-radius: 0 5px 5px 0; }
-    .sidebar--menu--open {
+    border-radius: 0 5px 5px 0;
+    padding: 5px;
+    background-color: #fafafa; }
+    .sidebar--nav--open {
       animation: openSidebarMenu 400ms ease-out;
       animation-fill-mode: forwards; }
   .sidebar--cart {
@@ -603,12 +605,13 @@ body {
       max-height: 45vh;
       font-size: 1.6rem;
       overflow-y: scroll; }
+  .sidebar__nav-list {
+    display: flex;
+    flex-direction: column; }
   .sidebar__nav-item {
-    font-size: 3rem;
-    list-style: none;
-    margin-top: 20px; }
+    background-color: #f0f0f0; }
     .sidebar__nav-item:hover {
-      color: honeydew; }
+      color: red; }
 
 .header {
   width: 100%;

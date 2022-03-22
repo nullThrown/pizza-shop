@@ -1,7 +1,11 @@
   TODO
     
-    * sidebars needs redesign -- menu needs layout, cart might have spacing issues        
-    
+    * sidebars needs redesign -- menu needs layout, cart might have spacing issues
+      -create flex container for sidebar items 
+        -add spacing         
+      -create class for linkable items -- Home, menu-items, about
+      -create class for menu title page
+      -fix links
     *remove 'drink' title from menu page
       
     *fn() 'setPrices' rename -> 'populatePrices' 

@@ -11,12 +11,12 @@ import { createDessertItemNode } from './components/cart/dessertItem.js';
 import { createDrinkItemNode } from './components/cart/drinkItem.js';
 import { determineCartTotals } from './cart.js';
 
-const menuEl = document.querySelector('.sidebar--menu');
+const menuEl = document.querySelector('.sidebar--nav');
 const sideBarcartEl = document.querySelector('.sidebar--cart');
 const dropDownCartEl = document.querySelector('.cart');
 const openMenuBtn = document.querySelector('.header__menu-icon');
 const openCartBtn = document.querySelector('.header__cart-icon');
-const closeMenuBtn = document.querySelector('.btn--close-menu-sidebar');
+const closeMenuBtn = document.querySelector('.sidebar__close-btn');
 const closeCartBtn = document.querySelector('.btn--close-cart-sidebar');
 const sidebarCartContainer = document.querySelector('.sidebar__cart-list');
 const sidebarSubtotal = document.getElementById('sidebar-subtotal');
@@ -39,10 +39,10 @@ export function addSidebarListeners() {
 // HANDLERS //
 
 function handleOpenMenu() {
-  menuEl.classList.add('sidebar--menu--open');
+  menuEl.classList.add('sidebar--nav--open');
 }
 function handleCloseMenu() {
-  menuEl.classList.remove('sidebar--menu--open');
+  menuEl.classList.remove('sidebar--nav--open');
 }
 function handleOpenCart() {
   const windowWidth = window.innerWidth;
