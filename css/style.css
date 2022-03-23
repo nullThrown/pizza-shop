@@ -567,34 +567,49 @@ body {
   height: 100vh;
   background: #fafafa;
   z-index: 100;
-  padding: 5px 20px;
+  padding: 10px 30px;
   top: 1px; }
   @media (min-width: 735px) {
     .sidebar {
       display: none; } }
   .sidebar--nav {
-    left: -100vw;
-    border-radius: 0 5px 5px 0;
-    background-color: #fafafa; }
+    left: -100vw; }
     .sidebar--nav--open {
-      animation: openSidebarMenu 400ms ease-out;
-      animation-fill-mode: forwards; }
+      animation: openSidebarMenu 400ms ease-out forwards; }
   .sidebar--cart {
-    border-radius: 5px 0 0 5px;
     right: -100vw; }
     .sidebar--cart--open {
-      animation: openSidebarCart 400ms ease-out;
-      animation-fill-mode: forwards; }
-  .sidebar__cart {
-    display: none;
+      animation: openSidebarCart 400ms ease-out forwards; }
+  .sidebar__cart-title {
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: 400; }
+  .sidebar__cart-box {
     width: 90%;
     margin: 0 auto; }
-    .sidebar__cart-list {
-      max-height: 45vh;
-      font-size: 1.6rem;
-      overflow-y: scroll; }
+  .sidebar__cart-list {
+    height: 45vh;
+    margin: 0 auto;
+    font-size: 1.6rem;
+    overflow-y: scroll; }
+  .sidebar__cart-total-box {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    font-size: 1.6rem; }
+    .sidebar__cart-total-box p {
+      padding: 5px;
+      border-radius: 2px; }
+      .sidebar__cart-total-box p:nth-child(3), .sidebar__cart-total-box p:nth-child(4) {
+        background-color: #f0f0f0; }
   .sidebar__close-menu-btn {
-    font-size: 2rem;
+    font-size: 3.4rem;
+    background-color: inherit;
+    color: #282828; }
+  .sidebar__close-cart-btn {
+    font-size: 3.4rem;
+    color: #282828;
     background-color: inherit; }
   .sidebar__nav-logo {
     text-align: center; }

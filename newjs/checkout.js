@@ -94,7 +94,7 @@ function handleRemoveCoupon() {
   renderCouponCode();
 }
 
-function handlePlaceOrder() {
+function handlePlaceOrder(e) {
   const cart = getObjFromLS('cart');
   const { items, orderType } = cart;
   if (!items.length) {

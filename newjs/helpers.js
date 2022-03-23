@@ -27,7 +27,7 @@ export function uncheckInputs() {
 }
 
 //   sets prices for all food items on intial page load
-export function initPrices() {
+export function populatePrices() {
   itemPriceEls.forEach((item) => {
     const containerId = item.closest('.food-item-box').dataset.id;
     const foodItem = foodItems.find((foodItem) => foodItem.id === containerId);

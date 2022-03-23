@@ -3,7 +3,7 @@ import {
   initPreviousOrdersToLS,
   setOrderTypeToLS,
 } from './storage.js';
-import { initPrices } from './helpers.js';
+import { populatePrices } from './helpers.js';
 import { addCartListeners, initCart } from './cart.js';
 import { addCheckoutListeners, initCheckout } from './checkout.js';
 import { addCustomListeners, initCustomPizza } from './customPizza.js';
@@ -35,4 +35,4 @@ initCheckout(currentPath);
 initCustomPizza(currentPath);
 initCart();
 initSidebar();
-initPrices();
+populatePrices();

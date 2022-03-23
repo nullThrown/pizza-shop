@@ -1,26 +1,10 @@
-  TODO
-    
-    * sidebars needs redesign -- menu needs layout, cart might have spacing issues
-      -create flex container for sidebar items 
-        -add spacing         
-      -create class for linkable items -- Home, menu-items, about
-      -create class for menu title page
-      -fix links
-    *cart has spacing issues
-      -place totals and checkout button fixed on page
-      -add a total height to cart items list   
-    *remove 'drink' title from menu page
-      
-    *fn() 'setPrices' rename -> 'populatePrices' 
-      - keep fn() naming consistent  
-
-    *place all init exports on top of file with listener exports 
-
-    *checkout has buggy behavior -- order is placed happens even addToCartBtn disabled
+  TODO   
+    *pass in new fontAwesome cdn link      
+    *sauce selectors for sides are passing wrong values to LS
 
     *blend render cart and sidebar into single function -- they both create the same content -- just in different containers
       - both functions call the same node creation functions -- they just need to be placed in their respective containers 
-    
+      -sidebar requires an 'empty cart' node to be attached
     *normalize all number data 
       - number data is being pull from DOM as a string and needs to be converted into a number
       - in order to run arithmetic ops on these numbers, they must be converted at a certain point

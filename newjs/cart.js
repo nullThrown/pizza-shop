@@ -17,7 +17,6 @@ const orderTypeEl = document.querySelector('.cart__order-type');
 const cartCountEl = document.querySelector('.cart__count');
 
 const cartIcon = document.querySelector('.header__cart-icon');
-console.log(cartIcon);
 
 export function initCart() {
   renderCart();

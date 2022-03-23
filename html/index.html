@@ -75,10 +75,12 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         <i class="sidebar__icon fa-solid fa-house"></i>
         <a class="sidebar__nav-link " href="../html/index.html">Home</a>
       </li>
+      
       <li class="sidebar__nav-item">
         <i class="sidebar__icon fas fa-at"></i>
         <a href="../html/about.html" class="sidebar__nav-link">About</a>    
         </li>
+
       <ol class="sidebar__menu-list">
         <li class="sidebar__menu-title sidebar__nav-item">Menu</li>
         <li class="sidebar__nav-item">
@@ -91,6 +93,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
           <i class="sidebar__icon fas fa-pizza-slice"></i>
           <a class="sidebar__nav-link" href="../html/menu/pizzas.html">Pizzas</a>
         </li>
+
         <li class="sidebar__nav-item">
           <i class="sidebar__icon fa-solid fa-circle-question"></i>
           <a class="sidebar__nav-link" href="../html/menu/make-your-own.html">Make Your Own</a>
@@ -105,32 +108,32 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
           <i class="sidebar__icon fas fa-cookie"></i>
           <a class="sidebar__nav-link" href="../html/menu/desserts.html ">Desserts</a>
         </li>
+
         <li class="sidebar__nav-item">
           <i class="sidebar__icon fa-solid fa-whiskey-glass"></i>
           <a class="sidebar__nav-link" href="../html/menu/desserts.html ">Drinks</a>
         </li>
-      </ol>
-      
-      
+      </ol>    
     </ul>
   </nav>
 
     <!-- sidebar cart for smaller screens -->
     <aside class="sidebar sidebar--cart">
-      <button class="sidebar__close-cart-btn">&#10006</button>
-      <h4 class="cart__title">Cart</h4>
-      <span class="cart__order-type"></span>
-      <ul class="sidebar__cart-list">  
-      </ul>
-      <div class="cart__total-box">
-        <p>Subtotal</p><p class="u-text-right">$<span class="u-text-right" id="sidebar-subtotal">0.00</span></p>
-        <p>Tax</p><p class="u-text-right">$<span class="u-text-right" id="sidebar-tax">0.00</span></p>
-        <p>Total</p><p class="u-text-right">$<span class="u-text-right" id="sidebar-total">0.00</span></p>
+      <button class="btn sidebar__close-cart-btn">&#10006</button>
+      <h4 class="sidebar__cart-title">Cart</h4>
+      <div class="sidebar__cart-box">
+        <span class="cart__order-type"></span>
+        <ul class="sidebar__cart-list">
+        </ul>
+        <div class="sidebar__cart-total-box">
+          <p>Subtotal</p><p class="u-text-right">$<span class="u-text-right" id="sidebar-subtotal">0.00</span></p>
+          <p>Tax</p><p class="u-text-right">$<span class="u-text-right" id="sidebar-tax">0.00</span></p>
+          <p>Total</p><p class="u-text-right">$<span class="u-text-right" id="sidebar-total">0.00</span></p>
+        </div>
+        <div class="cart__checkout-box">
+          <a href="../html/checkout.html" class="btn btn__checkout">Checkout</a>
+        </div>
       </div>
-      <div class="cart__checkout-box">
-        <a href="../html/checkout.html" class="btn btn__checkout">Checkout</a>
-      </div>
-
     </aside>
 
   <!-- BANNER -->

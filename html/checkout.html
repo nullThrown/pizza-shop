@@ -75,59 +75,76 @@
   <!-- HEADER END -->
 
   <!-- sidebar navigation for smaller screens -->
-  <nav class="sidebar sidebar--menu">
-    <button class="btn btn--close-menu-sidebar">X</button>
-    <h4 class="sidebar__menu-title">menu</h4>
+  <nav class="sidebar sidebar--nav">
+    <button class="btn sidebar__close-menu-btn">&#10006</button>
+    <h4 class="sidebar__nav-logo">(logo)</h4>
     
     <ul class="sidebar__nav-list">  
-      <li>
-        <a class="sidebar__nav-link sidebar__nav-home sidebar--active" href="../html/index.html">Home</a>
+      <li class="sidebar__nav-item sidebar__nav-item--active">
+        <i class="sidebar__icon fa-solid fa-house"></i>
+        <a class="sidebar__nav-link " href="../html/index.html">Home</a>
       </li>
-      <li>Menu</li>
-      <ol class="sidebar__menu-list">
-        <li class="sidebar__menu-item">
-          <a href="../html/menu/most-popular.html">Most Popular</a>
-        </li>
-
-          <li class="sidebar__menu-item">
-            <a href="../html/menu/make-your-own.html">Make Your Own</a>
-          </li>
-
-        <li class="sidebar__menu-item">
-          <a href="../html/menu/pizzas.html">Pizzas</a>
-        </li>
-
-        <li class="sidebar__menu-item">
-          <a href="../html/menu/sides.html">Sides</a>
-        </li>
-
-        <li class="sidebar__menu-item">
-          <a href="../html/menu/desserts.html ">Desserts</a>
-        </li>
-      </ol>
       
-      <li>
-      <a href="../html/about.html" class="sidebar__nav-link sidebar__nav-about">About</a>    
-      </li>
+      <li class="sidebar__nav-item">
+        <i class="sidebar__icon fas fa-at"></i>
+        <a href="../html/about.html" class="sidebar__nav-link">About</a>    
+        </li>
+
+      <ol class="sidebar__menu-list">
+        <li class="sidebar__menu-title sidebar__nav-item">Menu</li>
+        <li class="sidebar__nav-item">
+          <i class="sidebar__icon fas fa-fire-alt"></i>
+          <a class="sidebar__nav-link" href="../html/menu/most-popular.html">Most Popular</a>
+        </li>
+
+        
+        <li class="sidebar__nav-item">
+          <i class="sidebar__icon fas fa-pizza-slice"></i>
+          <a class="sidebar__nav-link" href="../html/menu/pizzas.html">Pizzas</a>
+        </li>
+
+        <li class="sidebar__nav-item">
+          <i class="sidebar__icon fa-solid fa-circle-question"></i>
+          <a class="sidebar__nav-link" href="../html/menu/make-your-own.html">Make Your Own</a>
+        </li>
+        
+        <li class="sidebar__nav-item">
+          <i class="sidebar__icon fa-solid fa-drumstick-bite"></i>
+          <a class="sidebar__nav-link" href="../html/menu/sides.html">Sides</a>
+        </li>
+
+        <li class="sidebar__nav-item">
+          <i class="sidebar__icon fas fa-cookie"></i>
+          <a class="sidebar__nav-link" href="../html/menu/desserts.html ">Desserts</a>
+        </li>
+
+        <li class="sidebar__nav-item">
+          <i class="sidebar__icon fa-solid fa-whiskey-glass"></i>
+          <a class="sidebar__nav-link" href="../html/menu/desserts.html ">Drinks</a>
+        </li>
+      </ol>    
     </ul>
   </nav>
 
-  <!-- sidebar cart for smaller screens -->
-  <aside class="sidebar sidebar--cart">
-    <button class="btn--close-cart-sidebar">X</button>
-    <h4 class="cart__title">Cart</h4>
-    <span class="cart__order-type"></span>
-    <ul class="sidebar__cart-list">  
-    </ul>
-    <div class="cart__total-box">
-      <p>Subtotal</p><p class="u-text-right">$<span class="u-text-right" id="sidebar-subtotal">0.00</span></p>
-      <p>Tax</p><p class="u-text-right">$<span class="u-text-right" id="sidebar-tax">0.00</span></p>
-      <p>Total</p><p class="u-text-right">$<span class="u-text-right" id="sidebar-total">0.00</span></p>
-   </div>
-   <div class="cart__checkout-box">
-    <a href="../html/checkout.html" class="btn btn__checkout">Checkout</a>
-  </div>
-</aside>
+    <!-- sidebar cart for smaller screens -->
+    <aside class="sidebar sidebar--cart">
+      <button class="btn sidebar__close-cart-btn">&#10006</button>
+      <h4 class="sidebar__cart-title">Cart</h4>
+      <div class="sidebar__cart-box">
+        <span class="cart__order-type"></span>
+        <ul class="sidebar__cart-list">
+        </ul>
+        <div class="sidebar__cart-total-box">
+          <p>Subtotal</p><p class="u-text-right">$<span class="u-text-right" id="sidebar-subtotal">0.00</span></p>
+          <p>Tax</p><p class="u-text-right">$<span class="u-text-right" id="sidebar-tax">0.00</span></p>
+          <p>Total</p><p class="u-text-right">$<span class="u-text-right" id="sidebar-total">0.00</span></p>
+        </div>
+        <div class="cart__checkout-box">
+          <a href="../html/checkout.html" class="btn btn__checkout">Checkout</a>
+        </div>
+      </div>
+    </aside>
+    
     <!-- MAIN BEGIN -->
     <main class="main-container">
       <h1 class="primary-title">Cart</h1>

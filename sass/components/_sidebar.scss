@@ -4,50 +4,74 @@
   height: 100vh;
   background: $color-soft-white;
   z-index: 100;
-  padding: 5px 20px;
+  padding: 10px 30px;
   top: 1px;
   @media (min-width: 735px) {
     display: none;
   }
   &--nav {
     left: -100vw;
-
-    border-radius: 0 5px 5px 0;
-    background-color: $color-soft-white;
     &--open {
-      animation: openSidebarMenu 400ms ease-out;
-      animation-fill-mode: forwards;
+      animation: openSidebarMenu 400ms ease-out forwards;
     }
   }
   &--cart {
-    border-radius: 5px 0 0 5px;
     right: -100vw;
+
     &--open {
-      animation: openSidebarCart 400ms ease-out;
-      animation-fill-mode: forwards;
+      animation: openSidebarCart 400ms ease-out forwards;
     }
   }
 
   &__cart {
-    display: none;
-    width: 90%;
-    margin: 0 auto;
-
+    &-title {
+      text-align: center;
+      font-size: $font-size-medium-large;
+      font-weight: 400;
+    }
+    &-box {
+      width: 90%;
+      margin: 0 auto;
+    }
     &-list {
-      max-height: 45vh;
+      height: 45vh;
+      // width: 80%;
+      margin: 0 auto;
       font-size: $font-size-default;
       overflow-y: scroll;
     }
+    &-total-box {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      justify-content: center;
+      font-size: $font-size-default;
+
+      & p {
+        padding: 5px;
+        border-radius: 2px;
+
+        &:nth-child(3),
+        &:nth-child(4) {
+          background-color: $color-lightest-grey;
+        }
+      }
+    }
   }
   &__close-menu-btn {
-    font-size: 2rem;
+    font-size: 3.4rem;
     background-color: inherit;
+    color: $color-light-black;
 
     // &:hover {
     //   animation: rotate90deg 200ms ease-out forwards;
     // }
   }
   &__close-cart-btn {
+    font-size: 3.4rem;
+    color: $color-light-black;
+    background-color: inherit;
   }
   &__nav-logo {
     text-align: center;
