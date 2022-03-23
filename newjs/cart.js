@@ -85,7 +85,7 @@ export function renderCart() {
         break;
     }
   });
-  determineCartTotals();
+  // determineCartTotals();
   renderCartMetaData();
 }
 
@@ -100,7 +100,6 @@ function renderCartMetaData() {
   orderTypeEl.textContent = orderType || '';
 
   cartCountEl.textContent = items.length;
-  // sidebarCartCountEl.textContent = items.length;
 }
 
 // HELPERS //
