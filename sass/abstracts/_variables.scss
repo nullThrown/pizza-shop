@@ -1,18 +1,18 @@
-
-// COLORS 
-$color-soft-white: rgb(250,250,250);
-$color-lightest-grey: rgb(240,240,240);
+// COLORS
+$color-soft-white: rgb(250, 250, 250);
+$color-lightest-grey: rgb(240, 240, 240);
 $color-light-grey: rgb(220, 220, 220);
-$color-dark-grey: rgb(200,200,200);
-$color-darkest-grey: rgb(160,160,160);
-$color-soft-black: rgba(0,0,0,.9);
-$color-text-primary:  rgb(8, 8, 8);
+$color-dark-grey: rgb(200, 200, 200);
+$color-darkest-grey: rgb(160, 160, 160);
+$color-soft-black: rgba(0, 0, 0, 0.9);
+$color-light-black: rgb(40, 40, 40);
+$color-text-primary: rgb(16, 16, 16);
 
-$color-light-red:  rgb(236, 57, 57);
-$color-dark-red:  rgba(131, 24, 24, 0.931);
+$color-light-red: rgb(236, 57, 57);
+$color-dark-red: rgba(131, 24, 24, 0.931);
 $color-red: rgb(172, 48, 48); // cart count
 $color-orange-red: rgb(223, 57, 57); // checkout btn
-$color-orange-red-light: rgba(223,57,57, .8);
+$color-orange-red-light: rgba(223, 57, 57, 0.8);
 // rgb(151, 34, 34)
 
 // FONT-SIZE
@@ -38,7 +38,6 @@ $font-reggae: 'Reggae One';
 //logo
 $font-Andada: 'Andada Pro', serif;
 
-
-// MAIN CONTAINER 
+// MAIN CONTAINER
 $container-max-width: 1200px;
 $container-width: 96%;

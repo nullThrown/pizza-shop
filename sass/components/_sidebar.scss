@@ -4,15 +4,15 @@
   height: 100vh;
   background: $color-soft-white;
   z-index: 100;
-  padding: 40px 10px;
+  padding: 5px 20px;
   top: 1px;
   @media (min-width: 735px) {
     display: none;
   }
   &--nav {
     left: -100vw;
+
     border-radius: 0 5px 5px 0;
-    padding: 5px;
     background-color: $color-soft-white;
     &--open {
       animation: openSidebarMenu 400ms ease-out;
@@ -39,24 +39,61 @@
       overflow-y: scroll;
     }
   }
-  &__close-btn {
+  &__close-menu-btn {
+    font-size: 2rem;
+    background-color: inherit;
+
+    // &:hover {
+    //   animation: rotate90deg 200ms ease-out forwards;
+    // }
+  }
+  &__close-cart-btn {
   }
   &__nav-logo {
+    text-align: center;
   }
   &__nav-list {
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
+    font-size: 2rem;
   }
   &__nav-item {
-    background-color: rgb(240, 240, 240);
+    list-style: none;
+    margin: 2px 0;
+    padding: 10px 0 10px 10px;
+    border-radius: 10px;
+    width: 100%;
+    font-size: 2.4rem;
+    font-weight: 300;
+    color: $color-light-black;
+
+    &--active {
+      background-color: $color-lightest-grey;
+      color: $color-soft-black !important;
+      font-weight: bold;
+    }
+  }
+  &__icon {
+    font-size: 2.4rem;
+    margin-right: 5px;
+  }
+  &__nav-link {
+    // color: $color-text-primary;
     &:hover {
-      color: red;
+      // color: black;
     }
   }
   &__menu-title {
+    font-size: 2rem;
+    padding: 5px;
+    list-style: none;
+    color: $color-dark-grey;
   }
-  &__nav-menu-list {
+  &__menu-list {
+    width: 100%;
+    margin: 10px 0;
   }
-  &__nav-list {
+  &__menu-item {
   }
 }

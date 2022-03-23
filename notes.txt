@@ -6,6 +6,9 @@
       -create class for linkable items -- Home, menu-items, about
       -create class for menu title page
       -fix links
+    *cart has spacing issues
+      -place totals and checkout button fixed on page
+      -add a total height to cart items list   
     *remove 'drink' title from menu page
       
     *fn() 'setPrices' rename -> 'populatePrices' 
