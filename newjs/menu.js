@@ -111,7 +111,7 @@ function handleAddToCart(e) {
   activateCartCount();
   activateAlert(`${newCartItem.name} has been added to your cart`, true);
   renderCart();
-  renderSidebarCart();
+  // renderSidebarCart();
 }
 
 function handleSizeSelect(e) {

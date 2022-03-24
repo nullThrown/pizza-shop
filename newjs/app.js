@@ -8,7 +8,7 @@ import { addCartListeners, initCart } from './cart.js';
 import { addCheckoutListeners, initCheckout } from './checkout.js';
 import { addCustomListeners, initCustomPizza } from './customPizza.js';
 import { addDealsListeners } from './deals.js';
-import { addSidebarListeners, initSidebar } from './sidebar.js';
+import { addSidebarListeners } from './sidebar.js';
 import { addMenuListeners } from './menu.js';
 
 const pickupBtn = document.querySelector('.pickup-btn');
@@ -34,5 +34,5 @@ initPreviousOrdersToLS();
 initCheckout(currentPath);
 initCustomPizza(currentPath);
 initCart();
-initSidebar();
+// initSidebar();
 populatePrices();

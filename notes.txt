@@ -1,30 +1,16 @@
   TODO   
-    *pass in new fontAwesome cdn link      
+    *pass in new fontAwesome cdn link to all pages     
     *sauce selectors for sides are passing wrong values to LS
 
-    *blend render cart and sidebar into single function -- they both create the same content -- just in different containers
-      - both functions call the same node creation functions -- they just need to be placed in their respective containers 
-      -sidebar requires an 'empty cart' node to be attached
-
-      -move all query selectors for sidebar cart content into cart.js
-      -create fn() renderSideBarCartMetaData in cart.js file 
-        - grabs LS cart  
-        - add text content to sidebar data nodes 
-      -renderCarts()
-        -remove determineCartTotals() from renderCart
-          -why is this here? wtf
-        -add node binding for sidebar ul 
-        -replace children for on sidebar ul
-        -switch case 
-          -node created 
-          -node is inserted into cart ul
-          -node is inserted into sidebar ul
-        -renderCartMetaData()
-        -rendersidebarMetaData()
-      -rework node creations 
-          - insert adjacent html must be outside of fn()
+    *blend render cart and sidebar into single function        
       -delete renderSidebarCart() from sidebar.js
+      -rename 'renderCart' fn() to 'renderCarts'
+      -add empty cart node if !items 
+      -delete all renderSidebar imports and instances
       -add comment describing why sidebar cart is being rendered from cart.js    
+
+    *rework all component node creators to return only strings 
+      -rename functions to '*str'
 
     *normalize all number data 
       - number data is being pull from DOM as a string and needs to be converted into a number

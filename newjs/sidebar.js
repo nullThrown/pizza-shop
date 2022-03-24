@@ -4,11 +4,11 @@
 // REMOVE BLUE BACKGROUND FOR MENU
 import { handleDeleteCartItem } from './cart.js';
 import { getObjFromLS } from './storage.js';
-import { createPizzaItemNode } from './components/cart/pizzaItem.js';
-import { createCustomPizzaItemNode } from './components/cart/customPizzaItem.js';
-import { createSideItemNode } from './components/cart/sideItem.js';
-import { createDessertItemNode } from './components/cart/dessertItem.js';
-import { createDrinkItemNode } from './components/cart/drinkItem.js';
+import { createPizzaItemStr } from './components/cart/pizzaItem.js';
+import { createCustomPizzaItemStr } from './components/cart/customPizzaItem.js';
+import { createSideItemStr } from './components/cart/sideItem.js';
+import { createDessertItemStr } from './components/cart/dessertItem.js';
+import { createDrinkItemStr } from './components/cart/drinkItem.js';
 import { determineCartTotals } from './cart.js';
 
 const menuEl = document.querySelector('.sidebar--nav');
@@ -23,10 +23,10 @@ const sidebarSubtotal = document.getElementById('sidebar-subtotal');
 const sidebarTax = document.getElementById('sidebar-tax');
 const sidebarTotal = document.getElementById('sidebar-total');
 
-export function initSidebar() {
-  renderSidebarCart();
-  renderSidebarTotal();
-}
+// export function initSidebar() {
+//   renderSidebarCart();
+//   renderSidebarTotal();
+// }
 
 export function addSidebarListeners() {
   openMenuBtn.onclick = handleOpenMenu;

@@ -1,9 +1,9 @@
 import { getObjFromLS, deleteCartItemFromLS, setObjToLS } from './storage.js';
-import { createPizzaItemNode } from './components/cart/pizzaItem.js';
-import { createCustomPizzaItemNode } from './components/cart/customPizzaItem.js';
-import { createDrinkItemNode } from './components/cart/drinkItem.js';
-import { createDessertItemNode } from './components/cart/dessertItem.js';
-import { createSideItemNode } from './components/cart/sideItem.js';
+import { createPizzaItemStr } from './components/cart/pizzaItem.js';
+import { createCustomPizzaItemStr } from './components/cart/customPizzaItem.js';
+import { createDrinkItemStr } from './components/cart/drinkItem.js';
+import { createDessertItemStr } from './components/cart/dessertItem.js';
+import { createSideItemStr } from './components/cart/sideItem.js';
 import { renderSidebarCart } from './sidebar.js';
 
 const cartEl = document.querySelector('.cart');
@@ -13,10 +13,13 @@ const cartSubtotalEl = document.getElementById('cart-subtotal');
 const cartTaxEl = document.getElementById('cart-tax');
 const cartTotalEl = document.getElementById('cart-total');
 const orderTypeEl = document.querySelector('.cart__order-type');
-
 const cartCountEl = document.querySelector('.cart__count');
-
 const cartIcon = document.querySelector('.header__cart-icon');
+const listContainer = document.querySelector('.cart__ul');
+const sidebarCartContainer = document.querySelector('.sidebar__cart-list');
+const sidebarSubtotalEl = document.getElementById('sidebar-subtotal');
+const sidebarTaxEl = document.getElementById('sidebar-tax');
+const sidebarTotalEl = document.getElementById('sidebar-total');
 
 export function initCart() {
   renderCart();
@@ -36,7 +39,7 @@ export function handleDeleteCartItem(e) {
     const targetLi = el.closest('li');
     deleteCartItemFromLS(targetLi.dataset.uuid);
     renderCart();
-    renderSidebarCart();
+    // renderSidebarCart();
   }
 }
 
@@ -57,41 +60,50 @@ export function handleCartDisplay() {
 }
 
 // RENDERERS //
+// fn() that converts and inserts strings into DOM
 
 export function renderCart() {
   const cart = getObjFromLS('cart');
-  const listContainer = document.querySelector('.cart__ul');
   listContainer.replaceChildren();
+  sidebarCartContainer.replaceChildren();
   cart.items.forEach((item) => {
-    // creates cart item node and appends it to the listcontainer
     switch (item.category) {
       case 'pizza':
-        createPizzaItemNode(item, listContainer);
+        const PizzaStr = createPizzaItemStr(item);
+        listContainer.insertAdjacentHTML('beforeend', PizzaStr);
+        sidebarCartContainer.insertAdjacentHTML('beforeend', PizzaStr);
         break;
       case 'custom':
-        createCustomPizzaItemNode(item, listContainer);
+        const customStr = createCustomPizzaItemStr(item);
+        listContainer.insertAdjacentHTML('beforeend', customStr);
+        sidebarCartContainer.insertAdjacentHTML('beforeend', customStr);
         break;
       case 'side':
-        createSideItemNode(item, listContainer);
+        const sideStr = createSideItemStr(item);
+        listContainer.insertAdjacentHTML('beforeend', sideStr);
+        sidebarCartContainer.insertAdjacentHTML('beforeend', sideStr);
         break;
       case 'dessert':
-        createDessertItemNode(item, listContainer);
+        const dessertStr = createDessertItemStr(item);
+        listContainer.insertAdjacentHTML('beforeend', dessertStr);
+        sidebarCartContainer.insertAdjacentHTML('beforeend', dessertStr);
         break;
       case 'drink':
-        createDrinkItemNode(item, listContainer);
+        const drinkStr = createDrinkItemStr(item);
+        listContainer.insertAdjacentHTML('beforeend', drinkStr);
+        sidebarCartContainer.insertAdjacentHTML('beforeend', drinkStr);
         break;
 
       default:
         break;
     }
   });
-  // determineCartTotals();
   renderCartMetaData();
+  renderSidebarCartMetaData();
 }
 
 function renderCartMetaData() {
-  const cart = getObjFromLS('cart');
-  const { cartTotals, orderType, items } = cart;
+  const { cartTotals, orderType, items } = getObjFromLS('cart');
 
   cartSubtotalEl.textContent = cartTotals.subtotal.toFixed(2);
   cartTaxEl.textContent = cartTotals.calculatedTax.toFixed(2);
@@ -100,6 +112,14 @@ function renderCartMetaData() {
   orderTypeEl.textContent = orderType || '';
 
   cartCountEl.textContent = items.length;
+}
+// add order type el to sidebar
+function renderSidebarCartMetaData() {
+  const { cartTotals, orderType } = getObjFromLS('cart');
+
+  sidebarSubtotalEl.textContent = cartTotals.subtotal.toFixed(2);
+  sidebarTaxEl.textContent = cartTotals.calculatedTax.toFixed(2);
+  sidebarTotalEl.textContent = cartTotals.total.toFixed(2);
 }
 
 // HELPERS //

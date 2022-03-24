@@ -1,7 +1,5 @@
-export function createDessertItemNode(item, container) {
-  container.insertAdjacentHTML(
-    'beforeend',
-    `
+export function createDessertItemStr(item, container) {
+  return `
     <li data-uuid=${item.uuid} class="cart__item">
       <button class="btn--cancel btn delete-cart-item">X</button>
       <h4 class="cart__item-title">${item.name}</h4>
@@ -12,6 +10,5 @@ export function createDessertItemNode(item, container) {
         ><span class="cart__item-price">${item.totalPrice}</span>
       </p>
     </li>
-  `
-  );
+  `;
 }

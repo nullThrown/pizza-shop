@@ -195,7 +195,7 @@ function handleAddCustomToCart() {
     activateCartCount();
     activateAlert('Custom pizza has been added to your cart', true);
     renderCart();
-    renderSidebarCart();
+    // renderSidebarCart();
     clearToppingDisplay();
     uncheckInputs(sizeRadios, toppingRadios);
   }
