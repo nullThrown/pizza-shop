@@ -4,7 +4,7 @@ import { createCustomPizzaItemStr } from './components/cart/customPizzaItem.js';
 import { createDrinkItemStr } from './components/cart/drinkItem.js';
 import { createDessertItemStr } from './components/cart/dessertItem.js';
 import { createSideItemStr } from './components/cart/sideItem.js';
-import { createEmptyCartStr } from './components/checkout/emptyCart.js';
+import { createEmptyCartStr } from './components/emptyCart.js';
 
 const cartEl = document.querySelector('.cart');
 const cartItemsUl = document.querySelector('.cart__ul');
@@ -64,41 +64,34 @@ export function renderCarts() {
   const { items } = getObjFromLS('cart');
   listContainer.replaceChildren();
   sidebarCartContainer.replaceChildren();
+  let itemsStr = '';
 
-  if (!items) {
-    const emptyCartStr = createEmptyCartStr();
+  if (!items.length) {
+    itemsStr = createEmptyCartStr();
   }
   items.forEach((item) => {
     switch (item.category) {
       case 'pizza':
-        const PizzaStr = createPizzaItemStr(item);
-        listContainer.insertAdjacentHTML('beforeend', PizzaStr);
-        sidebarCartContainer.insertAdjacentHTML('beforeend', PizzaStr);
+        itemsStr += createPizzaItemStr(item);
         break;
       case 'custom':
-        const customStr = createCustomPizzaItemStr(item);
-        listContainer.insertAdjacentHTML('beforeend', customStr);
-        sidebarCartContainer.insertAdjacentHTML('beforeend', customStr);
+        itemsStr += createCustomPizzaItemStr(item);
         break;
       case 'side':
-        const sideStr = createSideItemStr(item);
-        listContainer.insertAdjacentHTML('beforeend', sideStr);
-        sidebarCartContainer.insertAdjacentHTML('beforeend', sideStr);
+        itemsStr += createSideItemStr(item);
         break;
       case 'dessert':
-        const dessertStr = createDessertItemStr(item);
-        listContainer.insertAdjacentHTML('beforeend', dessertStr);
-        sidebarCartContainer.insertAdjacentHTML('beforeend', dessertStr);
+        itemsStr += createDessertItemStr(item);
         break;
       case 'drink':
-        const drinkStr = createDrinkItemStr(item);
-        listContainer.insertAdjacentHTML('beforeend', drinkStr);
-        sidebarCartContainer.insertAdjacentHTML('beforeend', drinkStr);
+        itemsStr += createDrinkItemStr(item);
         break;
 
       default:
         break;
     }
+    listContainer.insertAdjacentHTML('beforeend', itemsStr);
+    sidebarCartContainer.insertAdjacentHTML('beforeend', itemsStr);
   });
   renderCartMetaData();
   renderSidebarCartMetaData();

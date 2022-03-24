@@ -7,7 +7,7 @@ import { createCustomPizzaItemStr } from './components/checkout/customPizzaItem.
 import { createSideItemStr } from './components/checkout/sideItem.js';
 import { createDessertItemStr } from './components/checkout/dessertItem.js';
 import { createDrinkItemStr } from './components/checkout/drinkItem.js';
-import { createEmptyCartStr } from './components/checkout/emptyCart.js';
+import { createEmptyCartStr } from './components/emptyCart.js';
 import {
   getObjFromLS,
   setObjToLS,
@@ -116,27 +116,28 @@ function handlePlaceOrder(e) {
 
 function renderCheckoutItems() {
   const { items } = getObjFromLS('cart');
-  let itemStr;
+  let itemsStr = '';
+  productUl.replaceChildren();
 
-  if (!items) {
-    itemStr = createEmptyCartStr();
+  if (!items.length) {
+    itemsStr = createEmptyCartStr();
   } else {
     items.forEach((item) => {
       switch (item.category) {
         case 'pizza':
-          itemStr = createPizzaItemStr(item);
+          itemsStr += createPizzaItemStr(item);
           break;
         case 'custom':
-          itemStr = createCustomPizzaItemStr(item);
+          itemsStr += createCustomPizzaItemStr(item);
           break;
         case 'side':
-          itemStr = createSideItemStr(item);
+          itemsStr += createSideItemStr(item);
           break;
         case 'dessert':
-          itemStr = createDessertItemStr(item);
+          itemsStr += createDessertItemStr(item);
           break;
         case 'drink':
-          itemStr = createDrinkItemStr(item);
+          itemsStr += createDrinkItemStr(item);
           break;
 
         default:
@@ -144,7 +145,7 @@ function renderCheckoutItems() {
       }
     });
   }
-  productUl.insertAdjacentHTML('beforeend', itemStr);
+  productUl.insertAdjacentHTML('beforeend', itemsStr);
 }
 
 function renderOrderType() {

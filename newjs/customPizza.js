@@ -7,7 +7,7 @@ import {
 import { create_UUID } from './helpers.js';
 import { activateAlert } from './alert.js';
 import { activateCartCount, renderCarts } from './cart.js';
-import { createToppingNode } from './components/customPizza/topping.js';
+import { createToppingStr } from './components/customPizza/topping.js';
 import customData from './data/customData.js';
 import { uncheckInputs } from './helpers.js';
 const meatsBtn = document.getElementById('meatsBtn');
@@ -228,13 +228,13 @@ function renderPizzaToppings() {
   toppings.forEach((topping) => {
     switch (topping.side) {
       case 'full':
-        createToppingNode(topping, toppingPrice, fullBox);
+        createToppingStr(topping, toppingPrice, fullBox);
         break;
       case 'left':
-        createToppingNode(topping, toppingPrice, leftBox);
+        createToppingStr(topping, toppingPrice, leftBox);
         break;
       case 'right':
-        createToppingNode(topping, toppingPrice, rightBox);
+        createToppingStr(topping, toppingPrice, rightBox);
         break;
     }
   });
