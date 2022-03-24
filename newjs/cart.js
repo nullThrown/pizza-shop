@@ -4,7 +4,7 @@ import { createCustomPizzaItemStr } from './components/cart/customPizzaItem.js';
 import { createDrinkItemStr } from './components/cart/drinkItem.js';
 import { createDessertItemStr } from './components/cart/dessertItem.js';
 import { createSideItemStr } from './components/cart/sideItem.js';
-import { renderSidebarCart } from './sidebar.js';
+import { createEmptyCartStr } from './components/checkout/emptyCart.js';
 
 const cartEl = document.querySelector('.cart');
 const cartItemsUl = document.querySelector('.cart__ul');
@@ -22,7 +22,7 @@ const sidebarTaxEl = document.getElementById('sidebar-tax');
 const sidebarTotalEl = document.getElementById('sidebar-total');
 
 export function initCart() {
-  renderCart();
+  renderCarts();
 }
 
 export function addCartListeners() {
@@ -38,8 +38,7 @@ export function handleDeleteCartItem(e) {
   if (el.nodeName === 'BUTTON' && el.classList.contains('delete-cart-item')) {
     const targetLi = el.closest('li');
     deleteCartItemFromLS(targetLi.dataset.uuid);
-    renderCart();
-    // renderSidebarCart();
+    renderCarts();
   }
 }
 
@@ -60,13 +59,16 @@ export function handleCartDisplay() {
 }
 
 // RENDERERS //
-// fn() that converts and inserts strings into DOM
 
-export function renderCart() {
-  const cart = getObjFromLS('cart');
+export function renderCarts() {
+  const { items } = getObjFromLS('cart');
   listContainer.replaceChildren();
   sidebarCartContainer.replaceChildren();
-  cart.items.forEach((item) => {
+
+  if (!items) {
+    const emptyCartStr = createEmptyCartStr();
+  }
+  items.forEach((item) => {
     switch (item.category) {
       case 'pizza':
         const PizzaStr = createPizzaItemStr(item);
@@ -113,7 +115,7 @@ function renderCartMetaData() {
 
   cartCountEl.textContent = items.length;
 }
-// add order type el to sidebar
+
 function renderSidebarCartMetaData() {
   const { cartTotals, orderType } = getObjFromLS('cart');
 

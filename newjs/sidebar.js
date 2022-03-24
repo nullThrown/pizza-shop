@@ -3,13 +3,6 @@
 // HAVE TWO SEPARATE FUNCTIONS FOR EACH CONTAINER
 // REMOVE BLUE BACKGROUND FOR MENU
 import { handleDeleteCartItem } from './cart.js';
-import { getObjFromLS } from './storage.js';
-import { createPizzaItemStr } from './components/cart/pizzaItem.js';
-import { createCustomPizzaItemStr } from './components/cart/customPizzaItem.js';
-import { createSideItemStr } from './components/cart/sideItem.js';
-import { createDessertItemStr } from './components/cart/dessertItem.js';
-import { createDrinkItemStr } from './components/cart/drinkItem.js';
-import { determineCartTotals } from './cart.js';
 
 const menuEl = document.querySelector('.sidebar--nav');
 const sideBarcartEl = document.querySelector('.sidebar--cart');
@@ -19,14 +12,6 @@ const openCartBtn = document.querySelector('.header__cart-icon');
 const closeMenuBtn = document.querySelector('.sidebar__close-menu-btn');
 const closeCartBtn = document.querySelector('.sidebar__close-cart-btn');
 const sidebarCartContainer = document.querySelector('.sidebar__cart-list');
-const sidebarSubtotal = document.getElementById('sidebar-subtotal');
-const sidebarTax = document.getElementById('sidebar-tax');
-const sidebarTotal = document.getElementById('sidebar-total');
-
-// export function initSidebar() {
-//   renderSidebarCart();
-//   renderSidebarTotal();
-// }
 
 export function addSidebarListeners() {
   openMenuBtn.onclick = handleOpenMenu;
@@ -62,44 +47,4 @@ function handleOpenCart() {
 }
 function handleCloseCart() {
   sideBarcartEl.classList.remove('sidebar--cart--open');
-}
-
-// RENDERERS //
-
-export function renderSidebarCart() {
-  const { items } = getObjFromLS('cart');
-  sidebarCartContainer.replaceChildren();
-
-  items.forEach((item) => {
-    switch (item.category) {
-      case 'pizza':
-        createPizzaItemNode(item, sidebarCartContainer);
-        break;
-      case 'custom':
-        createCustomPizzaItemNode(item, sidebarCartContainer);
-        break;
-      case 'side':
-        createSideItemNode(item, sidebarCartContainer);
-        break;
-      case 'dessert':
-        createDessertItemNode(item, sidebarCartContainer);
-        break;
-      case 'drink':
-        createDrinkItemNode(item, sidebarCartContainer);
-        break;
-
-      default:
-        break;
-    }
-  });
-  determineCartTotals();
-  renderSidebarTotal();
-}
-
-function renderSidebarTotal() {
-  const { cartTotals } = getObjFromLS('cart');
-
-  sidebarSubtotal.textContent = cartTotals.subtotal.toFixed(2);
-  sidebarTax.textContent = cartTotals.calculatedTax.toFixed(2);
-  sidebarTotal.textContent = cartTotals.total.toFixed(2);
 }

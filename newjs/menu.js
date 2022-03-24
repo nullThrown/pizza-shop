@@ -5,8 +5,7 @@ import { create_UUID } from './helpers.js';
 import { setCartItemToLS } from './storage.js';
 import { activateCartCount } from './cart.js';
 import { activateAlert } from './alert.js';
-import { renderCart } from './cart.js';
-import { renderSidebarCart } from './sidebar.js';
+import { renderCarts } from './cart.js';
 import foodItems from './data/foodItemData.js';
 import Pizza from './cartItems/Pizza.js';
 import Side from './cartItems/Side.js';
@@ -110,8 +109,7 @@ function handleAddToCart(e) {
   setCartItemToLS(newCartItem);
   activateCartCount();
   activateAlert(`${newCartItem.name} has been added to your cart`, true);
-  renderCart();
-  // renderSidebarCart();
+  renderCarts();
 }
 
 function handleSizeSelect(e) {

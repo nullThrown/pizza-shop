@@ -1,8 +1,5 @@
-export function createEmptyCartNode(container) {
-  container.insertAdjacentHTML(
-    'beforeend',
-    `
+export function createEmptyCartStr() {
+  return `
   <li class="product__empty">Cart is currently empty...</li>
-  `
-  );
+  `;
 }

@@ -1,7 +1,5 @@
-export function createDrinkItemNode(item, container) {
-  container.insertAdjacentHTML(
-    'beforeend',
-    `
+export function createDrinkItemStr(item) {
+  return `
     <li data-uuid=${item.uuid} class="product__item">
       <img
         src=${item.imageLink}
@@ -18,6 +16,5 @@ export function createDrinkItemNode(item, container) {
       <button class="btn btn--checkout-remove">Remove</button>
     </li>
   
-  `
-  );
+  `;
 }

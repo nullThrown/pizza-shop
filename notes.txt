@@ -3,10 +3,8 @@
     *sauce selectors for sides are passing wrong values to LS
 
     *blend render cart and sidebar into single function        
-      -delete renderSidebarCart() from sidebar.js
-      -rename 'renderCart' fn() to 'renderCarts'
-      -add empty cart node if !items 
-      -delete all renderSidebar imports and instances
+      -add empty cart node to cart/sidebarCart if !items 
+      -add order type to sidebar 
       -add comment describing why sidebar cart is being rendered from cart.js    
 
     *rework all component node creators to return only strings 

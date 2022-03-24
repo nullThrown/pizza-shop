@@ -2,12 +2,12 @@
 // fn() renderCouponCode() does not need to create couponcode element, instead toggle display property of html content
 // fn() handleRemoveCoupon() does not need to event propogate. Once the item is added to html file, just grab the btn el directly
 // what is summaryPromoBox??
-import { createPizzaItemNode } from './components/checkout/pizzaItem.js';
-import { createCustomPizzaItemNode } from './components/checkout/customPizzaItem.js';
-import { createSideItemNode } from './components/checkout/sideItem.js';
-import { createDessertItemNode } from './components/checkout/dessertItem.js';
-import { createDrinkItemNode } from './components/checkout/drinkItem.js';
-import { createEmptyCartNode } from './components/checkout/emptyCart.js';
+import { createPizzaItemStr } from './components/checkout/pizzaItem.js';
+import { createCustomPizzaItemStr } from './components/checkout/customPizzaItem.js';
+import { createSideItemStr } from './components/checkout/sideItem.js';
+import { createDessertItemStr } from './components/checkout/dessertItem.js';
+import { createDrinkItemStr } from './components/checkout/drinkItem.js';
+import { createEmptyCartStr } from './components/checkout/emptyCart.js';
 import {
   getObjFromLS,
   setObjToLS,
@@ -18,7 +18,7 @@ import {
   deleteCouponFromLS,
 } from './storage.js';
 import couponData from './data/couponData.js';
-import { renderCart } from './cart.js';
+import { renderCarts } from './cart.js';
 import { activateAlert } from './alert.js';
 
 const orderTypeEl = document.getElementById('orderType');
@@ -84,7 +84,7 @@ function handleRemoveItem(e) {
     productUl.replaceChildren();
     togglePlaceOrderBtn();
     renderCheckoutItems();
-    renderCart();
+    renderCarts();
     populateSummary();
   }
 }
@@ -116,26 +116,27 @@ function handlePlaceOrder(e) {
 
 function renderCheckoutItems() {
   const { items } = getObjFromLS('cart');
+  let itemStr;
 
-  if (!items.length) {
-    createEmptyCartNode(productUl);
+  if (!items) {
+    itemStr = createEmptyCartStr();
   } else {
     items.forEach((item) => {
       switch (item.category) {
         case 'pizza':
-          createPizzaItemNode(item, productUl);
+          itemStr = createPizzaItemStr(item);
           break;
         case 'custom':
-          createCustomPizzaItemNode(item, productUl);
+          itemStr = createCustomPizzaItemStr(item);
           break;
         case 'side':
-          createSideItemNode(item, productUl);
+          itemStr = createSideItemStr(item);
           break;
         case 'dessert':
-          createDessertItemNode(item, productUl);
+          itemStr = createDessertItemStr(item);
           break;
         case 'drink':
-          createDrinkItemNode(item, productUl);
+          itemStr = createDrinkItemStr(item);
           break;
 
         default:
@@ -143,6 +144,7 @@ function renderCheckoutItems() {
       }
     });
   }
+  productUl.insertAdjacentHTML('beforeend', itemStr);
 }
 
 function renderOrderType() {

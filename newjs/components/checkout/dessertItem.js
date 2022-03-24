@@ -1,7 +1,5 @@
-export function createDessertItemNode(item, container) {
-  container.insertAdjacentHTML(
-    'beforeend',
-    `
+export function createDessertItemStr(item) {
+  return `
     <li data-uuid=${item.uuid} class="product__item">
       <img
         src=${item.imageLink}
@@ -17,6 +15,5 @@ export function createDessertItemNode(item, container) {
       <button class="btn btn--checkout-remove">Remove</button>
     </li>
 
-    `
-  );
+    `;
 }

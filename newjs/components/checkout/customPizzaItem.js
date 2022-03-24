@@ -1,9 +1,7 @@
-export function createCustomPizzaItemNode(item, container) {
+export function createCustomPizzaItemStr(item) {
   const [fullTopStr, leftTopStr, rightTopStr] = createToppingsStrs(item);
 
-  container.insertAdjacentHTML(
-    'beforeend',
-    `
+  return `
     <li data-uuid=${item.uuid} class="product__item">
       <p class="miniscule-text product__item-full">Full: ${fullTopStr}</p>
       <p class="miniscule-text product__item-left">Left: ${leftTopStr} </p>
@@ -23,8 +21,7 @@ export function createCustomPizzaItemNode(item, container) {
       <p class="product__item-total">${item.totalPrice}</p>
       <button class="btn btn--checkout-remove">Remove</button>
     </li>
-`
-  );
+`;
 }
 
 export function createToppingsStrs(item) {
@@ -46,9 +43,9 @@ export function createToppingsStrs(item) {
         rightTopStr += `${top.name},`;
         break;
     }
-    // removes last comma from strings
   });
 
+  // removes last comma from strings
   fullTopStr = fullTopStr.slice(0, -1);
   leftTopStr = fullTopStr.slice(0, -1);
   rightTopStr = fullTopStr.slice(0, -1);

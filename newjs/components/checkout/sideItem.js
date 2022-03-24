@@ -1,7 +1,5 @@
-export function createSideItemNode(item, container) {
-  container.insertAdjacentHTML(
-    'beforeend',
-    `
+export function createSideItemStr(item) {
+  return `
     <li data-uuid=${item.uuid} class="product__item">
   <img
     src=${item.imageLink}
@@ -18,6 +16,5 @@ export function createSideItemNode(item, container) {
   <p class="product__item-total">${item.totalPrice}</p>
   <button class="btn btn--checkout-remove">Remove</button>
 </li>
-    `
-  );
+    `;
 }

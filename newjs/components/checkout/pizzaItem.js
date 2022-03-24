@@ -1,7 +1,5 @@
-export function createPizzaItemNode(item, container) {
-  container.insertAdjacentHTML(
-    'beforeend',
-    `<li data-uuid=${item.uuid} class="product__item">
+export function createPizzaItemStr(item) {
+  return `<li data-uuid=${item.uuid} class="product__item">
     <img
       src=${item.imageLink}
       alt=${item.name}
@@ -16,6 +14,5 @@ export function createPizzaItemNode(item, container) {
     <span class="product__item-price">${item.originalPrice}</span>
     <span class="product__item-total">${item.totalPrice}</span>
     <button class="btn btn--checkout-remove">Remove</button>
-  </li>`
-  );
+  </li>`;
 }

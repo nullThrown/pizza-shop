@@ -6,8 +6,7 @@ import {
 } from './storage.js';
 import { create_UUID } from './helpers.js';
 import { activateAlert } from './alert.js';
-import { activateCartCount, renderCart } from './cart.js';
-import { renderSidebarCart } from './sidebar.js';
+import { activateCartCount, renderCarts } from './cart.js';
 import { createToppingNode } from './components/customPizza/topping.js';
 import customData from './data/customData.js';
 import { uncheckInputs } from './helpers.js';
@@ -194,8 +193,7 @@ function handleAddCustomToCart() {
     initCustomPizzaToLS(true);
     activateCartCount();
     activateAlert('Custom pizza has been added to your cart', true);
-    renderCart();
-    // renderSidebarCart();
+    renderCarts();
     clearToppingDisplay();
     uncheckInputs(sizeRadios, toppingRadios);
   }
