@@ -5,25 +5,24 @@
       - normalize this process and remove all the excess parseFloat/Number calls
     
      *alert component
-      -alert placement is fucked 
-        -alert worked well when it was inside of a grid 
-        -now stuck in flex and appears inline with header elements
-        -needs to be attached to the bottom of header 
-      -UI needs revamp
+      -rename popup to alert -- keep consistency
+      -add JS func to alert to be set off when certain actions are committed 
+      -keep removal/addition of items same color 
+      -add func to cancel buttons
       -remove settimeout so that all popups will be displayed for 3 seconds
-      -add popup when a item is removed    
-      -have deal run function on final price
-    
+      
+    *have deal run function on final price
+ 
+    *create an order placed page and make it look nice 
+    *check 'about' para with grammarly
+    *add hover effect to more info buttons -- to show toppings etc.
     
   AFTER THOUGHTS
+    
     
     *all 'removes' fn() names that remove items from LS should be renamed to 'delete' 
      -'remove' should be used only for node removals  
 
-    *create an order placed page and make it look nice 
-          *check 'about' para with grammarly
-          *add hover effect to more info buttons -- to show toppings etc.
-          * isDuplicate fn() that checks if item-to-be-added already exists in cart 
     
     *order now buttons on index should dropdown an item customize and add func
       -redesign buttons and add south facing arrow
@@ -34,6 +33,7 @@
       -rename files to custom
       -refactor meatsBtn,veggiesBtn, &, cheeseBtn listener logic -- it is way too verbose and ugly
     
+    * isDuplicate fn() that checks if item-to-be-added already exists in cart 
           
          
       General 
@@ -46,10 +46,8 @@
           populate -- data is filled into pre-existing fields(i.e radio buttons, summary)
           init -- initiliazes something 
           handle -- fn to be called on triggered event  
-        
-    Future Considerations
+
           
    
-          ALERT  
           
 

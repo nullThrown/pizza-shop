@@ -1,37 +1,64 @@
 .popup {
-  // height: 60px;
-  max-width: 400px;
-  width: 100%;
-  padding: 10px 5px 10px 10px;
+  position: fixed;
+  display: flex;
+  width: fit-content;
+  padding: 12px 12px;
   margin-top: 4px;
-  grid-column: 1 / -1;
-  grid-row: 3 / 4;
-  justify-self: center;
-  display: none;
-  align-items: center;
-  font-size: $font-size-default;
   border-radius: 6px;
+  box-shadow: 4px 4px 10px $color-light-grey;
+
+  align-items: center;
+  font-size: $font-size-medium;
+  font-weight: 300;
   animation: appear 200ms ease-out;
-  
-  
-  &--success {
-    background-color: rgb(231, 248, 231);
+  background-color: white;
+  // &--success {
+  //   background-color: white;
+  // }
+  // &--failure {
+  //   background-color: rgb(248, 236, 236);
+  // }
+  &__box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
-  &--failure {
-    background-color: rgb(248, 236, 236);
+  &__bar {
+    height: 50px;
+    width: 3px;
+    background: rgba(21, 105, 56, 0.8);
+    border-radius: 20px;
   }
-  
-  &__icon {
-    font-size: 44px;
-    margin-right: 10px;
-    &--success{
-      color: rgba(51, 165, 31, 0.842);
-    }
-    &--failure {
-      color: rgb(221, 35, 28);
-    }
+  // &__icon {
+  //   font-size: 44px;
+  //   margin-right: 10px;
+  //   &--success {
+  //     color: rgba(51, 165, 31, 0.842);
+  //   }
+  //   &--failure {
+  //     color: rgb(221, 35, 28);
+  //   }
+  // }
+  &__icon2-check {
+    margin: 0 14px;
+    color: rgba(21, 105, 56, 0.8);
+    display: none;
+  }
+  &__icon2-solid {
+    margin: 0 14px;
+    color: rgba(21, 105, 56, 0.8);
+    font-size: 2.8rem;
   }
   &__text {
   }
-}
+  &__cancel-btn {
+    background-color: inherit;
+    font-size: 1.8rem;
+    color: $color-light-grey;
+    margin-left: 15px;
 
+    &:hover {
+      color: $color-darkest-grey;
+    }
+  }
+}
