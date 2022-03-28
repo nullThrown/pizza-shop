@@ -17,6 +17,7 @@ const cartCountEl = document.querySelector('.cart__count');
 const cartIcon = document.querySelector('.header__cart-icon');
 const listContainer = document.querySelector('.cart__ul');
 const sidebarCartContainer = document.querySelector('.sidebar__cart-list');
+const sidebarOrderTypeEl = document.querySelector('.sidebar__order-type');
 const sidebarSubtotalEl = document.getElementById('sidebar-subtotal');
 const sidebarTaxEl = document.getElementById('sidebar-tax');
 const sidebarTotalEl = document.getElementById('sidebar-total');
@@ -90,9 +91,11 @@ export function renderCarts() {
       default:
         break;
     }
-    listContainer.insertAdjacentHTML('beforeend', itemsStr);
-    sidebarCartContainer.insertAdjacentHTML('beforeend', itemsStr);
   });
+  listContainer.insertAdjacentHTML('beforeend', itemsStr);
+  sidebarCartContainer.insertAdjacentHTML('beforeend', itemsStr);
+
+  determineCartTotals();
   renderCartMetaData();
   renderSidebarCartMetaData();
 }
@@ -115,6 +118,8 @@ function renderSidebarCartMetaData() {
   sidebarSubtotalEl.textContent = cartTotals.subtotal.toFixed(2);
   sidebarTaxEl.textContent = cartTotals.calculatedTax.toFixed(2);
   sidebarTotalEl.textContent = cartTotals.total.toFixed(2);
+
+  sidebarOrderTypeEl.textContent = orderType || '';
 }
 
 // HELPERS //

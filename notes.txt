@@ -1,20 +1,4 @@
-  TODO   
-    *blend render cart and sidebar into single function        
-      -add empty cart node to cart/sidebarCart if !items 
-      -add order type to sidebar 
-      -add comment describing why sidebar cart is being rendered from cart.js    
-    *cart totals LS function is not working
-      - problem appears to be within LS state -- not UI 
-      -totals as well as cart lengths are not accurate 
-      -see where determine totals is being run
-    *a few undefined values are being passed in cart item comp strings  
-    *pass in new fontAwesome cdn link to all pages     
-    *sauce selectors for sides are passing wrong values to LS
-  
-
-    *rework all component node creators to return only strings 
-      -rename functions to '*str'
-
+  TODO  
     *normalize all number data 
       - number data is being pull from DOM as a string and needs to be converted into a number
       - in order to run arithmetic ops on these numbers, they must be converted at a certain point
@@ -22,7 +6,7 @@
     
      *alert component
       -alert placement is fucked 
-        -alert work well when it was inside of a grid 
+        -alert worked well when it was inside of a grid 
         -now stuck in flex and appears inline with header elements
         -needs to be attached to the bottom of header 
       -UI needs revamp

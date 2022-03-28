@@ -8,7 +8,7 @@ export function initCartToLS(reset) {
       orderType: '',
       couponCode: '',
       items: [],
-      cartTotals: {},
+      cartTotals: { subtotal: 0, calculatedTax: 0, total: 0 },
       uuid: create_UUID(),
     });
     localStorage.setItem('cart', cartStr);

@@ -1,4 +1,4 @@
-export function createDessertItemStr(item, container) {
+export function createDessertItemStr(item) {
   return `
     <li data-uuid=${item.uuid} class="cart__item">
       <button class="btn--cancel btn delete-cart-item">X</button>

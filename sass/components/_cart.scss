@@ -22,6 +22,14 @@
 
   &__count {
   }
+  &__empty {
+    font-style: italic;
+    font-size: $font-size-default;
+    font-weight: 300;
+    list-style: none;
+    margin: 40px auto;
+    width: fit-content;
+  }
 
   &__title {
     font-size: $font-size-medium;

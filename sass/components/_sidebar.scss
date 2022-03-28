@@ -59,6 +59,12 @@
       }
     }
   }
+  &__order-type {
+    display: block;
+    font-size: 2.2rem;
+    font-weight: 400;
+    margin: 20px 0 20px 10px;
+  }
   &__close-menu-btn {
     font-size: 3.4rem;
     background-color: inherit;
