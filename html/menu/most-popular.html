@@ -126,6 +126,16 @@
     <aside class="sidebar sidebar--cart">
       <button class="btn sidebar__close-cart-btn">&#10006</button>
       <h4 class="sidebar__cart-title">Cart</h4>
+
+      <!-- sidebar alert -->
+      <figure class="alert alert--sidebar sidebar-alert">
+        <span class="sidebar-alert__bar"></span>
+        <i class="fa-solid fa-circle-check alert__icon sidebar-alert__icon--success"></i>
+        <i class="fas fa-exclamation alert__icon alert__icon sidebar-alert__icon--error"></i>
+        <figcaption class="sidebar-alert__text"></figcaption>
+        <button type="button" class="btn sidebar-alert__cancel-btn">&#10006</button>
+      </figure>
+
       <span class="sidebar__order-type"></span>
       <div class="sidebar__cart-box">
         <ul class="sidebar__cart-list">
@@ -182,9 +192,9 @@
 
 
           <select name="crust-select" class="card__select pizza-crust-select" id="">
-            <option value="regular">Regular</option>
-            <option value="thin-crust">Thin Crust</option>
-            <option value="gluten-free">Gluten Free</option>
+            <option value="Regular">Regular</option>
+            <option value="Thin-crust">Thin Crust</option>
+            <option value="Gluten-free">Gluten Free</option>
           </select> 
 
           <div class="u-text-center u-mt-10">
@@ -272,10 +282,10 @@
         <input type="number" name="" value="1" min="1" class="card__input food-item-count" id="">
         <br>
 
-        <select name="sauce-select" class="card__select" id="">
-          <option value="ketchup">Ketchup</option>
-          <option value="ranch">Ranch</option>
-          <option value="bbq">BBQ</option>
+        <select name="sauce-select" class="card__select item-sauce-select" id="">
+          <option value="Ketchup">Ketchup</option>
+          <option value="Ranch">Ranch</option>
+          <option value="Bbq">BBQ</option>
         </select> 
 
         <div class="u-text-center u-mt-10">
@@ -298,10 +308,10 @@
         <input type="number" name="" value="1" min="1" class="card__input food-item-count" id="">
         <br>
 
-        <select name="sauce-select" class="card__select" id="">
-          <option value="ranch">Ranch</option>
-          <option value="thousand">Thousand Island</option>
-          <option value="vinagrette">Vinagrette</option>
+        <select name="sauce-select" class="card__select item-sauce-select" id="">
+          <option value="Ranch">Ranch</option>
+          <option value="Thousand Island">Thousand Island</option>
+          <option value="Vinagrette">Vinagrette</option>
         </select> 
 
         <div class="u-text-center u-mt-10">

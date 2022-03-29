@@ -1,5 +1,5 @@
   TODO  
-    *sides on most popular page are creating undefined values
+    *make all size, sauce values uppercase
 
     *normalize all number data 
       - number data is being pull from DOM as a string and needs to be converted into a number
