@@ -66,6 +66,10 @@ export function setOrderTypeToLS(orderType) {
   cart.orderType = orderType;
   setObjToLS('cart', cart);
 }
+export function findCartItemFromLS(uuid) {
+  const { items } = getObjFromLS('cart');
+  return items.find((item) => item.uuid === uuid);
+}
 
 export function setCartItemToLS(item) {
   const cart = getObjFromLS('cart');

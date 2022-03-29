@@ -16,6 +16,7 @@ import {
   setOrderTypeToLS,
   setCouponToLS,
   deleteCouponFromLS,
+  findCartItemFromLS,
 } from './storage.js';
 import couponData from './data/couponData.js';
 import { renderCarts } from './cart.js';
@@ -79,12 +80,14 @@ function handleRemoveItem(e) {
     e.target.nodeName === 'BUTTON' &&
     e.target.classList.contains('btn--checkout-remove')
   ) {
-    let targetLi = e.target.closest('li');
-    deleteCartItemFromLS(targetLi.dataset.uuid);
+    let targetLiUuid = e.target.closest('li').dataset.uuid;
+    const removedItem = findCartItemFromLS(targetLiUuid);
+    deleteCartItemFromLS(targetLiUuid);
     productUl.replaceChildren();
     togglePlaceOrderBtn();
     renderCheckoutItems();
     renderCarts();
+    activateAlert(`${removedItem.name} has been removed from checkout`, true);
     populateSummary();
   }
 }

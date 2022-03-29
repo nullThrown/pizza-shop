@@ -138,6 +138,14 @@ body {
     opacity: 1;
     transform: translateY(0); } }
 
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(10px); }
+  to {
+    opacity: 1;
+    transform: translateY(0); } }
+
 @keyframes expand {
   0% {
     transform: scale(1); }
@@ -543,42 +551,57 @@ body {
     background-image: linear-gradient(to right bottom, rgba(16, 16, 16, 0.65), rgba(16, 16, 16, 0.5)), url(../../img/backgrounds/pizza-side.jpg);
     clip-path: polygon(100% 0, 0 20%, 0 100%, 100% 100%); }
 
-.popup {
+.alert,
+.sidebar-alert {
   position: fixed;
   display: flex;
   width: fit-content;
-  padding: 12px 12px;
+  padding: 8px 12px;
   margin-top: 4px;
   border-radius: 6px;
-  box-shadow: 4px 4px 10px gainsboro;
+  box-shadow: 6px 6px 12px gainsboro;
+  display: none;
+  z-index: 100;
   align-items: center;
   font-size: 2rem;
   font-weight: 300;
   animation: appear 200ms ease-out;
   background-color: white; }
-  .popup__box {
+  .alert__box,
+  .sidebar-alert__box {
     width: 100%;
     display: flex;
     justify-content: center; }
-  .popup__bar {
+  .alert__bar,
+  .sidebar-alert__bar {
     height: 50px;
     width: 3px;
-    background: rgba(21, 105, 56, 0.8);
     border-radius: 20px; }
-  .popup__icon2-check {
-    margin: 0 14px;
-    color: rgba(21, 105, 56, 0.8);
-    display: none; }
-  .popup__icon2-solid {
-    margin: 0 14px;
-    color: rgba(21, 105, 56, 0.8);
+    .alert__bar--success,
+    .sidebar-alert__bar--success {
+      background: rgba(21, 105, 56, 0.8); }
+    .alert__bar--error,
+    .sidebar-alert__bar--error {
+      background: #ac3030; }
+  .alert__icon,
+  .sidebar-alert__icon {
+    display: none;
+    margin: 0 10px;
     font-size: 2.8rem; }
-  .popup__cancel-btn {
+    .alert__icon--success,
+    .sidebar-alert__icon--success {
+      color: rgba(21, 105, 56, 0.8); }
+    .alert__icon--error,
+    .sidebar-alert__icon--error {
+      color: #ac3030; }
+  .alert__cancel-btn,
+  .sidebar-alert__cancel-btn {
     background-color: inherit;
     font-size: 1.8rem;
     color: gainsboro;
     margin-left: 15px; }
-    .popup__cancel-btn:hover {
+    .alert__cancel-btn:hover,
+    .sidebar-alert__cancel-btn:hover {
       color: #a0a0a0; }
 
 .sidebar {

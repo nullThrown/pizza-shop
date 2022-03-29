@@ -56,18 +56,24 @@
         </div>
 
       
-        <div class="popup">
-          <i class="fas popup__icon"></i>
-          <p class="popup__text"></p>
-        </div>
+        
   </header>
+  <div class="alert__box">
+    <figure class="alert alert--main">
+      <span class="alert__bar"></span>
+      <i class="fa-solid fa-circle-check alert__icon alert__icon--success"></i>
+      <i class="fas fa-exclamation alert__icon alert__icon alert__icon--error"></i>
+      <figcaption class="alert__text"></figcaption>
+      <button type="button" class="btn alert__cancel-btn">&#10006</button>
+    </figure>
+  </div>
   <!-- HEADER END -->
 
   <!-- sidebar navigation for smaller screens -->
   <nav class="sidebar sidebar--nav">
     <button class="btn sidebar__close-menu-btn">&#10006</button>
     <h4 class="sidebar__nav-logo">(logo)</h4>
-    
+
     <ul class="sidebar__nav-list">  
       <li class="sidebar__nav-item sidebar__nav-item--active">
         <i class="sidebar__icon fa-solid fa-house"></i>
@@ -124,6 +130,16 @@
     <aside class="sidebar sidebar--cart">
       <button class="btn sidebar__close-cart-btn">&#10006</button>
       <h4 class="sidebar__cart-title">Cart</h4>
+
+      <!-- sidebar alert -->
+      <figure class="alert alert--sidebar sidebar-alert">
+        <span class="sidebar-alert__bar"></span>
+        <i class="fa-solid fa-circle-check alert__icon sidebar-alert__icon--success"></i>
+        <i class="fas fa-exclamation alert__icon alert__icon sidebar-alert__icon--error"></i>
+        <figcaption class="sidebar-alert__text"></figcaption>
+        <button type="button" class="btn sidebar-alert__cancel-btn">&#10006</button>
+      </figure>
+
       <span class="sidebar__order-type"></span>
       <div class="sidebar__cart-box">
         <ul class="sidebar__cart-list">

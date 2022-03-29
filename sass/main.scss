@@ -1,32 +1,26 @@
-@import "abstracts/variables";
-@import "abstracts/mixins";
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
 
-@import "base/base";
-@import "base/typography";
-@import "base/utilities";
-@import "base/animations";
+@import 'base/base';
+@import 'base/typography';
+@import 'base/utilities';
+@import 'base/animations';
 
-@import "components/buttons";
-@import "components/cart";
-@import "components/card";
-@import "components/img";
-@import "components/nav";
-@import "components/banner";
-@import "components/popup";
-@import "components/sidebar";
+@import 'components/buttons';
+@import 'components/cart';
+@import 'components/card';
+@import 'components/img';
+@import 'components/nav';
+@import 'components/banner';
+@import 'components/alert';
+@import 'components/sidebar';
 
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/grid';
 
-@import "layout/header";
-@import "layout/footer";
-@import "layout/grid"; 
-
-@import "pages/index";
-@import "pages/menu";
-@import "pages/about";
-@import "pages/checkout";
-@import "pages/make-your-own";
-
-
-
-
-
+@import 'pages/index';
+@import 'pages/menu';
+@import 'pages/about';
+@import 'pages/checkout';
+@import 'pages/make-your-own';

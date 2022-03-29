@@ -1,9 +1,4 @@
-// TODO FOR THIS FILE
-// SIDEBAR NEEDS TO BE TWO SEPARATE CONTAINERS
-// HAVE TWO SEPARATE FUNCTIONS FOR EACH CONTAINER
-// REMOVE BLUE BACKGROUND FOR MENU
 import { handleDeleteCartItem } from './cart.js';
-
 const menuEl = document.querySelector('.sidebar--nav');
 const sideBarcartEl = document.querySelector('.sidebar--cart');
 const dropDownCartEl = document.querySelector('.cart');
@@ -18,7 +13,7 @@ export function addSidebarListeners() {
   closeMenuBtn.onclick = handleCloseMenu;
   openCartBtn.onclick = handleOpenCart;
   closeCartBtn.onclick = handleCloseCart;
-  sidebarCartContainer.onclick = handleDeleteCartItem;
+  sidebarCartContainer.onclick = (e) => handleDeleteCartItem(e, true);
 }
 
 // HANDLERS //

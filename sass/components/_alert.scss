@@ -1,23 +1,19 @@
-.popup {
+.alert,
+.sidebar-alert {
   position: fixed;
   display: flex;
   width: fit-content;
-  padding: 12px 12px;
+  padding: 8px 12px;
   margin-top: 4px;
   border-radius: 6px;
-  box-shadow: 4px 4px 10px $color-light-grey;
-
+  box-shadow: 6px 6px 12px $color-light-grey;
+  display: none;
+  z-index: 100;
   align-items: center;
   font-size: $font-size-medium;
   font-weight: 300;
   animation: appear 200ms ease-out;
   background-color: white;
-  // &--success {
-  //   background-color: white;
-  // }
-  // &--failure {
-  //   background-color: rgb(248, 236, 236);
-  // }
   &__box {
     width: 100%;
     display: flex;
@@ -26,30 +22,25 @@
   &__bar {
     height: 50px;
     width: 3px;
-    background: rgba(21, 105, 56, 0.8);
     border-radius: 20px;
+
+    &--success {
+      background: rgba(21, 105, 56, 0.8);
+    }
+    &--error {
+      background: $color-red;
+    }
   }
-  // &__icon {
-  //   font-size: 44px;
-  //   margin-right: 10px;
-  //   &--success {
-  //     color: rgba(51, 165, 31, 0.842);
-  //   }
-  //   &--failure {
-  //     color: rgb(221, 35, 28);
-  //   }
-  // }
-  &__icon2-check {
-    margin: 0 14px;
-    color: rgba(21, 105, 56, 0.8);
+  &__icon {
     display: none;
-  }
-  &__icon2-solid {
-    margin: 0 14px;
-    color: rgba(21, 105, 56, 0.8);
+    margin: 0 10px;
     font-size: 2.8rem;
-  }
-  &__text {
+    &--success {
+      color: rgba(21, 105, 56, 0.8);
+    }
+    &--error {
+      color: $color-red;
+    }
   }
   &__cancel-btn {
     background-color: inherit;

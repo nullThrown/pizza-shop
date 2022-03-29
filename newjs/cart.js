@@ -1,11 +1,17 @@
-import { getObjFromLS, deleteCartItemFromLS, setObjToLS } from './storage.js';
+import {
+  getObjFromLS,
+  deleteCartItemFromLS,
+  setObjToLS,
+  findCartItemFromLS,
+} from './storage.js';
 import { createPizzaItemStr } from './components/cart/pizzaItem.js';
 import { createCustomPizzaItemStr } from './components/cart/customPizzaItem.js';
 import { createDrinkItemStr } from './components/cart/drinkItem.js';
 import { createDessertItemStr } from './components/cart/dessertItem.js';
 import { createSideItemStr } from './components/cart/sideItem.js';
 import { createEmptyCartStr } from './components/emptyCart.js';
-
+import { activateAlert } from './alert.js';
+import { activateSidebarAlert } from './alert.js';
 const cartEl = document.querySelector('.cart');
 const cartItemsUl = document.querySelector('.cart__ul');
 
@@ -27,18 +33,32 @@ export function initCart() {
 }
 
 export function addCartListeners() {
-  if (cartItemsUl) cartItemsUl.onclick = handleDeleteCartItem;
+  if (cartItemsUl) cartItemsUl.onclick = (e) => handleDeleteCartItem(e, false);
 
   if (cartIcon) cartIcon.onclick = handleCartDisplay;
 }
 
 // HANDLERS //
+// fromSidebar - Boolean value, determines if item is deleted from sidebar or regular cart
+// fromSidebar Boolean determines which side effects will run
 
-export function handleDeleteCartItem(e) {
+// handleDeleteCartItem does not have access to the event object when another argument is passed in
+// possible solutions
+// - run callback within handleDelete itself
+// - run callback in onclick method that calls handleDelete
+// - callback will have access to event object, which can be passed down in handleDelete
+export function handleDeleteCartItem(e, fromSidebar) {
   const el = e.target;
   if (el.nodeName === 'BUTTON' && el.classList.contains('delete-cart-item')) {
-    const targetLi = el.closest('li');
-    deleteCartItemFromLS(targetLi.dataset.uuid);
+    const targetLiUuid = el.closest('li').dataset.uuid;
+    const removedItem = findCartItemFromLS(targetLiUuid);
+    const alertMsg = `${removedItem.name} has been removed from your cart`;
+    if (fromSidebar) {
+      activateSidebarAlert(alertMsg, true);
+    } else {
+      activateAlert(alertMsg, true);
+    }
+    deleteCartItemFromLS(targetLiUuid);
     renderCarts();
   }
 }
@@ -48,8 +68,8 @@ export function handleCartDisplay() {
   const windowWidth = window.innerWidth;
   const cartElStyles = window.getComputedStyle(cartEl);
 
-  // a window width > 520px will open the dropdown cart
-  // window widths < 520px are ignored and handled in sidebar.js file
+  // a window width > 735px will open the dropdown cart
+  // window widths < 735px are ignored and handled in sidebar.js file
   if (windowWidth > 735) {
     if (cartElStyles.display === 'none') {
       cartEl.style.display = 'block';

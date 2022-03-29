@@ -1,14 +1,15 @@
   TODO  
+    *sides on most popular page are creating undefined values
+
     *normalize all number data 
       - number data is being pull from DOM as a string and needs to be converted into a number
       - in order to run arithmetic ops on these numbers, they must be converted at a certain point
       - normalize this process and remove all the excess parseFloat/Number calls
     
      *alert component
-      -rename popup to alert -- keep consistency
-      -add JS func to alert to be set off when certain actions are committed 
+      -Alerts to be called on 
+        -items removed from sidebar
       -keep removal/addition of items same color 
-      -add func to cancel buttons
       -remove settimeout so that all popups will be displayed for 3 seconds
       
     *have deal run function on final price
@@ -16,7 +17,8 @@
     *create an order placed page and make it look nice 
     *check 'about' para with grammarly
     *add hover effect to more info buttons -- to show toppings etc.
-    
+    *add dropdown to order now on index page
+      -redesign buttons and add south facing arrow
   AFTER THOUGHTS
     
     
@@ -24,8 +26,6 @@
      -'remove' should be used only for node removals  
 
     
-    *order now buttons on index should dropdown an item customize and add func
-      -redesign buttons and add south facing arrow
     
     *finish menu CartItem creation -- figure out how to create a base case and spread it into each specific case (i.e., 'pizza', 'side')
       
