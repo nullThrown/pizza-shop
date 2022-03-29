@@ -7,9 +7,6 @@
       - normalize this process and remove all the excess parseFloat/Number calls
     
      *alert component
-      -Alerts to be called on 
-        -items removed from sidebar
-      -keep removal/addition of items same color 
       -remove settimeout so that all popups will be displayed for 3 seconds
       
     *have deal run function on final price
@@ -21,12 +18,9 @@
       -redesign buttons and add south facing arrow
   AFTER THOUGHTS
     
-    
     *all 'removes' fn() names that remove items from LS should be renamed to 'delete' 
-     -'remove' should be used only for node removals  
+     -'remove' should be only used for functions that do more than delete items from LS  
 
-    
-    
     *finish menu CartItem creation -- figure out how to create a base case and spread it into each specific case (i.e., 'pizza', 'side')
       
     *customPizza.js
@@ -34,8 +28,7 @@
       -refactor meatsBtn,veggiesBtn, &, cheeseBtn listener logic -- it is way too verbose and ugly
     
     * isDuplicate fn() that checks if item-to-be-added already exists in cart 
-          
-         
+      
       General 
         *function name conventions
           get -- gets data from LS

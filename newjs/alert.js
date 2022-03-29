@@ -51,7 +51,7 @@ export function activateSidebarAlert(msg, isSuccess) {
     sidebarBar.classList.add('alert__bar--error');
     sidebarAlertErrorIcon.style.display = 'block';
   }
-  setTimeout(() => removeSidebarAlert(), 3000);
+  setTimeout(() => removeSidebarAlert(), 30000);
 }
 function removeSidebarAlert() {
   sidebarAlertEl.style.display = 'none';

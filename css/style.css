@@ -553,20 +553,25 @@ body {
 
 .alert,
 .sidebar-alert {
-  position: fixed;
   display: flex;
   width: fit-content;
   padding: 8px 12px;
   margin-top: 4px;
-  border-radius: 6px;
-  box-shadow: 6px 6px 12px gainsboro;
   display: none;
-  z-index: 100;
   align-items: center;
   font-size: 2rem;
   font-weight: 300;
   animation: appear 200ms ease-out;
   background-color: white; }
+  .alert--main,
+  .sidebar-alert--main {
+    position: fixed;
+    border-radius: 6px;
+    box-shadow: 6px 6px 12px gainsboro;
+    z-index: 100; }
+  .alert--sidebar,
+  .sidebar-alert--sidebar {
+    margin: 0 auto; }
   .alert__box,
   .sidebar-alert__box {
     width: 100%;
